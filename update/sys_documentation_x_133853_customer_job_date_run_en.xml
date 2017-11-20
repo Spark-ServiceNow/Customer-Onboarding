@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_documentation element="date_run" label="Date Run" language="en" table="x_133853_customer_job">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>date_run</element>
+            <help/>
+            <hint/>
+            <label>Date Run</label>
+            <language>en</language>
+            <name>x_133853_customer_job</name>
+            <plural>Date Runs</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2017-10-31 01:07:20</sys_created_on>
+            <sys_id>ac1601c70f020300d1ac8f8ce1050ea6</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Date Run</sys_name>
+            <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
+            <sys_update_name>sys_documentation_x_133853_customer_job_date_run_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2017-10-31 01:07:20</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

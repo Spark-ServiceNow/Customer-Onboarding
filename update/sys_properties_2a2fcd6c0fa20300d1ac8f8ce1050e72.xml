@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_properties">
+    <sys_properties action="INSERT_OR_UPDATE">
+        <choices>Enabled&#13;
+Disabled</choices>
+        <description>Enable / Disable the Service Category to add or change User data in Service Now </description>
+        <ignore_cache>false</ignore_cache>
+        <is_private>false</is_private>
+        <name>x_133853_customer.Users</name>
+        <read_roles/>
+        <suffix>Users</suffix>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-17 03:55:20</sys_created_on>
+        <sys_id>2a2fcd6c0fa20300d1ac8f8ce1050e72</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_133853_customer.Users</sys_name>
+        <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
+        <sys_update_name>sys_properties_2a2fcd6c0fa20300d1ac8f8ce1050e72</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-17 03:55:20</sys_updated_on>
+        <type>choicelist</type>
+        <value>Enabled&#13;
+Disabled</value>
+        <write_roles/>
+    </sys_properties>
+    <sys_translated_text action="delete_multiple" query="documentkey=2a2fcd6c0fa20300d1ac8f8ce1050e72"/>
+</record_update>

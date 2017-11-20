@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Job" max_length="40" name="x_133853_customer_job" type="collection">
+        <element label="Date Run" max_length="40" name="date_run" type="glide_date_time"/>
+        <element label="Name" mandatory="true" max_length="255" name="name" type="string"/>
+    </element>
+</database>
