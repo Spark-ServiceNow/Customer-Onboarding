@@ -2,7 +2,7 @@
 <record_update table="sc_catalog_view_mtom">
     <sc_catalog_view_mtom action="INSERT_OR_UPDATE">
         <default>true</default>
-        <sc_catalog display_value="ServiceNow Administration 2">51e4d0e10f620300d1ac8f8ce1050e33</sc_catalog>
+        <sc_catalog display_value="ServiceNow Administration">51e4d0e10f620300d1ac8f8ce1050e33</sc_catalog>
         <sys_class_name>sc_catalog_view_mtom</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-11-20 02:14:02</sys_created_on>

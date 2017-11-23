@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_properties_category">
+    <sys_properties_category action="INSERT_OR_UPDATE">
+        <name>Customer Onboarding Properties</name>
+        <sys_class_name>sys_properties_category</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-23 03:24:25</sys_created_on>
+        <sys_id>52e1cc260f620300d1ac8f8ce1050ed5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Customer Onboarding Properties</sys_name>
+        <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
+        <sys_update_name>sys_properties_category_52e1cc260f620300d1ac8f8ce1050ed5</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-23 03:24:25</sys_updated_on>
+        <title><![CDATA[<p>Customer Onboarding Properties</p>]]></title>
+    </sys_properties_category>
+    <sys_translated_text action="delete_multiple" query="documentkey=52e1cc260f620300d1ac8f8ce1050ed5"/>
+</record_update>
