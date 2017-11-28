@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_133853_customer.Department</api_name>
+        <client_callable>false</client_callable>
+        <description>CRUD API Class for managing Company records.</description>
+        <name>Department</name>
+        <script><![CDATA[// =============================================================
+// Author: 		    Ronald Lob
+// Script Type:     [Script Include] Customer Onboarding - Department API
+// Script Name:	    Customer Onboarding - Department API
+// Script Version:	1.00
+// Script Desc:	    API for CRUD functionality on Department table. 
+//                  Differs from standard Table / REST API as it's specific to this application.
+//                  Cascading of Creates / Updates / Deletes.
+// ==========
+// Revisions:
+// ==========				
+// 28/11/2017 - [Version 1.0][Ronald Lob]  	Development.
+// =============================================================
+
+var Department = Class.create();
+
+Department.prototype = {
+    initialize: function() {},
+	
+	// .. 
+	// Creates a new record in Department
+	// .. 
+	Create: function(department_name, department_id, department_company, department_cost_center, department_parent, department_description, department_dept_head, department_primary_contact){
+		
+		gs.info('[Customer Onboarding][SI][Department] Create a new Department in ServiceNow.');
+		
+		// Check if the Department exists already or not
+		var gr = this.Get_Name(department_name);
+		
+		if (gr.isValidRecord() == true) {
+			gs.info('[Customer Onboarding][SI][Department] Department already exists. Exit');
+			return false;
+		}
+	
+		gr = new GlideRecord('cmn_department');
+		gr.initialize();
+		gr.name = department_name;
+		gr.id = department_id;
+		gr.company = department_company;
+		gr.cost_center = department_cost_center;
+		gr.parent = department_parent;
+		gr.description = department_description;
+		gr.dept_head = department_dept_head;
+		gr.primary_contact = department_primary_contact;
+		
+		var sys_id = gr.insert();
+
+		if (sys_id) {
+			gs.info('[Customer Onboarding][SI][Department] New Department record created successfully: ' + sysId);
+			return true;
+		} else {
+			gs.info('[Customer Onboarding][SI][Department] New Department record not created successfully: ' + sysId);
+			return false;
+		}
+	},
+	
+	// .. 
+	// Returns a record from provided sys_id
+	// .. 
+	Get_SysID: function(sys_id){
+		
+		gs.info('[Customer Onboarding][SI][Department] Get Department with sys_id = ' + sys_id);
+	
+		gr = new GlideRecord('cmn_department');
+		gr.addQuery('sys_id',sys_id);
+		gr.query();
+		gr.next();
+		
+		return gr;
+	},
+	
+	// .. 
+	// Returns a Department record from provided Name
+	// .. 
+	Get_Name: function(department_name){
+		
+		gs.info('[Customer Onboarding][SI][Department] Get Department with name = ' + department_name);
+	
+		gr = new GlideRecord('cmn_department');
+		gr.addQuery('name',department_name);
+		gr.query();
+		gr.next();
+
+		return gr;	
+	},
+	
+	// .. 
+	// Deletes an existing Department record from provided sys_id
+	// .. 
+	Delete: function(sys_id){
+		
+		gs.info('[Customer Onboarding][SI][Department] Delete Department with sys_id = ' + sys_id);
+		
+		var gr = this.Get_SysID(sys_id);
+		var bool;
+	
+		if (gr.isValidRecord() == true) {
+			gr.next();
+			bool = gr.deleteRecord();
+		} else {
+			return false;
+		}
+
+		return bool;
+	},
+	
+	// .. 
+	// Updates one field in an existing record from provided sys_id, column name, and value
+	// .. 
+	Update: function(sys_id, column, value){
+		
+		gs.info('[Customer Onboarding][SI][Department] Updating Department with sys_id = ' + sys_id);
+	
+		var gr = this.Get_SysID(sys_id);
+		
+		if (gr.isValidRecord() == true) {	
+			gr[column] = value;
+			var bool = gr.update();
+			return true;
+		} else {
+			gs.info('[Customer Onboarding][SI][Department] Couldnt find valid record from provided Sys_ID: ' + sys_id);
+			return false;
+		}
+		
+	},
+
+    type: 'Department'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:44:43</sys_created_on>
+        <sys_id>80543d000f3e0300d1ac8f8ce1050e7f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Department</sys_name>
+        <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
+        <sys_update_name>sys_script_include_80543d000f3e0300d1ac8f8ce1050e7f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:44:43</sys_updated_on>
+    </sys_script_include>
+</record_update>

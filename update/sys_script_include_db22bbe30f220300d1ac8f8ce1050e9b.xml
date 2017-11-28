@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_133853_customer.Company</api_name>
+        <client_callable>false</client_callable>
+        <description>CRUD API Class for managing Company records.</description>
+        <name>Company</name>
+        <script><![CDATA[// =============================================================
+// Author: 		    Ronald Lob
+// Script Type:     [Script Include] Customer Onboarding - Company API
+// Script Name:	    Customer Onboarding - Company API
+// Script Version:	1.00
+// Script Desc:	    API for CRUD functionality on Company table. 
+//                  Differs from standard Table / REST API as it's specific to this application.
+//                  Cascading of Creates / Updates / Deletes.
+// ==========
+// Revisions:
+// ==========				
+// 27/11/2017 - [Version 1.0][Ronald Lob]  	Development.
+// =============================================================
+
+var Company = Class.create();
+
+Company.prototype = {
+    initialize: function() {},
+	
+	// .. 
+	// Creates a new record in Company
+	// .. 
+	Create: function(company_name, company_contact, company_latitude, company_longitude, company_customer, company_vendor){
+		
+		gs.info('[Customer Onboarding][SI][Company] Create a new Company in ServiceNow.');
+		
+		// Check if the Company exists already or not
+		var gr = this.Get_Name(company_name);
+		
+		if (gr.isValidRecord() == true) {
+			gs.info('[Customer Onboarding][SI][Company] Company already exists. Exit');
+			return false;
+		}
+	
+		gr = new GlideRecord('core_company');
+		gr.initialize();
+		gr.name = company_name;
+		gr.contact =company_contact;
+		gr.latitude = company_latitude;
+		gr.longitude = company_longitude;
+		gr.customer = company_customer;
+		gr.vendor = company_vendor;
+		var sys_id = gr.insert();
+
+		if (sys_id) {
+			gs.info('[Customer Onboarding][SI][Company] New Company record created successfully: ' + sysId);
+			return true;
+		} else {
+			gs.info('[Customer Onboarding][SI][Company] New Company record not created successfully: ' + sysId);
+			return false;
+		}
+	},
+	
+	// .. 
+	// Returns a record from provided sys_id
+	// .. 
+	Get_SysID: function(sys_id){
+		
+		gs.info('[Customer Onboarding][SI][Company] Get Company with sys_id = ' + sys_id);
+	
+		gr = new GlideRecord('core_company');
+		gr.addQuery('sys_id',sys_id);
+		gr.query();
+		gr.next();
+		
+		return gr;
+	},
+	
+	// .. 
+	// Returns a Company record from provided Name
+	// .. 
+	Get_Name: function(company_name){
+		
+		gs.info('[Customer Onboarding][SI][Company] Get Company with name = ' + company_name);
+	
+		gr = new GlideRecord('core_company');
+		gr.addQuery('name',company_name);
+		gr.query();
+		gr.next();
+
+		return gr;	
+	},
+	
+	// .. 
+	// Deletes an existing Company record from provided sys_id
+	// .. 
+	Delete: function(sys_id){
+		
+		gs.info('[Customer Onboarding][SI][Company] Delete Company with sys_id = ' + sys_id);
+		
+		// Insert code here to cascade delete Company data (Support Groups / People / Org etc.)
+		
+		var gr = this.Get_SysID(sys_id);
+		var bool;
+	
+		if (gr.isValidRecord() == true) {
+			gr.next();
+			bool = gr.deleteRecord();
+		} else {
+			return false;
+		}
+
+		return bool;
+	},
+	
+	// .. 
+	// Updates one field in an existing record from provided sys_id, column name, and value
+	// .. 
+	Update: function(sys_id, column, value){
+		
+		gs.info('[Customer Onboarding][SI][Company] Updating Company with sys_id = ' + sys_id);
+	
+		var gr = this.Get_SysID(sys_id);
+		
+		if (gr.isValidRecord() == true) {	
+			gr[column] = value;
+			var bool = gr.update();
+			return true;
+		} else {
+			gs.info('[Customer Onboarding][SI][Company] Couldnt find valid record from provided Sys_ID: ' + sys_id);
+			return false;
+		}
+		
+	},
+
+    type: 'Company'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-27 02:00:01</sys_created_on>
+        <sys_id>db22bbe30f220300d1ac8f8ce1050e9b</sys_id>
+        <sys_mod_count>12</sys_mod_count>
+        <sys_name>Company</sys_name>
+        <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
+        <sys_update_name>sys_script_include_db22bbe30f220300d1ac8f8ce1050e9b</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 02:51:56</sys_updated_on>
+    </sys_script_include>
+</record_update>

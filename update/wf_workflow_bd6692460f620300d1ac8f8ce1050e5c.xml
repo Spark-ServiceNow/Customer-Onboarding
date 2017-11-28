@@ -2,7 +2,7 @@
 <record_update table="wf_workflow_version">
     <wf_workflow_version action="INSERT_OR_UPDATE">
         <active>true</active>
-        <activity_stages>{"subflows":[],"stages":{},"activities":{},"ends":["5647bf5e0f220300d1ac8f8ce1050e43"]}</activity_stages>
+        <activity_stages>{"activities":{},"ends":["8bafa98c0ffa0300d1ac8f8ce1050eb8"],"subflows":[],"stages":{}}</activity_stages>
         <after_business_rules>false</after_business_rules>
         <checked_out/>
         <checked_out_by/>
@@ -10,10 +10,10 @@
         <condition/>
         <condition_type/>
         <description/>
-        <expected_sequences>1a47bf5e0f220300d1ac8f8ce1050e42,2247bf5e0f220300d1ac8f8ce1050e44,1a47bf5e0f220300d1ac8f8ce1050e41,1a47bf5e0f220300d1ac8f8ce1050e40,5647bf5e0f220300d1ac8f8ce1050e43</expected_sequences>
+        <expected_sequences>87afa98c0ffa0300d1ac8f8ce1050eb5,43afa98c0ffa0300d1ac8f8ce1050eb4,07afa98c0ffa0300d1ac8f8ce1050eb6,87afa98c0ffa0300d1ac8f8ce1050eb0,8bafa98c0ffa0300d1ac8f8ce1050eb8</expected_sequences>
         <expected_time>1970-01-01 14:00:00</expected_time>
         <expected_time_type/>
-        <full_sequences>1a47bf5e0f220300d1ac8f8ce1050e42,2247bf5e0f220300d1ac8f8ce1050e44,1a47bf5e0f220300d1ac8f8ce1050e41,1647bf5e0f220300d1ac8f8ce1050e3f,1a47bf5e0f220300d1ac8f8ce1050e40,1647bf5e0f220300d1ac8f8ce1050e3d,5647bf5e0f220300d1ac8f8ce1050e43</full_sequences>
+        <full_sequences>87afa98c0ffa0300d1ac8f8ce1050eb5,43afa98c0ffa0300d1ac8f8ce1050eb4,07afa98c0ffa0300d1ac8f8ce1050eb6,0fafa98c0ffa0300d1ac8f8ce1050eb2,87afa98c0ffa0300d1ac8f8ce1050eb0,c3afa98c0ffa0300d1ac8f8ce1050eba,4baf698c0ffa0300d1ac8f8ce1050e52,8bafa98c0ffa0300d1ac8f8ce1050eb8,87afa98c0ffa0300d1ac8f8ce1050eb9</full_sequences>
         <journal/>
         <max_activity_count>100</max_activity_count>
         <name>Customer Onboarding - Foundation</name>
@@ -28,16 +28,16 @@
         <schedule/>
         <stage_field>stage</stage_field>
         <stage_order>computed</stage_order>
-        <start display_value="Begin">1a47bf5e0f220300d1ac8f8ce1050e42</start>
+        <start display_value="Begin">87afa98c0ffa0300d1ac8f8ce1050eb5</start>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>5e47bf5e0f220300d1ac8f8ce1050e3a</sys_id>
+        <sys_created_on>2017-11-28 03:14:24</sys_created_on>
+        <sys_id>43af698c0ffa0300d1ac8f8ce1050e50</sys_id>
         <sys_mod_count>4</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:44:11</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:24:37</sys_updated_on>
         <table>sc_req_item</table>
         <timezone/>
-        <validated>true</validated>
+        <validated>false</validated>
         <workflow display_value="Customer Onboarding - Foundation">bd6692460f620300d1ac8f8ce1050e5c</workflow>
     </wf_workflow_version>
     <wf_workflow action="INSERT_OR_UPDATE">
@@ -69,78 +69,78 @@
         <ola>1970-01-01 00:00:00</ola>
         <order>1100</order>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>1e47bf5e0f220300d1ac8f8ce1050e3c</sys_id>
+        <sys_created_on>2017-11-28 03:14:24</sys_created_on>
+        <sys_id>cbaf698c0ffa0300d1ac8f8ce1050e51</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:24</sys_updated_on>
         <value>complete</value>
-        <workflow_version display_value="Customer Onboarding - Foundation">5e47bf5e0f220300d1ac8f8ce1050e3a</workflow_version>
+        <workflow_version display_value="Customer Onboarding - Foundation">43af698c0ffa0300d1ac8f8ce1050e50</workflow_version>
     </wf_stage>
     <wf_stage action="INSERT_OR_UPDATE">
         <name>Delivery</name>
         <ola>1970-01-03 00:00:00</ola>
         <order>140</order>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>1647bf5e0f220300d1ac8f8ce1050e3c</sys_id>
+        <sys_created_on>2017-11-28 03:14:24</sys_created_on>
+        <sys_id>4baf698c0ffa0300d1ac8f8ce1050e51</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:24</sys_updated_on>
         <value>delivery</value>
-        <workflow_version display_value="Customer Onboarding - Foundation">5e47bf5e0f220300d1ac8f8ce1050e3a</workflow_version>
+        <workflow_version display_value="Customer Onboarding - Foundation">43af698c0ffa0300d1ac8f8ce1050e50</workflow_version>
     </wf_stage>
     <wf_stage action="INSERT_OR_UPDATE">
         <name>Fulfillment</name>
         <ola>1970-01-02 00:00:00</ola>
         <order>120</order>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>1a47bf5e0f220300d1ac8f8ce1050e3c</sys_id>
+        <sys_created_on>2017-11-28 03:14:24</sys_created_on>
+        <sys_id>43af698c0ffa0300d1ac8f8ce1050e52</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:24</sys_updated_on>
         <value>fulfillment</value>
-        <workflow_version display_value="Customer Onboarding - Foundation">5e47bf5e0f220300d1ac8f8ce1050e3a</workflow_version>
+        <workflow_version display_value="Customer Onboarding - Foundation">43af698c0ffa0300d1ac8f8ce1050e50</workflow_version>
     </wf_stage>
     <wf_stage action="INSERT_OR_UPDATE">
         <name>Request Cancelled</name>
         <ola>1970-01-01 00:00:00</ola>
         <order>1000</order>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>9e47bf5e0f220300d1ac8f8ce1050e3c</sys_id>
+        <sys_created_on>2017-11-28 03:14:24</sys_created_on>
+        <sys_id>c3af698c0ffa0300d1ac8f8ce1050e52</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:24</sys_updated_on>
         <value>Request Cancelled</value>
-        <workflow_version display_value="Customer Onboarding - Foundation">5e47bf5e0f220300d1ac8f8ce1050e3a</workflow_version>
+        <workflow_version display_value="Customer Onboarding - Foundation">43af698c0ffa0300d1ac8f8ce1050e50</workflow_version>
     </wf_stage>
     <wf_stage action="INSERT_OR_UPDATE">
         <name>Request Approved</name>
         <ola>1970-01-01 00:00:00</ola>
         <order>90</order>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>9647bf5e0f220300d1ac8f8ce1050e3c</sys_id>
+        <sys_created_on>2017-11-28 03:14:24</sys_created_on>
+        <sys_id>cfaf698c0ffa0300d1ac8f8ce1050e51</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:24</sys_updated_on>
         <value>request_approved</value>
-        <workflow_version display_value="Customer Onboarding - Foundation">5e47bf5e0f220300d1ac8f8ce1050e3a</workflow_version>
+        <workflow_version display_value="Customer Onboarding - Foundation">43af698c0ffa0300d1ac8f8ce1050e50</workflow_version>
     </wf_stage>
     <wf_stage action="INSERT_OR_UPDATE">
         <name>Waiting for Approval</name>
         <ola>1970-01-02 00:00:00</ola>
         <order>100</order>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>9a47bf5e0f220300d1ac8f8ce1050e3c</sys_id>
+        <sys_created_on>2017-11-28 03:14:24</sys_created_on>
+        <sys_id>4faf698c0ffa0300d1ac8f8ce1050e51</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:24</sys_updated_on>
         <value>waiting_for_approval</value>
-        <workflow_version display_value="Customer Onboarding - Foundation">5e47bf5e0f220300d1ac8f8ce1050e3a</workflow_version>
+        <workflow_version display_value="Customer Onboarding - Foundation">43af698c0ffa0300d1ac8f8ce1050e50</workflow_version>
     </wf_stage>
     <wf_activity action="INSERT_OR_UPDATE">
         <activity_definition display_value="Begin">c7a5e32c0a0a0b3a002377c24ed8ea76</activity_definition>
@@ -158,21 +158,21 @@
         <pinned_version/>
         <stage/>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>1a47bf5e0f220300d1ac8f8ce1050e42</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>87afa98c0ffa0300d1ac8f8ce1050eb5</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
         <timeout>1970-01-01 00:00:00</timeout>
         <vars/>
         <width>80</width>
-        <workflow_version display_value="Customer Onboarding - Foundation">5e47bf5e0f220300d1ac8f8ce1050e3a</workflow_version>
+        <workflow_version display_value="Customer Onboarding - Foundation">43af698c0ffa0300d1ac8f8ce1050e50</workflow_version>
         <x>20</x>
         <y>20</y>
     </wf_activity>
-    <sys_variable_value action="delete_multiple" query="document_key=1a47bf5e0f220300d1ac8f8ce1050e42"/>
+    <sys_variable_value action="delete_multiple" query="document_key=87afa98c0ffa0300d1ac8f8ce1050eb5"/>
     <wf_condition action="INSERT_OR_UPDATE">
-        <activity display_value="Begin">1a47bf5e0f220300d1ac8f8ce1050e42</activity>
+        <activity display_value="Begin">87afa98c0ffa0300d1ac8f8ce1050eb5</activity>
         <condition>true</condition>
         <condition_default/>
         <condition_type>standard</condition_type>
@@ -186,11 +186,11 @@
         <short_description/>
         <skip_during_generate>false</skip_during_generate>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>de47bf5e0f220300d1ac8f8ce1050e42</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>8fafa98c0ffa0300d1ac8f8ce1050eb5</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
     </wf_condition>
     <wf_activity action="INSERT_OR_UPDATE">
         <activity_definition display_value="Set Values">1ca8d7cf0a0a0b265e9a000c2c08248c</activity_definition>
@@ -208,49 +208,49 @@
         <pinned_version/>
         <stage/>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>1a47bf5e0f220300d1ac8f8ce1050e40</sys_id>
+        <sys_created_on>2017-11-28 03:14:24</sys_created_on>
+        <sys_id>87afa98c0ffa0300d1ac8f8ce1050eb0</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:24</sys_updated_on>
         <timeout>1970-01-01 00:00:00</timeout>
         <vars/>
         <width/>
-        <workflow_version display_value="Customer Onboarding - Foundation">5e47bf5e0f220300d1ac8f8ce1050e3a</workflow_version>
+        <workflow_version display_value="Customer Onboarding - Foundation">43af698c0ffa0300d1ac8f8ce1050e50</workflow_version>
         <x>1050</x>
         <y>40</y>
     </wf_activity>
-    <sys_variable_value action="delete_multiple" query="document_key=1a47bf5e0f220300d1ac8f8ce1050e40"/>
+    <sys_variable_value action="delete_multiple" query="document_key=87afa98c0ffa0300d1ac8f8ce1050eb0"/>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>wf_activity</document>
-        <document_key>1a47bf5e0f220300d1ac8f8ce1050e40</document_key>
+        <document_key>87afa98c0ffa0300d1ac8f8ce1050eb0</document_key>
         <order>100</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>1e47bf5e0f220300d1ac8f8ce1050e40</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>8bafa98c0ffa0300d1ac8f8ce1050eb0</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
         <value>state=3^EQ</value>
         <variable display_value="">1cb38c8f0a0a0b266fb48e08de35f507</variable>
     </sys_variable_value>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>wf_activity</document>
-        <document_key>1a47bf5e0f220300d1ac8f8ce1050e40</document_key>
+        <document_key>87afa98c0ffa0300d1ac8f8ce1050eb0</document_key>
         <order>100</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>1e47bf5e0f220300d1ac8f8ce1050e40</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>8bafa98c0ffa0300d1ac8f8ce1050eb0</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
         <value>state=3^EQ</value>
         <variable display_value="">1cb38c8f0a0a0b266fb48e08de35f507</variable>
     </sys_variable_value>
     <wf_condition action="INSERT_OR_UPDATE">
-        <activity display_value="Close Request Item">1a47bf5e0f220300d1ac8f8ce1050e40</activity>
+        <activity display_value="Close Request Item">87afa98c0ffa0300d1ac8f8ce1050eb0</activity>
         <condition>true</condition>
         <condition_default/>
         <condition_type>standard</condition_type>
@@ -264,11 +264,11 @@
         <short_description/>
         <skip_during_generate>false</skip_during_generate>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>9247bf5e0f220300d1ac8f8ce1050e41</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>43afa98c0ffa0300d1ac8f8ce1050eb1</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
     </wf_condition>
     <wf_activity action="INSERT_OR_UPDATE">
         <activity_definition display_value="End">c7a66f7d0a0a0b3a004544a6d2f14076</activity_definition>
@@ -286,19 +286,319 @@
         <pinned_version/>
         <stage/>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>5647bf5e0f220300d1ac8f8ce1050e43</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>8bafa98c0ffa0300d1ac8f8ce1050eb8</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
         <timeout>1970-01-01 00:00:00</timeout>
         <vars/>
         <width>80</width>
-        <workflow_version display_value="Customer Onboarding - Foundation">5e47bf5e0f220300d1ac8f8ce1050e3a</workflow_version>
-        <x>1353</x>
-        <y>33</y>
+        <workflow_version display_value="Customer Onboarding - Foundation">43af698c0ffa0300d1ac8f8ce1050e50</workflow_version>
+        <x>1376</x>
+        <y>331</y>
     </wf_activity>
-    <sys_variable_value action="delete_multiple" query="document_key=5647bf5e0f220300d1ac8f8ce1050e43"/>
+    <sys_variable_value action="delete_multiple" query="document_key=8bafa98c0ffa0300d1ac8f8ce1050eb8"/>
+    <wf_activity action="INSERT_OR_UPDATE">
+        <activity_definition display_value="Run Script">db8c65aec0a8016501d00259bc7203a4</activity_definition>
+        <activity_definition_updated>false</activity_definition_updated>
+        <databus_lookup_id>10</databus_lookup_id>
+        <height/>
+        <input>{}</input>
+        <is_parent>false</is_parent>
+        <name>Script - Foundation - Delete Company </name>
+        <new_activity_definition/>
+        <notes/>
+        <out_of_date>false</out_of_date>
+        <parent/>
+        <pinned>false</pinned>
+        <pinned_version/>
+        <stage/>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>87afa98c0ffa0300d1ac8f8ce1050eb9</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:53</sys_updated_on>
+        <timeout>1970-01-01 00:00:00</timeout>
+        <vars/>
+        <width/>
+        <workflow_version display_value="Customer Onboarding - Foundation">43af698c0ffa0300d1ac8f8ce1050e50</workflow_version>
+        <x>715</x>
+        <y>238</y>
+    </wf_activity>
+    <sys_variable_value action="delete_multiple" query="document_key=87afa98c0ffa0300d1ac8f8ce1050eb9"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>wf_activity</document>
+        <document_key>87afa98c0ffa0300d1ac8f8ce1050eb9</document_key>
+        <order>1</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>0bafa98c0ffa0300d1ac8f8ce1050eb9</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:53</sys_updated_on>
+        <value>// =============================================================&#13;
+// Author: 		    Ronald Lob&#13;
+// Script Type:     [Workflow] Customer Onboarding - Foundation - Company&#13;
+// Script Name:	    Customer Onboarding - Foundation - Company&#13;
+// Script Version:	1.00&#13;
+// Script Desc:	    Deletes an existing Company and cascades the delete to child items  &#13;
+// ==========&#13;
+// Revisions:&#13;
+// ==========				&#13;
+// 28/11/2017 - [Version 1.0][Ronald Lob]  	Development.&#13;
+// =============================================================&#13;
+	&#13;
+Main();&#13;
+&#13;
+function Main(){&#13;
+	// Main control function&#13;
+	&#13;
+	gs.info('[Customer Onboarding][WF][Company] Begin Request Delete Company Workflow.');&#13;
+	&#13;
+	var company = new Company();&#13;
+	var gr = new GlideRecord();&#13;
+	gr = company.Get_SysID(current.variables.Company);&#13;
+&#13;
+		if (gr.isValidRecord() == false){&#13;
+			gs.info('[Customer Onboarding][WF][Company] Company with the sys_id of ' + gr.sys_id + ' not found.');				&#13;
+		} else {&#13;
+			gs.info('[Customer Onboarding][WF][Company] Company with the sys_id of ' + gr.sys_id + ' found, ready to delete.');&#13;
+			var bool = company.Delete(gr.sys_id);&#13;
+			&#13;
+			if (bool == true) {&#13;
+				gs.info('[Customer Onboarding][WF][Company] Company: ' + gr.sys_id + ' successfully deleted.');&#13;
+			} else {&#13;
+				gs.info('[Customer Onboarding][WF][Company] ' + gr.sys_id + ' could not be deleted.');	&#13;
+			}&#13;
+		}&#13;
+}&#13;
+</value>
+        <variable display_value="">c35ddef20a0a0ba96248a7090eccd518</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>wf_activity</document>
+        <document_key>87afa98c0ffa0300d1ac8f8ce1050eb9</document_key>
+        <order>1</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>0bafa98c0ffa0300d1ac8f8ce1050eb9</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:53</sys_updated_on>
+        <value>// =============================================================&#13;
+// Author: 		    Ronald Lob&#13;
+// Script Type:     [Workflow] Customer Onboarding - Foundation - Company&#13;
+// Script Name:	    Customer Onboarding - Foundation - Company&#13;
+// Script Version:	1.00&#13;
+// Script Desc:	    Deletes an existing Company and cascades the delete to child items  &#13;
+// ==========&#13;
+// Revisions:&#13;
+// ==========				&#13;
+// 28/11/2017 - [Version 1.0][Ronald Lob]  	Development.&#13;
+// =============================================================&#13;
+	&#13;
+Main();&#13;
+&#13;
+function Main(){&#13;
+	// Main control function&#13;
+	&#13;
+	gs.info('[Customer Onboarding][WF][Company] Begin Request Delete Company Workflow.');&#13;
+	&#13;
+	var company = new Company();&#13;
+	var gr = new GlideRecord();&#13;
+	gr = company.Get_SysID(current.variables.Company);&#13;
+&#13;
+		if (gr.isValidRecord() == false){&#13;
+			gs.info('[Customer Onboarding][WF][Company] Company with the sys_id of ' + gr.sys_id + ' not found.');				&#13;
+		} else {&#13;
+			gs.info('[Customer Onboarding][WF][Company] Company with the sys_id of ' + gr.sys_id + ' found, ready to delete.');&#13;
+			var bool = company.Delete(gr.sys_id);&#13;
+			&#13;
+			if (bool == true) {&#13;
+				gs.info('[Customer Onboarding][WF][Company] Company: ' + gr.sys_id + ' successfully deleted.');&#13;
+			} else {&#13;
+				gs.info('[Customer Onboarding][WF][Company] ' + gr.sys_id + ' could not be deleted.');	&#13;
+			}&#13;
+		}&#13;
+}&#13;
+</value>
+        <variable display_value="">c35ddef20a0a0ba96248a7090eccd518</variable>
+    </sys_variable_value>
+    <wf_condition action="INSERT_OR_UPDATE">
+        <activity display_value="Script - Foundation - Delete Company ">87afa98c0ffa0300d1ac8f8ce1050eb9</activity>
+        <condition>true</condition>
+        <condition_default/>
+        <condition_type>standard</condition_type>
+        <else_flag>false</else_flag>
+        <error>false</error>
+        <event>false</event>
+        <event_name/>
+        <is_positive>true</is_positive>
+        <name>Always</name>
+        <order>0</order>
+        <short_description/>
+        <skip_during_generate>false</skip_during_generate>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>4fafa98c0ffa0300d1ac8f8ce1050eb9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
+    </wf_condition>
+    <wf_activity action="INSERT_OR_UPDATE">
+        <activity_definition display_value="Run Script">db8c65aec0a8016501d00259bc7203a4</activity_definition>
+        <activity_definition_updated>false</activity_definition_updated>
+        <databus_lookup_id>9</databus_lookup_id>
+        <height/>
+        <input>{}</input>
+        <is_parent>false</is_parent>
+        <name>Script - Foundation - Edit Company </name>
+        <new_activity_definition/>
+        <notes/>
+        <out_of_date>false</out_of_date>
+        <parent/>
+        <pinned>false</pinned>
+        <pinned_version/>
+        <stage/>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>c3afa98c0ffa0300d1ac8f8ce1050eba</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
+        <timeout>1970-01-01 00:00:00</timeout>
+        <vars/>
+        <width/>
+        <workflow_version display_value="Customer Onboarding - Foundation">43af698c0ffa0300d1ac8f8ce1050e50</workflow_version>
+        <x>714</x>
+        <y>138</y>
+    </wf_activity>
+    <sys_variable_value action="delete_multiple" query="document_key=c3afa98c0ffa0300d1ac8f8ce1050eba"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>wf_activity</document>
+        <document_key>c3afa98c0ffa0300d1ac8f8ce1050eba</document_key>
+        <order>1</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>47afa98c0ffa0300d1ac8f8ce1050eba</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
+        <value>// =============================================================&#13;
+// Author: 		    Ronald Lob&#13;
+// Script Type:     [Workflow] Customer Onboarding - Foundation - Company&#13;
+// Script Name:	    Customer Onboarding - Foundation - Company&#13;
+// Script Version:	1.00&#13;
+// Script Desc:	    Edits an existing Company based on provided field name and field value  &#13;
+// ==========&#13;
+// Revisions:&#13;
+// ==========				&#13;
+// 28/11/2017 - [Version 1.0][Ronald Lob]  	Development.&#13;
+// =============================================================&#13;
+	&#13;
+Main();&#13;
+&#13;
+function Main(){&#13;
+	// Main control function&#13;
+	&#13;
+	gs.info('[Customer Onboarding][WF][Company] Begin Request Edit Company Workflow.');&#13;
+	&#13;
+	var company = new Company();&#13;
+	var gr = new GlideRecord();&#13;
+	gr = company.Get_Sys_ID(current.variables.Company);&#13;
+&#13;
+		if (gr.isValidRecord() == false){&#13;
+			gs.info('[Customer Onboarding][WF][Company] Company with the sys_id of ' + gr.sys_id + ' not found.');				&#13;
+		} else {&#13;
+			gs.info('[Customer Onboarding][WF][Company] Company with the sys_id of ' + gr.sys_id + ' found, ready for editing.');&#13;
+			var bool = company.Update(gr.sys_id,current.variables.Field_To_Update,current.variables.Value);&#13;
+			&#13;
+			if (bool == true) {&#13;
+				gs.info('[Customer Onboarding][WF][Company] Company: ' + gr.sys_id + ' successfully updated. Field: ' + current.variables.Field_To_Update + ' set to: ' + current.variables.Value);&#13;
+			} else {&#13;
+				gs.info('[Customer Onboarding][WF][Company] ' + gr.Name + ' could not be edited.');	&#13;
+			}&#13;
+		}&#13;
+}&#13;
+</value>
+        <variable display_value="">c35ddef20a0a0ba96248a7090eccd518</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>wf_activity</document>
+        <document_key>c3afa98c0ffa0300d1ac8f8ce1050eba</document_key>
+        <order>1</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>47afa98c0ffa0300d1ac8f8ce1050eba</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
+        <value>// =============================================================&#13;
+// Author: 		    Ronald Lob&#13;
+// Script Type:     [Workflow] Customer Onboarding - Foundation - Company&#13;
+// Script Name:	    Customer Onboarding - Foundation - Company&#13;
+// Script Version:	1.00&#13;
+// Script Desc:	    Edits an existing Company based on provided field name and field value  &#13;
+// ==========&#13;
+// Revisions:&#13;
+// ==========				&#13;
+// 28/11/2017 - [Version 1.0][Ronald Lob]  	Development.&#13;
+// =============================================================&#13;
+	&#13;
+Main();&#13;
+&#13;
+function Main(){&#13;
+	// Main control function&#13;
+	&#13;
+	gs.info('[Customer Onboarding][WF][Company] Begin Request Edit Company Workflow.');&#13;
+	&#13;
+	var company = new Company();&#13;
+	var gr = new GlideRecord();&#13;
+	gr = company.Get_Sys_ID(current.variables.Company);&#13;
+&#13;
+		if (gr.isValidRecord() == false){&#13;
+			gs.info('[Customer Onboarding][WF][Company] Company with the sys_id of ' + gr.sys_id + ' not found.');				&#13;
+		} else {&#13;
+			gs.info('[Customer Onboarding][WF][Company] Company with the sys_id of ' + gr.sys_id + ' found, ready for editing.');&#13;
+			var bool = company.Update(gr.sys_id,current.variables.Field_To_Update,current.variables.Value);&#13;
+			&#13;
+			if (bool == true) {&#13;
+				gs.info('[Customer Onboarding][WF][Company] Company: ' + gr.sys_id + ' successfully updated. Field: ' + current.variables.Field_To_Update + ' set to: ' + current.variables.Value);&#13;
+			} else {&#13;
+				gs.info('[Customer Onboarding][WF][Company] ' + gr.Name + ' could not be edited.');	&#13;
+			}&#13;
+		}&#13;
+}&#13;
+</value>
+        <variable display_value="">c35ddef20a0a0ba96248a7090eccd518</variable>
+    </sys_variable_value>
+    <wf_condition action="INSERT_OR_UPDATE">
+        <activity display_value="Script - Foundation - Edit Company ">c3afa98c0ffa0300d1ac8f8ce1050eba</activity>
+        <condition>true</condition>
+        <condition_default/>
+        <condition_type>standard</condition_type>
+        <else_flag>false</else_flag>
+        <error>false</error>
+        <event>false</event>
+        <event_name/>
+        <is_positive>true</is_positive>
+        <name>Always</name>
+        <order>0</order>
+        <short_description/>
+        <skip_during_generate>false</skip_during_generate>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>8bafa98c0ffa0300d1ac8f8ce1050eba</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
+    </wf_condition>
     <wf_activity action="INSERT_OR_UPDATE">
         <activity_definition display_value="Run Script">db8c65aec0a8016501d00259bc7203a4</activity_definition>
         <activity_definition_updated>false</activity_definition_updated>
@@ -315,36 +615,36 @@
         <pinned_version/>
         <stage/>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>1a47bf5e0f220300d1ac8f8ce1050e41</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>07afa98c0ffa0300d1ac8f8ce1050eb6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:39:26</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
         <timeout>1970-01-01 00:00:00</timeout>
         <vars/>
         <width/>
-        <workflow_version display_value="Customer Onboarding - Foundation">5e47bf5e0f220300d1ac8f8ce1050e3a</workflow_version>
+        <workflow_version display_value="Customer Onboarding - Foundation">43af698c0ffa0300d1ac8f8ce1050e50</workflow_version>
         <x>712</x>
         <y>30</y>
     </wf_activity>
-    <sys_variable_value action="delete_multiple" query="document_key=1a47bf5e0f220300d1ac8f8ce1050e41"/>
+    <sys_variable_value action="delete_multiple" query="document_key=07afa98c0ffa0300d1ac8f8ce1050eb6"/>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>wf_activity</document>
-        <document_key>1a47bf5e0f220300d1ac8f8ce1050e41</document_key>
+        <document_key>07afa98c0ffa0300d1ac8f8ce1050eb6</document_key>
         <order>1</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>1e47bf5e0f220300d1ac8f8ce1050e41</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>0bafa98c0ffa0300d1ac8f8ce1050eb6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:39:26</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
         <value>// =============================================================&#13;
 // Author: 		    Ronald Lob&#13;
-// Workflow:        Customer Onboaridng - Foundation&#13;
-// Script Name:	    Customer Onboarding - Foundation - New Company&#13;
+// Script Type:     [Workflow] Customer Onboarding - Foundation - Company&#13;
+// Script Name:	    Customer Onboarding - Foundation - Company&#13;
 // Script Version:	1.00&#13;
-// Script Desc:	    On approval of a Request Item, we create the relavent underlying data elements in accordance with predefined business rules. &#13;
+// Script Desc:	    Validates existing Company off a new Service Catalog request item. If not existing, creates new otherwise updates existing  &#13;
 // ==========&#13;
 // Revisions:&#13;
 // ==========				&#13;
@@ -356,80 +656,45 @@ Main();&#13;
 function Main(){&#13;
 	// Main control function&#13;
 	&#13;
-	gs.info('Begin Request New Company Workflow.');&#13;
+	gs.info('[Customer Onboarding][WF][Company] Begin Request New Company Workflow.');&#13;
+	&#13;
+	var company = new Company();&#13;
+	var gr = new GlideRecord();&#13;
+	gr = company.Get_Name(current.variables.Name);&#13;
 &#13;
-	var exists = ValidateExisting();&#13;
-&#13;
-		if (exists == true){&#13;
-			gs.info('Company with the name of ' + current.variables.Name + ' already exists in ServiceNow.');&#13;
-			gs.info('To update an existing Company, please select the correct Catalog Item from the Foundation menu.');&#13;
+		if (gr.isValidRecord() == true){&#13;
+			gs.info('[Customer Onboarding][WF][Company] Company with the name of ' + current.variables.Name + ' already exists in ServiceNow. Exiting.');				&#13;
+		} else {&#13;
+			gs.info('[Customer Onboarding][WF][Company] Company with the name of ' + current.variables.Name + ' does not already exist in ServiceNow. Creating a new one.');&#13;
+			var bool = company.Create(current.variables.Name,current.variables.Contact,current.variables.Latitude,current.variables.Longitude,current.variables.Customer,current.variables.Vendor);&#13;
 			&#13;
-		} else if (exists == false) {&#13;
-			gs.info('Company with the name of ' + current.variables.Name + ' does not already exists in ServiceNow. Creating a new one.');&#13;
-			var newSysID = CreateNewCompany();&#13;
-			gs.info(current.variables.Name + ' (' + newSysID + ') successfully created.');&#13;
+			if (bool == true) {&#13;
+				gs.info('[Customer Onboarding][WF][Company] ' + current.variables.Name + ' successfully created.');&#13;
+			} else {&#13;
+				gs.info('[Customer Onboarding][WF][Company] ' + current.variables.Name + ' could not be created.');	&#13;
+			}&#13;
 		}&#13;
-}&#13;
-&#13;
-function ValidateExisting() {&#13;
-	// Validate data to see if data already exists based entirely on a name search&#13;
-	&#13;
-	gs.info('Validate Company data to see if data already exists.');&#13;
-	&#13;
-	gr = new GlideRecord('core_company');&#13;
-	gr.addQuery('name','=',current.variables.Name);&#13;
-	gr.query();&#13;
-&#13;
-	var count = gr.getRowCount();	&#13;
-&#13;
-	if (count == 0) {&#13;
-		gs.info('Validation has not found an existing Company record.');&#13;
-		return false;&#13;
-	} else {&#13;
-		gs.info('Validation found an existing Company record.');&#13;
-		return true;&#13;
-	}&#13;
-}&#13;
-&#13;
-function CreateNewCompany() {&#13;
-	// Create a new Company in ServiceNow&#13;
-	&#13;
-	gs.info('Create a new Company in ServiceNow.');&#13;
-	&#13;
-	gr = new GlideRecord('core_company');&#13;
-	gr.initialize();&#13;
-	gr.name = current.variables.Name;&#13;
-	gr.contact = current.variables.Contact;&#13;
-	gr.latitude = current.variables.Latitude;&#13;
-	gr.longitude = current.variables.Longitude;&#13;
-	gr.customer = current.variables.Customer;&#13;
-	gr.vendor = current.variables.Vendor;&#13;
-	var sysId = gr.insert();&#13;
-	&#13;
-	gs.info('New Company record created successfully: ' + sysId);&#13;
-	&#13;
-	return sysId;&#13;
 }&#13;
 </value>
         <variable display_value="">c35ddef20a0a0ba96248a7090eccd518</variable>
     </sys_variable_value>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>wf_activity</document>
-        <document_key>1a47bf5e0f220300d1ac8f8ce1050e41</document_key>
+        <document_key>07afa98c0ffa0300d1ac8f8ce1050eb6</document_key>
         <order>1</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>1e47bf5e0f220300d1ac8f8ce1050e41</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>0bafa98c0ffa0300d1ac8f8ce1050eb6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:39:26</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
         <value>// =============================================================&#13;
 // Author: 		    Ronald Lob&#13;
-// Workflow:        Customer Onboaridng - Foundation&#13;
-// Script Name:	    Customer Onboarding - Foundation - New Company&#13;
+// Script Type:     [Workflow] Customer Onboarding - Foundation - Company&#13;
+// Script Name:	    Customer Onboarding - Foundation - Company&#13;
 // Script Version:	1.00&#13;
-// Script Desc:	    On approval of a Request Item, we create the relavent underlying data elements in accordance with predefined business rules. &#13;
+// Script Desc:	    Validates existing Company off a new Service Catalog request item. If not existing, creates new otherwise updates existing  &#13;
 // ==========&#13;
 // Revisions:&#13;
 // ==========				&#13;
@@ -441,65 +706,30 @@ Main();&#13;
 function Main(){&#13;
 	// Main control function&#13;
 	&#13;
-	gs.info('Begin Request New Company Workflow.');&#13;
+	gs.info('[Customer Onboarding][WF][Company] Begin Request New Company Workflow.');&#13;
+	&#13;
+	var company = new Company();&#13;
+	var gr = new GlideRecord();&#13;
+	gr = company.Get_Name(current.variables.Name);&#13;
 &#13;
-	var exists = ValidateExisting();&#13;
-&#13;
-		if (exists == true){&#13;
-			gs.info('Company with the name of ' + current.variables.Name + ' already exists in ServiceNow.');&#13;
-			gs.info('To update an existing Company, please select the correct Catalog Item from the Foundation menu.');&#13;
+		if (gr.isValidRecord() == true){&#13;
+			gs.info('[Customer Onboarding][WF][Company] Company with the name of ' + current.variables.Name + ' already exists in ServiceNow. Exiting.');				&#13;
+		} else {&#13;
+			gs.info('[Customer Onboarding][WF][Company] Company with the name of ' + current.variables.Name + ' does not already exist in ServiceNow. Creating a new one.');&#13;
+			var bool = company.Create(current.variables.Name,current.variables.Contact,current.variables.Latitude,current.variables.Longitude,current.variables.Customer,current.variables.Vendor);&#13;
 			&#13;
-		} else if (exists == false) {&#13;
-			gs.info('Company with the name of ' + current.variables.Name + ' does not already exists in ServiceNow. Creating a new one.');&#13;
-			var newSysID = CreateNewCompany();&#13;
-			gs.info(current.variables.Name + ' (' + newSysID + ') successfully created.');&#13;
+			if (bool == true) {&#13;
+				gs.info('[Customer Onboarding][WF][Company] ' + current.variables.Name + ' successfully created.');&#13;
+			} else {&#13;
+				gs.info('[Customer Onboarding][WF][Company] ' + current.variables.Name + ' could not be created.');	&#13;
+			}&#13;
 		}&#13;
-}&#13;
-&#13;
-function ValidateExisting() {&#13;
-	// Validate data to see if data already exists based entirely on a name search&#13;
-	&#13;
-	gs.info('Validate Company data to see if data already exists.');&#13;
-	&#13;
-	gr = new GlideRecord('core_company');&#13;
-	gr.addQuery('name','=',current.variables.Name);&#13;
-	gr.query();&#13;
-&#13;
-	var count = gr.getRowCount();	&#13;
-&#13;
-	if (count == 0) {&#13;
-		gs.info('Validation has not found an existing Company record.');&#13;
-		return false;&#13;
-	} else {&#13;
-		gs.info('Validation found an existing Company record.');&#13;
-		return true;&#13;
-	}&#13;
-}&#13;
-&#13;
-function CreateNewCompany() {&#13;
-	// Create a new Company in ServiceNow&#13;
-	&#13;
-	gs.info('Create a new Company in ServiceNow.');&#13;
-	&#13;
-	gr = new GlideRecord('core_company');&#13;
-	gr.initialize();&#13;
-	gr.name = current.variables.Name;&#13;
-	gr.contact = current.variables.Contact;&#13;
-	gr.latitude = current.variables.Latitude;&#13;
-	gr.longitude = current.variables.Longitude;&#13;
-	gr.customer = current.variables.Customer;&#13;
-	gr.vendor = current.variables.Vendor;&#13;
-	var sysId = gr.insert();&#13;
-	&#13;
-	gs.info('New Company record created successfully: ' + sysId);&#13;
-	&#13;
-	return sysId;&#13;
 }&#13;
 </value>
         <variable display_value="">c35ddef20a0a0ba96248a7090eccd518</variable>
     </sys_variable_value>
     <wf_condition action="INSERT_OR_UPDATE">
-        <activity display_value="Script - Foundation - New Company ">1a47bf5e0f220300d1ac8f8ce1050e41</activity>
+        <activity display_value="Script - Foundation - New Company ">07afa98c0ffa0300d1ac8f8ce1050eb6</activity>
         <condition>true</condition>
         <condition_default/>
         <condition_type>standard</condition_type>
@@ -513,11 +743,369 @@ function CreateNewCompany() {&#13;
         <short_description/>
         <skip_during_generate>false</skip_during_generate>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>9247bf5e0f220300d1ac8f8ce1050e42</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>cfafa98c0ffa0300d1ac8f8ce1050eb6</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
+    </wf_condition>
+    <wf_activity action="INSERT_OR_UPDATE">
+        <activity_definition display_value="If">98f621ca0a0a0b5900f7c291f5e45a0e</activity_definition>
+        <activity_definition_updated>false</activity_definition_updated>
+        <databus_lookup_id>11</databus_lookup_id>
+        <height/>
+        <input>{}</input>
+        <is_parent>false</is_parent>
+        <name>Trigger Condition - Foundation - Delete Company</name>
+        <new_activity_definition/>
+        <notes/>
+        <out_of_date>false</out_of_date>
+        <parent/>
+        <pinned>false</pinned>
+        <pinned_version/>
+        <stage/>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:24</sys_created_on>
+        <sys_id>4baf698c0ffa0300d1ac8f8ce1050e52</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:24</sys_updated_on>
+        <timeout>1970-01-01 00:00:00</timeout>
+        <vars/>
+        <width/>
+        <workflow_version display_value="Customer Onboarding - Foundation">43af698c0ffa0300d1ac8f8ce1050e50</workflow_version>
+        <x>257</x>
+        <y>251</y>
+    </wf_activity>
+    <sys_variable_value action="delete_multiple" query="document_key=4baf698c0ffa0300d1ac8f8ce1050e52"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>wf_activity</document>
+        <document_key>4baf698c0ffa0300d1ac8f8ce1050e52</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:24</sys_created_on>
+        <sys_id>03af698c0ffa0300d1ac8f8ce1050e53</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:24</sys_updated_on>
+        <value>0</value>
+        <variable display_value="">493d2c1d0a6a803f3217a75738ea3289</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>wf_activity</document>
+        <document_key>4baf698c0ffa0300d1ac8f8ce1050e52</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:24</sys_created_on>
+        <sys_id>4faf698c0ffa0300d1ac8f8ce1050e52</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:24</sys_updated_on>
+        <value>cat_item=6709f4800fba0300d1ac8f8ce1050e46^state=1^stage=request_approved^EQ</value>
+        <variable display_value="">493cba6a0a6a803f07df24b118473551</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>wf_activity</document>
+        <document_key>4baf698c0ffa0300d1ac8f8ce1050e52</document_key>
+        <order>300</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:24</sys_created_on>
+        <sys_id>c3af698c0ffa0300d1ac8f8ce1050e53</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:24</sys_updated_on>
+        <value>// This script needs to set answer to 'yes' or 'no' to indicate the state of the activity.&#13;
+//&#13;
+// For example,&#13;
+//&#13;
+//   answer = ifScript();&#13;
+//&#13;
+//   function ifScript() {&#13;
+//      if (condition is true) {&#13;
+//         return 'yes';&#13;
+//      }&#13;
+//      return 'no';&#13;
+//   }&#13;
+</value>
+        <variable display_value="">c35e50810a0a0ba96248a709b450fc32</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>wf_activity</document>
+        <document_key>4baf698c0ffa0300d1ac8f8ce1050e52</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:24</sys_created_on>
+        <sys_id>4faf698c0ffa0300d1ac8f8ce1050e52</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:24</sys_updated_on>
+        <value>cat_item=6709f4800fba0300d1ac8f8ce1050e46^state=1^stage=request_approved^EQ</value>
+        <variable display_value="">493cba6a0a6a803f07df24b118473551</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>wf_activity</document>
+        <document_key>4baf698c0ffa0300d1ac8f8ce1050e52</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:24</sys_created_on>
+        <sys_id>03af698c0ffa0300d1ac8f8ce1050e53</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:24</sys_updated_on>
+        <value>0</value>
+        <variable display_value="">493d2c1d0a6a803f3217a75738ea3289</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>wf_activity</document>
+        <document_key>4baf698c0ffa0300d1ac8f8ce1050e52</document_key>
+        <order>300</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:24</sys_created_on>
+        <sys_id>c3af698c0ffa0300d1ac8f8ce1050e53</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:24</sys_updated_on>
+        <value>// This script needs to set answer to 'yes' or 'no' to indicate the state of the activity.&#13;
+//&#13;
+// For example,&#13;
+//&#13;
+//   answer = ifScript();&#13;
+//&#13;
+//   function ifScript() {&#13;
+//      if (condition is true) {&#13;
+//         return 'yes';&#13;
+//      }&#13;
+//      return 'no';&#13;
+//   }&#13;
+</value>
+        <variable display_value="">c35e50810a0a0ba96248a709b450fc32</variable>
+    </sys_variable_value>
+    <wf_condition action="INSERT_OR_UPDATE">
+        <activity display_value="Trigger Condition - Foundation - Delete Company">4baf698c0ffa0300d1ac8f8ce1050e52</activity>
+        <condition>activity.result == 'no'</condition>
+        <condition_default display_value="No">c1eff6430a0a0b59000f955abe842c94</condition_default>
+        <condition_type>standard</condition_type>
+        <else_flag>false</else_flag>
+        <error>false</error>
+        <event>false</event>
+        <event_name/>
+        <is_positive>false</is_positive>
+        <name>No</name>
+        <order>200</order>
+        <short_description/>
+        <skip_during_generate>true</skip_during_generate>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:24</sys_created_on>
+        <sys_id>8fafa98c0ffa0300d1ac8f8ce1050eaf</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:24</sys_updated_on>
+    </wf_condition>
+    <wf_condition action="INSERT_OR_UPDATE">
+        <activity display_value="Trigger Condition - Foundation - Delete Company">4baf698c0ffa0300d1ac8f8ce1050e52</activity>
+        <condition>activity.result == 'yes'</condition>
+        <condition_default display_value="Yes">c1ef63200a0a0b59005ef89bae78feb7</condition_default>
+        <condition_type>standard</condition_type>
+        <else_flag>false</else_flag>
+        <error>false</error>
+        <event>false</event>
+        <event_name/>
+        <is_positive>true</is_positive>
+        <name>Yes</name>
+        <order>100</order>
+        <short_description/>
+        <skip_during_generate>false</skip_during_generate>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:24</sys_created_on>
+        <sys_id>0fafa98c0ffa0300d1ac8f8ce1050eaf</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:24</sys_updated_on>
+    </wf_condition>
+    <wf_activity action="INSERT_OR_UPDATE">
+        <activity_definition display_value="If">98f621ca0a0a0b5900f7c291f5e45a0e</activity_definition>
+        <activity_definition_updated>false</activity_definition_updated>
+        <databus_lookup_id>8</databus_lookup_id>
+        <height/>
+        <input>{}</input>
+        <is_parent>false</is_parent>
+        <name>Trigger Condition - Foundation - Edit Company</name>
+        <new_activity_definition/>
+        <notes/>
+        <out_of_date>false</out_of_date>
+        <parent/>
+        <pinned>false</pinned>
+        <pinned_version/>
+        <stage/>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>0fafa98c0ffa0300d1ac8f8ce1050eb2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
+        <timeout>1970-01-01 00:00:00</timeout>
+        <vars/>
+        <width/>
+        <workflow_version display_value="Customer Onboarding - Foundation">43af698c0ffa0300d1ac8f8ce1050e50</workflow_version>
+        <x>258</x>
+        <y>141</y>
+    </wf_activity>
+    <sys_variable_value action="delete_multiple" query="document_key=0fafa98c0ffa0300d1ac8f8ce1050eb2"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>wf_activity</document>
+        <document_key>0fafa98c0ffa0300d1ac8f8ce1050eb2</document_key>
+        <order>300</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>07afa98c0ffa0300d1ac8f8ce1050eb3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
+        <value>// This script needs to set answer to 'yes' or 'no' to indicate the state of the activity.&#13;
+//&#13;
+// For example,&#13;
+//&#13;
+//   answer = ifScript();&#13;
+//&#13;
+//   function ifScript() {&#13;
+//      if (condition is true) {&#13;
+//         return 'yes';&#13;
+//      }&#13;
+//      return 'no';&#13;
+//   }&#13;
+</value>
+        <variable display_value="">c35e50810a0a0ba96248a709b450fc32</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>wf_activity</document>
+        <document_key>0fafa98c0ffa0300d1ac8f8ce1050eb2</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>43afa98c0ffa0300d1ac8f8ce1050eb3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
+        <value>0</value>
+        <variable display_value="">493d2c1d0a6a803f3217a75738ea3289</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>wf_activity</document>
+        <document_key>0fafa98c0ffa0300d1ac8f8ce1050eb2</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>8fafa98c0ffa0300d1ac8f8ce1050eb2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
+        <value>cat_item=1fdcb4040fba0300d1ac8f8ce1050ee6^state=1^stage=request_approved^EQ</value>
+        <variable display_value="">493cba6a0a6a803f07df24b118473551</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>wf_activity</document>
+        <document_key>0fafa98c0ffa0300d1ac8f8ce1050eb2</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>8fafa98c0ffa0300d1ac8f8ce1050eb2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
+        <value>cat_item=1fdcb4040fba0300d1ac8f8ce1050ee6^state=1^stage=request_approved^EQ</value>
+        <variable display_value="">493cba6a0a6a803f07df24b118473551</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>wf_activity</document>
+        <document_key>0fafa98c0ffa0300d1ac8f8ce1050eb2</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>43afa98c0ffa0300d1ac8f8ce1050eb3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
+        <value>0</value>
+        <variable display_value="">493d2c1d0a6a803f3217a75738ea3289</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>wf_activity</document>
+        <document_key>0fafa98c0ffa0300d1ac8f8ce1050eb2</document_key>
+        <order>300</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>07afa98c0ffa0300d1ac8f8ce1050eb3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
+        <value>// This script needs to set answer to 'yes' or 'no' to indicate the state of the activity.&#13;
+//&#13;
+// For example,&#13;
+//&#13;
+//   answer = ifScript();&#13;
+//&#13;
+//   function ifScript() {&#13;
+//      if (condition is true) {&#13;
+//         return 'yes';&#13;
+//      }&#13;
+//      return 'no';&#13;
+//   }&#13;
+</value>
+        <variable display_value="">c35e50810a0a0ba96248a709b450fc32</variable>
+    </sys_variable_value>
+    <wf_condition action="INSERT_OR_UPDATE">
+        <activity display_value="Trigger Condition - Foundation - Edit Company">0fafa98c0ffa0300d1ac8f8ce1050eb2</activity>
+        <condition>activity.result == 'no'</condition>
+        <condition_default display_value="No">c1eff6430a0a0b59000f955abe842c94</condition_default>
+        <condition_type>standard</condition_type>
+        <else_flag>false</else_flag>
+        <error>false</error>
+        <event>false</event>
+        <event_name/>
+        <is_positive>false</is_positive>
+        <name>No</name>
+        <order>200</order>
+        <short_description/>
+        <skip_during_generate>true</skip_during_generate>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>cbafa98c0ffa0300d1ac8f8ce1050eb3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
+    </wf_condition>
+    <wf_condition action="INSERT_OR_UPDATE">
+        <activity display_value="Trigger Condition - Foundation - Edit Company">0fafa98c0ffa0300d1ac8f8ce1050eb2</activity>
+        <condition>activity.result == 'yes'</condition>
+        <condition_default display_value="Yes">c1ef63200a0a0b59005ef89bae78feb7</condition_default>
+        <condition_type>standard</condition_type>
+        <else_flag>false</else_flag>
+        <error>false</error>
+        <event>false</event>
+        <event_name/>
+        <is_positive>true</is_positive>
+        <name>Yes</name>
+        <order>100</order>
+        <short_description/>
+        <skip_during_generate>false</skip_during_generate>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>4bafa98c0ffa0300d1ac8f8ce1050eb3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
     </wf_condition>
     <wf_activity action="INSERT_OR_UPDATE">
         <activity_definition display_value="If">98f621ca0a0a0b5900f7c291f5e45a0e</activity_definition>
@@ -535,30 +1123,30 @@ function CreateNewCompany() {&#13;
         <pinned_version/>
         <stage/>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>2247bf5e0f220300d1ac8f8ce1050e44</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>43afa98c0ffa0300d1ac8f8ce1050eb4</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
         <timeout>1970-01-01 00:00:00</timeout>
         <vars/>
         <width/>
-        <workflow_version display_value="Customer Onboarding - Foundation">5e47bf5e0f220300d1ac8f8ce1050e3a</workflow_version>
+        <workflow_version display_value="Customer Onboarding - Foundation">43af698c0ffa0300d1ac8f8ce1050e50</workflow_version>
         <x>259</x>
         <y>32</y>
     </wf_activity>
-    <sys_variable_value action="delete_multiple" query="document_key=2247bf5e0f220300d1ac8f8ce1050e44"/>
+    <sys_variable_value action="delete_multiple" query="document_key=43afa98c0ffa0300d1ac8f8ce1050eb4"/>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>wf_activity</document>
-        <document_key>2247bf5e0f220300d1ac8f8ce1050e44</document_key>
+        <document_key>43afa98c0ffa0300d1ac8f8ce1050eb4</document_key>
         <order>300</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>2a47bf5e0f220300d1ac8f8ce1050e44</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>4bafa98c0ffa0300d1ac8f8ce1050eb4</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
         <value>// This script needs to set answer to 'yes' or 'no' to indicate the state of the activity.&#13;
 //&#13;
 // For example,&#13;
@@ -576,71 +1164,71 @@ function CreateNewCompany() {&#13;
     </sys_variable_value>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>wf_activity</document>
-        <document_key>2247bf5e0f220300d1ac8f8ce1050e44</document_key>
+        <document_key>43afa98c0ffa0300d1ac8f8ce1050eb4</document_key>
         <order>200</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>6647bf5e0f220300d1ac8f8ce1050e44</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>87afa98c0ffa0300d1ac8f8ce1050eb4</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
         <value>0</value>
         <variable display_value="">493d2c1d0a6a803f3217a75738ea3289</variable>
     </sys_variable_value>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>wf_activity</document>
-        <document_key>2247bf5e0f220300d1ac8f8ce1050e44</document_key>
+        <document_key>43afa98c0ffa0300d1ac8f8ce1050eb4</document_key>
         <order>100</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>a247bf5e0f220300d1ac8f8ce1050e44</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>c3afa98c0ffa0300d1ac8f8ce1050eb4</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
-        <value>cat_item=8481d1390f220300d1ac8f8ce1050e4b^state=1^EQ</value>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
+        <value>cat_item=8481d1390f220300d1ac8f8ce1050e4b^state=1^stage=request_approved^EQ</value>
         <variable display_value="">493cba6a0a6a803f07df24b118473551</variable>
     </sys_variable_value>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>wf_activity</document>
-        <document_key>2247bf5e0f220300d1ac8f8ce1050e44</document_key>
+        <document_key>43afa98c0ffa0300d1ac8f8ce1050eb4</document_key>
         <order>100</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>a247bf5e0f220300d1ac8f8ce1050e44</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>c3afa98c0ffa0300d1ac8f8ce1050eb4</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
-        <value>cat_item=8481d1390f220300d1ac8f8ce1050e4b^state=1^EQ</value>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
+        <value>cat_item=8481d1390f220300d1ac8f8ce1050e4b^state=1^stage=request_approved^EQ</value>
         <variable display_value="">493cba6a0a6a803f07df24b118473551</variable>
     </sys_variable_value>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>wf_activity</document>
-        <document_key>2247bf5e0f220300d1ac8f8ce1050e44</document_key>
+        <document_key>43afa98c0ffa0300d1ac8f8ce1050eb4</document_key>
         <order>200</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>6647bf5e0f220300d1ac8f8ce1050e44</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>87afa98c0ffa0300d1ac8f8ce1050eb4</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
         <value>0</value>
         <variable display_value="">493d2c1d0a6a803f3217a75738ea3289</variable>
     </sys_variable_value>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>wf_activity</document>
-        <document_key>2247bf5e0f220300d1ac8f8ce1050e44</document_key>
+        <document_key>43afa98c0ffa0300d1ac8f8ce1050eb4</document_key>
         <order>300</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>2a47bf5e0f220300d1ac8f8ce1050e44</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>4bafa98c0ffa0300d1ac8f8ce1050eb4</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
         <value>// This script needs to set answer to 'yes' or 'no' to indicate the state of the activity.&#13;
 //&#13;
 // For example,&#13;
@@ -657,7 +1245,7 @@ function CreateNewCompany() {&#13;
         <variable display_value="">c35e50810a0a0ba96248a709b450fc32</variable>
     </sys_variable_value>
     <wf_condition action="INSERT_OR_UPDATE">
-        <activity display_value="Trigger Condition - Foundation - New Company">2247bf5e0f220300d1ac8f8ce1050e44</activity>
+        <activity display_value="Trigger Condition - Foundation - New Company">43afa98c0ffa0300d1ac8f8ce1050eb4</activity>
         <condition>activity.result == 'no'</condition>
         <condition_default display_value="No">c1eff6430a0a0b59000f955abe842c94</condition_default>
         <condition_type>standard</condition_type>
@@ -671,14 +1259,14 @@ function CreateNewCompany() {&#13;
         <short_description/>
         <skip_during_generate>true</skip_during_generate>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>ae47bf5e0f220300d1ac8f8ce1050e44</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>8fafa98c0ffa0300d1ac8f8ce1050eb4</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
     </wf_condition>
     <wf_condition action="INSERT_OR_UPDATE">
-        <activity display_value="Trigger Condition - Foundation - New Company">2247bf5e0f220300d1ac8f8ce1050e44</activity>
+        <activity display_value="Trigger Condition - Foundation - New Company">43afa98c0ffa0300d1ac8f8ce1050eb4</activity>
         <condition>activity.result == 'yes'</condition>
         <condition_default display_value="Yes">c1ef63200a0a0b59005ef89bae78feb7</condition_default>
         <condition_type>standard</condition_type>
@@ -692,11 +1280,11 @@ function CreateNewCompany() {&#13;
         <short_description/>
         <skip_during_generate>false</skip_during_generate>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>2e47bf5e0f220300d1ac8f8ce1050e44</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>03afa98c0ffa0300d1ac8f8ce1050eb5</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
     </wf_condition>
     <wf_activity action="INSERT_OR_UPDATE">
         <activity_definition display_value="If">98f621ca0a0a0b5900f7c291f5e45a0e</activity_definition>
@@ -714,30 +1302,58 @@ function CreateNewCompany() {&#13;
         <pinned_version/>
         <stage/>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>1647bf5e0f220300d1ac8f8ce1050e3f</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>c7afa98c0ffa0300d1ac8f8ce1050eb1</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
         <timeout>1970-01-01 00:00:00</timeout>
         <vars/>
         <width/>
-        <workflow_version display_value="Customer Onboarding - Foundation">5e47bf5e0f220300d1ac8f8ce1050e3a</workflow_version>
-        <x>260</x>
-        <y>152</y>
+        <workflow_version display_value="Customer Onboarding - Foundation">43af698c0ffa0300d1ac8f8ce1050e50</workflow_version>
+        <x>250</x>
+        <y>450</y>
     </wf_activity>
-    <sys_variable_value action="delete_multiple" query="document_key=1647bf5e0f220300d1ac8f8ce1050e3f"/>
+    <sys_variable_value action="delete_multiple" query="document_key=c7afa98c0ffa0300d1ac8f8ce1050eb1"/>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>wf_activity</document>
-        <document_key>1647bf5e0f220300d1ac8f8ce1050e3f</document_key>
+        <document_key>c7afa98c0ffa0300d1ac8f8ce1050eb1</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>0fafa98c0ffa0300d1ac8f8ce1050eb1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
+        <value>0</value>
+        <variable display_value="">493d2c1d0a6a803f3217a75738ea3289</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>wf_activity</document>
+        <document_key>c7afa98c0ffa0300d1ac8f8ce1050eb1</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>4bafa98c0ffa0300d1ac8f8ce1050eb1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
+        <value>cat_item=6cf4dd790f220300d1ac8f8ce1050ec6^state=1^stage=request_approved^EQ</value>
+        <variable display_value="">493cba6a0a6a803f07df24b118473551</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>wf_activity</document>
+        <document_key>c7afa98c0ffa0300d1ac8f8ce1050eb1</document_key>
         <order>300</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>1e47bf5e0f220300d1ac8f8ce1050e3f</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>cfafa98c0ffa0300d1ac8f8ce1050eb1</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
         <value>// This script needs to set answer to 'yes' or 'no' to indicate the state of the activity.&#13;
 //&#13;
 // For example,&#13;
@@ -755,71 +1371,43 @@ function CreateNewCompany() {&#13;
     </sys_variable_value>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>wf_activity</document>
-        <document_key>1647bf5e0f220300d1ac8f8ce1050e3f</document_key>
+        <document_key>c7afa98c0ffa0300d1ac8f8ce1050eb1</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>4bafa98c0ffa0300d1ac8f8ce1050eb1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
+        <value>cat_item=6cf4dd790f220300d1ac8f8ce1050ec6^state=1^stage=request_approved^EQ</value>
+        <variable display_value="">493cba6a0a6a803f07df24b118473551</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>wf_activity</document>
+        <document_key>c7afa98c0ffa0300d1ac8f8ce1050eb1</document_key>
         <order>200</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>5a47bf5e0f220300d1ac8f8ce1050e3f</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>0fafa98c0ffa0300d1ac8f8ce1050eb1</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
         <value>0</value>
         <variable display_value="">493d2c1d0a6a803f3217a75738ea3289</variable>
     </sys_variable_value>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>wf_activity</document>
-        <document_key>1647bf5e0f220300d1ac8f8ce1050e3f</document_key>
-        <order>100</order>
-        <sys_class_name>sys_variable_value</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>9647bf5e0f220300d1ac8f8ce1050e3f</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
-        <value>cat_item=6cf4dd790f220300d1ac8f8ce1050ec6^state=1^EQ</value>
-        <variable display_value="">493cba6a0a6a803f07df24b118473551</variable>
-    </sys_variable_value>
-    <sys_variable_value action="INSERT_OR_UPDATE">
-        <document>wf_activity</document>
-        <document_key>1647bf5e0f220300d1ac8f8ce1050e3f</document_key>
-        <order>100</order>
-        <sys_class_name>sys_variable_value</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>9647bf5e0f220300d1ac8f8ce1050e3f</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
-        <value>cat_item=6cf4dd790f220300d1ac8f8ce1050ec6^state=1^EQ</value>
-        <variable display_value="">493cba6a0a6a803f07df24b118473551</variable>
-    </sys_variable_value>
-    <sys_variable_value action="INSERT_OR_UPDATE">
-        <document>wf_activity</document>
-        <document_key>1647bf5e0f220300d1ac8f8ce1050e3f</document_key>
-        <order>200</order>
-        <sys_class_name>sys_variable_value</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>5a47bf5e0f220300d1ac8f8ce1050e3f</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
-        <value>0</value>
-        <variable display_value="">493d2c1d0a6a803f3217a75738ea3289</variable>
-    </sys_variable_value>
-    <sys_variable_value action="INSERT_OR_UPDATE">
-        <document>wf_activity</document>
-        <document_key>1647bf5e0f220300d1ac8f8ce1050e3f</document_key>
+        <document_key>c7afa98c0ffa0300d1ac8f8ce1050eb1</document_key>
         <order>300</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>1e47bf5e0f220300d1ac8f8ce1050e3f</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>cfafa98c0ffa0300d1ac8f8ce1050eb1</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
         <value>// This script needs to set answer to 'yes' or 'no' to indicate the state of the activity.&#13;
 //&#13;
 // For example,&#13;
@@ -836,7 +1424,7 @@ function CreateNewCompany() {&#13;
         <variable display_value="">c35e50810a0a0ba96248a709b450fc32</variable>
     </sys_variable_value>
     <wf_condition action="INSERT_OR_UPDATE">
-        <activity display_value="Trigger Condition - Foundation - New User">1647bf5e0f220300d1ac8f8ce1050e3f</activity>
+        <activity display_value="Trigger Condition - Foundation - New User">c7afa98c0ffa0300d1ac8f8ce1050eb1</activity>
         <condition>activity.result == 'no'</condition>
         <condition_default display_value="No">c1eff6430a0a0b59000f955abe842c94</condition_default>
         <condition_type>standard</condition_type>
@@ -850,14 +1438,14 @@ function CreateNewCompany() {&#13;
         <short_description/>
         <skip_during_generate>true</skip_during_generate>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>1247bf5e0f220300d1ac8f8ce1050e40</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>87afa98c0ffa0300d1ac8f8ce1050eb2</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
     </wf_condition>
     <wf_condition action="INSERT_OR_UPDATE">
-        <activity display_value="Trigger Condition - Foundation - New User">1647bf5e0f220300d1ac8f8ce1050e3f</activity>
+        <activity display_value="Trigger Condition - Foundation - New User">c7afa98c0ffa0300d1ac8f8ce1050eb1</activity>
         <condition>activity.result == 'yes'</condition>
         <condition_default display_value="Yes">c1ef63200a0a0b59005ef89bae78feb7</condition_default>
         <condition_type>standard</condition_type>
@@ -871,11 +1459,11 @@ function CreateNewCompany() {&#13;
         <short_description/>
         <skip_during_generate>false</skip_during_generate>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>9247bf5e0f220300d1ac8f8ce1050e40</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>07afa98c0ffa0300d1ac8f8ce1050eb2</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
     </wf_condition>
     <wf_activity action="INSERT_OR_UPDATE">
         <activity_definition display_value="If">98f621ca0a0a0b5900f7c291f5e45a0e</activity_definition>
@@ -893,30 +1481,30 @@ function CreateNewCompany() {&#13;
         <pinned_version/>
         <stage/>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>1647bf5e0f220300d1ac8f8ce1050e3d</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>47afa98c0ffa0300d1ac8f8ce1050eb7</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
         <timeout>1970-01-01 00:00:00</timeout>
         <vars/>
         <width/>
-        <workflow_version display_value="Customer Onboarding - Foundation">5e47bf5e0f220300d1ac8f8ce1050e3a</workflow_version>
-        <x>259</x>
-        <y>271</y>
+        <workflow_version display_value="Customer Onboarding - Foundation">43af698c0ffa0300d1ac8f8ce1050e50</workflow_version>
+        <x>249</x>
+        <y>560</y>
     </wf_activity>
-    <sys_variable_value action="delete_multiple" query="document_key=1647bf5e0f220300d1ac8f8ce1050e3d"/>
+    <sys_variable_value action="delete_multiple" query="document_key=47afa98c0ffa0300d1ac8f8ce1050eb7"/>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>wf_activity</document>
-        <document_key>1647bf5e0f220300d1ac8f8ce1050e3d</document_key>
+        <document_key>47afa98c0ffa0300d1ac8f8ce1050eb7</document_key>
         <order>300</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>1647bf5e0f220300d1ac8f8ce1050e3e</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>4fafa98c0ffa0300d1ac8f8ce1050eb7</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
         <value>// This script needs to set answer to 'yes' or 'no' to indicate the state of the activity.&#13;
 //&#13;
 // For example,&#13;
@@ -934,71 +1522,71 @@ function CreateNewCompany() {&#13;
     </sys_variable_value>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>wf_activity</document>
-        <document_key>1647bf5e0f220300d1ac8f8ce1050e3d</document_key>
+        <document_key>47afa98c0ffa0300d1ac8f8ce1050eb7</document_key>
         <order>200</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>5247bf5e0f220300d1ac8f8ce1050e3e</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>8bafa98c0ffa0300d1ac8f8ce1050eb7</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
         <value>0</value>
         <variable display_value="">493d2c1d0a6a803f3217a75738ea3289</variable>
     </sys_variable_value>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>wf_activity</document>
-        <document_key>1647bf5e0f220300d1ac8f8ce1050e3d</document_key>
+        <document_key>47afa98c0ffa0300d1ac8f8ce1050eb7</document_key>
         <order>100</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>9a47bf5e0f220300d1ac8f8ce1050e3d</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>c7afa98c0ffa0300d1ac8f8ce1050eb7</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
-        <value>cat_item=a2c355790f220300d1ac8f8ce1050e50^state=1^EQ</value>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
+        <value>cat_item=a2c355790f220300d1ac8f8ce1050e50^state=1^stage=request_approved^EQ</value>
         <variable display_value="">493cba6a0a6a803f07df24b118473551</variable>
     </sys_variable_value>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>wf_activity</document>
-        <document_key>1647bf5e0f220300d1ac8f8ce1050e3d</document_key>
+        <document_key>47afa98c0ffa0300d1ac8f8ce1050eb7</document_key>
         <order>100</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>9a47bf5e0f220300d1ac8f8ce1050e3d</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>c7afa98c0ffa0300d1ac8f8ce1050eb7</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
-        <value>cat_item=a2c355790f220300d1ac8f8ce1050e50^state=1^EQ</value>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
+        <value>cat_item=a2c355790f220300d1ac8f8ce1050e50^state=1^stage=request_approved^EQ</value>
         <variable display_value="">493cba6a0a6a803f07df24b118473551</variable>
     </sys_variable_value>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>wf_activity</document>
-        <document_key>1647bf5e0f220300d1ac8f8ce1050e3d</document_key>
+        <document_key>47afa98c0ffa0300d1ac8f8ce1050eb7</document_key>
         <order>200</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>5247bf5e0f220300d1ac8f8ce1050e3e</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>8bafa98c0ffa0300d1ac8f8ce1050eb7</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
         <value>0</value>
         <variable display_value="">493d2c1d0a6a803f3217a75738ea3289</variable>
     </sys_variable_value>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>wf_activity</document>
-        <document_key>1647bf5e0f220300d1ac8f8ce1050e3d</document_key>
+        <document_key>47afa98c0ffa0300d1ac8f8ce1050eb7</document_key>
         <order>300</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>1647bf5e0f220300d1ac8f8ce1050e3e</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>4fafa98c0ffa0300d1ac8f8ce1050eb7</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
         <value>// This script needs to set answer to 'yes' or 'no' to indicate the state of the activity.&#13;
 //&#13;
 // For example,&#13;
@@ -1015,7 +1603,7 @@ function CreateNewCompany() {&#13;
         <variable display_value="">c35e50810a0a0ba96248a709b450fc32</variable>
     </sys_variable_value>
     <wf_condition action="INSERT_OR_UPDATE">
-        <activity display_value="Trigger Condition - Foundation - User to Support Group">1647bf5e0f220300d1ac8f8ce1050e3d</activity>
+        <activity display_value="Trigger Condition - Foundation - User to Support Group">47afa98c0ffa0300d1ac8f8ce1050eb7</activity>
         <condition>activity.result == 'no'</condition>
         <condition_default display_value="No">c1eff6430a0a0b59000f955abe842c94</condition_default>
         <condition_type>standard</condition_type>
@@ -1029,14 +1617,14 @@ function CreateNewCompany() {&#13;
         <short_description/>
         <skip_during_generate>true</skip_during_generate>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>1e47bf5e0f220300d1ac8f8ce1050e3e</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>07afa98c0ffa0300d1ac8f8ce1050eb8</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
     </wf_condition>
     <wf_condition action="INSERT_OR_UPDATE">
-        <activity display_value="Trigger Condition - Foundation - User to Support Group">1647bf5e0f220300d1ac8f8ce1050e3d</activity>
+        <activity display_value="Trigger Condition - Foundation - User to Support Group">47afa98c0ffa0300d1ac8f8ce1050eb7</activity>
         <condition>activity.result == 'yes'</condition>
         <condition_default display_value="Yes">c1ef63200a0a0b59005ef89bae78feb7</condition_default>
         <condition_type>standard</condition_type>
@@ -1050,91 +1638,157 @@ function CreateNewCompany() {&#13;
         <short_description/>
         <skip_during_generate>false</skip_during_generate>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>9a47bf5e0f220300d1ac8f8ce1050e3e</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>83afa98c0ffa0300d1ac8f8ce1050eb8</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
     </wf_condition>
     <wf_transition action="INSERT_OR_UPDATE">
-        <condition display_value="No">ae47bf5e0f220300d1ac8f8ce1050e44</condition>
-        <from display_value="Trigger Condition - Foundation - New Company">2247bf5e0f220300d1ac8f8ce1050e44</from>
+        <condition display_value="No">8fafa98c0ffa0300d1ac8f8ce1050eb4</condition>
+        <from display_value="Trigger Condition - Foundation - New Company">43afa98c0ffa0300d1ac8f8ce1050eb4</from>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>2647ff5e0f220300d1ac8f8ce1050eaf</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>03afa98c0ffa0300d1ac8f8ce1050ebc</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
-        <to display_value="Trigger Condition - Foundation - New User">1647bf5e0f220300d1ac8f8ce1050e3f</to>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
+        <to display_value="Trigger Condition - Foundation - Edit Company">0fafa98c0ffa0300d1ac8f8ce1050eb2</to>
     </wf_transition>
     <wf_transition action="INSERT_OR_UPDATE">
-        <condition display_value="Always">de47bf5e0f220300d1ac8f8ce1050e42</condition>
-        <from display_value="Begin">1a47bf5e0f220300d1ac8f8ce1050e42</from>
+        <condition display_value="Always">cfafa98c0ffa0300d1ac8f8ce1050eb6</condition>
+        <from display_value="Script - Foundation - New Company ">07afa98c0ffa0300d1ac8f8ce1050eb6</from>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>2e47ff5e0f220300d1ac8f8ce1050eae</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>0bafa98c0ffa0300d1ac8f8ce1050ebd</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
-        <to display_value="Trigger Condition - Foundation - New Company">2247bf5e0f220300d1ac8f8ce1050e44</to>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
+        <to display_value="Close Request Item">87afa98c0ffa0300d1ac8f8ce1050eb0</to>
     </wf_transition>
     <wf_transition action="INSERT_OR_UPDATE">
-        <condition display_value="Always">9247bf5e0f220300d1ac8f8ce1050e41</condition>
-        <from display_value="Close Request Item">1a47bf5e0f220300d1ac8f8ce1050e40</from>
+        <condition display_value="No">87afa98c0ffa0300d1ac8f8ce1050eb2</condition>
+        <from display_value="Trigger Condition - Foundation - New User">c7afa98c0ffa0300d1ac8f8ce1050eb1</from>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>6247ff5e0f220300d1ac8f8ce1050eaf</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>47afa98c0ffa0300d1ac8f8ce1050ebd</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
-        <to display_value="End">5647bf5e0f220300d1ac8f8ce1050e43</to>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
+        <to display_value="Trigger Condition - Foundation - User to Support Group">47afa98c0ffa0300d1ac8f8ce1050eb7</to>
     </wf_transition>
     <wf_transition action="INSERT_OR_UPDATE">
-        <condition display_value="Always">9247bf5e0f220300d1ac8f8ce1050e42</condition>
-        <from display_value="Script - Foundation - New Company ">1a47bf5e0f220300d1ac8f8ce1050e41</from>
+        <condition display_value="No">cbafa98c0ffa0300d1ac8f8ce1050eb3</condition>
+        <from display_value="Trigger Condition - Foundation - Edit Company">0fafa98c0ffa0300d1ac8f8ce1050eb2</from>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>6a47ff5e0f220300d1ac8f8ce1050eae</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>4bafa98c0ffa0300d1ac8f8ce1050ebc</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
-        <to display_value="Close Request Item">1a47bf5e0f220300d1ac8f8ce1050e40</to>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
+        <to display_value="Trigger Condition - Foundation - Delete Company">4baf698c0ffa0300d1ac8f8ce1050e52</to>
     </wf_transition>
     <wf_transition action="INSERT_OR_UPDATE">
-        <condition display_value="No">1247bf5e0f220300d1ac8f8ce1050e40</condition>
-        <from display_value="Trigger Condition - Foundation - New User">1647bf5e0f220300d1ac8f8ce1050e3f</from>
+        <condition display_value="Always">43afa98c0ffa0300d1ac8f8ce1050eb1</condition>
+        <from display_value="Close Request Item">87afa98c0ffa0300d1ac8f8ce1050eb0</from>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>6a47ff5e0f220300d1ac8f8ce1050eaf</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>83afa98c0ffa0300d1ac8f8ce1050ebd</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
-        <to display_value="Trigger Condition - Foundation - User to Support Group">1647bf5e0f220300d1ac8f8ce1050e3d</to>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
+        <to display_value="End">8bafa98c0ffa0300d1ac8f8ce1050eb8</to>
     </wf_transition>
     <wf_transition action="INSERT_OR_UPDATE">
-        <condition display_value="Yes">2e47bf5e0f220300d1ac8f8ce1050e44</condition>
-        <from display_value="Trigger Condition - Foundation - New Company">2247bf5e0f220300d1ac8f8ce1050e44</from>
+        <condition display_value="Always">8fafa98c0ffa0300d1ac8f8ce1050eb5</condition>
+        <from display_value="Begin">87afa98c0ffa0300d1ac8f8ce1050eb5</from>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>a647ff5e0f220300d1ac8f8ce1050eaf</sys_id>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>87afa98c0ffa0300d1ac8f8ce1050ebc</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
-        <to display_value="Script - Foundation - New Company ">1a47bf5e0f220300d1ac8f8ce1050e41</to>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
+        <to display_value="Trigger Condition - Foundation - New Company">43afa98c0ffa0300d1ac8f8ce1050eb4</to>
+    </wf_transition>
+    <wf_transition action="INSERT_OR_UPDATE">
+        <condition display_value="Yes">03afa98c0ffa0300d1ac8f8ce1050eb5</condition>
+        <from display_value="Trigger Condition - Foundation - New Company">43afa98c0ffa0300d1ac8f8ce1050eb4</from>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>8fafa98c0ffa0300d1ac8f8ce1050ebb</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
+        <to display_value="Script - Foundation - New Company ">07afa98c0ffa0300d1ac8f8ce1050eb6</to>
+    </wf_transition>
+    <wf_transition action="INSERT_OR_UPDATE">
+        <condition display_value="No">07afa98c0ffa0300d1ac8f8ce1050eb8</condition>
+        <from display_value="Trigger Condition - Foundation - User to Support Group">47afa98c0ffa0300d1ac8f8ce1050eb7</from>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>8fafa98c0ffa0300d1ac8f8ce1050ebc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
+        <to display_value="End">8bafa98c0ffa0300d1ac8f8ce1050eb8</to>
+    </wf_transition>
+    <wf_transition action="INSERT_OR_UPDATE">
+        <condition display_value="Yes">0fafa98c0ffa0300d1ac8f8ce1050eaf</condition>
+        <from display_value="Trigger Condition - Foundation - Delete Company">4baf698c0ffa0300d1ac8f8ce1050e52</from>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>c3afa98c0ffa0300d1ac8f8ce1050ebc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
+        <to display_value="Script - Foundation - Delete Company ">87afa98c0ffa0300d1ac8f8ce1050eb9</to>
+    </wf_transition>
+    <wf_transition action="INSERT_OR_UPDATE">
+        <condition display_value="Always">8bafa98c0ffa0300d1ac8f8ce1050eba</condition>
+        <from display_value="Script - Foundation - Edit Company ">c3afa98c0ffa0300d1ac8f8ce1050eba</from>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>cbafa98c0ffa0300d1ac8f8ce1050ebb</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
+        <to display_value="Close Request Item">87afa98c0ffa0300d1ac8f8ce1050eb0</to>
+    </wf_transition>
+    <wf_transition action="INSERT_OR_UPDATE">
+        <condition display_value="Yes">4bafa98c0ffa0300d1ac8f8ce1050eb3</condition>
+        <from display_value="Trigger Condition - Foundation - Edit Company">0fafa98c0ffa0300d1ac8f8ce1050eb2</from>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>cbafa98c0ffa0300d1ac8f8ce1050ebc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
+        <to display_value="Script - Foundation - Edit Company ">c3afa98c0ffa0300d1ac8f8ce1050eba</to>
+    </wf_transition>
+    <wf_transition action="INSERT_OR_UPDATE">
+        <condition display_value="Always">4fafa98c0ffa0300d1ac8f8ce1050eb9</condition>
+        <from display_value="Script - Foundation - Delete Company ">87afa98c0ffa0300d1ac8f8ce1050eb9</from>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-28 03:14:25</sys_created_on>
+        <sys_id>cbafa98c0ffa0300d1ac8f8ce1050ebd</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-28 03:14:25</sys_updated_on>
+        <to display_value="Close Request Item">87afa98c0ffa0300d1ac8f8ce1050eb0</to>
     </wf_transition>
     <wf_estimated_runtime_config action="INSERT_OR_UPDATE">
         <estimated_run_time/>
         <no_of_data_points>1</no_of_data_points>
         <percentage_threshold_ert>20</percentage_threshold_ert>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-23 02:37:34</sys_created_on>
-        <sys_id>1247bf5e0f220300d1ac8f8ce1050e3b</sys_id>
+        <sys_created_on>2017-11-28 03:14:24</sys_created_on>
+        <sys_id>07af698c0ffa0300d1ac8f8ce1050e50</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-23 02:37:34</sys_updated_on>
-        <workflow_version display_value="Customer Onboarding - Foundation">5e47bf5e0f220300d1ac8f8ce1050e3a</workflow_version>
+        <sys_updated_on>2017-11-28 03:14:24</sys_updated_on>
+        <workflow_version display_value="Customer Onboarding - Foundation">43af698c0ffa0300d1ac8f8ce1050e50</workflow_version>
     </wf_estimated_runtime_config>
-    <wf_workflow_version action="update_multiple" query="workflow=bd6692460f620300d1ac8f8ce1050e5c^sys_id!=5e47bf5e0f220300d1ac8f8ce1050e3a">
+    <wf_workflow_version action="update_multiple" query="workflow=bd6692460f620300d1ac8f8ce1050e5c^sys_id!=43af698c0ffa0300d1ac8f8ce1050e50">
         <published>false</published>
     </wf_workflow_version>
 </record_update>

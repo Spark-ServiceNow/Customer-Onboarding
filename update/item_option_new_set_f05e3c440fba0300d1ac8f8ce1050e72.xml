@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="item_option_new_set">
+    <item_option_new_set action="INSERT_OR_UPDATE">
+        <description/>
+        <display_title>false</display_title>
+        <layout>normal</layout>
+        <name>Company Record</name>
+        <order>100</order>
+        <sys_class_name>item_option_new_set</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-27 23:39:11</sys_created_on>
+        <sys_id>f05e3c440fba0300d1ac8f8ce1050e72</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Company Record</sys_name>
+        <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
+        <sys_update_name>item_option_new_set_f05e3c440fba0300d1ac8f8ce1050e72</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-27 23:39:11</sys_updated_on>
+        <title/>
+    </item_option_new_set>
+</record_update>
