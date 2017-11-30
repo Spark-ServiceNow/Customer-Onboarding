@@ -3,7 +3,7 @@
     <item_option_new action="INSERT_OR_UPDATE">
         <active>true</active>
         <attributes/>
-        <cat_item display_value="Request a new Company">8481d1390f220300d1ac8f8ce1050e4b</cat_item>
+        <cat_item display_value="Request a new Location">82bfe7a00fb20300d1ac8f8ce1050ee2</cat_item>
         <category/>
         <choice_direction>down</choice_direction>
         <choice_field/>
@@ -37,17 +37,17 @@
         <map_to_field>false</map_to_field>
         <mask_use_confirmation>false</mask_use_confirmation>
         <mask_use_encryption>false</mask_use_encryption>
-        <name>Location</name>
-        <order>200</order>
+        <name>Company</name>
+        <order>400</order>
         <price_if_checked>0</price_if_checked>
         <pricing_implications>false</pricing_implications>
-        <question_text>Location:</question_text>
+        <question_text>Company:</question_text>
         <read_roles/>
         <rec_lookup_price/>
         <rec_price_if_checked>0</rec_price_if_checked>
         <record/>
         <record_producer_table/>
-        <reference>cmn_location</reference>
+        <reference>core_company</reference>
         <reference_qual/>
         <reference_qual_condition/>
         <scale_max>5</scale_max>
@@ -60,14 +60,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-11-21 23:40:46</sys_created_on>
         <sys_id>f7d4820e0f220300d1ac8f8ce1050e79</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_name>Location:</sys_name>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Company:</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy/>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>item_option_new_f7d4820e0f220300d1ac8f8ce1050e79</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-21 23:40:46</sys_updated_on>
+        <sys_updated_on>2017-11-30 02:27:57</sys_updated_on>
         <table/>
         <tooltip/>
         <type>8</type>

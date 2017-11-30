@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_properties_category_m2m">
+    <sys_properties_category_m2m action="INSERT_OR_UPDATE">
+        <category display_value="Customer Onboarding Properties">52e1cc260f620300d1ac8f8ce1050ed5</category>
+        <order>310</order>
+        <property display_value="x_133853_customer.TransformMap_SysID_SupportGroup" name="x_133853_customer.TransformMap_SysID_SupportGroup">67ca13a40f720300d1ac8f8ce1050e49</property>
+        <sys_class_name>sys_properties_category_m2m</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-30 00:20:09</sys_created_on>
+        <sys_id>fdfad3a40f720300d1ac8f8ce1050e77</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>x_133853_customer.TransformMap_SysID_SupportGroup.Customer Onboarding Properties</sys_name>
+        <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
+        <sys_update_name>sys_properties_category_m2m_fdfad3a40f720300d1ac8f8ce1050e77</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-30 00:33:42</sys_updated_on>
+    </sys_properties_category_m2m>
+</record_update>
