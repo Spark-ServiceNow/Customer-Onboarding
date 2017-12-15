@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_133853_customer.CostCenter</api_name>
+        <client_callable>false</client_callable>
+        <description>CRUD API Class for managing Cost Center records.</description>
+        <name>CostCenter</name>
+        <script><![CDATA[// =============================================================
+// Author: 		    Ronald Lob
+// Script Type:     [Script Include] Customer Onboarding - CostCenter API
+// Script Name:	    Customer Onboarding - CostCenter API
+// Script Version:	1.00
+// Script Desc:	    API for CRUD functionality on CostCenter table. 
+//                  Differs from standard Table / REST API as it's specific to this application.
+//                  Cascading of Creates / Updates / Deletes.
+// ==========
+// Revisions:
+// ==========				
+// 14/12/2017 - [Version 1.0][Ronald Lob]  	Development.
+// =============================================================
+
+var CostCenter = Class.create();
+
+CostCenter.prototype = {
+    initialize: function() {},
+	
+	// .. 
+	// Creates a new record in CostCenter
+	// .. 
+	Create: function(costcenter_name, costcenter_accountnumber, costcenter_code, costcenter_validfrom, costcenter_validto, costcenter_manager, costcenter_parent){
+		
+		gs.info('[Customer Onboarding][SI][CostCenter] Create a new CostCenter in ServiceNow.');
+		
+		// Check if the CostCenter exists already or not
+		var gr = this.Get_Name(costcenter_name);
+		
+		if (gr.isValidRecord() == true) {
+			gs.info('[Customer Onboarding][SI][CostCenter] CostCenter already exists. Exit');
+			return false;
+		}
+	
+		gr = new GlideRecord('cmn_cost_center');
+		gr.initialize();
+		gr.name = costcenter_name;
+		gr.account_number = costcenter_accountnumber;
+		gr.code = costcenter_code;
+		gr.valid_from = costcenter_validfrom;
+		gr.valid_to = costcenter_validto;
+		gr.manager = costcenter_manager;
+		gr.parent = costcenter_parent;
+		
+		var sys_id = gr.insert();
+
+		if (sys_id) {
+			gs.info('[Customer Onboarding][SI][CostCenter] New CostCenter record created successfully: ' + sysId);
+			return true;
+		} else {
+			gs.info('[Customer Onboarding][SI][CostCenter] New CostCenter record not created successfully: ' + sysId);
+			return false;
+		}
+	},
+	
+	// .. 
+	// Returns a record from provided sys_id
+	// .. 
+	Get_SysID: function(sys_id){
+		
+		gs.info('[Customer Onboarding][SI][CostCenter] Get CostCenter with sys_id = ' + sys_id);
+	
+		gr = new GlideRecord('cmn_cost_center');
+		gr.addQuery('sys_id',sys_id);
+		gr.query();
+		gr.next();
+		
+		return gr;
+	},
+	
+	// .. 
+	// Returns a CostCenter record from provided Name
+	// .. 
+	Get_Name: function(costcenter_name){
+		
+		gs.info('[Customer Onboarding][SI][CostCenter] Get CostCenter with name = ' + costcenter_name);
+	
+		gr = new GlideRecord('cmn_cost_center');
+		gr.addQuery('name',costcenter_name);
+		gr.query();
+		gr.next();
+
+		return gr;	
+	},
+	
+	// .. 
+	// Deletes an existing CostCenter record from provided sys_id
+	// .. 
+	Delete: function(sys_id){
+		
+		gs.info('[Customer Onboarding][SI][CostCenter] Delete CostCenter with sys_id = ' + sys_id);
+		
+		var gr = this.Get_SysID(sys_id);
+		var bool;
+	
+		if (gr.isValidRecord() == true) {
+			gr.next();
+			bool = gr.deleteRecord();
+		} else {
+			return false;
+		}
+
+		return bool;
+	},
+	
+	// .. 
+	// Updates one field in an existing record from provided sys_id, column name, and value
+	// .. 
+	Update: function(sys_id, column, value){
+		
+		gs.info('[Customer Onboarding][SI][CostCenter] Updating CostCenter with sys_id = ' + sys_id);
+	
+		var gr = this.Get_SysID(sys_id);
+		
+		if (gr.isValidRecord() == true) {	
+			gr[column] = value;
+			var bool = gr.update();
+			return true;
+		} else {
+			gs.info('[Customer Onboarding][SI][CostCenter] Couldnt find valid record from provided Sys_ID: ' + sys_id);
+			return false;
+		}
+		
+	},
+
+    type: 'CostCenter'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-12-14 03:16:39</sys_created_on>
+        <sys_id>e69740510f830300d1ac8f8ce1050e07</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>CostCenter</sys_name>
+        <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
+        <sys_update_name>sys_script_include_e69740510f830300d1ac8f8ce1050e07</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-12-14 03:24:20</sys_updated_on>
+    </sys_script_include>
+</record_update>

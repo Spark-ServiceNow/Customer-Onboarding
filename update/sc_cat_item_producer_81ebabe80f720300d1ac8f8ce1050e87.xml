@@ -33,7 +33,7 @@
         <no_quantity>false</no_quantity>
         <no_search>false</no_search>
         <omit_price>false</omit_price>
-        <order>230</order>
+        <order>130</order>
         <ordered_item_link/>
         <picture/>
         <preview>JavaScript: popupOpenStandard("com.glideapp.servicecatalog_cat_item_view.do?v=1&amp;sysparm_id=81ebabe80f720300d1ac8f8ce1050e87&amp;sysparm_preview=true", "summary");</preview>
@@ -114,14 +114,14 @@ current.setAbortAction(true); ]]></script>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-11-30 01:38:34</sys_created_on>
         <sys_id>81ebabe80f720300d1ac8f8ce1050e87</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_mod_count>5</sys_mod_count>
         <sys_name>Bulk Department Import</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy/>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sc_cat_item_producer_81ebabe80f720300d1ac8f8ce1050e87</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-30 03:26:27</sys_updated_on>
+        <sys_updated_on>2017-12-14 02:53:04</sys_updated_on>
         <table_name>sys_data_source</table_name>
         <template/>
         <type>item</type>

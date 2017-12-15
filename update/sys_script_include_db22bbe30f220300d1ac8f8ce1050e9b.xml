@@ -11,7 +11,7 @@
 // Author: 		    Ronald Lob
 // Script Type:     [Script Include] Customer Onboarding - Company API
 // Script Name:	    Customer Onboarding - Company API
-// Script Version:	1.00
+// Script Version:	1.10
 // Script Desc:	    API for CRUD functionality on Company table. 
 //                  Differs from standard Table / REST API as it's specific to this application.
 //                  Cascading of Creates / Updates / Deletes.
@@ -19,6 +19,7 @@
 // Revisions:
 // ==========				
 // 27/11/2017 - [Version 1.0][Ronald Lob]  	Development.
+// 13/12/2017 - [Version 1.1][Ronald Lob]  	Added more fields in Create and deal with Location when passed as a parameter.
 // =============================================================
 
 var Company = Class.create();
@@ -29,26 +30,43 @@ Company.prototype = {
 	// .. 
 	// Creates a new record in Company
 	// .. 
-	Create: function(company_name, company_contact, company_latitude, company_longitude, company_customer, company_vendor){
+	Create: function(company_name, company_contact, company_latitude, company_longitude, company_customer, company_vendor, company_manufacturer, company_location, company_parent, company_website){
 		
 		gs.info('[Customer Onboarding][SI][Company] Create a new Company in ServiceNow.');
 		
 		// Check if the Company exists already or not
 		var gr = this.Get_Name(company_name);
+		gr_l = new GlideRecord('cmn_location');
 		
 		if (gr.isValidRecord() == true) {
 			gs.info('[Customer Onboarding][SI][Company] Company already exists. Exit');
 			return false;
 		}
+		
+		// If a location is selected, we need to fetch the data and hard set it in the Company table (because it's not referenced for some reason)
+		if (company_location) {
+			gr_l.addQuery('sys_id',company_location);
+			gr_l.query();
+			gr_l.next();
+		}
 	
 		gr = new GlideRecord('core_company');
 		gr.initialize();
 		gr.name = company_name;
-		gr.contact =company_contact;
+		gr.contact = company_contact;
 		gr.latitude = company_latitude;
 		gr.longitude = company_longitude;
 		gr.customer = company_customer;
 		gr.vendor = company_vendor;
+		gr.manufacturer = company_manufacturer;
+		gr.parent = company_parent;
+		gr.website = company_website;
+		gr.country = gr_l.country;
+		gr.city = gr_l.city;
+		gr.state = gr_l.state;
+		gr.street = gr_l.street;
+		gr.zip = gr_l.zip;
+		
 		var sys_id = gr.insert();
 
 		if (sys_id) {
@@ -120,11 +138,27 @@ Company.prototype = {
 		gs.info('[Customer Onboarding][SI][Company] Updating Company with sys_id = ' + sys_id);
 	
 		var gr = this.Get_SysID(sys_id);
+		gr_l = new GlideRecord('cmn_location');
 		
-		if (gr.isValidRecord() == true) {	
-			gr[column] = value;
-			var bool = gr.update();
-			return true;
+		if (gr.isValidRecord() == true && column != "location") {
+			// Location not selected, so we can just update that one field. 
+			gr[column] = value; 
+			return gr.update();
+			
+		} else if (gr.isValidRecord() == true && column == "location") {
+			// If a location is selected, we need to fetch the data and hard set it in the Company table (because it's not referenced for some reason)
+			gr_l.addQuery('sys_id',value);
+			gr_l.query();
+			gr_l.next();
+			
+			gr.country = gr_l.country;
+			gr.city = gr_l.city;
+			gr.state = gr_l.state;
+			gr.street = gr_l.street;
+			gr.zip = gr_l.zip;
+			
+			return gr.update();
+			
 		} else {
 			gs.info('[Customer Onboarding][SI][Company] Couldnt find valid record from provided Sys_ID: ' + sys_id);
 			return false;
@@ -138,13 +172,13 @@ Company.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-11-27 02:00:01</sys_created_on>
         <sys_id>db22bbe30f220300d1ac8f8ce1050e9b</sys_id>
-        <sys_mod_count>12</sys_mod_count>
+        <sys_mod_count>15</sys_mod_count>
         <sys_name>Company</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sys_script_include_db22bbe30f220300d1ac8f8ce1050e9b</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-28 02:51:56</sys_updated_on>
+        <sys_updated_on>2017-12-13 02:37:14</sys_updated_on>
     </sys_script_include>
 </record_update>

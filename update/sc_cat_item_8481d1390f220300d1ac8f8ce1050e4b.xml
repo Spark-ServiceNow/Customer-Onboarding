@@ -10,7 +10,8 @@
         <delivery_plan/>
         <delivery_plan_script/>
         <delivery_time>1970-01-03 00:00:00</delivery_time>
-        <description><![CDATA[<p>Request a New Company to be added to ServiceNow.</p>
+        <description><![CDATA[<p>Request a New Company to be added to ServiceNow. A Company can either be one of the following 3 Types:</p>
+<ul style="list-style-position: inside;"><li>Customer</li><li>Vendor</li><li>Manufacturer</li></ul>
 <p>You will need the following details in addition to the standard Company information. If these details are not present in the selection lists, please request them separately before requesting this item:</p>
 <ul style="list-style-position: inside;"><li>Contact</li><li>Location</li><li>Vendor Type (if Vendor)</li></ul>]]></description>
         <entitlement_script/>
@@ -51,14 +52,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-11-21 01:17:18</sys_created_on>
         <sys_id>8481d1390f220300d1ac8f8ce1050e4b</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_mod_count>5</sys_mod_count>
         <sys_name>Request a new Company</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy/>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sc_cat_item_8481d1390f220300d1ac8f8ce1050e4b</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-30 03:25:22</sys_updated_on>
+        <sys_updated_on>2017-12-11 00:56:05</sys_updated_on>
         <template/>
         <type>item</type>
         <use_sc_layout>true</use_sc_layout>

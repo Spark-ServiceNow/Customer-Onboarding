@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="catalog_ui_policy_action">
+    <catalog_ui_policy_action action="INSERT_OR_UPDATE">
+        <catalog_item display_value="Edit a Cost Center">4b097f490f430300d1ac8f8ce1050ebd</catalog_item>
+        <catalog_variable>IO:1d9afb890f430300d1ac8f8ce1050e34</catalog_variable>
+        <disabled>ignore</disabled>
+        <field/>
+        <mandatory>true</mandatory>
+        <sys_class_name>catalog_ui_policy_action</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-12-14 02:15:25</sys_created_on>
+        <sys_id>338bbbc90f430300d1ac8f8ce1050e3a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Parent</sys_name>
+        <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
+        <sys_update_name>catalog_ui_policy_action_338bbbc90f430300d1ac8f8ce1050e3a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-12-14 02:15:25</sys_updated_on>
+        <table/>
+        <ui_policy display_value="Make Parent variable visible on select. ">9fdafb890f430300d1ac8f8ce1050e3d</ui_policy>
+        <variable>Parent</variable>
+        <variable_set/>
+        <visible>true</visible>
+    </catalog_ui_policy_action>
+</record_update>

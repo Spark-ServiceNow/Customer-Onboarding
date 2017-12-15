@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="catalog_ui_policy_action">
+    <catalog_ui_policy_action action="INSERT_OR_UPDATE">
+        <catalog_item display_value="Edit a Department">168a31040f3e0300d1ac8f8ce1050ea5</catalog_item>
+        <catalog_variable>IO:12f006c40f3e0300d1ac8f8ce1050ef9</catalog_variable>
+        <disabled>ignore</disabled>
+        <field/>
+        <mandatory>false</mandatory>
+        <sys_class_name>catalog_ui_policy_action</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-12-13 03:16:47</sys_created_on>
+        <sys_id>1900c77c0fcb0300d1ac8f8ce1050e2d</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Value</sys_name>
+        <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
+        <sys_update_name>catalog_ui_policy_action_1900c77c0fcb0300d1ac8f8ce1050e2d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-12-13 23:42:39</sys_updated_on>
+        <table/>
+        <ui_policy display_value="Set Cost Center field to visible">5ddf3e3c0fcb0300d1ac8f8ce1050ef0</ui_policy>
+        <variable>Value</variable>
+        <variable_set/>
+        <visible>false</visible>
+    </catalog_ui_policy_action>
+</record_update>

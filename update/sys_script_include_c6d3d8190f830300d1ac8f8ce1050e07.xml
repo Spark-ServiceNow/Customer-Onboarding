@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_133853_customer.User</api_name>
+        <client_callable>false</client_callable>
+        <description>CRUD API Class for managing User records.</description>
+        <name>User</name>
+        <script><![CDATA[// =============================================================
+// Author: 		    Ronald Lob
+// Script Type:     [Script Include] User Onboarding - User API
+// Script Name:	    Customer Onboarding - User API
+// Script Version:	1.00
+// Script Desc:	    API for CRUD functionality on User table. 
+//                  Differs from standard Table / REST API as it's specific to this application.
+//                  Cascading of Creates / Updates / Deletes.
+// ==========
+// Revisions:
+// ==========				
+// 14/12/2017 - [Version 1.0][Ronald Lob]  	Development.
+// =============================================================
+
+var User = Class.create();
+
+User.prototype = {
+    initialize: function() {},
+	
+	// .. 
+	// Creates a new record in User
+	// .. 
+	Create: function(user_employeenumber, user_userid, user_firstname, user_lastname, user_email, user_homephone, user_mobilephone, user_company, user_department, user_costcenter, user_location, user_building, user_manager, user_schedule, user_vip){
+		
+		gs.info('[Customer Onboarding][SI][User] Create a new User in ServiceNow.');
+		
+		// Validate for duplicates before save
+		var gr_v = this.ValidateDuplicate(user_employeenumber, user_firstname, user_lastname, user_email);
+		
+		if (gr_v.isValidRecord() == true) {
+			gs.info('[Customer Onboarding][SI][User] User already exists. Duplicate detected with ' + gr_v.sys_id + '. Exit');
+			return false;
+		}
+	
+		gr = new GlideRecord('sys_user');
+		gr.initialize();
+		gr.employee_number = user_employeenumber;
+		gr.user_name = user_userid;
+		gr.first_name = user_firstname;
+		gr.last_name = user_lastname;
+		gr.email = user_email;
+		gr.home_phone = user_homephone;
+		gr.mobile_phone = user_mobilephone;
+		gr.company = user_company;
+		gr.department = user_department;
+		gr.costcenter = user_costcenter;
+		gr.location = user_location;
+		gr.building = user_building;
+		gr.manager = user_manager;
+		gr.schedule = user_schedule;
+		gr.vip = user_vip;
+		
+		var sys_id = gr.insert();
+
+		if (sys_id) {
+			gs.info('[Customer Onboarding][SI][User] New User record created successfully: ' + sysId);
+			return true;
+		} else {
+			gs.info('[Customer Onboarding][SI][User] New User record not created successfully: ' + sysId);
+			return false;
+		}
+	},
+	
+	// .. 
+	// Returns a record from provided sys_id
+	// .. 
+	Get_SysID: function(sys_id){
+		
+		gs.info('[Customer Onboarding][SI][User] Get User with sys_id = ' + sys_id);
+	
+		gr = new GlideRecord('sys_user');
+		gr.addQuery('sys_id',sys_id);
+		gr.query();
+		gr.next();
+		
+		return gr;
+	},
+	
+	// .. 
+	// Returns a User record from provided User ID
+	// .. 
+	Get_UserID: function(user_userid){
+		
+		gs.info('[Customer Onboarding][SI][User] Get User with User ID = ' + user_userid);
+	
+		gr = new GlideRecord('sys_user');
+		gr.addQuery('user_name',user_userid);
+		gr.query();
+		gr.next();
+
+		return gr;	
+	},
+	
+	// .. 
+	// Validates for Duplicates based on provided parameters. If Employee Number is provided, it validates on that alone, else use FN, LN, Email
+	// Returns True if valid match found (one or more duplicates)
+	// returns False if match not found (so no duplicate)
+	// .. 
+	ValidateDuplicate: function(user_employeenumber, user_firstname, user_lastname, user_email){
+		
+		gs.info('[Customer Onboarding][SI][User] Validating duplicate Users based on provided variables');
+		gr = new GlideRecord('sys_user');
+	
+		if (user_employeenumber) {
+			gs.info('[Customer Onboarding][SI][User] Employee Number provided, validating.');
+			gr.addQuery('employee_number',user_employeenumber);
+		} else if (user_firstname && user_lastname && user_email) {
+			gs.info('[Customer Onboarding][SI][User] No Employee Number, validating on First Name, Last Name, Email');
+			gr.addQuery('email',user_email);
+			gr.addQuery('first_name',user_firstname);
+			gr.addQuery('last_name',user_lastname);
+		} else {
+			gs.info('[Customer Onboarding][SI][User] Not enough data provided to validate on. Exit validation.');
+			return false;
+		}
+
+		gr.query();
+		
+		if (gr.isValidRecord() == true) {
+			gr.next();
+			return true;
+		} else {
+			return false;
+		}
+		
+	},
+	
+	// .. 
+	// Deletes an existing User record from provided sys_id
+	// .. 
+	Delete: function(sys_id){
+		
+		gs.info('[Customer Onboarding][SI][User] Delete User with sys_id = ' + sys_id);
+		
+		var gr = this.Get_SysID(sys_id);
+		var bool;
+	
+		if (gr.isValidRecord() == true) {
+			gr.next();
+			bool = gr.deleteRecord();
+		} else {
+			return false;
+		}
+
+		return bool;
+	},
+	
+	// .. 
+	// Updates one field in an existing record from provided sys_id, column name, and value
+	// .. 
+	Update: function(sys_id, column, value){
+		
+		gs.info('[Customer Onboarding][SI][User] Updating User with sys_id = ' + sys_id);
+	
+		var gr = this.Get_SysID(sys_id);
+		
+		if (gr.isValidRecord() == true) {	
+			gr[column] = value;
+			var bool = gr.update();
+			return true;
+		} else {
+			gs.info('[Customer Onboarding][SI][User] Couldnt find valid record from provided Sys_ID: ' + sys_id);
+			return false;
+		}
+		
+	},
+
+    type: 'User'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-12-14 04:22:54</sys_created_on>
+        <sys_id>c6d3d8190f830300d1ac8f8ce1050e07</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>User</sys_name>
+        <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
+        <sys_update_name>sys_script_include_c6d3d8190f830300d1ac8f8ce1050e07</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-12-15 01:32:11</sys_updated_on>
+    </sys_script_include>
+</record_update>

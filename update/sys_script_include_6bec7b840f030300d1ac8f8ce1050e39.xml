@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_133853_customer.Location</api_name>
+        <client_callable>false</client_callable>
+        <description>CRUD API Class for managing Company records.</description>
+        <name>Location</name>
+        <script><![CDATA[// =============================================================
+// Author: 		    Ronald Lob
+// Script Type:     [Script Include] Customer Onboarding - Location API
+// Script Name:	    Customer Onboarding - Location API
+// Script Version:	1.00
+// Script Desc:	    API for CRUD functionality on Location table. 
+//                  Differs from standard Table / REST API as it's specific to this application.
+//                  Cascading of Creates / Updates / Deletes.
+// ==========
+// Revisions:
+// ==========				
+// 11/12/2017 - [Version 1.0][Ronald Lob]  	Development.
+// =============================================================
+
+var Location = Class.create();
+
+Location.prototype = {
+    initialize: function() {},
+	
+	// .. 
+	// Creates a new record in Location
+	// .. 
+	Create: function(location_name, location_parent, location_country, location_timezone, location_state, location_city, location_street, location_company, location_contact, location_latitude, location_longitude, location_stockroom){
+		
+		gs.info('[Customer Onboarding][SI][Location] Create a new Location in ServiceNow.');
+		
+		// Check if the Location exists already or not
+		var gr = this.Get_Name(location_name);
+		
+		if (gr.isValidRecord() == true) {
+			gs.info('[Customer Onboarding][SI][Location] Location already exists. Exit');
+			return false;
+		}
+	
+		gr = new GlideRecord('cmn_location');
+		gr.initialize();
+		gr.name = location_name;
+		gr.parent = location_parent;
+		gr.country = location_country;
+		gr.time_zone = location_timezone;
+		gr.state = location_state;
+		gr.city = location_city;
+		gr.street = location_street;
+		gr.contact = location_contact;
+		gr.company = location_company;
+		gr.latitude = location_latitude;
+		gr.longitude = location_longitude;
+		gr.stock_room = location_stockroom;
+		
+		var sys_id = gr.insert();
+
+		if (sys_id) {
+			gs.info('[Customer Onboarding][SI][Location] New Location record created successfully: ' + sysId);
+			return true;
+		} else {
+			gs.info('[Customer Onboarding][SI][Location] New Location record not created successfully: ' + sysId);
+			return false;
+		}
+	},
+	
+	// .. 
+	// Returns a record from provided sys_id
+	// .. 
+	Get_SysID: function(sys_id){
+		
+		gs.info('[Customer Onboarding][SI][Location] Get Location with sys_id = ' + sys_id);
+	
+		gr = new GlideRecord('cmn_location');
+		gr.addQuery('sys_id',sys_id);
+		gr.query();
+		gr.next();
+		
+		return gr;
+	},
+	
+	// .. 
+	// Returns a Location record from provided Name
+	// .. 
+	Get_Name: function(location_name){
+		
+		gs.info('[Customer Onboarding][SI][Location] Get Location with name = ' + location_name);
+	
+		gr = new GlideRecord('cmn_location');
+		gr.addQuery('name',location_name);
+		gr.query();
+		gr.next();
+
+		return gr;	
+	},
+	
+	// .. 
+	// Deletes an existing Location record from provided sys_id
+	// .. 
+	Delete: function(sys_id){
+		
+		gs.info('[Customer Onboarding][SI][Location] Delete Location with sys_id = ' + sys_id);
+		
+		var gr = this.Get_SysID(sys_id);
+		var bool;
+	
+		if (gr.isValidRecord() == true) {
+			gr.next();
+			bool = gr.deleteRecord();
+		} else {
+			return false;
+		}
+
+		return bool;
+	},
+	
+	// .. 
+	// Updates one field in an existing record from provided sys_id, column name, and value
+	// .. 
+	Update: function(sys_id, column, value){
+		
+		gs.info('[Customer Onboarding][SI][Location] Updating Location with sys_id = ' + sys_id);
+	
+		var gr = this.Get_SysID(sys_id);
+		
+		if (gr.isValidRecord() == true) {	
+			gr[column] = value;
+			var bool = gr.update();
+			return true;
+		} else {
+			gs.info('[Customer Onboarding][SI][Location] Couldnt find valid record from provided Sys_ID: ' + sys_id);
+			return false;
+		}
+		
+	},
+
+    type: 'Location'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-12-11 00:14:44</sys_created_on>
+        <sys_id>6bec7b840f030300d1ac8f8ce1050e39</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Location</sys_name>
+        <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
+        <sys_update_name>sys_script_include_6bec7b840f030300d1ac8f8ce1050e39</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-12-11 00:14:44</sys_updated_on>
+    </sys_script_include>
+</record_update>

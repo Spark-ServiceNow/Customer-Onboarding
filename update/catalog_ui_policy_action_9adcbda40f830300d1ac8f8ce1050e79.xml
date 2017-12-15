@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="catalog_ui_policy_action">
+    <catalog_ui_policy_action action="INSERT_OR_UPDATE">
+        <catalog_item display_value="Edit a Company">1fdcb4040fba0300d1ac8f8ce1050ee6</catalog_item>
+        <catalog_variable>IO:af8cb1a40f830300d1ac8f8ce1050ea5</catalog_variable>
+        <disabled>ignore</disabled>
+        <field/>
+        <mandatory>ignore</mandatory>
+        <sys_class_name>catalog_ui_policy_action</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-12-12 03:44:54</sys_created_on>
+        <sys_id>9adcbda40f830300d1ac8f8ce1050e79</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Manufacturer</sys_name>
+        <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
+        <sys_update_name>catalog_ui_policy_action_9adcbda40f830300d1ac8f8ce1050e79</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-12-12 03:44:54</sys_updated_on>
+        <table/>
+        <ui_policy display_value="Company Type variables visible if selected">07ab71a40f830300d1ac8f8ce1050e30</ui_policy>
+        <variable>Manufacturer</variable>
+        <variable_set/>
+        <visible>true</visible>
+    </catalog_ui_policy_action>
+</record_update>
