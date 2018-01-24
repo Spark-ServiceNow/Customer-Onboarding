@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_transform_map">
+    <sys_transform_map action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copy_empty_fields>false</copy_empty_fields>
+        <enforce_mandatory_fields>No</enforce_mandatory_fields>
+        <name>Record_Producer_TransformMap_Company</name>
+        <order>100</order>
+        <run_business_rules>true</run_business_rules>
+        <run_script>true</run_script>
+        <script><![CDATA[// =============================================================
+// Author: 		    Ronald Lob
+// Script Type:     [Transform Map] Customer Onboarding - Company Transform
+// Script Name:	    Customer Onboarding - Company Transform
+// Script Version:	1.1
+// Script Desc:	    Transform map to make use of the CRUD API rather than standard field mappings.
+//                  This allows us to unify the validation and have a single API for these creates.
+//                  Only applicible to Bulk inserts or updates. Indvididual records handled with Workflow. 
+// ==========
+// Revisions:
+// ==========				
+// 17/01/2017 - [Version 1.0][Ronald Lob]  	Development.
+// 23/01/2018 - [Version 1.1][Ronald Lob]  	Added the Settings field called "Existing Record Found" to decide what to do if duplicate found.
+// =============================================================
+
+(function transformRow(source, target, map, log, isUpdate) {
+	
+	var customer;
+	var vendor;
+	var manuafacturer;
+	var company = new Company();
+
+	gs.info('[Customer Onboarding][TM][Company] Begin Request Company Load Transform Map: ' + source.u_company_name);
+	
+	// Here we validate the drop down Company type and split the variables out to pass to the Script Include
+	if (source.u_company_type == "Customer") { customer = true; } else { customer = false; }
+	if (source.u_company_type == "Vendor") { vendor = true; } else { vendor = false; }
+	if (source.u_company_type == "Manufacturer") { manuafacturer = true; } else { manuafacturer = false; }
+	
+	// Lets check if this company already exists based on Company Name, if it doesn't ... create. If it does ... update.
+	var gr = new GlideRecord();
+	gr = company.Get_Name(source.u_company_name);
+	
+	if (gr.isValidRecord() == true && (source.u_existing_record_found == "Insert or Update" || source.u_existing_record_found == "Update Only")) { 
+		// Here we need to call the Update action because the Company name already exists and the duplicate flag is set. 
+		
+		gs.info('[Customer Onboarding][TM][Company] Company with the name of ' + source.u_company_name + ' already exists in ServiceNow. Updating.');
+		
+		company.Update(gr.sys_id,"contact",source.u_contact);
+		company.Update(gr.sys_id,"customer",customer);
+		company.Update(gr.sys_id,"vendor",vendor);
+		company.Update(gr.sys_id,"manuafacturer",manuafacturer);
+		company.Update(gr.sys_id,"latitude",source.u_latitude);
+		company.Update(gr.sys_id,"longitude",source.u_longitude);
+		company.Update(gr.sys_id,"parent",source.u_parent);
+		company.Update(gr.sys_id,"website",source.u_website);
+		
+		gs.info('[Customer Onboarding][TM][Company] Company with the name of ' + source.u_company_name + ' has been updated.');
+		
+	} else if (gr.isValidRecord() == false && source.u_existing_record_found != "Update Only") { // Lets Create a new Company because none exists with that name
+
+		gs.info('[Customer Onboarding][TM][Company] No existing Company found with the name ' + source.u_company_name + '. create a new record.');
+		
+		var sys_id = company.Create(source.u_company_name,source.u_contact,source.u_latitude,source.u_longitude,customer,vendor,manuafacturer,source.u_location,source.u_parent,source.u_website);
+			
+		if (sys_id) {
+			gs.info('[Customer Onboarding][TM][Company] ' + source.u_company_name + ' successfully created with sys_id = ' + sys_id);
+			return;
+		} else { 
+			gs.info('[Customer Onboarding][TM][Company] ' + source.u_company_name + ' could not be created.');	
+			ignore = true;
+		}
+		
+	} else if (gr.isValidRecord() == false && source.u_existing_record_found == "Update Only" ) {
+		gs.info('[Customer Onboarding][TM][Company] No existing Company found with the name ' + source.u_company_name + '. Set to Update Only. Exit');
+	} else if (gr.isValidRecord() == true && source.u_existing_record_found == "Insert Only" ) {
+		gs.info('[Customer Onboarding][TM][Company] Company with the name of ' + source.u_company_name + ' found. Set to Insert Only. Exit');
+	}
+	
+})(source, target, map, log, action==="update");]]></script>
+        <source_table>x_133853_customer_record_producer_importsettable_company</source_table>
+        <sys_class_name>sys_transform_map</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-01-16 01:37:25</sys_created_on>
+        <sys_id>fe0be933db2f030043055740cf9619dc</sys_id>
+        <sys_mod_count>15</sys_mod_count>
+        <sys_name>Record_Producer_TransformMap_Company</sys_name>
+        <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
+        <sys_update_name>sys_transform_map_fe0be933db2f030043055740cf9619dc</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-01-24 02:55:10</sys_updated_on>
+        <target_table>core_company</target_table>
+    </sys_transform_map>
+</record_update>

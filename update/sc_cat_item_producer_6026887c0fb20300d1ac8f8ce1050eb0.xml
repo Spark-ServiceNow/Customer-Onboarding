@@ -15,6 +15,7 @@
 <ol style="list-style-position: inside;"><li>Please download the template by clicking <a title="here" href="https://dev43684.service-now.com/sc_cat_item_producer.do?sys_id&#61;3e60fbcc0f620300d1ac8f8ce1050e86&amp;sysparm_record_target&#61;sc_cat_item_producer&amp;sysparm_record_row&#61;4&amp;sysparm_record_rows&#61;28&amp;sysparm_record_list&#61;sc_catalogs%3DNULL%5EORsc_catalogsDOES&#43;NOT&#43;CONTAIN0b22fd2ad7021100b9a5c7400e610319%5EORDERBYname" rel="nofollow">here</a>.</li><li>Fill out the template with the Location data and then save the file locally on your computer.</li><li>Attach the completed import template to this request by dragging and dropping the file into the browser. Or you can use the paper clip icon to browse to the file on your computer.</li><li>Click Submit to process the attached file.</li></ol>]]></description>
         <entitlement_script/>
         <group/>
+        <hide_sp>false</hide_sp>
         <icon/>
         <ignore_price>true</ignore_price>
         <image/>
@@ -172,6 +173,7 @@ current.setAbortAction(true); ]]></script>
     </fx_price>
     <sys_attachment action="INSERT_OR_UPDATE">
         <average_image_color>#7ac334</average_image_color>
+        <chunk_size_bytes/>
         <compressed>true</compressed>
         <content_type>image/png</content_type>
         <file_name>picture</file_name>

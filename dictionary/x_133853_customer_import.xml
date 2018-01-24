@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
-    <element extends="sys_import_set_row" label="ImportSet Users" max_length="40" name="x_133853_customer_import" sizeclass="10000" type="collection">
+    <element extends="sys_import_set_row" label="Record_Producer_ImportSetTable_Users" max_length="40" name="x_133853_customer_import" type="collection">
         <element label="Support Groups" max_length="1024" name="support_groups" type="string"/>
         <element attributes="import_attribute_name=Company*+,edge_encryption_enabled=true" label="Company*+" max_length="40" name="u_company__" type="string"/>
         <element attributes="import_attribute_name=Corporate ID,edge_encryption_enabled=true" label="Corporate ID" max_length="40" name="u_corporate_id" type="string"/>

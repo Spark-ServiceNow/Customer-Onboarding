@@ -5,7 +5,7 @@
         <hint/>
         <name>Job</name>
         <order/>
-        <roles>x_133853_customer.job_user</roles>
+        <roles/>
         <sys_class_name>sys_ui_application</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-10-31 00:55:15</sys_created_on>

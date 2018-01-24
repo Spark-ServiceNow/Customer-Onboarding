@@ -20,8 +20,6 @@
         <query>system_properties_ui.do?sysparam_title=Customer Onboarding Properties&amp;sysparm_category=Customer Onboarding Properties</query>
         <report/>
         <roles/>
-        <survey/>
-        <survey_overwrite>true</survey_overwrite>
         <sys_class_name>sys_app_module</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-11-23 03:20:05</sys_created_on>

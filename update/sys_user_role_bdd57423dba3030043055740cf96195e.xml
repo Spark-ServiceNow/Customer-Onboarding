@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_user_role">
+    <sys_user_role action="INSERT_OR_UPDATE">
+        <assignable_by/>
+        <can_delegate>true</can_delegate>
+        <description>Ability to Request only new records and updating of existing records. These exclude bulk imports and deletes. Should be reserved for all staff that would request service now data to be added or amended.  </description>
+        <elevated_privilege>false</elevated_privilege>
+        <grantable>true</grantable>
+        <includes_roles/>
+        <name>x_133853_customer.onboarding_requester_new_update</name>
+        <scoped_admin>false</scoped_admin>
+        <suffix>onboarding_requester_new_update</suffix>
+        <sys_class_name>sys_user_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-01-15 02:49:41</sys_created_on>
+        <sys_id>bdd57423dba3030043055740cf96195e</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>x_133853_customer.onboarding_requester_new_update</sys_name>
+        <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
+        <sys_update_name>sys_user_role_bdd57423dba3030043055740cf96195e</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-01-15 02:50:28</sys_updated_on>
+    </sys_user_role>
+</record_update>

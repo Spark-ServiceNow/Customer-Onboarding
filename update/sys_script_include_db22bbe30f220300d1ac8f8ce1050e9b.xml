@@ -11,7 +11,7 @@
 // Author: 		    Ronald Lob
 // Script Type:     [Script Include] Customer Onboarding - Company API
 // Script Name:	    Customer Onboarding - Company API
-// Script Version:	1.10
+// Script Version:	1.3
 // Script Desc:	    API for CRUD functionality on Company table. 
 //                  Differs from standard Table / REST API as it's specific to this application.
 //                  Cascading of Creates / Updates / Deletes.
@@ -20,6 +20,8 @@
 // ==========				
 // 27/11/2017 - [Version 1.0][Ronald Lob]  	Development.
 // 13/12/2017 - [Version 1.1][Ronald Lob]  	Added more fields in Create and deal with Location when passed as a parameter.
+// 19/01/2018 - [Version 1.2][Ronald Lob]  	Enhanced Create / Update functions to accept a location / contact / and parent sys_id and name.  
+// 24/01/2018 - [Version 1.3][Ronald Lob]  	Enhanced Update functions to validate null or keywords.
 // =============================================================
 
 var Company = Class.create();
@@ -28,38 +30,67 @@ Company.prototype = {
     initialize: function() {},
 	
 	// .. 
-	// Creates a new record in Company
+	// Creates a new record in core_company. 
+	// Returns the sys_id. 
 	// .. 
 	Create: function(company_name, company_contact, company_latitude, company_longitude, company_customer, company_vendor, company_manufacturer, company_location, company_parent, company_website){
 		
-		gs.info('[Customer Onboarding][SI][Company] Create a new Company in ServiceNow.');
+		gs.info('[Customer Onboarding][SI][Company.Create] Create a new Company in ServiceNow with the name: ' + company_name);
 		
-		// Check if the Company exists already or not
+		// Check if the Company exists already or not. If it does we exit and let the source decide if we update or not. 
 		var gr = this.Get_Name(company_name);
 		gr_l = new GlideRecord('cmn_location');
+		gr_p = new GlideRecord('core_company');
+		gr_c = new GlideRecord('sys_user');
 		
 		if (gr.isValidRecord() == true) {
-			gs.info('[Customer Onboarding][SI][Company] Company already exists. Exit');
-			return false;
+			gs.info('[Customer Onboarding][SI][Company.Create] Company with the name ' + company_name + ' already exists. Exit');
+			return;
+		} else {
+			gs.info('[Customer Onboarding][SI][Company.Create] Company with the name ' + company_name + ' doesnt exist. Create');
 		}
 		
 		// If a location is selected, we need to fetch the data and hard set it in the Company table (because it's not referenced for some reason)
+		// We also need to cater that location name is passed as parameter 
 		if (company_location) {
-			gr_l.addQuery('sys_id',company_location);
+			var gr_l_1 = gr_l.addQuery('sys_id',company_location);
+			gr_l_1.addOrCondition('name',company_location);
 			gr_l.query();
 			gr_l.next();
+			
+			gs.info('[Customer Onboarding][SI][Company.Create] Location verified: ' + gr_l.sys_id);
+		}
+		
+		// We need to cater for the parent company name passed as parameter and not the sys_id. 
+		if (company_parent) {
+			var gr_p_1 = gr_p.addQuery('sys_id',company_parent);
+			gr_p_1.addOrCondition('name',company_parent);
+			gr_p.query();
+			gr_p.next();
+			
+			gs.info('[Customer Onboarding][SI][Company.Create] Parent verified: ' + gr_p.sys_id);
+		}
+		
+		// We need to cater for the contact user's user_name passed as parameter and not the sys_id. 
+		if (company_contact) {
+			var gr_c_1 = gr_c.addQuery('sys_id',company_contact);
+			gr_c_1.addOrCondition('user_name',company_contact);
+			gr_c.query();
+			gr_c.next();
+			
+			gs.info('[Customer Onboarding][SI][Company.Create] Contact verified: ' + gr_c.sys_id);
 		}
 	
 		gr = new GlideRecord('core_company');
 		gr.initialize();
 		gr.name = company_name;
-		gr.contact = company_contact;
+		gr.contact = gr_c.sys_id;
 		gr.latitude = company_latitude;
 		gr.longitude = company_longitude;
 		gr.customer = company_customer;
 		gr.vendor = company_vendor;
 		gr.manufacturer = company_manufacturer;
-		gr.parent = company_parent;
+		gr.parent = gr_p.sys_id;
 		gr.website = company_website;
 		gr.country = gr_l.country;
 		gr.city = gr_l.city;
@@ -70,12 +101,12 @@ Company.prototype = {
 		var sys_id = gr.insert();
 
 		if (sys_id) {
-			gs.info('[Customer Onboarding][SI][Company] New Company record created successfully: ' + sysId);
-			return true;
+			gs.info('[Customer Onboarding][SI][Company.Create] New Company record created successfully: ' + sysId);
 		} else {
-			gs.info('[Customer Onboarding][SI][Company] New Company record not created successfully: ' + sysId);
-			return false;
+			gs.info('[Customer Onboarding][SI][Company.Create] New Company record not created successfully: ' + sysId);
 		}
+		
+		return sys_id;
 	},
 	
 	// .. 
@@ -83,7 +114,7 @@ Company.prototype = {
 	// .. 
 	Get_SysID: function(sys_id){
 		
-		gs.info('[Customer Onboarding][SI][Company] Get Company with sys_id = ' + sys_id);
+		gs.info('[Customer Onboarding][SI][Company.Get_SysID] Get Company with sys_id = ' + sys_id);
 	
 		gr = new GlideRecord('core_company');
 		gr.addQuery('sys_id',sys_id);
@@ -98,7 +129,7 @@ Company.prototype = {
 	// .. 
 	Get_Name: function(company_name){
 		
-		gs.info('[Customer Onboarding][SI][Company] Get Company with name = ' + company_name);
+		gs.info('[Customer Onboarding][SI][Company.Get_Name] Get Company with name = ' + company_name);
 	
 		gr = new GlideRecord('core_company');
 		gr.addQuery('name',company_name);
@@ -113,7 +144,7 @@ Company.prototype = {
 	// .. 
 	Delete: function(sys_id){
 		
-		gs.info('[Customer Onboarding][SI][Company] Delete Company with sys_id = ' + sys_id);
+		gs.info('[Customer Onboarding][SI][Company.Delete] Delete Company with sys_id = ' + sys_id);
 		
 		// Insert code here to cascade delete Company data (Support Groups / People / Org etc.)
 		
@@ -131,23 +162,35 @@ Company.prototype = {
 	},
 	
 	// .. 
-	// Updates one field in an existing record from provided sys_id, column name, and value
+	// Updates one field in an existing record from provided sys_id, column name, and value.
+	// Validates Location / Parent / and Contact to accept alternative values.
 	// .. 
 	Update: function(sys_id, column, value){
 		
-		gs.info('[Customer Onboarding][SI][Company] Updating Company with sys_id = ' + sys_id);
+		
 	
-		var gr = this.Get_SysID(sys_id);
+		gr = this.Get_SysID(sys_id);
 		gr_l = new GlideRecord('cmn_location');
+		gr_p = new GlideRecord('core_company');
+		gr_c = new GlideRecord('sys_user');
+		
+		// Lets first check if the value passed is a keyword or null and exit or replace accordingly
+		if (value == undefined || value == "") { return false;}
+		if (value == "$NULL$") { value = undefined;}
+		if (value == "$DATE$") { value = Date.today();}
+		if (value == "$NOW$") { value = Date.now();}
+		
+		gs.info('[Customer Onboarding][SI][Company.Update] Updating Company with sys_id = ' + sys_id + ". Setting " + column + " to " + value);
 		
 		if (gr.isValidRecord() == true && column != "location") {
-			// Location not selected, so we can just update that one field. 
+			// Location not selected, so we can just update that one field.
 			gr[column] = value; 
 			return gr.update();
 			
 		} else if (gr.isValidRecord() == true && column == "location") {
 			// If a location is selected, we need to fetch the data and hard set it in the Company table (because it's not referenced for some reason)
-			gr_l.addQuery('sys_id',value);
+			var gr_l_1 = gr_l.addQuery('sys_id',value);
+			gr_l_1.addOrCondition('name',value);
 			gr_l.query();
 			gr_l.next();
 			
@@ -159,8 +202,29 @@ Company.prototype = {
 			
 			return gr.update();
 			
+		} else if (gr.isValidRecord() == true && column == "parent") {
+			// If we are updating parent, we need to cater for the possibility of a sys_id or company name being sent
+			var gr_p_1 = gr_p.addQuery('sys_id',value);
+			gr_p_1.addOrCondition('name',value);
+			gr_p.query();
+			gr_p.next();
+			
+			gr.parent = gr_p.sys_id;
+			
+			return gr.update();
+			
+		} else if (gr.isValidRecord() == true && column == "contact") {
+			// If we are updating contact, we need to cater for the possibility of a sys_id or user_name being sent
+			var gr_c_1 = gr_c.addQuery('sys_id',value);
+			gr_c_1.addOrCondition('user_name',value);
+			gr_c.query();
+			gr_c.next();
+			
+			gr.contact = gr_c.sys_id;
+			return gr.update();
+			
 		} else {
-			gs.info('[Customer Onboarding][SI][Company] Couldnt find valid record from provided Sys_ID: ' + sys_id);
+			gs.info('[Customer Onboarding][SI][Company.Update] Couldnt find valid record from provided Sys_ID: ' + sys_id);
 			return false;
 		}
 		
@@ -172,13 +236,13 @@ Company.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-11-27 02:00:01</sys_created_on>
         <sys_id>db22bbe30f220300d1ac8f8ce1050e9b</sys_id>
-        <sys_mod_count>15</sys_mod_count>
+        <sys_mod_count>42</sys_mod_count>
         <sys_name>Company</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sys_script_include_db22bbe30f220300d1ac8f8ce1050e9b</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-12-13 02:37:14</sys_updated_on>
+        <sys_updated_on>2018-01-24 04:31:31</sys_updated_on>
     </sys_script_include>
 </record_update>

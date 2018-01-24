@@ -5,7 +5,7 @@
         <hint/>
         <name>Staging - Users</name>
         <order/>
-        <roles>x_133853_customer.staging_users_user</roles>
+        <roles/>
         <sys_class_name>sys_ui_application</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-10-26 03:42:53</sys_created_on>

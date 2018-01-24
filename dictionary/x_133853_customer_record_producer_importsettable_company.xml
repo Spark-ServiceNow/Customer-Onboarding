@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element extends="sys_import_set_row" label="Record_Producer_ImportSetTable_Company" max_length="40" name="x_133853_customer_record_producer_importsettable_company" type="collection">
+        <element label="Company existing record found" max_length="50" name="u_company_existing_record_found" type="string"/>
+        <element attributes="import_attribute_name=Company Name,edge_encryption_enabled=true" label="Company Name" max_length="40" name="u_company_name" type="string"/>
+        <element attributes="import_attribute_name=Company Type,edge_encryption_enabled=true" label="Company Type" max_length="40" name="u_company_type" type="string"/>
+        <element attributes="import_attribute_name=Contact,edge_encryption_enabled=true" label="Contact" max_length="40" name="u_contact" type="string"/>
+        <element attributes="import_attribute_name=Customer,edge_encryption_enabled=true" label="Customer" max_length="40" name="u_customer" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Existing Record Found" max_length="40" name="u_existing_record_found" type="string"/>
+        <element attributes="import_attribute_name=Latitude,edge_encryption_enabled=true" label="Latitude" max_length="40" name="u_latitude" type="string"/>
+        <element attributes="import_attribute_name=Location,edge_encryption_enabled=true" label="Location" max_length="40" name="u_location" type="string"/>
+        <element attributes="import_attribute_name=Longitude,edge_encryption_enabled=true" label="Longitude" max_length="40" name="u_longitude" type="string"/>
+        <element attributes="import_attribute_name=Parent,edge_encryption_enabled=true" label="Parent" max_length="40" name="u_parent" type="string"/>
+        <element attributes="import_attribute_name=Website,edge_encryption_enabled=true" label="Website" max_length="40" name="u_website" type="string"/>
+    </element>
+</database>
