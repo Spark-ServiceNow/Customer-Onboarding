@@ -11,7 +11,7 @@
 // Author: 		    Ronald Lob
 // Script Type:     [Script Include] User Onboarding - User API
 // Script Name:	    Customer Onboarding - User API
-// Script Version:	1.00
+// Script Version:	1.3
 // Script Desc:	    API for CRUD functionality on User table. 
 //                  Differs from standard Table / REST API as it's specific to this application.
 //                  Cascading of Creates / Updates / Deletes.
@@ -19,6 +19,8 @@
 // Revisions:
 // ==========				
 // 14/12/2017 - [Version 1.0][Ronald Lob]  	Development.
+// 25/01/2018 - [Version 1.2][Ronald Lob]  	Enhanced Update functions to validate null or keywords.
+// 31/01/2018 - [Version 1.3][Ronald Lob]  	Added Building as a reference validation. 
 // =============================================================
 
 var User = Class.create();
@@ -29,43 +31,113 @@ User.prototype = {
 	// .. 
 	// Creates a new record in User
 	// .. 
-	Create: function(user_employeenumber, user_userid, user_firstname, user_lastname, user_email, user_homephone, user_mobilephone, user_company, user_department, user_costcenter, user_location, user_building, user_manager, user_schedule, user_vip){
+	Create: function(user_active, user_user_name, user_password, user_employee_number, user_first_name, user_last_name, user_vip, user_company, user_department, user_building, user_location, user_gender, user_email_address, user_phone_number, user_manager, user_cost_center){
 		
-		gs.info('[Customer Onboarding][SI][User] Create a new User in ServiceNow.');
+		gs.info('[Customer Onboarding][SI][User.Create] Create a new User in ServiceNow with the name: ' + user_first_name + ' ' + user_last_name);
 		
-		// Validate for duplicates before save
-		var gr_v = this.ValidateDuplicate(user_employeenumber, user_firstname, user_lastname, user_email);
+		// Validate for duplicates before save (Special function that validates on User Name, or Employee Number, or First Name, Last Name, Email Address combo)
+		var gr_v = this.ValidateDuplicate(user_user_name, user_employee_number, user_first_name, user_last_name, user_email_address);
+		// Validate reference fields
+		gr_l = new GlideRecord('cmn_location');
+		gr_cc = new GlideRecord('cmn_cost_center');
+		gr_c = new GlideRecord('core_company');
+		gr_d = new GlideRecord('cmn_department');
+		gr_b = new GlideRecord('cmn_building');
+		gr_m = new GlideRecord('sys_user');
 		
 		if (gr_v.isValidRecord() == true) {
-			gs.info('[Customer Onboarding][SI][User] User already exists. Duplicate detected with ' + gr_v.sys_id + '. Exit');
+			gs.info('[Customer Onboarding][SI][User.Create] User already exists. Duplicate detected with ' + gr_v.sys_id + ' (' + gr_v.first_name + ' ' + gr_v.last_name + '). Exit');
 			return false;
+		} else {
+			gs.info('[Customer Onboarding][SI][User.Create] User with the name ' + user_first_name + ' ' + user_last_name + ' doesnt exist. Create.');
+		}
+		
+		// We need to cater for the location name passed as parameter and not the sys_id. 
+		if (user_location) {
+			var gr_l_1 = gr_l.addQuery('sys_id',user_location);
+			gr_l_1.addOrCondition('name',user_location);
+			gr_l.query();
+			gr_l.next();
+			
+			gs.info('[Customer Onboarding][SI][User.Create] Location verified: ' + gr_l.sys_id);
+		}
+		
+		// We need to cater for the cost center name passed as parameter and not the sys_id. 
+		if (user_cost_center) {
+			var gr_cc_1 = gr_cc.addQuery('sys_id',user_cost_center);
+			gr_cc_1.addOrCondition('name',user_cost_center);
+			gr_cc.query();
+			gr_cc.next();
+			
+			gs.info('[Customer Onboarding][SI][User.Create] Cost Center verified: ' + gr_cc.sys_id);
+		}
+		
+		// We need to cater for the company name passed as parameter and not the sys_id. 
+		if (user_company) {
+			var gr_c_1 = gr_c.addQuery('sys_id',user_company);
+			gr_c_1.addOrCondition('name',user_company);
+			gr_c.query();
+			gr_c.next();
+			
+			gs.info('[Customer Onboarding][SI][User.Create] Company verified: ' + gr_c.sys_id);
+		}
+		
+		// We need to cater for the manager name passed as parameter and not the sys_id. 
+		if (user_manager) {
+			var gr_m_1 = gr_m.addQuery('sys_id',user_manager);
+			gr_m_1.addOrCondition('user_name',user_manager);
+			gr_m.query();
+			gr_m.next();
+			
+			gs.info('[Customer Onboarding][SI][User.Create] Manager verified: ' + gr_m.sys_id);
+		}
+		
+		// We need to cater for the department name passed as parameter and not the sys_id. 
+		if (user_department) {
+			var gr_d_1 = gr_d.addQuery('sys_id',user_department);
+			gr_d_1.addOrCondition('name',user_department);
+			gr_d.query();
+			gr_d.next();
+			
+			gs.info('[Customer Onboarding][SI][User.Create] Department verified: ' + gr_d.sys_id);
+		}
+		
+		// We need to cater for the building name passed as parameter and not the sys_id. 
+		if (user_building) {
+			var gr_b_1 = gr_b.addQuery('sys_id',user_building);
+			gr_b_1.addOrCondition('name',user_building);
+			gr_b.query();
+			gr_b.next();
+			
+			gs.info('[Customer Onboarding][SI][User.Create] Building verified: ' + gr_b.sys_id);
 		}
 	
+		// Create record
 		gr = new GlideRecord('sys_user');
 		gr.initialize();
-		gr.employee_number = user_employeenumber;
-		gr.user_name = user_userid;
-		gr.first_name = user_firstname;
-		gr.last_name = user_lastname;
-		gr.email = user_email;
-		gr.home_phone = user_homephone;
-		gr.mobile_phone = user_mobilephone;
-		gr.company = user_company;
-		gr.department = user_department;
-		gr.costcenter = user_costcenter;
-		gr.location = user_location;
-		gr.building = user_building;
-		gr.manager = user_manager;
-		gr.schedule = user_schedule;
+		gr.employee_number = user_employee_number;
+		gr.user_name = user_user_name;
+		gr.password = user_password;
+		gr.first_name = user_first_name;
+		gr.last_name = user_last_name;
 		gr.vip = user_vip;
+		gr.company = gr_c.sys_id;
+		gr.department = gr_d.sys_id;
+		gr.building = gr_b.sys_id;
+		gr.location = gr_l.sys_id;
+		gr.gender = user_gender;
+		gr.email = user_email_address;
+		gr.mobile_phone = user_phone_number;
+		gr.manager = gr_m.sys_id;
+		gr.costcenter = gr_cc.sys_id;
 		
 		var sys_id = gr.insert();
 
 		if (sys_id) {
-			gs.info('[Customer Onboarding][SI][User] New User record created successfully: ' + sysId);
+			gs.info('[Customer Onboarding][SI][User.Create] New User record created successfully: ' + sysId);
 			return true;
 		} else {
-			gs.info('[Customer Onboarding][SI][User] New User record not created successfully: ' + sysId);
+			gs.info('[Customer Onboarding][SI][User.Create] New User record not created successfully: ' + sysId);
 			return false;
 		}
 	},
@@ -75,7 +147,7 @@ User.prototype = {
 	// .. 
 	Get_SysID: function(sys_id){
 		
-		gs.info('[Customer Onboarding][SI][User] Get User with sys_id = ' + sys_id);
+		gs.info('[Customer Onboarding][SI][User.Get_SysID] Get User with sys_id = ' + sys_id);
 	
 		gr = new GlideRecord('sys_user');
 		gr.addQuery('sys_id',sys_id);
@@ -90,7 +162,7 @@ User.prototype = {
 	// .. 
 	Get_UserID: function(user_userid){
 		
-		gs.info('[Customer Onboarding][SI][User] Get User with User ID = ' + user_userid);
+		gs.info('[Customer Onboarding][SI][User.Get_UserID] Get User with User ID = ' + user_userid);
 	
 		gr = new GlideRecord('sys_user');
 		gr.addQuery('user_name',user_userid);
@@ -101,25 +173,61 @@ User.prototype = {
 	},
 	
 	// .. 
-	// Validates for Duplicates based on provided parameters. If Employee Number is provided, it validates on that alone, else use FN, LN, Email
-	// Returns True if valid match found (one or more duplicates)
-	// returns False if match not found (so no duplicate)
+	// Returns a User record from provided Employee Number
 	// .. 
-	ValidateDuplicate: function(user_employeenumber, user_firstname, user_lastname, user_email){
+	Get_EmpID: function(user_employee_number){
 		
-		gs.info('[Customer Onboarding][SI][User] Validating duplicate Users based on provided variables');
+		gs.info('[Customer Onboarding][SI][User.Get_EmpID] Get User with Employee Number = ' + user_employee_number);
+	
+		gr = new GlideRecord('sys_user');
+		gr.addQuery('employee_number',user_employee_number);
+		gr.query();
+		gr.next();
+
+		return gr;	
+	},
+	
+	// .. 
+	// Returns a User record from provided First Name / Last Name / Email Address
+	// .. 
+	Get_Name_Email: function(user_first_name,user_last_name,user_email_address){
+		
+		gs.info('[Customer Onboarding][SI][User.Get_Name_Email] Get User with Name = ' + user_first_name + ' ' + user_last_name + ' and Email Address = ' + user_email_address);
+	
+		gr = new GlideRecord('sys_user');
+		gr.addQuery('first_name',user_first_name);
+		gr.addQuery('last_name',user_last_name);
+		gr.addQuery('email',user_email_address);
+		gr.query();
+		gr.next();
+
+		return gr;	
+	},
+	
+	// .. 
+	// Validates for Duplicates based on provided parameters. If User Name (User ID) is provided, it validates on that alone, 
+	// else it validates on Employee Number if provided, else use FN, LN, Email combo
+	// Returns True if valid match found (one or more duplicates)
+	// Returns False if match not found (so no duplicate)
+	// .. 
+	ValidateDuplicate: function(user_user_name, user_employee_number, user_first_name, user_last_name, user_email_address){
+		
+		gs.info('[Customer Onboarding][SI][User.ValidateDuplicate] Validating duplicate Users based on provided variables');
 		gr = new GlideRecord('sys_user');
 	
-		if (user_employeenumber) {
-			gs.info('[Customer Onboarding][SI][User] Employee Number provided, validating.');
-			gr.addQuery('employee_number',user_employeenumber);
-		} else if (user_firstname && user_lastname && user_email) {
-			gs.info('[Customer Onboarding][SI][User] No Employee Number, validating on First Name, Last Name, Email');
-			gr.addQuery('email',user_email);
-			gr.addQuery('first_name',user_firstname);
-			gr.addQuery('last_name',user_lastname);
+		if (user_user_name) {
+			gs.info('[Customer Onboarding][SI][User.ValidateDuplicate] User ID provided, validating.');
+			gr.addQuery('user_name',user_user_name);
+		} else if (user_employee_number) {
+			gs.info('[Customer Onboarding][SI][User.ValidateDuplicate] Employee Number provided, validating.');
+			gr.addQuery('employee_number',user_employee_number);
+		} else if (user_first_name && user_last_name && user_email_address) {
+			gs.info('[Customer Onboarding][SI][User.ValidateDuplicate] No Employee Number, validating on First Name, Last Name, Email Address');
+			gr.addQuery('email',user_email_address);
+			gr.addQuery('first_name',user_first_name);
+			gr.addQuery('last_name',user_last_name);
 		} else {
-			gs.info('[Customer Onboarding][SI][User] Not enough data provided to validate on. Exit validation.');
+			gs.info('[Customer Onboarding][SI][User.ValidateDuplicate] Not enough data provided to validate on. Exit validation.');
 			return false;
 		}
 
@@ -139,7 +247,7 @@ User.prototype = {
 	// .. 
 	Delete: function(sys_id){
 		
-		gs.info('[Customer Onboarding][SI][User] Delete User with sys_id = ' + sys_id);
+		gs.info('[Customer Onboarding][SI][User.Delete] Delete User with sys_id = ' + sys_id);
 		
 		var gr = this.Get_SysID(sys_id);
 		var bool;
@@ -159,16 +267,88 @@ User.prototype = {
 	// .. 
 	Update: function(sys_id, column, value){
 		
-		gs.info('[Customer Onboarding][SI][User] Updating User with sys_id = ' + sys_id);
-	
 		var gr = this.Get_SysID(sys_id);
+		gr_l = new GlideRecord('cmn_location');
+		gr_cc = new GlideRecord('cmn_cost_center');
+		gr_c = new GlideRecord('core_company');
+		gr_d = new GlideRecord('cmn_department');
+		gr_m = new GlideRecord('sys_user');
+		gr_b = new GlideRecord('cmn_building');
 		
-		if (gr.isValidRecord() == true) {	
+		// Lets first check if the value passed is a keyword or null and exit or replace accordingly
+		if (value == undefined || value == "") { return false;}
+		if (value == "$NULL$") { value = "";}
+		if (value == "$DATE$") { value = Date.today();}
+		if (value == "$NOW$") { value = Date.now();}
+		
+		gs.info('[Customer Onboarding][SI][User.Update] Updating User with sys_id = ' + sys_id + ". Setting " + column + " to " + value);
+	
+		if (gr.isValidRecord() == true && column != "location" && column != "cost_center" && column != "company" && column != "department" && column != "manager" && column != "building") {	
 			gr[column] = value;
-			var bool = gr.update();
-			return true;
+			return gr.update();
+		
+		} else if (gr.isValidRecord() == true && column == "location") {
+			// If we are updating location, we need to cater for the possibility of a sys_id or location name being sent
+			var gr_l_1 = gr_l.addQuery('sys_id',value);
+			gr_l_1.addOrCondition('name',value);
+			gr_l.query();
+			gr_l.next();
+			
+			gr.location = gr_l.sys_id;
+			return gr.update();
+			
+		} else if (gr.isValidRecord() == true && column == "cost_center") {
+			// If we are updating cost center, we need to cater for the possibility of a sys_id or cost center name being sent
+			var gr_cc_1 = gr_cc.addQuery('sys_id',value);
+			gr_cc_1.addOrCondition('name',value);
+			gr_cc.query();
+			gr_cc.next();
+			
+			gr.cost_center = gr_cc.sys_id;
+			return gr.update();
+			
+		} else if (gr.isValidRecord() == true && column == "company") {
+			// If we are updating company, we need to cater for the possibility of a sys_id or company name being sent
+			var gr_c_1 = gr_c.addQuery('sys_id',value);
+			gr_c_1.addOrCondition('name',value);
+			gr_c.query();
+			gr_c.next();
+			
+			gr.company = gr_c.sys_id;
+			return gr.update();
+			
+		} else if (gr.isValidRecord() == true && column == "department") {
+			// If we are updating department, we need to cater for the possibility of a sys_id or department name being sent
+			var gr_d_1 = gr_d.addQuery('sys_id',value);
+			gr_d_1.addOrCondition('name',value);
+			gr_d.query();
+			gr_d.next();
+			
+			gr.department = gr_d.sys_id;
+			return gr.update();
+			
+		} else if (gr.isValidRecord() == true && column == "manager") {
+			// If we are updating manager, we need to cater for the possibility of a sys_id or manager name being sent
+			var gr_m_1 = gr_m.addQuery('sys_id',value);
+			gr_m_1.addOrCondition('user_name',value);
+			gr_m.query();
+			gr_m.next();
+			
+			gr.manager = gr_m.sys_id;
+			return gr.update();
+			
+		} else if (gr.isValidRecord() == true && column == "building") {
+			// If we are updating building, we need to cater for the possibility of a sys_id or building name being sent
+			var gr_b_1 = gr_b.addQuery('sys_id',value);
+			gr_b_1.addOrCondition('name',value);
+			gr_b.query();
+			gr_b.next();
+			
+			gr.building = gr_b.sys_id;
+			return gr.update();
+			
 		} else {
-			gs.info('[Customer Onboarding][SI][User] Couldnt find valid record from provided Sys_ID: ' + sys_id);
+			gs.info('[Customer Onboarding][SI][User.Update] Couldnt find valid record from provided Sys_ID: ' + sys_id);
 			return false;
 		}
 		
@@ -180,13 +360,13 @@ User.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-12-14 04:22:54</sys_created_on>
         <sys_id>c6d3d8190f830300d1ac8f8ce1050e07</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>8</sys_mod_count>
         <sys_name>User</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sys_script_include_c6d3d8190f830300d1ac8f8ce1050e07</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-12-15 01:32:11</sys_updated_on>
+        <sys_updated_on>2018-01-31 03:54:27</sys_updated_on>
     </sys_script_include>
 </record_update>

@@ -11,7 +11,7 @@
 // Author: 		    Ronald Lob
 // Script Type:     [Script Include] Customer Onboarding - Location API
 // Script Name:	    Customer Onboarding - Location API
-// Script Version:	1.00
+// Script Version:	1.2
 // Script Desc:	    API for CRUD functionality on Location table. 
 //                  Differs from standard Table / REST API as it's specific to this application.
 //                  Cascading of Creates / Updates / Deletes.
@@ -19,6 +19,7 @@
 // Revisions:
 // ==========				
 // 11/12/2017 - [Version 1.0][Ronald Lob]  	Development.
+// 25/01/2018 - [Version 1.2][Ronald Lob]  	Enhanced Update functions to validate null or keywords.
 // =============================================================
 
 var Location = Class.create();
@@ -31,27 +32,63 @@ Location.prototype = {
 	// .. 
 	Create: function(location_name, location_parent, location_country, location_timezone, location_state, location_city, location_street, location_company, location_contact, location_latitude, location_longitude, location_stockroom){
 		
-		gs.info('[Customer Onboarding][SI][Location] Create a new Location in ServiceNow.');
+		gs.info('[Customer Onboarding][SI][Location.Create] Create a new Location in ServiceNow.');
 		
 		// Check if the Location exists already or not
 		var gr = this.Get_Name(location_name);
+		gr_p = new GlideRecord('cmn_location');
+		gr_c = new GlideRecord('core_company');
+		gr_u = new GlideRecord('sys_user');
 		
 		if (gr.isValidRecord() == true) {
-			gs.info('[Customer Onboarding][SI][Location] Location already exists. Exit');
+			gs.info('[Customer Onboarding][SI][Location.Create] Location with the name ' + location_name + ' already exists. Exit');
 			return false;
+		} else {
+			gs.info('[Customer Onboarding][SI][Location.Create] Location with the name ' + location_name + ' doesnt exist. Create');
+		}
+		
+		// We need to cater for the location parent name passed as parameter and not the sys_id. 
+		if (location_parent) {
+			var gr_p_1 = gr_p.addQuery('sys_id',location_parent);
+			gr_p_1.addOrCondition('name',location_parent);
+			gr_p.query();
+			gr_p.next();
+			
+			gs.info('[Customer Onboarding][SI][Location.Create] Parent verified: ' + gr_p.sys_id);
+		}
+		
+		// We need to cater for the location company name passed as parameter and not the sys_id. 
+		if (location_company) {
+			var gr_c_1 = gr_c.addQuery('sys_id',location_company);
+			gr_c_1.addOrCondition('name',location_company);
+			gr_c.query();
+			gr_c.next();
+			
+			gs.info('[Customer Onboarding][SI][Location.Create] Parent verified: ' + gr_c.sys_id);
+		}
+		
+		// We need to cater for the contact name passed as parameter and not the sys_id. 
+		if (location_contact) {
+			var gr_u_1 = gr_u.addQuery('sys_id',location_contact);
+			gr_u_1.addOrCondition('user_name',location_contact);
+			gr_u.query();
+			gr_u.next();
+			
+			gs.info('[Customer Onboarding][SI][Location.Create] Parent verified: ' + gr_u.sys_id);
 		}
 	
+		// Create record
 		gr = new GlideRecord('cmn_location');
 		gr.initialize();
 		gr.name = location_name;
-		gr.parent = location_parent;
+		gr.parent = gr_p.sys_id;
 		gr.country = location_country;
 		gr.time_zone = location_timezone;
 		gr.state = location_state;
 		gr.city = location_city;
 		gr.street = location_street;
-		gr.contact = location_contact;
-		gr.company = location_company;
+		gr.contact = gr_u.sys_id;
+		gr.company = gr_c.sys_id;
 		gr.latitude = location_latitude;
 		gr.longitude = location_longitude;
 		gr.stock_room = location_stockroom;
@@ -59,10 +96,10 @@ Location.prototype = {
 		var sys_id = gr.insert();
 
 		if (sys_id) {
-			gs.info('[Customer Onboarding][SI][Location] New Location record created successfully: ' + sysId);
+			gs.info('[Customer Onboarding][SI][Location.Create] New Location record created successfully: ' + sysId);
 			return true;
 		} else {
-			gs.info('[Customer Onboarding][SI][Location] New Location record not created successfully: ' + sysId);
+			gs.info('[Customer Onboarding][SI][Location.Create] New Location record not created successfully: ' + sysId);
 			return false;
 		}
 	},
@@ -72,7 +109,7 @@ Location.prototype = {
 	// .. 
 	Get_SysID: function(sys_id){
 		
-		gs.info('[Customer Onboarding][SI][Location] Get Location with sys_id = ' + sys_id);
+		gs.info('[Customer Onboarding][SI][Location.Get_SysID] Get Location with sys_id = ' + sys_id);
 	
 		gr = new GlideRecord('cmn_location');
 		gr.addQuery('sys_id',sys_id);
@@ -87,7 +124,7 @@ Location.prototype = {
 	// .. 
 	Get_Name: function(location_name){
 		
-		gs.info('[Customer Onboarding][SI][Location] Get Location with name = ' + location_name);
+		gs.info('[Customer Onboarding][SI][Location.Get_Name] Get Location with name = ' + location_name);
 	
 		gr = new GlideRecord('cmn_location');
 		gr.addQuery('name',location_name);
@@ -102,7 +139,7 @@ Location.prototype = {
 	// .. 
 	Delete: function(sys_id){
 		
-		gs.info('[Customer Onboarding][SI][Location] Delete Location with sys_id = ' + sys_id);
+		gs.info('[Customer Onboarding][SI][Location.Delete] Delete Location with sys_id = ' + sys_id);
 		
 		var gr = this.Get_SysID(sys_id);
 		var bool;
@@ -122,16 +159,58 @@ Location.prototype = {
 	// .. 
 	Update: function(sys_id, column, value){
 		
-		gs.info('[Customer Onboarding][SI][Location] Updating Location with sys_id = ' + sys_id);
+		// Check if the Location exists already or not
+		gr = this.Get_SysID(sys_id);
+		gr_p = new GlideRecord('cmn_location');
+		gr_c = new GlideRecord('core_company');
+		gr_u = new GlideRecord('sys_user');
+		
+		// Lets first check if the value passed is a keyword or null and exit or replace accordingly
+		if (value == undefined || value == "") { return false;}
+		if (value == "$NULL$") { value = "";}
+		if (value == "$DATE$") { value = Date.today();}
+		if (value == "$NOW$") { value = Date.now();}
+		
+		gs.info('[Customer Onboarding][SI][Location.Update] Updating Location with sys_id = ' + sys_id + ". Setting " + column + " to " + value);
 	
 		var gr = this.Get_SysID(sys_id);
 		
-		if (gr.isValidRecord() == true) {	
+		if (gr.isValidRecord() == true && column != "company" && column != "parent" && column != "contact") {	
 			gr[column] = value;
-			var bool = gr.update();
-			return true;
+			return gr.update();
+			
+		} else if (gr.isValidRecord() == true && column == "parent") {
+			// If we are updating parent, we need to cater for the possibility of a sys_id or company name being sent
+			var gr_p_1 = gr_p.addQuery('sys_id',value);
+			gr_p_1.addOrCondition('name',value);
+			gr_p.query();
+			gr_p.next();
+			
+			gr.parent = gr_p.sys_id;
+			return gr.update();	
+			
+		} else if (gr.isValidRecord() == true && column == "contact") {
+			// If we are updating contact, we need to cater for the possibility of a sys_id or user_name being sent
+			var gr_u_1 = gr_u.addQuery('sys_id',value);
+			gr_u_1.addOrCondition('user_name',value);
+			gr_u.query();
+			gr_u.next();
+			
+			gr.contact = gr_u.sys_id;
+			return gr.update();
+			
+		} else if (gr.isValidRecord() == true && column == "company") {
+			// If we are updating company, we need to cater for the possibility of a sys_id or user_name being sent
+			var gr_c_1 = gr_c.addQuery('sys_id',value);
+			gr_c_1.addOrCondition('name',value);
+			gr_c.query();
+			gr_c.next();
+			
+			gr.contact = gr_c.sys_id;
+			return gr.update();
+			
 		} else {
-			gs.info('[Customer Onboarding][SI][Location] Couldnt find valid record from provided Sys_ID: ' + sys_id);
+			gs.info('[Customer Onboarding][SI][Location.Update] Couldnt find valid record from provided Sys_ID: ' + sys_id);
 			return false;
 		}
 		
@@ -143,13 +222,13 @@ Location.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-12-11 00:14:44</sys_created_on>
         <sys_id>6bec7b840f030300d1ac8f8ce1050e39</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>Location</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sys_script_include_6bec7b840f030300d1ac8f8ce1050e39</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-12-11 00:14:44</sys_updated_on>
+        <sys_updated_on>2018-01-26 01:21:57</sys_updated_on>
     </sys_script_include>
 </record_update>

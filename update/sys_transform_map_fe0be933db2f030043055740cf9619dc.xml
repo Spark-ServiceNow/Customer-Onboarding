@@ -27,15 +27,17 @@
 	
 	var customer;
 	var vendor;
-	var manuafacturer;
+	var manufacturer;
 	var company = new Company();
 
 	gs.info('[Customer Onboarding][TM][Company] Begin Request Company Load Transform Map: ' + source.u_company_name);
 	
+	ignore = true; // Otherwise we create blank rows because there's no actual transform mapping
+	
 	// Here we validate the drop down Company type and split the variables out to pass to the Script Include
 	if (source.u_company_type == "Customer") { customer = true; } else { customer = false; }
 	if (source.u_company_type == "Vendor") { vendor = true; } else { vendor = false; }
-	if (source.u_company_type == "Manufacturer") { manuafacturer = true; } else { manuafacturer = false; }
+	if (source.u_company_type == "Manufacturer") { manufacturer = true; } else { manufacturer = false; }
 	
 	// Lets check if this company already exists based on Company Name, if it doesn't ... create. If it does ... update.
 	var gr = new GlideRecord();
@@ -46,14 +48,14 @@
 		
 		gs.info('[Customer Onboarding][TM][Company] Company with the name of ' + source.u_company_name + ' already exists in ServiceNow. Updating.');
 		
-		company.Update(gr.sys_id,"contact",source.u_contact);
-		company.Update(gr.sys_id,"customer",customer);
-		company.Update(gr.sys_id,"vendor",vendor);
-		company.Update(gr.sys_id,"manuafacturer",manuafacturer);
-		company.Update(gr.sys_id,"latitude",source.u_latitude);
-		company.Update(gr.sys_id,"longitude",source.u_longitude);
-		company.Update(gr.sys_id,"parent",source.u_parent);
-		company.Update(gr.sys_id,"website",source.u_website);
+		if (gr.contact != source.u_contact) { company.Update(gr.sys_id,"contact",source.u_contact); }
+		if (gr.customer != customer) { company.Update(gr.sys_id,"customer",customer); }
+		if (gr.vendor != vendor) { company.Update(gr.sys_id,"vendor",vendor); }
+		if (gr.manufacturer != manufacturer) { company.Update(gr.sys_id,"manufacturer",manufacturer); }
+		if (gr.latitude != source.u_latitude) { company.Update(gr.sys_id,"latitude",source.u_latitude); }
+		if (gr.longitude != source.u_longitude) { company.Update(gr.sys_id,"longitude",source.u_longitude); }
+		if (gr.parent != source.u_parent) { company.Update(gr.sys_id,"parent",source.u_parent); }
+		if (gr.website != source.u_website) { company.Update(gr.sys_id,"website",source.u_website); }
 		
 		gs.info('[Customer Onboarding][TM][Company] Company with the name of ' + source.u_company_name + ' has been updated.');
 		
@@ -83,14 +85,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-01-16 01:37:25</sys_created_on>
         <sys_id>fe0be933db2f030043055740cf9619dc</sys_id>
-        <sys_mod_count>15</sys_mod_count>
+        <sys_mod_count>17</sys_mod_count>
         <sys_name>Record_Producer_TransformMap_Company</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy/>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sys_transform_map_fe0be933db2f030043055740cf9619dc</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-01-24 02:55:10</sys_updated_on>
+        <sys_updated_on>2018-01-29 01:22:24</sys_updated_on>
         <target_table>core_company</target_table>
     </sys_transform_map>
 </record_update>

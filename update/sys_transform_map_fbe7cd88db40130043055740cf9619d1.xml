@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_transform_map">
+    <sys_transform_map action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copy_empty_fields>false</copy_empty_fields>
+        <enforce_mandatory_fields>No</enforce_mandatory_fields>
+        <name>Record_Producer_TransformMap_Location</name>
+        <order>100</order>
+        <run_business_rules>true</run_business_rules>
+        <run_script>true</run_script>
+        <script><![CDATA[// =============================================================
+// Author: 		    Ronald Lob
+// Script Type:     [Transform Map] Customer Onboarding - Location Transform
+// Script Name:	    Customer Onboarding - Location Transform
+// Script Version:	1.0
+// Script Desc:	    Transform map to make use of the CRUD API rather than standard field mappings.
+//                  This allows us to unify the validation and have a single API for these creates.
+//                  Only applicible to Bulk inserts or updates. Indvididual records handled with Workflow. 
+// ==========
+// Revisions:
+// ==========				
+// 29/01/2018 - [Version 1.0][Ronald Lob] Development.
+// =============================================================
+
+(function transformRow(source, target, map, log, isUpdate) {
+	
+	var location = new Location();
+
+	gs.info('[Customer Onboarding][TM][Location] Begin Request Location Load Transform Map: ' + source.u_location_name);
+	
+	ignore = true; // Otherwise we create blank rows because there's no actual transform mapping
+	
+	// Lets check if this Location already exists based on Location Name, if it doesn't ... create. If it does ... update.
+	var gr = new GlideRecord();
+	gr = location.Get_Name(source.u_location_name);
+	
+	if (gr.isValidRecord() == true && (source.u_existing_record_found == "Insert or Update" || source.u_existing_record_found == "Update Only")) { 
+		// Here we need to call the Update action because the Location name already exists and the duplicate flag is set. 
+		
+		gs.info('[Customer Onboarding][TM][Location] Location with the name of ' + source.u_location_name + ' already exists in ServiceNow. Updating.');
+		
+		// Update any changed values only
+		if (gr.name != source.u_location_name) { location.Update(gr.sys_id,"name",source.u_location_name); }
+		if (gr.country != source.u_country) { location.Update(gr.sys_id,"country",source.u_country); }
+		if (gr.state != source.u_state) { location.Update(gr.sys_id,"state",source.u_state); }
+		if (gr.city != source.u_city) { location.Update(gr.sys_id,"city",source.u_city); }
+		if (gr.street != source.u_street) { location.Update(gr.sys_id,"street",source.u_street); }
+		if (gr.contact != source.u_contact) { location.Update(gr.sys_id,"contact",source.u_contact); }
+		if (gr.parent != source.u_parent) { location.Update(gr.sys_id,"parent",source.u_parent); }
+		if (gr.company != source.u_company) { location.Update(gr.sys_id,"company",source.u_company); }
+		if (gr.latitude != source.u_latitude) { location.Update(gr.sys_id,"latitude",source.u_latitude); }
+		if (gr.longitude != source.u_longitude) { location.Update(gr.sys_id,"longitude",source.u_longitude); }
+		if (gr.stock_room != source.u_stock_room) { location.Update(gr.sys_id,"stock_room",source.u_stock_room); }
+		
+		gs.info('[Customer Onboarding][TM][Location] Location with the name of ' + source.u_location_name + ' has been updated.');
+		
+	} else if (gr.isValidRecord() == false && source.u_existing_record_found != "Update Only") { // Lets Create a new Location because none exists with that name
+
+		gs.info('[Customer Onboarding][TM][Location] No existing Location found with the name ' + source.u_location_name + '. create a new record.');
+		
+		var sys_id = location.Create(source.u_location_name,source.u_country,source.u_state,source.u_city,source.u_street,source.u_contact,source.u_parent,source.u_company,source.u_latitude,source.u_longitude,source.u_stock_room);
+			
+		if (sys_id) {
+			gs.info('[Customer Onboarding][TM][Location] ' + source.u_location_name + ' successfully created with sys_id = ' + sys_id);
+			return;
+		} else { 
+			gs.info('[Customer Onboarding][TM][Location] ' + source.u_location_name + ' could not be created.');	
+			ignore = true;
+		}
+		
+	} else if (gr.isValidRecord() == false && source.u_existing_record_found == "Update Only" ) {
+		gs.info('[Customer Onboarding][TM][Location] No existing Location found with the name ' + source.u_location_name + '. Set to Update Only. Exit');
+	} else if (gr.isValidRecord() == true && source.u_existing_record_found == "Insert Only" ) {
+		gs.info('[Customer Onboarding][TM][Location] Location with the name of ' + source.u_location_name + ' found. Set to Insert Only. Exit');
+	}
+	
+})(source, target, map, log, action==="update");]]></script>
+        <source_table>x_133853_customer_record_producer_importsettable_location</source_table>
+        <sys_class_name>sys_transform_map</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-01-29 03:58:29</sys_created_on>
+        <sys_id>fbe7cd88db40130043055740cf9619d1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Record_Producer_TransformMap_Location</sys_name>
+        <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
+        <sys_update_name>sys_transform_map_fbe7cd88db40130043055740cf9619d1</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-01-29 03:58:29</sys_updated_on>
+        <target_table>cmn_location</target_table>
+    </sys_transform_map>
+</record_update>

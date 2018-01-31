@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_transform_map">
+    <sys_transform_map action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copy_empty_fields>false</copy_empty_fields>
+        <enforce_mandatory_fields>No</enforce_mandatory_fields>
+        <name>Record_Producer_TransformMap_Group</name>
+        <order>100</order>
+        <run_business_rules>true</run_business_rules>
+        <run_script>true</run_script>
+        <script><![CDATA[// =============================================================
+// Author: 		    Ronald Lob
+// Script Type:     [Transform Map] Customer Onboarding - Group Transform
+// Script Name:	    Customer Onboarding - Group Transform
+// Script Version:	1.0
+// Script Desc:	    Transform map to make use of the CRUD API rather than standard field mappings.
+//                  This allows us to unify the validation and have a single API for these creates.
+//                  Only applicible to Bulk inserts or updates. Indvididual records handled with Workflow. 
+//
+// *** IMPORTANT ***
+// - sys_user_group holding Group data doesnt have cross scope priviledges for Update / Create / Delete
+// - this will need to be enabled in the Global scope before we can use this feature. 
+//
+// ==========
+// Revisions:
+// ==========				
+// 30/01/2018 - [Version 1.0][Ronald Lob] Development.
+// =============================================================
+
+(function transformRow(source, target, map, log, isUpdate) {
+	
+	var group = new Group();
+
+	gs.info('[Customer Onboarding][TM][Group] Begin Request Group Load Transform Map: ' + source.u_group_name);
+	
+	ignore = true; // Otherwise we create blank rows because there's no actual transform mapping
+	
+	// Lets check if this Group already exists based on Group Name, if it doesn't ... create. If it does ... update.
+	var gr = new GlideRecord();
+	gr = group.Get_Name(source.u_group_name);
+	
+	if (gr.isValidRecord() == true && (source.u_existing_record_found == "Insert or Update" || source.u_existing_record_found == "Update Only")) { 
+		// Here we need to call the Update action because the Group name already exists and the duplicate flag is set. 
+		
+		gs.info('[Customer Onboarding][TM][Group] Group with the name of ' + source.u_group_name + ' already exists in ServiceNow. Updating.');
+		
+		// Update any changed values only
+		if (gr.name != source.u_group_name) { group.Update(gr.sys_id,"name",source.u_group_name); }
+		if (gr.description != source.u_description) { group.Update(gr.sys_id,"description",source.u_description); }
+		if (gr.email != source.u_email) { group.Update(gr.sys_id,"email",source.u_email); }
+		if (gr.cost_center != source.u_cost_center) { group.Update(gr.sys_id,"cost_center",source.u_cost_center); }
+		if (gr.type != source.u_type) { group.Update(gr.sys_id,"type",source.u_type); }
+		if (gr.manager != source.u_manager) { group.Update(gr.sys_id,"manager",source.u_manager); }
+		if (gr.parent != source.u_parent) { group.Update(gr.sys_id,"parent",source.u_parent); }
+		if (gr.default_assignee != source.u_default_assignee) { group.Update(gr.sys_id,"default_assignee",source.u_default_assignee); }
+		
+		gs.info('[Customer Onboarding][TM][Group] Group with the name of ' + source.u_group_name + ' has been updated.');
+		
+	} else if (gr.isValidRecord() == false && source.u_existing_record_found != "Update Only") { // Lets Create a new Group because none exists with that name
+
+		gs.info('[Customer Onboarding][TM][Group] No existing Group found with the name ' + source.u_group_name + '. create a new record.');
+		
+		var sys_id = group.Create(true,source.u_cost_center,source.u_default_assignee,source.u_description,source.u_email,source.u_manager,source.u_group_name,source.u_parent,source.u_type);
+			
+		if (sys_id) {
+			gs.info('[Customer Onboarding][TM][Group] ' + source.u_group_name + ' successfully created with sys_id = ' + sys_id);
+			return;
+		} else { 
+			gs.info('[Customer Onboarding][TM][Group] ' + source.u_group_name + ' could not be created.');	
+			ignore = true;
+		}
+		
+	} else if (gr.isValidRecord() == false && source.u_existing_record_found == "Update Only" ) {
+		gs.info('[Customer Onboarding][TM][Group] No existing Group found with the name ' + source.u_group_name + '. Set to Update Only. Exit');
+	} else if (gr.isValidRecord() == true && source.u_existing_record_found == "Insert Only" ) {
+		gs.info('[Customer Onboarding][TM][Group] Group with the name of ' + source.u_group_name + ' found. Set to Insert Only. Exit');
+	}
+	
+})(source, target, map, log, action==="update");]]></script>
+        <source_table>x_133853_customer_record_producer_importsettable_group</source_table>
+        <sys_class_name>sys_transform_map</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-01-30 02:17:27</sys_created_on>
+        <sys_id>df4eed14db00130043055740cf961933</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Record_Producer_TransformMap_Group</sys_name>
+        <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
+        <sys_update_name>sys_transform_map_df4eed14db00130043055740cf961933</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-01-30 02:18:35</sys_updated_on>
+        <target_table>sys_user_group</target_table>
+    </sys_transform_map>
+</record_update>

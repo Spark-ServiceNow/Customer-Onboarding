@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element extends="sys_import_set_row" label="Record_Producer_ImportSetTable_Group" max_length="40" name="x_133853_customer_record_producer_importsettable_group" type="collection">
+        <element attributes="import_attribute_name=Cost Center,edge_encryption_enabled=true" label="Cost Center" max_length="40" name="u_cost_center" type="string"/>
+        <element attributes="import_attribute_name=Default Assignee,edge_encryption_enabled=true" label="Default Assignee" max_length="40" name="u_default_assignee" type="string"/>
+        <element attributes="import_attribute_name=Description,edge_encryption_enabled=true" label="Description" max_length="40" name="u_description" type="string"/>
+        <element attributes="import_attribute_name=Email,edge_encryption_enabled=true" label="Email" max_length="40" name="u_email" type="string"/>
+        <element attributes="import_attribute_name=Existing Record Found,edge_encryption_enabled=true" label="Existing Record Found" max_length="40" name="u_existing_record_found" type="string"/>
+        <element attributes="import_attribute_name=Group Name,edge_encryption_enabled=true" label="Group Name" max_length="40" name="u_group_name" type="string"/>
+        <element attributes="import_attribute_name=Manager,edge_encryption_enabled=true" label="Manager" max_length="40" name="u_manager" type="string"/>
+        <element attributes="import_attribute_name=Parent,edge_encryption_enabled=true" label="Parent" max_length="40" name="u_parent" type="string"/>
+        <element attributes="import_attribute_name=Type,edge_encryption_enabled=true" label="Type" max_length="40" name="u_type" type="string"/>
+    </element>
+</database>

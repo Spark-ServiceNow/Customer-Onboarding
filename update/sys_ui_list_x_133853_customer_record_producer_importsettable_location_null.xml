@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_ui_list parent="" relationship="" sys_domain="global" table="x_133853_customer_record_producer_importsettable_location" version="2" view="">
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>sys_import_row</element>
+            <list_id display_value="x_133853_customer_record_producer_importsettable_location" element="NULL" name="x_133853_customer_record_producer_importsettable_location" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">f7978d88db40130043055740cf9619ad</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>0</position>
+            <sum>false</sum>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-01-29 03:37:55</sys_created_on>
+            <sys_id>3f978d88db40130043055740cf9619ad</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-01-29 03:37:55</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>sys_import_set</element>
+            <list_id display_value="x_133853_customer_record_producer_importsettable_location" element="NULL" name="x_133853_customer_record_producer_importsettable_location" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">f7978d88db40130043055740cf9619ad</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>1</position>
+            <sum>false</sum>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-01-29 03:37:55</sys_created_on>
+            <sys_id>bf978d88db40130043055740cf9619ad</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-01-29 03:37:55</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>sys_import_state</element>
+            <list_id display_value="x_133853_customer_record_producer_importsettable_location" element="NULL" name="x_133853_customer_record_producer_importsettable_location" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">f7978d88db40130043055740cf9619ad</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>2</position>
+            <sum>false</sum>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-01-29 03:37:55</sys_created_on>
+            <sys_id>33978d88db40130043055740cf9619ae</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-01-29 03:37:55</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>sys_target_table</element>
+            <list_id display_value="x_133853_customer_record_producer_importsettable_location" element="NULL" name="x_133853_customer_record_producer_importsettable_location" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">f7978d88db40130043055740cf9619ad</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>3</position>
+            <sum>false</sum>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-01-29 03:37:55</sys_created_on>
+            <sys_id>b3978d88db40130043055740cf9619ae</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-01-29 03:37:55</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>sys_target_sys_id</element>
+            <list_id display_value="x_133853_customer_record_producer_importsettable_location" element="NULL" name="x_133853_customer_record_producer_importsettable_location" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">f7978d88db40130043055740cf9619ad</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>4</position>
+            <sum>false</sum>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-01-29 03:37:55</sys_created_on>
+            <sys_id>37978d88db40130043055740cf9619ae</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-01-29 03:37:55</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>sys_row_error</element>
+            <list_id display_value="x_133853_customer_record_producer_importsettable_location" element="NULL" name="x_133853_customer_record_producer_importsettable_location" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">f7978d88db40130043055740cf9619ad</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>5</position>
+            <sum>false</sum>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-01-29 03:37:55</sys_created_on>
+            <sys_id>b7978d88db40130043055740cf9619ae</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-01-29 03:37:55</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element/>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <name>x_133853_customer_record_producer_importsettable_location</name>
+            <parent/>
+            <position/>
+            <relationship/>
+            <sum>false</sum>
+            <sys_class_name>sys_ui_list</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-01-29 03:37:55</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>f7978d88db40130043055740cf9619ad</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_133853_customer_record_producer_importsettable_location</sys_name>
+            <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
+            <sys_update_name>sys_ui_list_x_133853_customer_record_producer_importsettable_location_null</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-01-29 03:37:55</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_list>
+    </sys_ui_list>
+</record_update>

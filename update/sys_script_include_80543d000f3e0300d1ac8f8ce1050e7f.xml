@@ -11,7 +11,7 @@
 // Author: 		    Ronald Lob
 // Script Type:     [Script Include] Customer Onboarding - Department API
 // Script Name:	    Customer Onboarding - Department API
-// Script Version:	1.00
+// Script Version:	1.2
 // Script Desc:	    API for CRUD functionality on Department table. 
 //                  Differs from standard Table / REST API as it's specific to this application.
 //                  Cascading of Creates / Updates / Deletes.
@@ -19,6 +19,7 @@
 // Revisions:
 // ==========				
 // 28/11/2017 - [Version 1.0][Ronald Lob]  	Development.
+// 25/01/2018 - [Version 1.2][Ronald Lob]  	Enhanced Update functions to validate null or keywords.
 // =============================================================
 
 var Department = Class.create();
@@ -31,34 +32,92 @@ Department.prototype = {
 	// .. 
 	Create: function(department_name, department_id, department_company, department_cost_center, department_parent, department_description, department_dept_head, department_primary_contact){
 		
-		gs.info('[Customer Onboarding][SI][Department] Create a new Department in ServiceNow.');
+		gs.info('[Customer Onboarding][SI][Department.Create] Create a new Department in ServiceNow.');
 		
-		// Check if the Department exists already or not
+		// Check if the Department exists already or not. If it does we exit and let the source decide if we update or not. 
 		var gr = this.Get_Name(department_name);
+		gr_c = new GlideRecord('core_company');
+		gr_cc = new GlideRecord('cmn_cost_center');
+		gr_p = new GlideRecord('cmn_department');
+		gr_dh = new GlideRecord('sys_user');
+		gr_pc = new GlideRecord('sys_user');
 		
 		if (gr.isValidRecord() == true) {
-			gs.info('[Customer Onboarding][SI][Department] Department already exists. Exit');
+			gs.info('[Customer Onboarding][SI][Department.Create] Department with the name ' + department_name + ' already exists. Exit');
 			return false;
+		} else {
+			gs.info('[Customer Onboarding][SI][Department.Create] Department with the name ' + department_name + ' doesnt exist. Create');
 		}
 	
+		// We need to cater for the company name passed as parameter and not the sys_id. 
+		if (department_company) {
+			var gr_c_1 = gr_c.addQuery('sys_id',department_company);
+			gr_c_1.addOrCondition('name',department_company);
+			gr_c.query();
+			gr_c.next();
+			
+			gs.info('[Customer Onboarding][SI][Department.Create] Company verified: ' + gr_c.sys_id);
+		}
+		
+		// We need to cater for the cost center name passed as parameter and not the sys_id. 
+		if (department_cost_center) {
+			var gr_cc_1 = gr_cc.addQuery('sys_id',department_cost_center);
+			gr_cc_1.addOrCondition('name',department_cost_center);
+			gr_cc.query();
+			gr_cc.next();
+			
+			gs.info('[Customer Onboarding][SI][Department.Create] Cost Center verified: ' + gr_cc.sys_id);
+		}
+		
+		// We need to cater for the department parent name passed as parameter and not the sys_id. 
+		if (department_parent) {
+			var gr_p_1 = gr_p.addQuery('sys_id',department_parent);
+			gr_p_1.addOrCondition('name',department_parent);
+			gr_p.query();
+			gr_p.next();
+			
+			gs.info('[Customer Onboarding][SI][Department.Create] Parent verified: ' + gr_p.sys_id);
+		}
+		
+		// We need to cater for the department head name passed as parameter and not the sys_id. 
+		if (department_dept_head) {
+			var gr_dh_1 = gr_dh.addQuery('sys_id',department_dept_head);
+			gr_dh_1.addOrCondition('user_name',department_dept_head);
+			gr_dh.query();
+			gr_dh.next();
+			
+			gs.info('[Customer Onboarding][SI][Department.Create] Department Head verified: ' + gr_dh.sys_id);
+		}
+		
+		// We need to cater for the primary contact name passed as parameter and not the sys_id. 
+		if (department_primary_contact) {
+			var gr_pc_1 = gr_pc.addQuery('sys_id',department_primary_contact);
+			gr_pc_1.addOrCondition('user_name',department_primary_contact);
+			gr_pc.query();
+			gr_pc.next();
+			
+			gs.info('[Customer Onboarding][SI][Department.Create] Primary Contact verified: ' + gr_pc.sys_id);
+		}
+		
+		// Create record
 		gr = new GlideRecord('cmn_department');
 		gr.initialize();
 		gr.name = department_name;
 		gr.id = department_id;
-		gr.company = department_company;
-		gr.cost_center = department_cost_center;
-		gr.parent = department_parent;
+		gr.company = gr_c.sys_id;
+		gr.cost_center = gr_cc.sys_id;
+		gr.parent = gr_p.sys_id;
 		gr.description = department_description;
-		gr.dept_head = department_dept_head;
-		gr.primary_contact = department_primary_contact;
+		gr.dept_head = gr_dh.sys_id;
+		gr.primary_contact = gr_pc.sys_id;
 		
 		var sys_id = gr.insert();
 
 		if (sys_id) {
-			gs.info('[Customer Onboarding][SI][Department] New Department record created successfully: ' + sysId);
+			gs.info('[Customer Onboarding][SI][Department.Create] New Department record created successfully: ' + sysId);
 			return true;
 		} else {
-			gs.info('[Customer Onboarding][SI][Department] New Department record not created successfully: ' + sysId);
+			gs.info('[Customer Onboarding][SI][Department.Create] New Department record not created successfully: ' + sysId);
 			return false;
 		}
 	},
@@ -68,7 +127,7 @@ Department.prototype = {
 	// .. 
 	Get_SysID: function(sys_id){
 		
-		gs.info('[Customer Onboarding][SI][Department] Get Department with sys_id = ' + sys_id);
+		gs.info('[Customer Onboarding][SI][Department.Get_SysID] Get Department with sys_id = ' + sys_id);
 	
 		gr = new GlideRecord('cmn_department');
 		gr.addQuery('sys_id',sys_id);
@@ -83,7 +142,7 @@ Department.prototype = {
 	// .. 
 	Get_Name: function(department_name){
 		
-		gs.info('[Customer Onboarding][SI][Department] Get Department with name = ' + department_name);
+		gs.info('[Customer Onboarding][SI][Department.Get_Name] Get Department with name = ' + department_name);
 	
 		gr = new GlideRecord('cmn_department');
 		gr.addQuery('name',department_name);
@@ -98,7 +157,7 @@ Department.prototype = {
 	// .. 
 	Delete: function(sys_id){
 		
-		gs.info('[Customer Onboarding][SI][Department] Delete Department with sys_id = ' + sys_id);
+		gs.info('[Customer Onboarding][SI][Department.Delete] Delete Department with sys_id = ' + sys_id);
 		
 		var gr = this.Get_SysID(sys_id);
 		var bool;
@@ -118,16 +177,77 @@ Department.prototype = {
 	// .. 
 	Update: function(sys_id, column, value){
 		
-		gs.info('[Customer Onboarding][SI][Department] Updating Department with sys_id = ' + sys_id);
-	
-		var gr = this.Get_SysID(sys_id);
+		gr = this.Get_SysID(sys_id);
+		gr_c = new GlideRecord('core_company');
+		gr_cc = new GlideRecord('cmn_cost_center');
+		gr_p = new GlideRecord('cmn_department');
+		gr_dh = new GlideRecord('sys_user');
+		gr_pc = new GlideRecord('sys_user');
 		
-		if (gr.isValidRecord() == true) {	
+		// Lets first check if the value passed is a keyword or null and exit or replace accordingly
+		if (value == undefined || value == "") { return false;}
+		if (value == "$NULL$") { value = "";}
+		if (value == "$DATE$") { value = Date.today();}
+		if (value == "$NOW$") { value = Date.now();}
+		
+		gs.info('[Customer Onboarding][SI][Department.Update] Updating Department with sys_id = ' + sys_id + ". Setting " + column + " to " + value);
+		
+		if (gr.isValidRecord() == true && column != "cost_center" && column != "company" && column != "parent" && column != "department_head" && column != "primary_contact") {	
 			gr[column] = value;
-			var bool = gr.update();
-			return true;
+			return gr.update();
+			
+		} else if (gr.isValidRecord() == true && column == "company") {
+			// If we are updating company, we need to cater for the possibility of a sys_id or company name being sent
+			var gr_c_1 = gr_c.addQuery('sys_id',value);
+			gr_c_1.addOrCondition('name',value);
+			gr_c.query();
+			gr_c.next();
+			
+			gr.company = gr_c.sys_id;
+			return gr.update();
+
+		} else if (gr.isValidRecord() == true && column == "cost_center") {
+			// If we are updating cost center, we need to cater for the possibility of a sys_id or cost center name being sent
+			var gr_cc_1 = gr_cc.addQuery('sys_id',value);
+			gr_cc_1.addOrCondition('name',value);
+			gr_cc.query();
+			gr_cc.next();
+			
+			gr.cost_center = gr_cc.sys_id;
+			return gr.update();
+		
+		} else if (gr.isValidRecord() == true && column == "parent") {
+			// If we are updating parent, we need to cater for the possibility of a sys_id or parent name being sent
+			var gr_p_1 = gr_p.addQuery('sys_id',value);
+			gr_p_1.addOrCondition('name',value);
+			gr_p.query();
+			gr_p.next();
+			
+			gr.parent = gr_p.sys_id;
+			return gr.update();
+			
+		} else if (gr.isValidRecord() == true && column == "department_head") {
+			// If we are updating department head, we need to cater for the possibility of a sys_id or department head name being sent
+			var gr_dh_1 = gr_dh.addQuery('sys_id',value);
+			gr_dh_1.addOrCondition('user_name',value);
+			gr_dh.query();
+			gr_dh.next();
+			
+			gr.department_head = gr_dh.sys_id;
+			return gr.update();
+			
+		} else if (gr.isValidRecord() == true && column == "primary_contact") {
+			// If we are updating primary contact, we need to cater for the possibility of a sys_id or primary contact name being sent
+			var gr_pc_1 = gr_pc.addQuery('sys_id',value);
+			gr_pc_1.addOrCondition('user_name',value);
+			gr_pc.query();
+			gr_pc.next();
+			
+			gr.primary_contact = gr_pc.sys_id;
+			return gr.update();
+						
 		} else {
-			gs.info('[Customer Onboarding][SI][Department] Couldnt find valid record from provided Sys_ID: ' + sys_id);
+			gs.info('[Customer Onboarding][SI][Department.Update] Couldnt find valid record from provided Sys_ID: ' + sys_id);
 			return false;
 		}
 		
@@ -139,13 +259,13 @@ Department.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-11-28 03:44:43</sys_created_on>
         <sys_id>80543d000f3e0300d1ac8f8ce1050e7f</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>Department</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sys_script_include_80543d000f3e0300d1ac8f8ce1050e7f</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-28 03:44:43</sys_updated_on>
+        <sys_updated_on>2018-01-26 01:51:29</sys_updated_on>
     </sys_script_include>
 </record_update>

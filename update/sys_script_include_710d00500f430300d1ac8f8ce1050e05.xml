@@ -11,7 +11,7 @@
 // Author: 		    Ronald Lob
 // Script Type:     [Script Include] Customer Onboarding - Group API
 // Script Name:	    Customer Onboarding - Group API
-// Script Version:	1.00
+// Script Version:	1.2
 // Script Desc:	    API for CRUD functionality on Group table. 
 //                  Differs from standard Table / REST API as it's specific to this application.
 //                  Cascading of Creates / Updates / Deletes.
@@ -19,6 +19,7 @@
 // Revisions:
 // ==========				
 // 11/12/2017 - [Version 1.0][Ronald Lob]  	Development.
+// 25/01/2018 - [Version 1.2][Ronald Lob]  	Enhanced Update functions to validate null or keywords. Added lookup feature for reference fields.
 // =============================================================
 
 var Group = Class.create();
@@ -29,40 +30,84 @@ Group.prototype = {
 	// .. 
 	// Creates a new record in Group
 	// .. 
-	Create: function(group_active, group_cost_center, group_default_assignee, group_description, group_email, group_exclude_manager, group_include_members, group_manager, group_name, group_parent, group_roles, group_type){
+	Create: function(group_active, group_cost_center, group_default_assignee, group_description, group_email, group_manager, group_name, group_parent, group_type){
 		
-		gs.info('[Customer Onboarding][SI][Group] Create a new Group in ServiceNow.');
+		gs.info('[Customer Onboarding][SI][Group.Create] Create a new Group in ServiceNow with the name: ' + group_name);
 		
-		// Check if the Group exists already or not
+		// Check if the Group exists already or not. If it does we exit and let the source decide if we update or not. 
 		var gr = this.Get_Name(group_name);
-		
+		gr_cc = new GlideRecord('cmn_cost_center');
+		gr_da = new GlideRecord('sys_user');
+		gr_m = new GlideRecord('sys_user');
+		gr_p = new GlideRecord('sys_user_group');
+
 		if (gr.isValidRecord() == true) {
-			gs.info('[Customer Onboarding][SI][Group] Group already exists. Exit');
+			gs.info('[Customer Onboarding][SI][Group.Create] Group with the name ' + group_name + ' already exists. Exit');
 			return false;
+		} else {
+			gs.info('[Customer Onboarding][SI][Group.Create] Group with the name ' + group_name + ' doesnt exist. Create');
+		}
+		
+		// We need to cater for the cost center name passed as parameter and not the sys_id. 
+		if (group_cost_center) {
+			var gr_cc_1 = gr_cc.addQuery('sys_id',group_cost_center);
+			gr_cc_1.addOrCondition('name',group_cost_center);
+			gr_cc.query();
+			gr_cc.next();
+			
+			gs.info('[Customer Onboarding][SI][Group.Create] Cost Center verified: ' + gr_cc.sys_id);
+		}
+		
+		// We need to cater for the default assignee name passed as parameter and not the sys_id. 
+		if (group_default_assignee) {
+			var gr_da_1 = gr_da.addQuery('sys_id',group_default_assignee);
+			gr_da_1.addOrCondition('user_name',group_default_assignee);
+			gr_da.query();
+			gr_da.next();
+			
+			gs.info('[Customer Onboarding][SI][Group.Create] Default Assignee verified: ' + gr_da.sys_id);
+		}
+		
+		// We need to cater for the manager name passed as parameter and not the sys_id. 
+		if (group_manager) {
+			var gr_m_1 = gr_m.addQuery('sys_id',group_manager);
+			gr_m_1.addOrCondition('user_name',group_manager);
+			gr_m.query();
+			gr_m.next();
+			
+			gs.info('[Customer Onboarding][SI][Group.Create] Manager verified: ' + gr_m.sys_id);
+		}
+		
+		// We need to cater for the parent group name passed as parameter and not the sys_id. 
+		if (group_parent) {
+			var gr_p_1 = gr_p.addQuery('sys_id',group_parent);
+			gr_p_1.addOrCondition('name',group_parent);
+			gr_p.query();
+			gr_p.next();
+			
+			gs.info('[Customer Onboarding][SI][Group.Create] Parent verified: ' + gr_p.sys_id);
 		}
 	
+		// Create record
 		gr = new GlideRecord('sys_user_group');
 		gr.initialize();
 		gr.active = group_active;
-		gr.cost_center = group_cost_center;
-		gr.default_assignee = group_default_assignee;
+		gr.cost_center = gr_cc.sys_id;
+		gr.default_assignee = gr_da.sys_id;
 		gr.description = group_description;
 		gr.email = group_email;
-		gr.exclude_manager = group_exclude_manager;
-		gr.include_members = group_include_members;
-		gr.manager = group_manager;
+		gr.manager = gr_m.sys_id;
 		gr.name = group_name;
-		gr.parent = group_parent;
-		gr.roles = group_roles;
+		gr.parent = gr_p.sys_id;
 		gr.type = group_type;
 		
 		var sys_id = gr.insert();
 
 		if (sys_id) {
-			gs.info('[Customer Onboarding][SI][Group] New Group record created successfully: ' + sysId);
+			gs.info('[Customer Onboarding][SI][Group.Create] New Group record created successfully: ' + sysId);
 			return true;
 		} else {
-			gs.info('[Customer Onboarding][SI][Group] New Group record not created successfully: ' + sysId);
+			gs.info('[Customer Onboarding][SI][Group.Create] New Group record not created successfully: ' + sysId);
 			return false;
 		}
 	},
@@ -72,7 +117,7 @@ Group.prototype = {
 	// .. 
 	Get_SysID: function(sys_id){
 		
-		gs.info('[Customer Onboarding][SI][Group] Get Group with sys_id = ' + sys_id);
+		gs.info('[Customer Onboarding][SI][Group.Get_SysID] Get Group with sys_id = ' + sys_id);
 	
 		gr = new GlideRecord('sys_user_group');
 		gr.addQuery('sys_id',sys_id);
@@ -87,7 +132,7 @@ Group.prototype = {
 	// .. 
 	Get_Name: function(group_name){
 		
-		gs.info('[Customer Onboarding][SI][Group] Get Group with name = ' + group_name);
+		gs.info('[Customer Onboarding][SI][Group.Get_Name] Get Group with name = ' + group_name);
 	
 		gr = new GlideRecord('sys_user_group');
 		gr.addQuery('name',group_name);
@@ -102,7 +147,7 @@ Group.prototype = {
 	// .. 
 	Delete: function(sys_id){
 		
-		gs.info('[Customer Onboarding][SI][Group] Delete Group with sys_id = ' + sys_id);
+		gs.info('[Customer Onboarding][SI][Group.Delete] Delete Group with sys_id = ' + sys_id);
 		
 		var gr = this.Get_SysID(sys_id);
 		var bool;
@@ -122,16 +167,70 @@ Group.prototype = {
 	// .. 
 	Update: function(sys_id, column, value){
 		
-		gs.info('[Customer Onboarding][SI][Group] Updating Group with sys_id = ' + sys_id);
-	
 		var gr = this.Get_SysID(sys_id);
+		gr_cc = new GlideRecord('cmn_cost_center');
+		gr_da = new GlideRecord('sys_user');
+		gr_m = new GlideRecord('sys_user');
+		gr_p = new GlideRecord('sys_user_group');
 		
-		if (gr.isValidRecord() == true) {	
+		// Lets first check if the value passed is a keyword or null and exit or replace accordingly
+		if (value == undefined || value == "") { return false;}
+		if (value == "$NULL$") { value = "";}
+		if (value == "$DATE$") { value = Date.today();}
+		if (value == "$NOW$") { value = Date.now();}
+		
+		gs.info('[Customer Onboarding][SI][Group.Update] Updating Group with sys_id = ' + sys_id + ". Setting " + column + " to " + value);
+		
+		if (gr.isValidRecord() == true && column != "cost_center" && column != "default_assignee" && column != "parent" && column != "manager") {	
 			gr[column] = value;
-			var bool = gr.update();
-			return true;
+			return gr.update();
+
+		} else if (gr.isValidRecord() == true && column == "cost_center") {
+			// If we are updating cost center, we need to cater for the possibility of a sys_id or cost center name being sent
+			var gr_cc_1 = gr_cc.addQuery('sys_id',value);
+			gr_cc_1.addOrCondition('name',value);
+			gr_cc.query();
+			gr_cc.next();
+			
+			gr.cost_center = gr_cc.sys_id;
+			
+			return gr.update();
+					
+		} else if (gr.isValidRecord() == true && column == "default_assignee") {
+			// If we are updating default assignee, we need to cater for the possibility of a sys_id or default assignee name being sent
+			var gr_da_1 = gr_da.addQuery('sys_id',value);
+			gr_da_1.addOrCondition('user_name',value);
+			gr_da.query();
+			gr_da.next();
+			
+			gr.default_assignee = gr_da.sys_id;
+			
+			return gr.update();
+			
+		} else if (gr.isValidRecord() == true && column == "parent") {
+			// If we are updating parent, we need to cater for the possibility of a sys_id or group name being sent
+			var gr_p_1 = gr_p.addQuery('sys_id',value);
+			gr_p_1.addOrCondition('name',value);
+			gr_p.query();
+			gr_p.next();
+			
+			gr.parent = gr_p.sys_id;
+			
+			return gr.update();
+			
+		} else if (gr.isValidRecord() == true && column == "manager") {
+			// If we are updating manager, we need to cater for the possibility of a sys_id or manager name being sent
+			var gr_m_1 = gr_m.addQuery('sys_id',value);
+			gr_m_1.addOrCondition('user_name',value);
+			gr_m.query();
+			gr_m.next();
+			
+			gr.manager = gr_m.sys_id;
+			
+			return gr.update();
+						
 		} else {
-			gs.info('[Customer Onboarding][SI][Group] Couldnt find valid record from provided Sys_ID: ' + sys_id);
+			gs.info('[Customer Onboarding][SI][Group.Update] Couldnt find valid record from provided Sys_ID: ' + sys_id);
 			return false;
 		}
 		
@@ -143,13 +242,13 @@ Group.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-12-11 01:18:43</sys_created_on>
         <sys_id>710d00500f430300d1ac8f8ce1050e05</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>Group</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sys_script_include_710d00500f430300d1ac8f8ce1050e05</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-12-11 01:18:43</sys_updated_on>
+        <sys_updated_on>2018-01-30 02:20:47</sys_updated_on>
     </sys_script_include>
 </record_update>

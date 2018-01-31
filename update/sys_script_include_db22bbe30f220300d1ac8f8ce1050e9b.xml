@@ -45,7 +45,7 @@ Company.prototype = {
 		
 		if (gr.isValidRecord() == true) {
 			gs.info('[Customer Onboarding][SI][Company.Create] Company with the name ' + company_name + ' already exists. Exit');
-			return;
+			return false;
 		} else {
 			gs.info('[Customer Onboarding][SI][Company.Create] Company with the name ' + company_name + ' doesnt exist. Create');
 		}
@@ -81,6 +81,7 @@ Company.prototype = {
 			gs.info('[Customer Onboarding][SI][Company.Create] Contact verified: ' + gr_c.sys_id);
 		}
 	
+		// Create record
 		gr = new GlideRecord('core_company');
 		gr.initialize();
 		gr.name = company_name;
@@ -167,8 +168,6 @@ Company.prototype = {
 	// .. 
 	Update: function(sys_id, column, value){
 		
-		
-	
 		gr = this.Get_SysID(sys_id);
 		gr_l = new GlideRecord('cmn_location');
 		gr_p = new GlideRecord('core_company');
@@ -176,13 +175,13 @@ Company.prototype = {
 		
 		// Lets first check if the value passed is a keyword or null and exit or replace accordingly
 		if (value == undefined || value == "") { return false;}
-		if (value == "$NULL$") { value = undefined;}
+		if (value == "$NULL$") { value = "";}
 		if (value == "$DATE$") { value = Date.today();}
 		if (value == "$NOW$") { value = Date.now();}
 		
 		gs.info('[Customer Onboarding][SI][Company.Update] Updating Company with sys_id = ' + sys_id + ". Setting " + column + " to " + value);
 		
-		if (gr.isValidRecord() == true && column != "location") {
+		if (gr.isValidRecord() == true && column != "location" && column != "parent" && column != "contact") {
 			// Location not selected, so we can just update that one field.
 			gr[column] = value; 
 			return gr.update();
@@ -210,7 +209,6 @@ Company.prototype = {
 			gr_p.next();
 			
 			gr.parent = gr_p.sys_id;
-			
 			return gr.update();
 			
 		} else if (gr.isValidRecord() == true && column == "contact") {
@@ -236,13 +234,13 @@ Company.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-11-27 02:00:01</sys_created_on>
         <sys_id>db22bbe30f220300d1ac8f8ce1050e9b</sys_id>
-        <sys_mod_count>42</sys_mod_count>
+        <sys_mod_count>46</sys_mod_count>
         <sys_name>Company</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sys_script_include_db22bbe30f220300d1ac8f8ce1050e9b</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-01-24 04:31:31</sys_updated_on>
+        <sys_updated_on>2018-01-25 03:32:31</sys_updated_on>
     </sys_script_include>
 </record_update>

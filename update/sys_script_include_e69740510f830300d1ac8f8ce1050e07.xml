@@ -11,7 +11,7 @@
 // Author: 		    Ronald Lob
 // Script Type:     [Script Include] Customer Onboarding - CostCenter API
 // Script Name:	    Customer Onboarding - CostCenter API
-// Script Version:	1.00
+// Script Version:	1.2
 // Script Desc:	    API for CRUD functionality on CostCenter table. 
 //                  Differs from standard Table / REST API as it's specific to this application.
 //                  Cascading of Creates / Updates / Deletes.
@@ -19,6 +19,7 @@
 // Revisions:
 // ==========				
 // 14/12/2017 - [Version 1.0][Ronald Lob]  	Development.
+// 25/01/2018 - [Version 1.2][Ronald Lob]  	Enhanced Update functions to validate null or keywords. Added lookup feature for reference fields. 
 // =============================================================
 
 var CostCenter = Class.create();
@@ -31,16 +32,42 @@ CostCenter.prototype = {
 	// .. 
 	Create: function(costcenter_name, costcenter_accountnumber, costcenter_code, costcenter_validfrom, costcenter_validto, costcenter_manager, costcenter_parent){
 		
-		gs.info('[Customer Onboarding][SI][CostCenter] Create a new CostCenter in ServiceNow.');
+		gs.info('[Customer Onboarding][SI][CostCenter.Create] Create a new CostCenter in ServiceNow.');
 		
-		// Check if the CostCenter exists already or not
+		// Check if the CostCenter exists already or not. If it does we exit and let the source decide if we update or not.
 		var gr = this.Get_Name(costcenter_name);
+		gr_p = new GlideRecord('cmn_cost_center');
+		gr_c = new GlideRecord('sys_user');
 		
 		if (gr.isValidRecord() == true) {
-			gs.info('[Customer Onboarding][SI][CostCenter] CostCenter already exists. Exit');
+			gs.info('[Customer Onboarding][SI][CostCenter.Create] CostCenter with the name ' + costcenter_name + ' already exists. Exit');
 			return false;
+		} else {
+			gs.info('[Customer Onboarding][SI][CostCenter.Create] CostCenter with the name ' + costcenter_name + ' doesnt already exist. Create');
+		}
+		
+		// We need to cater for the parent cost center name or account number passed as parameter and not the sys_id.
+		if (costcenter_parent) {
+			var gr_p_1 = gr_p.addQuery('sys_id',costcenter_parent);
+			gr_p_1.addOrCondition('name',costcenter_parent);
+			gr_p_1.addOrCondition('account_number',costcenter_parent);
+			gr_p.query();
+			gr_p.next();
+			
+			gs.info('[Customer Onboarding][SI][CostCenter.Create] Parent verified: ' + gr_p.sys_id);
+		}
+		
+		// We need to cater for the manager's user_name passed as parameter and not the sys_id. 
+		if (company_contact) {
+			var gr_c_1 = gr_c.addQuery('sys_id',costcenter_manager);
+			gr_c_1.addOrCondition('user_name',costcenter_manager);
+			gr_c.query();
+			gr_c.next();
+			
+			gs.info('[Customer Onboarding][SI][CostCenter.Create] Contact verified: ' + gr_c.sys_id);
 		}
 	
+		// Create record
 		gr = new GlideRecord('cmn_cost_center');
 		gr.initialize();
 		gr.name = costcenter_name;
@@ -48,16 +75,16 @@ CostCenter.prototype = {
 		gr.code = costcenter_code;
 		gr.valid_from = costcenter_validfrom;
 		gr.valid_to = costcenter_validto;
-		gr.manager = costcenter_manager;
-		gr.parent = costcenter_parent;
+		gr.manager = gr_c.sys_id;
+		gr.parent = gr_p.sys_id;
 		
 		var sys_id = gr.insert();
 
 		if (sys_id) {
-			gs.info('[Customer Onboarding][SI][CostCenter] New CostCenter record created successfully: ' + sysId);
+			gs.info('[Customer Onboarding][SI][CostCenter.Create] New CostCenter record created successfully: ' + sysId);
 			return true;
 		} else {
-			gs.info('[Customer Onboarding][SI][CostCenter] New CostCenter record not created successfully: ' + sysId);
+			gs.info('[Customer Onboarding][SI][CostCenter.Create] New CostCenter record not created successfully: ' + sysId);
 			return false;
 		}
 	},
@@ -67,7 +94,7 @@ CostCenter.prototype = {
 	// .. 
 	Get_SysID: function(sys_id){
 		
-		gs.info('[Customer Onboarding][SI][CostCenter] Get CostCenter with sys_id = ' + sys_id);
+		gs.info('[Customer Onboarding][SI][CostCenter.Get_SysID] Get CostCenter with sys_id = ' + sys_id);
 	
 		gr = new GlideRecord('cmn_cost_center');
 		gr.addQuery('sys_id',sys_id);
@@ -82,7 +109,7 @@ CostCenter.prototype = {
 	// .. 
 	Get_Name: function(costcenter_name){
 		
-		gs.info('[Customer Onboarding][SI][CostCenter] Get CostCenter with name = ' + costcenter_name);
+		gs.info('[Customer Onboarding][SI][CostCenter.Get_Name] Get CostCenter with name = ' + costcenter_name);
 	
 		gr = new GlideRecord('cmn_cost_center');
 		gr.addQuery('name',costcenter_name);
@@ -97,7 +124,7 @@ CostCenter.prototype = {
 	// .. 
 	Delete: function(sys_id){
 		
-		gs.info('[Customer Onboarding][SI][CostCenter] Delete CostCenter with sys_id = ' + sys_id);
+		gs.info('[Customer Onboarding][SI][CostCenter.Delete] Delete CostCenter with sys_id = ' + sys_id);
 		
 		var gr = this.Get_SysID(sys_id);
 		var bool;
@@ -116,17 +143,50 @@ CostCenter.prototype = {
 	// Updates one field in an existing record from provided sys_id, column name, and value
 	// .. 
 	Update: function(sys_id, column, value){
-		
-		gs.info('[Customer Onboarding][SI][CostCenter] Updating CostCenter with sys_id = ' + sys_id);
 	
 		var gr = this.Get_SysID(sys_id);
+		gr_p = new GlideRecord('cmn_cost_center');
+		gr_c = new GlideRecord('sys_user');
 		
-		if (gr.isValidRecord() == true) {	
+		// Lets first check if the value passed is a keyword or null and exit or replace accordingly
+		if (value == undefined || value == "") { return false;}
+		if (value == "$NULL$") { value = "";}
+		if (value == "$DATE$") { value = Date.today();}
+		if (value == "$NOW$") { value = Date.now();}
+		
+		gs.info('[Customer Onboarding][SI][CostCenter.Update] Updating CostCenter with sys_id = ' + sys_id + ". Setting " + column + " to " + value);
+		
+		if (gr.isValidRecord() == true && column != "manager" && column != "parent") {	
+			
 			gr[column] = value;
-			var bool = gr.update();
-			return true;
+			return gr.update();
+			
+		} else if (gr.isValidRecord() == true && column == "manager") {
+			
+			// If we are updating manager, we need to cater for the possibility of a sys_id or user_name being sent
+			var gr_c_1 = gr_c.addQuery('sys_id',value);
+			gr_c_1.addOrCondition('user_name',value);
+			gr_c.query();
+			gr_c.next();
+			
+			gr.manager = gr_c.sys_id;
+			return gr.update();
+			
+		} else if (gr.isValidRecord() == true && column == "parent") {
+			
+			// If we are updating parent, we need to cater for the possibility of a sys_id or cost center or account number being sent
+			var gr_p_1 = gr_p.addQuery('sys_id',value);
+			gr_p_1.addOrCondition('name',value);
+			gr_p_1.addOrCondition('account_number',value);
+			gr_p.query();
+			gr_p.next();
+			
+			gr.parent = gr_p.sys_id;
+			
+			return gr.update();
+			
 		} else {
-			gs.info('[Customer Onboarding][SI][CostCenter] Couldnt find valid record from provided Sys_ID: ' + sys_id);
+			gs.info('[Customer Onboarding][SI][CostCenter.Update] Couldnt find valid record from provided Sys_ID: ' + sys_id);
 			return false;
 		}
 		
@@ -138,13 +198,13 @@ CostCenter.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-12-14 03:16:39</sys_created_on>
         <sys_id>e69740510f830300d1ac8f8ce1050e07</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>3</sys_mod_count>
         <sys_name>CostCenter</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sys_script_include_e69740510f830300d1ac8f8ce1050e07</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-12-14 03:24:20</sys_updated_on>
+        <sys_updated_on>2018-01-25 01:30:23</sys_updated_on>
     </sys_script_include>
 </record_update>
