@@ -30,7 +30,7 @@ Location.prototype = {
 	// .. 
 	// Creates a new record in Location
 	// .. 
-	Create: function(location_name, location_parent, location_country, location_timezone, location_state, location_city, location_street, location_company, location_contact, location_latitude, location_longitude, location_stockroom){
+	Create: function(location_name, location_parent, location_country, location_state, location_city, location_street, location_contact, location_company, location_latitude, location_longitude, location_stockroom){
 		
 		gs.info('[Customer Onboarding][SI][Location.Create] Create a new Location in ServiceNow.');
 		
@@ -81,14 +81,13 @@ Location.prototype = {
 		gr = new GlideRecord('cmn_location');
 		gr.initialize();
 		gr.name = location_name;
-		gr.parent = gr_p.sys_id;
+		if (gr_p.isValidRecord() == true) { gr.parent = gr_p.sys_id; }
 		gr.country = location_country;
-		gr.time_zone = location_timezone;
 		gr.state = location_state;
 		gr.city = location_city;
 		gr.street = location_street;
-		gr.contact = gr_u.sys_id;
-		gr.company = gr_c.sys_id;
+		if (gr_u.isValidRecord() == true) { gr.contact = gr_u.sys_id; }
+		if (gr_c.isValidRecord() == true) { gr.company = gr_c.sys_id; }
 		gr.latitude = location_latitude;
 		gr.longitude = location_longitude;
 		gr.stock_room = location_stockroom;
@@ -96,10 +95,10 @@ Location.prototype = {
 		var sys_id = gr.insert();
 
 		if (sys_id) {
-			gs.info('[Customer Onboarding][SI][Location.Create] New Location record created successfully: ' + sysId);
+			gs.info('[Customer Onboarding][SI][Location.Create] New Location record created successfully: ' + sys_id);
 			return true;
 		} else {
-			gs.info('[Customer Onboarding][SI][Location.Create] New Location record not created successfully: ' + sysId);
+			gs.info('[Customer Onboarding][SI][Location.Create] New Location record not created successfully: ' + sys_id);
 			return false;
 		}
 	},
@@ -222,13 +221,13 @@ Location.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-12-11 00:14:44</sys_created_on>
         <sys_id>6bec7b840f030300d1ac8f8ce1050e39</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>Location</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sys_script_include_6bec7b840f030300d1ac8f8ce1050e39</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-01-26 01:21:57</sys_updated_on>
+        <sys_updated_on>2018-02-02 02:20:06</sys_updated_on>
     </sys_script_include>
 </record_update>

@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sc_cat_item_producer">
+    <sc_cat_item_producer action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <availability>on_desktop</availability>
+        <billable>false</billable>
+        <can_cancel>false</can_cancel>
+        <category display_value="Foundation">796558e10f620300d1ac8f8ce1050e47</category>
+        <cost>0</cost>
+        <custom_cart/>
+        <delivery_plan display_value="DEFAULT">523da512c611228900811a37c97c2014</delivery_plan>
+        <delivery_plan_script/>
+        <delivery_time>1970-01-03 00:00:00</delivery_time>
+        <description><![CDATA[<p>Use this Template to perform a full Foundation data load into ServiceNow</p>
+<ol style="list-style-position: inside;"><li>Please download the template by clicking <a title="here" href="https://dev43684.service-now.com/sc_cat_item_producer.do?sys_id&#61;3e60fbcc0f620300d1ac8f8ce1050e86&amp;sysparm_record_target&#61;sc_cat_item_producer&amp;sysparm_record_row&#61;4&amp;sysparm_record_rows&#61;28&amp;sysparm_record_list&#61;sc_catalogs%3DNULL%5EORsc_catalogsDOES&#43;NOT&#43;CONTAIN0b22fd2ad7021100b9a5c7400e610319%5EORDERBYname" rel="nofollow">here</a>.</li><li>Fill out the template with the Foundation data and then save the file locally on your computer. Please see the instructions on the template.</li><li>Attach the completed import template to this request by dragging and dropping the file into the browser. Or you can use the paper clip icon to browse to the file on your computer.</li><li>Click Submit to process the attached file.</li></ol>]]></description>
+        <entitlement_script/>
+        <group/>
+        <hide_sp>false</hide_sp>
+        <icon/>
+        <ignore_price>true</ignore_price>
+        <image/>
+        <list_price>0</list_price>
+        <location/>
+        <meta/>
+        <mobile_hide_price>false</mobile_hide_price>
+        <mobile_picture/>
+        <mobile_picture_type>use_desktop_picture</mobile_picture_type>
+        <model/>
+        <name>Foundation Data Import</name>
+        <no_cart>false</no_cart>
+        <no_order>false</no_order>
+        <no_order_now>false</no_order_now>
+        <no_proceed_checkout>false</no_proceed_checkout>
+        <no_quantity>false</no_quantity>
+        <no_search>false</no_search>
+        <omit_price>false</omit_price>
+        <order>950</order>
+        <ordered_item_link/>
+        <picture/>
+        <preview>JavaScript: popupOpenStandard("com.glideapp.servicecatalog_cat_item_view.do?v=1&amp;sysparm_id=2149b7b8db00130043055740cf9619c6&amp;sysparm_preview=true", "summary");</preview>
+        <price>0</price>
+        <recurring_frequency/>
+        <recurring_price>0</recurring_price>
+        <redirect_url>catalog_home</redirect_url>
+        <roles/>
+        <sc_catalogs>51e4d0e10f620300d1ac8f8ce1050e33</sc_catalogs>
+        <sc_ic_item_staging/>
+        <sc_ic_version/>
+        <script><![CDATA[// =============================================================
+// Author: 		    Ronald Lob
+// Script Type:     [Record Producer] Customer Onboarding - Foundation - Full
+// Script Name:	    Customer Onboarding - Foundation - Full
+// Script Version:	1.0
+// Script Desc:	    Build the import sets and associates transforms to each set
+//                  References a multi-sheet spreadsheet for data and extracts
+//                  each sheet to an import set table. Process the transform in sequence. 
+// ==========
+// Revisions:
+// ==========				
+// 01/02/2018 - [Version 1.0][Ronald Lob] Development.
+// =============================================================
+
+// Set the following variables with the name of your import set table and task id column (to be changed to use properties)  
+// var importSetTableName = gs.getProperty('Record_Producer_ImportSetTable_Company');  
+var company_importSetTableName = "x_133853_customer_record_producer_importsettable_company";
+var costcenter_importSetTableName = "x_133853_customer_record_producer_importsettable_costcenter";
+var department_importSetTableName = "x_133853_customer_record_producer_importsettable_department";
+var group_importSetTableName = "x_133853_customer_record_producer_importsettable_group";
+var location_importSetTableName = "x_133853_customer_record_producer_importsettable_location";
+var user_importSetTableName = "x_133853_customer_record_producer_importsettable_user";
+//var importSetTaskIDFieldName = "task_id";   
+// var transformMapID = gs.getProperty('TransformMap_SysID_Company');
+var company_transformMapID = "fe0be933db2f030043055740cf9619dc";
+var costcenter_transformMapID = "5f8a680cdb00130043055740cf961961";
+var department_transformMapID = "c1bedc04db00130043055740cf9619c6";
+var group_transformMapID = "df4eed14db00130043055740cf961933";
+var location_transformMapID = "fbe7cd88db40130043055740cf9619d1";
+var user_transformMapID = "135157a0db40130043055740cf9619c6";
+
+var tools = new global.ScopedTools();
+  
+//
+// [Company] Setup data source for attachment
+//
+gs.info("[Customer Onboarding][RP][Foundation] Company - Setup data source with Attachment settings");
+current.name = "Customer Onboarding - Bulk Company load";  
+current.import_set_table_name = company_importSetTableName;  
+current.file_retrieval_method = "Attachment";  
+current.type = "File";  
+current.format = "Excel";  
+current.header_row = 11;  
+current.sheet_number = 3;  
+current.insert(); 
+
+var company_importSetRec = tools.Process_Attachment(current);
+gs.info("[Customer Onboarding][RP][Foundation] Company Data Source and Import Set Configured.");
+gs.addInfoMessage("Company Data Source and Import Set Configured.");
+
+if (company_importSetRec.isValidRecord() == true){
+	// Run transform for built import set using predefined transform map 
+	tools.Transform(company_importSetRec.sys_id, company_transformMapID);
+	gs.addInfoMessage("Company Transform Started.");
+} else {
+	// Something went wrong, we need to abort
+	gs.addErrorMessage("Error: A Company import set was not created. Please review the Application logs for further information.");
+	current.setAbortAction(true);
+}
+
+//
+// [Location] Setup data source for attachment
+//
+gs.info("[Customer Onboarding][RP][Foundation] Begin Location Data Source and Import Set config.");
+var gr = new GlideRecord('sys_data_source');
+gr.initialize();
+gr.name = "Customer Onboarding - Bulk Location load";
+gr.import_set_table_name = location_importSetTableName;
+gr.file_retrieval_method = "Attachment";
+gr.type = "File";
+gr.format = "Excel";
+gr.header_row = 11;
+gr.sheet_number = 4;
+var sys_id = gr.insert(); 
+
+var copyAtt = new GlideSysAttachment();
+copyAtt.copy('sys_data_source',current.sys_id,'sys_data_source',sys_id);
+
+var location_importSetRec = tools.Process_Attachment(gr);
+gs.info("[Customer Onboarding][RP][Foundation] Location Data Source and Import Set Configured.");
+gs.addInfoMessage("Location Data Source and Import Set Configured.");
+
+if (location_importSetRec.isValidRecord() == true){
+	// Run transform for built import set using predefined transform map 
+	tools.Transform(location_importSetRec.sys_id, location_transformMapID);
+	gs.addInfoMessage("Location Transform Started.");
+} else {
+	// Something went wrong, we need to abort
+	gs.addErrorMessage("Error: A Location import set was not created. Please review the Application logs for further information.");
+	gr.setAbortAction(true);
+}
+
+//
+// [Cost Center] Setup data source for attachment
+//
+gs.info("[Customer Onboarding][RP][Foundation] Begin Cost Center Data Source and Import Set config.");
+var gr = new GlideRecord('sys_data_source');
+gr.initialize();
+gr.name = "Customer Onboarding - Bulk Cost Center load";
+gr.import_set_table_name = costcenter_importSetTableName;
+gr.file_retrieval_method = "Attachment";
+gr.type = "File";
+gr.format = "Excel";
+gr.header_row = 11;
+gr.sheet_number = 5;
+var sys_id = gr.insert(); 
+
+var copyAtt = new GlideSysAttachment();
+copyAtt.copy('sys_data_source',current.sys_id,'sys_data_source',sys_id);
+
+var costcenter_importSetRec = tools.Process_Attachment(gr);
+gs.info("[Customer Onboarding][RP][Foundation] Cost Center Data Source and Import Set Configured.");
+gs.addInfoMessage("Cost Center Data Source and Import Set Configured.");
+
+if (costcenter_importSetRec.isValidRecord() == true){
+	// Run transform for built import set using predefined transform map 
+	tools.Transform(costcenter_importSetRec.sys_id, costcenter_transformMapID);
+	gs.addInfoMessage("Cost Center Transform Started.");
+} else {
+	// Something went wrong, we need to abort
+	gs.addErrorMessage("Error: A Cost Center import set was not created. Please review the Application logs for further information.");
+	gr.setAbortAction(true);
+}
+
+//
+// [Department] Setup data source for attachment
+//
+gs.info("[Customer Onboarding][RP][Foundation] Begin Department Data Source and Import Set config.");
+var gr = new GlideRecord('sys_data_source');
+gr.initialize();
+gr.name = "Customer Onboarding - Bulk Department load";
+gr.import_set_table_name = department_importSetTableName;
+gr.file_retrieval_method = "Attachment";
+gr.type = "File";
+gr.format = "Excel";
+gr.header_row = 11;
+gr.sheet_number = 6;
+var sys_id = gr.insert(); 
+
+var copyAtt = new GlideSysAttachment();
+copyAtt.copy('sys_data_source',current.sys_id,'sys_data_source',sys_id);
+
+var department_importSetRec = tools.Process_Attachment(gr);
+gs.info("[Customer Onboarding][RP][Foundation] Department Data Source and Import Set Configured.");
+gs.addInfoMessage("Department Data Source and Import Set Configured.");
+
+if (department_importSetRec.isValidRecord() == true){
+	// Run transform for built import set using predefined transform map 
+	tools.Transform(department_importSetRec.sys_id, department_transformMapID);
+	gs.addInfoMessage("Department Transform Started.");
+} else {
+	// Something went wrong, we need to abort
+	gs.addErrorMessage("Error: A Department import set was not created. Please review the Application logs for further information.");
+	gr.setAbortAction(true);
+} 
+
+//
+// [Group] Setup data source for attachment
+//
+gs.info("[Customer Onboarding][RP][Foundation] Begin Group Data Source and Import Set config.");
+var gr = new GlideRecord('sys_data_source');
+gr.initialize();
+gr.name = "Customer Onboarding - Bulk Group load";
+gr.import_set_table_name = group_importSetTableName;
+gr.file_retrieval_method = "Attachment";
+gr.type = "File";
+gr.format = "Excel";
+gr.header_row = 11;
+gr.sheet_number = 7;
+var sys_id = gr.insert(); 
+
+var copyAtt = new GlideSysAttachment();
+copyAtt.copy('sys_data_source',current.sys_id,'sys_data_source',sys_id);
+
+var group_importSetRec = tools.Process_Attachment(gr);
+gs.info("[Customer Onboarding][RP][Foundation] Group Data Source and Import Set Configured.");
+gs.addInfoMessage("Group Data Source and Import Set Configured.");
+
+if (group_importSetRec.isValidRecord() == true){
+	// Run transform for built import set using predefined transform map 
+	tools.Transform(group_importSetRec.sys_id, group_transformMapID);
+	gs.addInfoMessage("Group Transform Started.");
+} else {
+	// Something went wrong, we need to abort
+	gs.addErrorMessage("Error: A Group import set was not created. Please review the Application logs for further information.");
+	gr.setAbortAction(true);
+} 
+
+//
+// [User] Setup data source for attachment
+//
+gs.info("[Customer Onboarding][RP][Foundation] Begin User Data Source and Import Set config.");
+var gr = new GlideRecord('sys_data_source');
+gr.initialize();
+gr.name = "Customer Onboarding - Bulk User load";
+gr.import_set_table_name = user_importSetTableName;
+gr.file_retrieval_method = "Attachment";
+gr.type = "File";
+gr.format = "Excel";
+gr.header_row = 11;
+gr.sheet_number = 8;
+var sys_id = gr.insert(); 
+
+var copyAtt = new GlideSysAttachment();
+copyAtt.copy('sys_data_source',current.sys_id,'sys_data_source',sys_id);
+
+var user_importSetRec = tools.Process_Attachment(gr);
+gs.info("[Customer Onboarding][RP][Foundation] User Data Source and Import Set Configured.");
+gs.addInfoMessage("User Data Source and Import Set Configured.");
+
+if (user_importSetRec.isValidRecord() == true){
+	// Run transform for built import set using predefined transform map 
+	tools.Transform(user_importSetRec.sys_id, user_transformMapID);
+	gs.addInfoMessage("User Transform Started.");
+} else {
+	// Something went wrong, we need to abort
+	gs.addErrorMessage("Error: A User import set was not created. Please review the Application logs for further information.");
+	gr.setAbortAction(true);
+}
+  
+// Update processed rows with task sys_id  
+//var importSetRow = new GlideRecord(importSetTableName);  
+//importSetRow.addQuery("sys_import_set", importSetRec.sys_id);  
+//importSetRow.query();  
+//while (importSetRow.next()) {  
+//    importSetRow[importSetTaskIDFieldName] = producer.task_number;  
+//    importSetRow.update();  
+//}  
+  
+  
+// Take user to task  
+  
+//var redirectURL = "task.do?sys_id=" + producer.task_number;  
+//producer.redirect = redirectURL;  
+  
+// Since we inserted data source already, abort additional insert by record producer  
+current.setAbortAction(true); ]]></script>
+        <short_description/>
+        <show_variable_help_on_load>false</show_variable_help_on_load>
+        <start_closed>false</start_closed>
+        <sys_class_name>sc_cat_item_producer</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-02-01 00:32:08</sys_created_on>
+        <sys_id>2149b7b8db00130043055740cf9619c6</sys_id>
+        <sys_mod_count>14</sys_mod_count>
+        <sys_name>Foundation Data Import</sys_name>
+        <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
+        <sys_update_name>sc_cat_item_producer_2149b7b8db00130043055740cf9619c6</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-02-05 01:41:59</sys_updated_on>
+        <table_name>sys_data_source</table_name>
+        <template/>
+        <type>item</type>
+        <use_sc_layout>true</use_sc_layout>
+        <vendor/>
+        <view/>
+        <visible_bundle>true</visible_bundle>
+        <visible_guide>true</visible_guide>
+        <visible_standalone>true</visible_standalone>
+        <workflow/>
+    </sc_cat_item_producer>
+    <sys_translated_text action="delete_multiple" query="documentkey=2149b7b8db00130043055740cf9619c6"/>
+    <fx_price action="delete_multiple" query="id=2149b7b8db00130043055740cf9619c6"/>
+    <fx_price action="INSERT_OR_UPDATE">
+        <amount>0</amount>
+        <currency display_value="GBP">GBP</currency>
+        <field>price</field>
+        <id>2149b7b8db00130043055740cf9619c6</id>
+        <parent/>
+        <reference_amount>0</reference_amount>
+        <reference_currency display_value="USD">USD</reference_currency>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-02-01 00:32:09</sys_created_on>
+        <sys_id>7bd97bf0db00130043055740cf961920</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-02-01 00:32:09</sys_updated_on>
+        <table>sc_cat_item_producer</table>
+        <type>calculated</type>
+    </fx_price>
+    <fx_price action="INSERT_OR_UPDATE">
+        <amount>0</amount>
+        <currency display_value="GBP">GBP</currency>
+        <field>recurring_price</field>
+        <id>2149b7b8db00130043055740cf9619c6</id>
+        <parent/>
+        <reference_amount>0</reference_amount>
+        <reference_currency display_value="USD">USD</reference_currency>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-02-01 00:32:09</sys_created_on>
+        <sys_id>ffd97bf0db00130043055740cf961921</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-02-01 00:32:09</sys_updated_on>
+        <table>sc_cat_item_producer</table>
+        <type>calculated</type>
+    </fx_price>
+    <sys_attachment action="INSERT_OR_UPDATE">
+        <average_image_color>#767676</average_image_color>
+        <chunk_size_bytes>734003</chunk_size_bytes>
+        <compressed>true</compressed>
+        <content_type>image/png</content_type>
+        <file_name>icon</file_name>
+        <image_height>68</image_height>
+        <image_width>68</image_width>
+        <size_bytes>2167</size_bytes>
+        <size_compressed>2190</size_compressed>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-02-01 03:52:44</sys_created_on>
+        <sys_id>82c7e8c1db80130043055740cf9619ca</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-02-01 03:52:44</sys_updated_on>
+        <table_name>ZZ_YYsc_cat_item_producer</table_name>
+        <table_sys_id>2149b7b8db00130043055740cf9619c6</table_sys_id>
+    </sys_attachment>
+    <sys_attachment_doc action="INSERT_OR_UPDATE">
+        <data>H4sIAAAAAAAAAA==</data>
+        <length>16</length>
+        <position>0</position>
+        <sys_attachment display_value="icon" sys_id="82c7e8c1db80130043055740cf9619ca">82c7e8c1db80130043055740cf9619ca</sys_attachment>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-02-01 03:52:44</sys_created_on>
+        <sys_id>c2c7e8c1db80130043055740cf9619ca</sys_id>
+    </sys_attachment_doc>
+    <sys_attachment_doc action="INSERT_OR_UPDATE">
+        <data>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</data>
+        <length>2908</length>
+        <position>1</position>
+        <sys_attachment display_value="icon" sys_id="82c7e8c1db80130043055740cf9619ca">82c7e8c1db80130043055740cf9619ca</sys_attachment>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-02-01 03:52:44</sys_created_on>
+        <sys_id>46c7e8c1db80130043055740cf9619ca</sys_id>
+    </sys_attachment_doc>
+    <sys_attachment action="INSERT_OR_UPDATE">
+        <average_image_color>#7ac334</average_image_color>
+        <chunk_size_bytes>734003</chunk_size_bytes>
+        <compressed>true</compressed>
+        <content_type>image/png</content_type>
+        <file_name>picture</file_name>
+        <image_height>128</image_height>
+        <image_width>128</image_width>
+        <size_bytes>14449</size_bytes>
+        <size_compressed>14472</size_compressed>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-02-01 00:32:30</sys_created_on>
+        <sys_id>09f9f334db00130043055740cf961910</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-02-01 00:32:30</sys_updated_on>
+        <table_name>ZZ_YYsc_cat_item_producer</table_name>
+        <table_sys_id>2149b7b8db00130043055740cf9619c6</table_sys_id>
+    </sys_attachment>
+    <sys_attachment_doc action="INSERT_OR_UPDATE">
+        <data>H4sIAAAAAAAAAA==</data>
+        <length>16</length>
+        <position>0</position>
+        <sys_attachment display_value="picture" sys_id="09f9f334db00130043055740cf961910">09f9f334db00130043055740cf961910</sys_attachment>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-02-01 00:32:30</sys_created_on>
+        <sys_id>01f9f334db00130043055740cf961911</sys_id>
+    </sys_attachment_doc>
+    <sys_attachment_doc action="INSERT_OR_UPDATE">
+        <data>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</data>
+        <length>19284</length>
+        <position>1</position>
+        <sys_attachment display_value="picture" sys_id="09f9f334db00130043055740cf961910">09f9f334db00130043055740cf961910</sys_attachment>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-02-01 00:32:30</sys_created_on>
+        <sys_id>81f9f334db00130043055740cf961911</sys_id>
+    </sys_attachment_doc>
+</record_update>

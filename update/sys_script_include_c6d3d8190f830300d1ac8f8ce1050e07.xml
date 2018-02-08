@@ -11,7 +11,7 @@
 // Author: 		    Ronald Lob
 // Script Type:     [Script Include] User Onboarding - User API
 // Script Name:	    Customer Onboarding - User API
-// Script Version:	1.3
+// Script Version:	1.4
 // Script Desc:	    API for CRUD functionality on User table. 
 //                  Differs from standard Table / REST API as it's specific to this application.
 //                  Cascading of Creates / Updates / Deletes.
@@ -21,6 +21,7 @@
 // 14/12/2017 - [Version 1.0][Ronald Lob]  	Development.
 // 25/01/2018 - [Version 1.2][Ronald Lob]  	Enhanced Update functions to validate null or keywords.
 // 31/01/2018 - [Version 1.3][Ronald Lob]  	Added Building as a reference validation. 
+// 08/02/2018 - [Version 1.4][Ronald Lob]  	Added the AddToGroup function to add a user to a group 
 // =============================================================
 
 var User = Class.create();
@@ -121,23 +122,23 @@ User.prototype = {
 		gr.first_name = user_first_name;
 		gr.last_name = user_last_name;
 		gr.vip = user_vip;
-		gr.company = gr_c.sys_id;
-		gr.department = gr_d.sys_id;
-		gr.building = gr_b.sys_id;
-		gr.location = gr_l.sys_id;
+		if (gr_c.isValidRecord() == true) { gr.company = gr_c.sys_id; }
+		if (gr_d.isValidRecord() == true) { gr.department = gr_d.sys_id; }
+		if (gr_b.isValidRecord() == true) { gr.building = gr_b.sys_id; }
+		if (gr_l.isValidRecord() == true) { gr.location = gr_l.sys_id; }
 		gr.gender = user_gender;
 		gr.email = user_email_address;
 		gr.mobile_phone = user_phone_number;
-		gr.manager = gr_m.sys_id;
-		gr.costcenter = gr_cc.sys_id;
+		if (gr_m.isValidRecord() == true) { gr.manager = gr_m.sys_id; }
+		if (gr_cc.isValidRecord() == true) { gr.cost_center = gr_cc.sys_id; }
 		
 		var sys_id = gr.insert();
 
 		if (sys_id) {
-			gs.info('[Customer Onboarding][SI][User.Create] New User record created successfully: ' + sysId);
+			gs.info('[Customer Onboarding][SI][User.Create] New User record created successfully: ' + sys_id);
 			return true;
 		} else {
-			gs.info('[Customer Onboarding][SI][User.Create] New User record not created successfully: ' + sysId);
+			gs.info('[Customer Onboarding][SI][User.Create] New User record not created successfully: ' + sys_id);
 			return false;
 		}
 	},
@@ -216,10 +217,10 @@ User.prototype = {
 		gr = new GlideRecord('sys_user');
 	
 		if (user_user_name) {
-			gs.info('[Customer Onboarding][SI][User.ValidateDuplicate] User ID provided, validating.');
+			gs.info('[Customer Onboarding][SI][User.ValidateDuplicate] User ID provided (' + user_user_name + '), validating.');
 			gr.addQuery('user_name',user_user_name);
 		} else if (user_employee_number) {
-			gs.info('[Customer Onboarding][SI][User.ValidateDuplicate] Employee Number provided, validating.');
+			gs.info('[Customer Onboarding][SI][User.ValidateDuplicate] Employee Number provided (' + user_employee_number + '), validating.');
 			gr.addQuery('employee_number',user_employee_number);
 		} else if (user_first_name && user_last_name && user_email_address) {
 			gs.info('[Customer Onboarding][SI][User.ValidateDuplicate] No Employee Number, validating on First Name, Last Name, Email Address');
@@ -228,17 +229,12 @@ User.prototype = {
 			gr.addQuery('last_name',user_last_name);
 		} else {
 			gs.info('[Customer Onboarding][SI][User.ValidateDuplicate] Not enough data provided to validate on. Exit validation.');
-			return false;
+			return;
 		}
 
 		gr.query();
-		
-		if (gr.isValidRecord() == true) {
-			gr.next();
-			return true;
-		} else {
-			return false;
-		}
+		gr.next();
+		return gr;
 		
 	},
 	
@@ -360,13 +356,13 @@ User.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-12-14 04:22:54</sys_created_on>
         <sys_id>c6d3d8190f830300d1ac8f8ce1050e07</sys_id>
-        <sys_mod_count>8</sys_mod_count>
+        <sys_mod_count>14</sys_mod_count>
         <sys_name>User</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sys_script_include_c6d3d8190f830300d1ac8f8ce1050e07</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-01-31 03:54:27</sys_updated_on>
+        <sys_updated_on>2018-02-08 02:55:55</sys_updated_on>
     </sys_script_include>
 </record_update>

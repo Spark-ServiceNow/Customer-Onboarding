@@ -58,7 +58,7 @@ CostCenter.prototype = {
 		}
 		
 		// We need to cater for the manager's user_name passed as parameter and not the sys_id. 
-		if (company_contact) {
+		if (costcenter_manager) {
 			var gr_c_1 = gr_c.addQuery('sys_id',costcenter_manager);
 			gr_c_1.addOrCondition('user_name',costcenter_manager);
 			gr_c.query();
@@ -75,16 +75,16 @@ CostCenter.prototype = {
 		gr.code = costcenter_code;
 		gr.valid_from = costcenter_validfrom;
 		gr.valid_to = costcenter_validto;
-		gr.manager = gr_c.sys_id;
-		gr.parent = gr_p.sys_id;
+		if (gr_c.isValidRecord() == true) { gr.manager = gr_c.sys_id; }
+		if (gr_p.isValidRecord() == true) { gr.parent = gr_p.sys_id; }
 		
 		var sys_id = gr.insert();
 
 		if (sys_id) {
-			gs.info('[Customer Onboarding][SI][CostCenter.Create] New CostCenter record created successfully: ' + sysId);
+			gs.info('[Customer Onboarding][SI][CostCenter.Create] New CostCenter record created successfully: ' + sys_id);
 			return true;
 		} else {
-			gs.info('[Customer Onboarding][SI][CostCenter.Create] New CostCenter record not created successfully: ' + sysId);
+			gs.info('[Customer Onboarding][SI][CostCenter.Create] New CostCenter record not created successfully: ' + sys_id);
 			return false;
 		}
 	},
@@ -198,13 +198,13 @@ CostCenter.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-12-14 03:16:39</sys_created_on>
         <sys_id>e69740510f830300d1ac8f8ce1050e07</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>5</sys_mod_count>
         <sys_name>CostCenter</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sys_script_include_e69740510f830300d1ac8f8ce1050e07</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-01-25 01:30:23</sys_updated_on>
+        <sys_updated_on>2018-02-05 02:05:43</sys_updated_on>
     </sys_script_include>
 </record_update>

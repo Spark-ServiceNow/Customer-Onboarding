@@ -92,22 +92,22 @@ Group.prototype = {
 		gr = new GlideRecord('sys_user_group');
 		gr.initialize();
 		gr.active = group_active;
-		gr.cost_center = gr_cc.sys_id;
-		gr.default_assignee = gr_da.sys_id;
+		if (gr_cc.isValidRecord() == true) { gr.cost_center = gr_cc.sys_id; }
+		if (gr_da.isValidRecord() == true) { gr.default_assignee = gr_da.sys_id; }
 		gr.description = group_description;
 		gr.email = group_email;
-		gr.manager = gr_m.sys_id;
+		if (gr_m.isValidRecord() == true) { gr.manager = gr_m.sys_id; }
 		gr.name = group_name;
-		gr.parent = gr_p.sys_id;
+		if (gr_p.isValidRecord() == true) { gr.parent = gr_p.sys_id; }
 		gr.type = group_type;
 		
 		var sys_id = gr.insert();
 
 		if (sys_id) {
-			gs.info('[Customer Onboarding][SI][Group.Create] New Group record created successfully: ' + sysId);
+			gs.info('[Customer Onboarding][SI][Group.Create] New Group record created successfully: ' + sys_id);
 			return true;
 		} else {
-			gs.info('[Customer Onboarding][SI][Group.Create] New Group record not created successfully: ' + sysId);
+			gs.info('[Customer Onboarding][SI][Group.Create] New Group record not created successfully: ' + sys_id);
 			return false;
 		}
 	},
@@ -242,13 +242,13 @@ Group.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-12-11 01:18:43</sys_created_on>
         <sys_id>710d00500f430300d1ac8f8ce1050e05</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>3</sys_mod_count>
         <sys_name>Group</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sys_script_include_710d00500f430300d1ac8f8ce1050e05</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-01-30 02:20:47</sys_updated_on>
+        <sys_updated_on>2018-02-02 01:10:37</sys_updated_on>
     </sys_script_include>
 </record_update>

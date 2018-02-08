@@ -58,7 +58,7 @@
 
 		gs.info('[Customer Onboarding][TM][Location] No existing Location found with the name ' + source.u_location_name + '. create a new record.');
 		
-		var sys_id = location.Create(source.u_location_name,source.u_country,source.u_state,source.u_city,source.u_street,source.u_contact,source.u_parent,source.u_company,source.u_latitude,source.u_longitude,source.u_stock_room);
+		var sys_id = location.Create(source.u_location_name,source.u_parent,source.u_country,source.u_state,source.u_city,source.u_street,source.u_contact,source.u_company,source.u_latitude,source.u_longitude,source.u_stock_room);
 			
 		if (sys_id) {
 			gs.info('[Customer Onboarding][TM][Location] ' + source.u_location_name + ' successfully created with sys_id = ' + sys_id);
@@ -80,14 +80,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-01-29 03:58:29</sys_created_on>
         <sys_id>fbe7cd88db40130043055740cf9619d1</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>Record_Producer_TransformMap_Location</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy/>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sys_transform_map_fbe7cd88db40130043055740cf9619d1</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-01-29 03:58:29</sys_updated_on>
+        <sys_updated_on>2018-02-02 02:20:00</sys_updated_on>
         <target_table>cmn_location</target_table>
     </sys_transform_map>
 </record_update>
