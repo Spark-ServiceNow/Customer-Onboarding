@@ -5,6 +5,7 @@
         <element attributes="import_attribute_name=Cost Center Code,edge_encryption_enabled=true" label="Cost Center Code" max_length="40" name="u_cost_center_code" type="string"/>
         <element attributes="import_attribute_name=Cost Center Name,edge_encryption_enabled=true" label="Cost Center Name" max_length="40" name="u_cost_center_name" type="string"/>
         <element attributes="import_attribute_name=Existing Record Found,edge_encryption_enabled=true" label="Existing Record Found" max_length="40" name="u_existing_record_found" type="string"/>
+        <element label="Location" max_length="40" name="u_location" type="string"/>
         <element attributes="import_attribute_name=Manager,edge_encryption_enabled=true" label="Manager" max_length="40" name="u_manager" type="string"/>
         <element attributes="import_attribute_name=Parent,edge_encryption_enabled=true" label="Parent" max_length="40" name="u_parent" type="string"/>
         <element attributes="import_attribute_name=Valid From,edge_encryption_enabled=true" label="Valid From" max_length="40" name="u_valid_from" type="string"/>

@@ -46,6 +46,7 @@
 		if (gr.valid_from != source.u_valid_from) { cost_center.Update(gr.sys_id,"valid_from",source.u_valid_from); }
 		if (gr.valid_to != source.u_valid_to) { cost_center.Update(gr.sys_id,"valid_to",source.u_valid_to); }
 		if (gr.manager != source.u_manager) { cost_center.Update(gr.sys_id,"manager",source.u_manager); }
+		if (gr.location != source.u_location) { cost_center.Update(gr.sys_id,"location",source.u_location); }
 		if (gr.parent != source.u_parent) { cost_center.Update(gr.sys_id,"parent",source.u_parent); }
 		
 		gs.info('[Customer Onboarding][TM][CostCenter] Cost Center with the name of ' + source.u_cost_center_name + ' has been updated.');
@@ -54,7 +55,7 @@
 
 		gs.info('[Customer Onboarding][TM][CostCenter] No existing Cost Center found with the name ' + source.u_cost_center_name + '. create a new record.');
 		
-		var sys_id = cost_center.Create(source.u_cost_center_name,source.u_account_number,source.u_cost_center_code,source.u_valid_from,source.u_valid_to,source.u_manager,source.u_parent);
+		var sys_id = cost_center.Create(source.u_cost_center_name,source.u_account_number,source.u_cost_center_code,source.u_valid_from,source.u_valid_to,source.u_manager,source.u_location,source.u_parent);
 			
 		if (sys_id) {
 			gs.info('[Customer Onboarding][TM][CostCenter] ' + source.u_cost_center_name + ' successfully created with sys_id = ' + sys_id);
@@ -76,14 +77,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-01-29 01:53:34</sys_created_on>
         <sys_id>5f8a680cdb00130043055740cf961961</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>Record_Producer_TransformMap_CostCenter</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy/>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sys_transform_map_5f8a680cdb00130043055740cf961961</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-01-29 03:50:22</sys_updated_on>
+        <sys_updated_by>Admin</sys_updated_by>
+        <sys_updated_on>2018-02-14 00:59:33</sys_updated_on>
         <target_table>cmn_cost_center</target_table>
     </sys_transform_map>
 </record_update>

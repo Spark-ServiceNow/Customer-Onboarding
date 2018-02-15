@@ -50,19 +50,21 @@
 // Author: 		    Ronald Lob
 // Script Type:     [Record Producer] Customer Onboarding - Foundation - Location
 // Script Name:	    Customer Onboarding - Foundation - Location
-// Script Version:	1.00
+// Script Version:	1.1
 // Script Desc:	    Validates existing Locations off a new Service Catalog request item. 
 //                  If not existing, creates new otherwise updates existing  
 // ==========
 // Revisions:
 // ==========				
-// 30/11/2017 - [Version 1.0][Ronald Lob]  	Development.
+// 30/11/2017 - [Version 1.0][Ronald Lob] Development.
+// 15/02/2018 - [Version 1.1][Ronald Lob] Changed the building of import sets and running of transforms to use ScopedTools utility.
+//                                        Added a hard coded import set table name & transform sys_id rather than using a property.
 // =============================================================
 
 // Set the following variables with the name of your import set table and task id column (to be changed to use properties)  
-var importSetTableName = gs.getProperty('Record_Producer_ImportSetTable_Location');  
-var importSetTaskIDFieldName = "task_id";   
-var transformMapID = gs.getProperty('TransformMap_SysID_Location');
+var importSetTableName = "x_133853_customer_record_producer_importsettable_location";  
+//var importSetTaskIDFieldName = "task_id";   
+var transformMapID = "fbe7cd88db40130043055740cf9619d1";
   
 // Setup data source for attachment
 gs.info("[Customer Onboarding][RP][Location] Setup data source for attachment");
@@ -74,16 +76,24 @@ current.format = "Excel";
 current.header_row = 11;  
 current.sheet_number = 3;  
 current.insert(); 
-gs.info("[Customer Onboarding][RP][Location] Data Source Created ....");
+gs.info("[Customer Onboarding][RP][Location] Data Source Configured.");
+gs.addInfoMessage("Data Source Configured."); 
   
-// Process excel file into Data Source
-gs.addInfoMessage("[Customer Onboarding][RP][Location] Import Excel File to Data Source.");
-var loader = new GlideImportSetLoader();  
-var importSetRec = loader.getImportSetGr(current);  
-var ranload = loader.loadImportSetTable(importSetRec, current);  
-importSetRec.state = "loaded";  
-importSetRec.update(); 
-gs.info("[Customer Onboarding][RP][Location] Import Complete ....");
+// Process excel file into Data Source using ScopedTools utility (Required because of cross scope permissions blocking needed API) 
+var tools = new global.ScopedTools();
+var importSetRec = tools.Process_Attachment(current);
+gs.addInfoMessage("Import Set Created.");
+
+if (importSetRec.isValidRecord() == true){
+	// Run transform for built import set using predefined transform map 
+	tools.Transform(importSetRec.sys_id, transformMapID);
+	gs.addInfoMessage("Transform Started.");
+	gs.addInfoMessage("Data import may take time load, please reload the list.");
+} else {
+	// Something went wrong, we need to abort
+	gs.addErrorMessage("Error: An import set was not created. Please review the Application logs for further information.");
+	current.setAbortAction(true);
+}
   
 // Update processed rows with task sys_id  
 //var importSetRow = new GlideRecord(importSetTableName);  
@@ -93,14 +103,6 @@ gs.info("[Customer Onboarding][RP][Location] Import Complete ....");
 //    importSetRow[importSetTaskIDFieldName] = producer.task_number;  
 //    importSetRow.update();  
 //}  
-  
-// Transform import set  
-gs.info("[Customer Onboarding][RP][Location] Transform import set.");
-var transformWorker = new GlideImportSetTransformerWorker(importSetRec.sys_id, transformMapID);  
-transformWorker.setBackground(true);  
-transformWorker.start();
-gs.info("[Customer Onboarding][RP][Location] Transform Complete ....");
-gs.info("[Customer Onboarding][RP][Location] Bulk Location Load Successful!");
   
 // Take user to task  
 // gs.addErrorMessage("Data import may take time load, please reload record to see all the imported Users");  
@@ -116,14 +118,14 @@ current.setAbortAction(true); ]]></script>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-11-30 03:28:46</sys_created_on>
         <sys_id>6026887c0fb20300d1ac8f8ce1050eb0</sys_id>
-        <sys_mod_count>8</sys_mod_count>
+        <sys_mod_count>9</sys_mod_count>
         <sys_name>Bulk Location Import</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy/>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sc_cat_item_producer_6026887c0fb20300d1ac8f8ce1050eb0</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-02-08 01:46:22</sys_updated_on>
+        <sys_updated_on>2018-02-15 01:58:42</sys_updated_on>
         <table_name>sys_data_source</table_name>
         <template/>
         <type>item</type>
@@ -171,6 +173,43 @@ current.setAbortAction(true); ]]></script>
         <table>sc_cat_item_producer</table>
         <type>calculated</type>
     </fx_price>
+    <sys_attachment action="INSERT_OR_UPDATE">
+        <average_image_color>#767676</average_image_color>
+        <chunk_size_bytes>734003</chunk_size_bytes>
+        <compressed>true</compressed>
+        <content_type>image/png</content_type>
+        <file_name>icon</file_name>
+        <image_height>68</image_height>
+        <image_width>68</image_width>
+        <size_bytes>2167</size_bytes>
+        <size_compressed>2190</size_compressed>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-02-15 01:52:35</sys_created_on>
+        <sys_id>aa82d821db90130043055740cf961908</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-02-15 01:52:35</sys_updated_on>
+        <table_name>ZZ_YYsc_cat_item_producer</table_name>
+        <table_sys_id>6026887c0fb20300d1ac8f8ce1050eb0</table_sys_id>
+    </sys_attachment>
+    <sys_attachment_doc action="INSERT_OR_UPDATE">
+        <data>H4sIAAAAAAAAAA==</data>
+        <length>16</length>
+        <position>0</position>
+        <sys_attachment display_value="icon" sys_id="aa82d821db90130043055740cf961908">aa82d821db90130043055740cf961908</sys_attachment>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-02-15 01:52:35</sys_created_on>
+        <sys_id>a282d821db90130043055740cf961909</sys_id>
+    </sys_attachment_doc>
+    <sys_attachment_doc action="INSERT_OR_UPDATE">
+        <data>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</data>
+        <length>2908</length>
+        <position>1</position>
+        <sys_attachment display_value="icon" sys_id="aa82d821db90130043055740cf961908">aa82d821db90130043055740cf961908</sys_attachment>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-02-15 01:52:35</sys_created_on>
+        <sys_id>2682d821db90130043055740cf961909</sys_id>
+    </sys_attachment_doc>
     <sys_attachment action="INSERT_OR_UPDATE">
         <average_image_color>#7ac334</average_image_color>
         <chunk_size_bytes/>

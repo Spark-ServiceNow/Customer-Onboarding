@@ -2,7 +2,7 @@
 <record_update table="sc_cat_item_category">
     <sc_cat_item_category action="INSERT_OR_UPDATE">
         <sc_cat_item display_value="Bulk Support Group Import">d2bd41b50f220300d1ac8f8ce1050ea6</sc_cat_item>
-        <sc_category display_value="Support Groups">0026d0e10f620300d1ac8f8ce1050e64</sc_category>
+        <sc_category display_value="Groups">0026d0e10f620300d1ac8f8ce1050e64</sc_category>
         <sys_class_name>sc_cat_item_category</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-11-21 01:04:43</sys_created_on>

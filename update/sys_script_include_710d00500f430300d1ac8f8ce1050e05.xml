@@ -11,7 +11,7 @@
 // Author: 		    Ronald Lob
 // Script Type:     [Script Include] Customer Onboarding - Group API
 // Script Name:	    Customer Onboarding - Group API
-// Script Version:	1.2
+// Script Version:	1.3
 // Script Desc:	    API for CRUD functionality on Group table. 
 //                  Differs from standard Table / REST API as it's specific to this application.
 //                  Cascading of Creates / Updates / Deletes.
@@ -20,6 +20,7 @@
 // ==========				
 // 11/12/2017 - [Version 1.0][Ronald Lob]  	Development.
 // 25/01/2018 - [Version 1.2][Ronald Lob]  	Enhanced Update functions to validate null or keywords. Added lookup feature for reference fields.
+// 08/02/2018 - [Version 1.3][Ronald Lob]  	Added the AddUserToGroup function to add a user to a group
 // =============================================================
 
 var Group = Class.create();
@@ -235,6 +236,56 @@ Group.prototype = {
 		}
 		
 	},
+	
+	// .. 
+	// Adds this User to provided Group Name or Sys_ID
+	// .. 
+	AddUserToGroup: function(user, group){
+		
+		gs.info('[Customer Onboarding][SI][Group.AddUserToGroup] Add User (' + user + ') to Group (' + group + ')');
+		
+		// Validate provided Users and Group 
+		var user_api = new User();
+		var gr_g = this.Get_SysID(group);
+		var gr_u = user.Get_SysID(user);
+
+		if (gr_g.isValidRecord() == false) { gr_g = this.Get_Name(group); }
+		if (gr_u.isValidRecord() == false) { gr_u = user.Get_UserID(user); }
+
+		if (gr_g.isValidRecord() == true && gr_u.isValidRecord() == true) { 
+			// User and Group is valid. Relate but first check if we aren't duplicating this.
+			gs.info('[Customer Onboarding][SI][Group.AddUserToGroup] User (' + user + ') valid. Group (' + group + ') valid. Inserting.');
+			
+			gr = new GlideRecord('sys_user_grmember');
+			gr.addQuery('user',gr_u.sys_id);
+			gr.addQuery('group',gr_g.sys_id);
+			gr.query();
+			gr.next();
+
+			if (gr.isValidRecord() == false) {
+				// Not a duplicate, create now
+				gr = new GlideRecord('sys_user_grmember');
+				gr.initialize();
+				gr.user = gr_u.sys_id;
+				gr.group = gr_g.sys_id;
+				
+				var sys_id = gr.insert();
+				
+				if (sys_id) { gs.info('[Customer Onboarding][SI][Group.AddUserToGroup] User (' + user + ') added to Group (' + group + '):' + sys_id); } else {
+					gs.info('[Customer Onboarding][SI][Group.AddUserToGroup] User (' + user + ') not added to Group (' + group + '). Insert Failed.');
+				}
+				
+				return sys_id;
+
+			} else {
+				gs.info('[Customer Onboarding][SI][Group.AddUserToGroup] User (' + user + ') already belongs to Group (' + group + '). Aborted.');	
+				return false;
+			}
+		} else {
+			gs.info('[Customer Onboarding][SI][Group.AddUserToGroup] Cannot find valid User or Group records based on provided data. Aborted.');	
+			return false;
+		}
+	},
 
     type: 'Group'
 };]]></script>
@@ -242,13 +293,13 @@ Group.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-12-11 01:18:43</sys_created_on>
         <sys_id>710d00500f430300d1ac8f8ce1050e05</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_name>Group</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sys_script_include_710d00500f430300d1ac8f8ce1050e05</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-02-02 01:10:37</sys_updated_on>
+        <sys_updated_on>2018-02-13 02:55:49</sys_updated_on>
     </sys_script_include>
 </record_update>

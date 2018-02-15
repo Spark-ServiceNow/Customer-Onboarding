@@ -2,7 +2,7 @@
 <record_update table="sc_cat_item_category">
     <sc_cat_item_category action="INSERT_OR_UPDATE">
         <sc_cat_item display_value="Bulk User → Group Relate">2ade4c1bdb00130043055740cf961976</sc_cat_item>
-        <sc_category display_value="Support Groups">0026d0e10f620300d1ac8f8ce1050e64</sc_category>
+        <sc_category display_value="Groups">0026d0e10f620300d1ac8f8ce1050e64</sc_category>
         <sys_class_name>sc_cat_item_category</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-02-08 01:50:09</sys_created_on>

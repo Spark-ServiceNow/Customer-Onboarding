@@ -11,7 +11,7 @@
 // Author: 		    Ronald Lob
 // Script Type:     [Script Include] Customer Onboarding - CostCenter API
 // Script Name:	    Customer Onboarding - CostCenter API
-// Script Version:	1.2
+// Script Version:	1.3
 // Script Desc:	    API for CRUD functionality on CostCenter table. 
 //                  Differs from standard Table / REST API as it's specific to this application.
 //                  Cascading of Creates / Updates / Deletes.
@@ -20,6 +20,7 @@
 // ==========				
 // 14/12/2017 - [Version 1.0][Ronald Lob]  	Development.
 // 25/01/2018 - [Version 1.2][Ronald Lob]  	Enhanced Update functions to validate null or keywords. Added lookup feature for reference fields. 
+// 14/02/2018 - [Version 1.3][Ronald Lob]  	Added Location to Create / Update function parameters. 
 // =============================================================
 
 var CostCenter = Class.create();
@@ -30,13 +31,14 @@ CostCenter.prototype = {
 	// .. 
 	// Creates a new record in CostCenter
 	// .. 
-	Create: function(costcenter_name, costcenter_accountnumber, costcenter_code, costcenter_validfrom, costcenter_validto, costcenter_manager, costcenter_parent){
+	Create: function(costcenter_name, costcenter_accountnumber, costcenter_code, costcenter_validfrom, costcenter_validto, costcenter_manager, costcenter_location, costcenter_parent){
 		
 		gs.info('[Customer Onboarding][SI][CostCenter.Create] Create a new CostCenter in ServiceNow.');
 		
 		// Check if the CostCenter exists already or not. If it does we exit and let the source decide if we update or not.
 		var gr = this.Get_Name(costcenter_name);
 		gr_p = new GlideRecord('cmn_cost_center');
+		gr_l = new GlideRecord('cmn_location');
 		gr_c = new GlideRecord('sys_user');
 		
 		if (gr.isValidRecord() == true) {
@@ -55,6 +57,16 @@ CostCenter.prototype = {
 			gr_p.next();
 			
 			gs.info('[Customer Onboarding][SI][CostCenter.Create] Parent verified: ' + gr_p.sys_id);
+		}
+		
+		// We need to cater for the location name passed as parameter and not the sys_id.
+		if (costcenter_location) {
+			var gr_l_1 = gr_l.addQuery('sys_id',costcenter_location);
+			gr_l_1.addOrCondition('name',costcenter_location);
+			gr_l.query();
+			gr_l.next();
+			
+			gs.info('[Customer Onboarding][SI][CostCenter.Create] Location verified: ' + gr_l.sys_id);
 		}
 		
 		// We need to cater for the manager's user_name passed as parameter and not the sys_id. 
@@ -76,6 +88,7 @@ CostCenter.prototype = {
 		gr.valid_from = costcenter_validfrom;
 		gr.valid_to = costcenter_validto;
 		if (gr_c.isValidRecord() == true) { gr.manager = gr_c.sys_id; }
+		if (gr_l.isValidRecord() == true) { gr.location = gr_l.sys_id; }
 		if (gr_p.isValidRecord() == true) { gr.parent = gr_p.sys_id; }
 		
 		var sys_id = gr.insert();
@@ -198,13 +211,13 @@ CostCenter.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-12-14 03:16:39</sys_created_on>
         <sys_id>e69740510f830300d1ac8f8ce1050e07</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_name>CostCenter</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sys_script_include_e69740510f830300d1ac8f8ce1050e07</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-02-05 02:05:43</sys_updated_on>
+        <sys_updated_by>Admin</sys_updated_by>
+        <sys_updated_on>2018-02-14 00:59:42</sys_updated_on>
     </sys_script_include>
 </record_update>

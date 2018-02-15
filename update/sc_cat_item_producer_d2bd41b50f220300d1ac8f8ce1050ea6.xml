@@ -5,7 +5,7 @@
         <availability>on_desktop</availability>
         <billable>false</billable>
         <can_cancel>false</can_cancel>
-        <category display_value="Support Groups">0026d0e10f620300d1ac8f8ce1050e64</category>
+        <category display_value="Groups">0026d0e10f620300d1ac8f8ce1050e64</category>
         <cost>0</cost>
         <custom_cart/>
         <delivery_plan display_value="DEFAULT">523da512c611228900811a37c97c2014</delivery_plan>

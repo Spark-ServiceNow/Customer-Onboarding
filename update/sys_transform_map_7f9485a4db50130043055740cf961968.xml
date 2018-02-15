@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_transform_map">
+    <sys_transform_map action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copy_empty_fields>false</copy_empty_fields>
+        <enforce_mandatory_fields>No</enforce_mandatory_fields>
+        <name>Record_Producer_TransformMap_UserToGroup</name>
+        <order>100</order>
+        <run_business_rules>true</run_business_rules>
+        <run_script>true</run_script>
+        <script><![CDATA[// =============================================================
+// Author: 		    Ronald Lob
+// Script Type:     [Transform Map] Customer Onboarding - User to Group Transform
+// Script Name:	    Customer Onboarding - User to Group Transform
+// Script Version:	1.0
+// Script Desc:	    Transform map to make use of the CRUD API rather than standard field mappings.
+//                  This allows us to unify the validation and have a single API for these creates.
+//                  Only applicible to Bulk inserts or updates. Indvididual records handled with Workflow. 
+// ==========
+// Revisions:
+// ==========				
+// 12/02/2018 - [Version 1.0][Ronald Lob] Development.
+// =============================================================
+
+(function transformRow(source, target, map, log, isUpdate) {
+	
+	var user = new User();
+
+	gs.info('[Customer Onboarding][TM][User→Group] Begin add User To Group: ' + source.u_user_name + ' to ' + source.u_group_name);
+	
+	ignore = true; // Otherwise we create blank rows because there's no actual transform mapping
+	
+	// Lets try and add the User to the Group, the SI will manage the duplicates.
+	var sys_id = user.AddUserToGroup(source.u_user_name, source.u_group_name);
+		
+	if (!sys_id || sys_id == false) {
+		gs.info('[Customer Onboarding][TM][User→Group] Unable to add this User to this Group. Record aborted. Verify App logging');
+		ignore = true;
+	} else {
+		gs.info('[Customer Onboarding][TM][User→Group] User ' + source.u_user_name + ' successfully added to group ' + source.u_group_name + ' (' + sys_id + ')');
+		return;
+	}
+	
+})(source, target, map, log, action==="update");]]></script>
+        <source_table>x_133853_customer_record_producer_importsettable_usergroup</source_table>
+        <sys_class_name>sys_transform_map</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-02-12 02:59:35</sys_created_on>
+        <sys_id>7f9485a4db50130043055740cf961968</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>Record_Producer_TransformMap_UserToGroup</sys_name>
+        <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
+        <sys_update_name>sys_transform_map_7f9485a4db50130043055740cf961968</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-02-13 01:36:26</sys_updated_on>
+        <target_table>sys_user_grmember</target_table>
+    </sys_transform_map>
+</record_update>

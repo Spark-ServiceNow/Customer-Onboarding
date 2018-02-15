@@ -20,6 +20,7 @@
 // ==========				
 // 11/12/2017 - [Version 1.0][Ronald Lob]  	Development.
 // 25/01/2018 - [Version 1.2][Ronald Lob]  	Enhanced Update functions to validate null or keywords.
+// 15/02/2018 - [Version 1.3][Ronald Lob]  	Fixed Create and Update containing sys_id of Country record to push just the name out. 
 // =============================================================
 
 var Location = Class.create();
@@ -39,6 +40,7 @@ Location.prototype = {
 		gr_p = new GlideRecord('cmn_location');
 		gr_c = new GlideRecord('core_company');
 		gr_u = new GlideRecord('sys_user');
+		gr_cy = new GlideRecord('core_country');
 		
 		if (gr.isValidRecord() == true) {
 			gs.info('[Customer Onboarding][SI][Location.Create] Location with the name ' + location_name + ' already exists. Exit');
@@ -76,13 +78,23 @@ Location.prototype = {
 			
 			gs.info('[Customer Onboarding][SI][Location.Create] Parent verified: ' + gr_u.sys_id);
 		}
+		
+		// We need to cater for the contact name passed as parameter and not the sys_id. 
+		if (location_country) {
+			var gr_cy_1 = gr_cy.addQuery('sys_id',location_country);
+			gr_cy_1.addOrCondition('name',location_country);
+			gr_cy.query();
+			gr_cy.next();
+			
+			gs.info('[Customer Onboarding][SI][Location.Create] Country verified: ' + gr_cy.sys_id);
+		}
 	
 		// Create record
 		gr = new GlideRecord('cmn_location');
 		gr.initialize();
 		gr.name = location_name;
 		if (gr_p.isValidRecord() == true) { gr.parent = gr_p.sys_id; }
-		gr.country = location_country;
+		if (gr_cy.isValidRecord() == true) { gr.country = gr_cy.name; }
 		gr.state = location_state;
 		gr.city = location_city;
 		gr.street = location_street;
@@ -163,6 +175,7 @@ Location.prototype = {
 		gr_p = new GlideRecord('cmn_location');
 		gr_c = new GlideRecord('core_company');
 		gr_u = new GlideRecord('sys_user');
+		gr_cy = new GlideRecord('core_country');
 		
 		// Lets first check if the value passed is a keyword or null and exit or replace accordingly
 		if (value == undefined || value == "") { return false;}
@@ -174,7 +187,7 @@ Location.prototype = {
 	
 		var gr = this.Get_SysID(sys_id);
 		
-		if (gr.isValidRecord() == true && column != "company" && column != "parent" && column != "contact") {	
+		if (gr.isValidRecord() == true && column != "company" && column != "parent" && column != "contact" && column != "country") {	
 			gr[column] = value;
 			return gr.update();
 			
@@ -205,7 +218,17 @@ Location.prototype = {
 			gr_c.query();
 			gr_c.next();
 			
-			gr.contact = gr_c.sys_id;
+			gr.company = gr_c.sys_id;
+			return gr.update();
+			
+		} else if (gr.isValidRecord() == true && column == "country") {
+			// If we are updating country, we need to cater for the possibility of a sys_id or user_name being sent and for some odd reason, Country is not a reference in Location but rather a standard String field, so we need to extract the Name from the record and duplicate it (reminds me of my Remedy days). 
+			var gr_cy_1 = gr_cy.addQuery('sys_id',value);
+			gr_cy_1.addOrCondition('name',value);
+			gr_cy.query();
+			gr_cy.next();
+			
+			gr.country = gr_cy.name;
 			return gr.update();
 			
 		} else {
@@ -221,13 +244,13 @@ Location.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-12-11 00:14:44</sys_created_on>
         <sys_id>6bec7b840f030300d1ac8f8ce1050e39</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_name>Location</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sys_script_include_6bec7b840f030300d1ac8f8ce1050e39</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-02-02 02:20:06</sys_updated_on>
+        <sys_updated_on>2018-02-15 01:41:16</sys_updated_on>
     </sys_script_include>
 </record_update>

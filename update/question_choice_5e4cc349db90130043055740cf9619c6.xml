@@ -2,39 +2,39 @@
 <record_update table="question_choice">
     <question_choice action="INSERT_OR_UPDATE">
         <misc>0</misc>
-        <order>900</order>
-        <question display_value="Field to Update:">dc7a37280fb20300d1ac8f8ce1050ee9</question>
+        <order>800</order>
+        <question display_value="Field To Update:">d78933890f430300d1ac8f8ce1050e4b</question>
         <rec_misc>0</rec_misc>
         <sys_class_name>question_choice</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-30 02:43:59</sys_created_on>
-        <sys_id>e2db33680fb20300d1ac8f8ce1050e22</sys_id>
+        <sys_created_by>Admin</sys_created_by>
+        <sys_created_on>2018-02-14 02:07:20</sys_created_on>
+        <sys_id>5e4cc349db90130043055740cf9619c6</sys_id>
         <sys_mod_count>1</sys_mod_count>
-        <sys_name>Timezone</sys_name>
+        <sys_name>Location</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy/>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
-        <sys_update_name>question_choice_e2db33680fb20300d1ac8f8ce1050e22</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-12-12 00:52:46</sys_updated_on>
-        <text>Timezone</text>
-        <value>time_zone</value>
+        <sys_update_name>question_choice_5e4cc349db90130043055740cf9619c6</sys_update_name>
+        <sys_updated_by>Admin</sys_updated_by>
+        <sys_updated_on>2018-02-14 02:08:03</sys_updated_on>
+        <text>Location</text>
+        <value>location</value>
     </question_choice>
-    <fx_price action="delete_multiple" query="id=e2db33680fb20300d1ac8f8ce1050e22"/>
+    <fx_price action="delete_multiple" query="id=5e4cc349db90130043055740cf9619c6"/>
     <fx_price action="INSERT_OR_UPDATE">
         <amount>0</amount>
         <currency display_value="USD">USD</currency>
         <field>misc</field>
-        <id>e2db33680fb20300d1ac8f8ce1050e22</id>
+        <id>5e4cc349db90130043055740cf9619c6</id>
         <parent/>
         <reference_amount>0</reference_amount>
         <reference_currency display_value="USD">USD</reference_currency>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-30 02:43:59</sys_created_on>
-        <sys_id>b4eb7b280fb20300d1ac8f8ce1050e5c</sys_id>
+        <sys_created_by>Admin</sys_created_by>
+        <sys_created_on>2018-02-14 02:07:20</sys_created_on>
+        <sys_id>3c5c0749db90130043055740cf961942</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-30 02:43:59</sys_updated_on>
+        <sys_updated_by>Admin</sys_updated_by>
+        <sys_updated_on>2018-02-14 02:07:20</sys_updated_on>
         <table>question_choice</table>
         <type>calculated</type>
     </fx_price>
@@ -42,16 +42,16 @@
         <amount>0</amount>
         <currency display_value="USD">USD</currency>
         <field>rec_misc</field>
-        <id>e2db33680fb20300d1ac8f8ce1050e22</id>
+        <id>5e4cc349db90130043055740cf9619c6</id>
         <parent/>
         <reference_amount>0</reference_amount>
         <reference_currency display_value="USD">USD</reference_currency>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-30 02:43:59</sys_created_on>
-        <sys_id>7ceb7b280fb20300d1ac8f8ce1050e5b</sys_id>
+        <sys_created_by>Admin</sys_created_by>
+        <sys_created_on>2018-02-14 02:07:20</sys_created_on>
+        <sys_id>f05c0749db90130043055740cf961942</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-30 02:43:59</sys_updated_on>
+        <sys_updated_by>Admin</sys_updated_by>
+        <sys_updated_on>2018-02-14 02:07:20</sys_updated_on>
         <table>question_choice</table>
         <type>calculated</type>
     </fx_price>
