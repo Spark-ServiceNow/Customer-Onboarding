@@ -4,24 +4,25 @@
         <access>package_private</access>
         <active>true</active>
         <api_name>x_133853_customer.User</api_name>
-        <client_callable>false</client_callable>
+        <client_callable>true</client_callable>
         <description>CRUD API Class for managing User records.</description>
         <name>User</name>
         <script><![CDATA[// =============================================================
 // Author: 		    Ronald Lob
 // Script Type:     [Script Include] User Onboarding - User API
 // Script Name:	    Customer Onboarding - User API
-// Script Version:	1.4
+// Script Version:	1.5
 // Script Desc:	    API for CRUD functionality on User table. 
 //                  Differs from standard Table / REST API as it's specific to this application.
-//                  Cascading of Creates / Updates / Deletes.
+//                  Cascading of Creates / Updates / Deletes. Validation functions. 
 // ==========
 // Revisions:
 // ==========				
 // 14/12/2017 - [Version 1.0][Ronald Lob]  	Development.
 // 25/01/2018 - [Version 1.2][Ronald Lob]  	Enhanced Update functions to validate null or keywords.
 // 31/01/2018 - [Version 1.3][Ronald Lob]  	Added Building as a reference validation. 
-// 08/02/2018 - [Version 1.4][Ronald Lob]  	Added the AddToGroup function to add a user to a group 
+// 08/02/2018 - [Version 1.4][Ronald Lob]  	Added the AddToGroup function to add a user to a group.
+// 20/02/2018 - [Version 1.5][Ronald Lob]  	Added the Get_Groups function to get a list of Groups the User is a member of. 
 // =============================================================
 
 var User = Class.create();
@@ -132,15 +133,15 @@ User.prototype = {
 		if (gr_m.isValidRecord() == true) { gr.manager = gr_m.sys_id; }
 		if (gr_cc.isValidRecord() == true) { gr.cost_center = gr_cc.sys_id; }
 		
-		var sys_id = gr.insert();
+		gr.insert();
 
-		if (sys_id) {
-			gs.info('[Customer Onboarding][SI][User.Create] New User record created successfully: ' + sys_id);
-			return true;
+		if (gr.isValidRecord()) {
+			gs.info('[Customer Onboarding][SI][User.Create] New User record created successfully: ' + gr.sys_id);
 		} else {
-			gs.info('[Customer Onboarding][SI][User.Create] New User record not created successfully: ' + sys_id);
-			return false;
+			gs.info('[Customer Onboarding][SI][User.Create] New User record not created successfully: ' + gr.sys_id);
 		}
+		
+		return gr;
 	},
 	
 	// .. 
@@ -206,6 +207,40 @@ User.prototype = {
 	},
 	
 	// .. 
+	// Returns a list of Group sys_ids (prefixed as a search qualification) that a given User is a member of. 
+	// Used in some catalog items as a reference qualifier to only list Groups of a selected User.
+	// .. 
+	Get_Groups: function(user){
+		
+		gs.info('[Customer Onboarding][SI][Group.Get_Groups] Get the Groups of User: ' + user);
+	
+		gr = new GlideRecord('sys_user');
+		gr.addQuery('sys_id',user);
+		gr.query();
+		gr.next();
+
+		if (gr.isValidRecord() == true) {
+			var gr_g = new GlideRecord('sys_user_grmember');
+			var list = "";
+			gr_g.addQuery('user',gr.sys_id);
+			gr_g.query();
+			
+			while (gr_g.next()) {
+				list += gr_g.group + ",";
+			}
+			
+			if(list != ""){ list = list.substring(0, list.length-1); }
+			gs.info('[Customer Onboarding][SI][Group.Get_Groups] The User: ' + gr.sys_id + ' is a member of the following Groups: ' + list);
+			return "sys_idIN" + list;
+			//return "sys_idIN8a4cb6d4c61122780043b1642efcd52b";
+				
+		} else {
+			gs.info('[Customer Onboarding][SI][Group.Get_Groups] The provided User sys_id: ' + user + ' could not be found. Abort.');
+			return;
+		}
+	},
+	
+	// .. 
 	// Validates for Duplicates based on provided parameters. If User Name (User ID) is provided, it validates on that alone, 
 	// else it validates on Employee Number if provided, else use FN, LN, Email combo
 	// Returns True if valid match found (one or more duplicates)
@@ -239,23 +274,23 @@ User.prototype = {
 	},
 	
 	// .. 
-	// Deletes an existing User record from provided sys_id
+	// Deactivates an existing User record from provided sys_id
 	// .. 
-	Delete: function(sys_id){
+	Deactivate: function(sys_id){
 		
-		gs.info('[Customer Onboarding][SI][User.Delete] Delete User with sys_id = ' + sys_id);
+		gs.info('[Customer Onboarding][SI][User.Deactivate] Deactivate User with sys_id = ' + sys_id);
 		
 		var gr = this.Get_SysID(sys_id);
-		var bool;
 	
 		if (gr.isValidRecord() == true) {
-			gr.next();
-			bool = gr.deleteRecord();
+			gs.info('[Customer Onboarding][SI][User.Deactivate] User with sys_id = ' + sys_id + ' deactivated.');
+			var bool = this.Update(gr.sys_id,"active","false");
+			return bool;
 		} else {
+			gs.info('[Customer Onboarding][SI][User.Deactivate] User with sys_id = ' + sys_id + ' not found. Deactivation failed.');
 			return false;
 		}
 
-		return bool;
 	},
 	
 	// .. 
@@ -278,8 +313,8 @@ User.prototype = {
 		if (value == "$NOW$") { value = Date.now();}
 		
 		gs.info('[Customer Onboarding][SI][User.Update] Updating User with sys_id = ' + sys_id + ". Setting " + column + " to " + value);
-	
-		if (gr.isValidRecord() == true && column != "location" && column != "cost_center" && column != "company" && column != "department" && column != "manager" && column != "building") {	
+		
+		if (gr.isValidRecord() == true && column != "location" && column != "cost_center" && column != "company" && column != "department" && column != "manager" && column != "building" && column != "support_groups") {	
 			gr[column] = value;
 			return gr.update();
 		
@@ -343,6 +378,18 @@ User.prototype = {
 			gr.building = gr_b.sys_id;
 			return gr.update();
 			
+		} else if (gr.isValidRecord() == true && column == "support_groups") {
+			// If column = "support_groups" we need to handle this differently because we use list collectors.
+			var str = value.toString();
+			var array = str.split(",");
+
+			for (var i = 0; i < array.length; i++) {
+				gs.info('[Customer Onboarding][SI][User.Update] Adding ' + gr.user_name + ' to the group ' + array[i]);
+				this.AddUserToGroup(gr.sys_id,array[i]);
+			}
+			
+			return true;
+			
 		} else {
 			gs.info('[Customer Onboarding][SI][User.Update] Couldnt find valid record from provided Sys_ID: ' + sys_id);
 			return false;
@@ -399,6 +446,53 @@ User.prototype = {
 			return false;
 		}
 	},
+	
+	// .. 
+	// Removes this User from provided Group Name or Sys_ID
+	// .. 
+	RemoveUserFromGroup: function(user, group){
+		
+		gs.info('[Customer Onboarding][SI][User.RemoveUserFromGroup] Remove User (' + user + ') from Group (' + group + ')');
+		
+		// Validate provided Users and Group 
+		var group_api = new Group();
+		var gr_g = group_api.Get_SysID(group);
+		var gr_u = this.Get_SysID(user);
+
+		if (gr_g.isValidRecord() == false) { gr_g = group_api.Get_Name(group); }
+		if (gr_u.isValidRecord() == false) { gr_u = this.Get_UserID(user); }
+
+		if (gr_g.isValidRecord() == true && gr_u.isValidRecord() == true) { 
+			// User and Group is valid. Lets check if they are actually related.
+			gs.info('[Customer Onboarding][SI][User.RemoveUserFromGroup] User (' + user + ') valid. Group (' + group + ') valid. Unrelating.');
+			
+			gr = new GlideRecord('sys_user_grmember');
+			gr.addQuery('user',gr_u.sys_id);
+			gr.addQuery('group',gr_g.sys_id);
+			gr.query();
+			gr.next();
+
+			if (gr.isValidRecord() == true) {
+				// Valid, remove
+				var bool = gr.deleteRecord();
+				
+				if (bool == "true") { 
+					gs.info('[Customer Onboarding][SI][User.RemoveUserFromGroup] User (' + user + ') removed from Group (' + group + ')');
+					return true;
+				} else {
+					gs.info('[Customer Onboarding][SI][User.RemoveUserFromGroup] User (' + user + ') not removed from Group (' + group + '). Remove Failed.');
+					return false;
+				}
+
+			} else {
+				gs.info('[Customer Onboarding][SI][User.RemoveUserFromGroup] User (' + user + ') does not belong to Group (' + group + '). Aborted.');	
+				return false;
+			}
+		} else {
+			gs.info('[Customer Onboarding][SI][User.RemoveUserFromGroup] Cannot find valid User or Group records based on provided data. Aborted.');	
+			return false;
+		}
+	},
 
     type: 'User'
 };]]></script>
@@ -406,13 +500,13 @@ User.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-12-14 04:22:54</sys_created_on>
         <sys_id>c6d3d8190f830300d1ac8f8ce1050e07</sys_id>
-        <sys_mod_count>22</sys_mod_count>
+        <sys_mod_count>46</sys_mod_count>
         <sys_name>User</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sys_script_include_c6d3d8190f830300d1ac8f8ce1050e07</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-02-13 01:43:26</sys_updated_on>
+        <sys_updated_on>2018-02-22 04:12:13</sys_updated_on>
     </sys_script_include>
 </record_update>

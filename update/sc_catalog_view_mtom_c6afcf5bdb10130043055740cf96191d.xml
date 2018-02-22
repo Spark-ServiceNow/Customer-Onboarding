@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sc_catalog_view_mtom">
+    <sc_catalog_view_mtom action="INSERT_OR_UPDATE">
+        <default>false</default>
+        <sc_catalog display_value="ServiceNow Administration">51e4d0e10f620300d1ac8f8ce1050e33</sc_catalog>
+        <sys_class_name>sc_catalog_view_mtom</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-02-21 02:08:13</sys_created_on>
+        <sys_id>c6afcf5bdb10130043055740cf96191d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ServiceNow Administration.Self Service</sys_name>
+        <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
+        <sys_policy/>
+        <sys_portal_page display_value="Self Service">4da11b86c611229701f1d31a48c9245d</sys_portal_page>
+        <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
+        <sys_update_name>sc_catalog_view_mtom_c6afcf5bdb10130043055740cf96191d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-02-21 02:08:13</sys_updated_on>
+    </sc_catalog_view_mtom>
+</record_update>

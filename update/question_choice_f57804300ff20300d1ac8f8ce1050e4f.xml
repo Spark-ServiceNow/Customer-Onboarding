@@ -9,16 +9,16 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-11-30 03:38:57</sys_created_on>
         <sys_id>f57804300ff20300d1ac8f8ce1050e4f</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>Email Address</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy/>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>question_choice_f57804300ff20300d1ac8f8ce1050e4f</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-30 03:48:11</sys_updated_on>
+        <sys_updated_on>2018-02-19 21:51:48</sys_updated_on>
         <text>Email Address</text>
-        <value>Email_Address</value>
+        <value>email</value>
     </question_choice>
     <fx_price action="delete_multiple" query="id=f57804300ff20300d1ac8f8ce1050e4f"/>
     <fx_price action="INSERT_OR_UPDATE">

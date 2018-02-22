@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update table="sc_cat_item_category">
     <sc_cat_item_category action="INSERT_OR_UPDATE">
-        <sc_cat_item display_value="Edit a User">3d7800300ff20300d1ac8f8ce1050e5e</sc_cat_item>
+        <sc_cat_item display_value="Edit a User Account">3d7800300ff20300d1ac8f8ce1050e5e</sc_cat_item>
         <sc_category display_value="Users">71b518e10f620300d1ac8f8ce1050e6e</sc_category>
         <sys_class_name>sc_cat_item_category</sys_class_name>
         <sys_created_by>admin</sys_created_by>

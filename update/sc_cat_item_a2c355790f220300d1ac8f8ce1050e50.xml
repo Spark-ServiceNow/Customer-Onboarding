@@ -7,10 +7,11 @@
         <category display_value="Users">71b518e10f620300d1ac8f8ce1050e6e</category>
         <cost>0</cost>
         <custom_cart/>
-        <delivery_plan display_value="DEFAULT">523da512c611228900811a37c97c2014</delivery_plan>
+        <delivery_plan/>
         <delivery_plan_script/>
         <delivery_time>1970-01-03 00:00:00</delivery_time>
-        <description><![CDATA[<p>Request yourself or someone else to be added to a Support Group.</p>]]></description>
+        <description><![CDATA[<p>Request yourself or someone else to be added to a Group.</p>
+<p>Groups may be related to Roles in ServiceNow. This request may simply add this user to a Support Group or if added to a Permissions Group will grant the associated roles and corresponding permissions.</p>]]></description>
         <entitlement_script/>
         <group/>
         <hide_sp>false</hide_sp>
@@ -24,7 +25,7 @@
         <mobile_picture/>
         <mobile_picture_type>use_desktop_picture</mobile_picture_type>
         <model/>
-        <name>Request to be Added to a Support Group</name>
+        <name>Add a User to a Group</name>
         <no_cart>false</no_cart>
         <no_order>false</no_order>
         <no_order_now>false</no_order_now>
@@ -50,14 +51,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-11-21 01:26:34</sys_created_on>
         <sys_id>a2c355790f220300d1ac8f8ce1050e50</sys_id>
-        <sys_mod_count>4</sys_mod_count>
-        <sys_name>Request to be Added to a Support Group</sys_name>
+        <sys_mod_count>8</sys_mod_count>
+        <sys_name>Add a User to a Group</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy/>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sc_cat_item_a2c355790f220300d1ac8f8ce1050e50</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-12-14 02:54:39</sys_updated_on>
+        <sys_updated_on>2018-02-22 02:18:13</sys_updated_on>
         <template/>
         <type>item</type>
         <use_sc_layout>true</use_sc_layout>
@@ -65,7 +66,7 @@
         <visible_bundle>true</visible_bundle>
         <visible_guide>true</visible_guide>
         <visible_standalone>true</visible_standalone>
-        <workflow/>
+        <workflow display_value="Customer Onboarding - Foundation">bd6692460f620300d1ac8f8ce1050e5c</workflow>
     </sc_cat_item>
     <sys_translated_text action="delete_multiple" query="documentkey=a2c355790f220300d1ac8f8ce1050e50"/>
     <fx_price action="delete_multiple" query="id=a2c355790f220300d1ac8f8ce1050e50"/>
