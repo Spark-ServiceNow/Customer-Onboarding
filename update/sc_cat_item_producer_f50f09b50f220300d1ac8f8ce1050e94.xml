@@ -50,22 +50,24 @@
 // Author: 		    Ronald Lob
 // Script Type:     [Record Producer] Customer Onboarding - Foundation - Users
 // Script Name:	    Customer Onboarding - Foundation - Users
-// Script Version:	1.00
+// Script Version:	1.1
 // Script Desc:	    Validates existing Users off a new Service Catalog request item. 
 //                  If not existing, creates new otherwise updates existing  
 // ==========
 // Revisions:
 // ==========				
-// 30/11/2017 - [Version 1.0][Ronald Lob]  	Development.
+// 30/11/2017 - [Version 1.0][Ronald Lob] Development.
+// 23/02/2017 - [Version 1.1][Ronald Lob] Changed the building of import sets and running of transforms to use ScopedTools utility.
+//                                        Added a hard coded import set table name & transform sys_id rather than using a property.
 // =============================================================
 
 // Set the following variables with the name of your import set table and task id column   
-var importSetTableName = gs.getProperty('Record_Producer_ImportSetTable_Users');  
-var importSetTaskIDFieldName = "task_id";   
-var transformMapID = gs.getProperty('TransformMap_SysID_Users');
+var importSetTableName = "x_133853_customer_record_producer_importsettable_user";  
+// var importSetTaskIDFieldName = "task_id";   
+var transformMapID = "135157a0db40130043055740cf9619c6";
   
 // Setup data source for attachment
-gs.info("[Customer Onboarding][RP][Users] Setup data source for attachment");
+gs.info("[Customer Onboarding][RP][User] Setup data source for attachment");
 current.name = "[DCF] Customer Onboarding - Bulk User load";  
 current.import_set_table_name = importSetTableName;  
 current.file_retrieval_method = "Attachment";  
@@ -74,16 +76,24 @@ current.format = "Excel";
 current.header_row = 11;  
 current.sheet_number = 3;  
 current.insert(); 
-gs.info("[Customer Onboarding][RP][Users] Data Source Setup Complete ....");
+gs.info("[Customer Onboarding][RP][User] Data Source Configured.");
+gs.addInfoMessage("Data Source Configured.");
   
-// Process excel file
-gs.info("[Customer Onboarding][RP][Users] Import Excel File to Data Source.");
-var loader = new GlideImportSetLoader();  
-var importSetRec = loader.getImportSetGr(current);  
-var ranload = loader.loadImportSetTable(importSetRec, current);  
-importSetRec.state = "loaded";  
-importSetRec.update(); 
-gs.info("[Customer Onboarding][RP][Users] Import Complete ....");
+// Process excel file into Data Source using ScopedTools utility (Required because of cross scope permissions blocking needed API) 
+var tools = new global.ScopedTools();
+var importSetRec = tools.Process_Attachment(current);
+gs.addInfoMessage("Import Set Created.");
+
+if (importSetRec.isValidRecord() == true){
+	// Run transform for built import set using predefined transform map 
+	tools.Transform(importSetRec.sys_id, transformMapID);
+	gs.addInfoMessage("Transform Started.");
+	gs.addInfoMessage("Data import may take time load, please reload the list.");
+} else {
+	// Something went wrong, we need to abort
+	gs.addErrorMessage("Error: An import set was not created. Please review the Application logs for further information.");
+	current.setAbortAction(true);
+}
   
 // Update processed rows with task sys_id  
 //var importSetRow = new GlideRecord(importSetTableName);  
@@ -93,13 +103,6 @@ gs.info("[Customer Onboarding][RP][Users] Import Complete ....");
 //    importSetRow[importSetTaskIDFieldName] = producer.task_number;  
 //    importSetRow.update();  
 //}  
-  
-// Transform import set  
-gs.info("[Customer Onboarding][RP][Users] Transform import set.");
-var transformWorker = new GlideImportSetTransformerWorker(importSetRec.sys_id, transformMapID);  
-transformWorker.setBackground(true);  
-transformWorker.start();
-gs.info("[Customer Onboarding][RP][Users] Transform Complete ....");
   
 // Take user to task  
 // gs.addErrorMessage("Data import may take time load, please reload record to see all the imported Users");  
@@ -115,14 +118,14 @@ current.setAbortAction(true); ]]></script>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-11-21 01:06:43</sys_created_on>
         <sys_id>f50f09b50f220300d1ac8f8ce1050e94</sys_id>
-        <sys_mod_count>9</sys_mod_count>
+        <sys_mod_count>10</sys_mod_count>
         <sys_name>Bulk User Import</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy/>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sc_cat_item_producer_f50f09b50f220300d1ac8f8ce1050e94</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-02-08 01:47:08</sys_updated_on>
+        <sys_updated_on>2018-02-23 01:03:37</sys_updated_on>
         <table_name>sys_data_source</table_name>
         <template/>
         <type>item</type>

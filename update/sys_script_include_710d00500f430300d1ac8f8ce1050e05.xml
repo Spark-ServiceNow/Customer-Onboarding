@@ -103,15 +103,15 @@ Group.prototype = {
 		if (gr_p.isValidRecord() == true) { gr.parent = gr_p.sys_id; }
 		gr.type = group_type;
 		
-		var sys_id = gr.insert();
+		gr.insert();
 
-		if (sys_id) {
-			gs.info('[Customer Onboarding][SI][Group.Create] New Group record created successfully: ' + sys_id);
-			return true;
+		if (gr.isValidRecord()) {
+			gs.info('[Customer Onboarding][SI][Group.Create] New Group record created successfully: ' + gr.sys_id);
 		} else {
-			gs.info('[Customer Onboarding][SI][Group.Create] New Group record not created successfully: ' + sys_id);
-			return false;
+			gs.info('[Customer Onboarding][SI][Group.Create] New Group record not created successfully: ' + gr.sys_id);
 		}
+		
+		return gr;
 	},
 	
 	// .. 
@@ -280,7 +280,7 @@ Group.prototype = {
 		// Validate provided Users and Group 
 		var user_api = new User();
 		var gr_g = this.Get_SysID(group);
-		var gr_u = user.Get_SysID(user);
+		var gr_u = user_api.Get_SysID(user);
 
 		if (gr_g.isValidRecord() == false) { gr_g = this.Get_Name(group); }
 		if (gr_u.isValidRecord() == false) { gr_u = user.Get_UserID(user); }
@@ -319,6 +319,56 @@ Group.prototype = {
 			return false;
 		}
 	},
+	
+	// .. 
+	// Removes this User from provided Group Name or Sys_ID
+	// .. 
+	RemoveUserFromGroup: function(user, group){
+		
+		gs.info('[Customer Onboarding][SI][Group.RemoveUserFromGroup] Remove User (' + user + ') from Group (' + group + ')');
+		
+		// Validate provided Users and Group 
+		var user_api = new User();
+		var gr_g = this.Get_SysID(group);
+		var gr_u = user_api.Get_SysID(user);
+
+		if (gr_g.isValidRecord() == false) { gr_g = this.Get_Name(group); }
+		if (gr_u.isValidRecord() == false) { gr_u = user.Get_UserID(user); }
+
+		if (gr_g.isValidRecord() == true && gr_u.isValidRecord() == true) { 
+			// User and Group is valid. Lets check if they are actually related.
+			gs.info('[Customer Onboarding][SI][Group.RemoveUserFromGroup] User (' + user + ') valid. Group (' + group + ') valid. Unrelating.');
+			
+			gr = new GlideRecord('sys_user_grmember');
+			gr.addQuery('user',gr_u.sys_id);
+			gr.addQuery('group',gr_g.sys_id);
+			gr.query();
+			gr.next();
+
+			if (gr.isValidRecord() == true) {
+				// Valid, remove
+				//var bool = gr.deleteRecord();
+				// We need to use the Utility class to bypass cross scope priviledges as most tables disallow deleting from other scopes.
+				var tools = new global.ScopedTools();
+				var bool = tools.DeleteRecord("sys_user_grmember",gr.sys_id,"DELETE");
+				
+				if (bool == "true") { 
+					gs.info('[Customer Onboarding][SI][Group.RemoveUserFromGroup] User (' + user + ') removed from Group (' + group + ')');
+					return true;
+				} else {
+					gs.info('[Customer Onboarding][SI][Group.RemoveUserFromGroup] User (' + user + ') not removed from Group (' + group + '). Remove Failed.');
+					return false;
+				}
+
+			} else {
+				gs.info('[Customer Onboarding][SI][Group.RemoveUserFromGroup] User (' + user + ') does not belong to Group (' + group + '). Aborted.');	
+				return false;
+			}
+		} else {
+			gs.info('[Customer Onboarding][SI][Group.RemoveUserFromGroup] Cannot find valid User or Group records based on provided data. Aborted.');	
+			return false;
+		}
+	},
 
     type: 'Group'
 };]]></script>
@@ -326,13 +376,13 @@ Group.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-12-11 01:18:43</sys_created_on>
         <sys_id>710d00500f430300d1ac8f8ce1050e05</sys_id>
-        <sys_mod_count>9</sys_mod_count>
+        <sys_mod_count>13</sys_mod_count>
         <sys_name>Group</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sys_script_include_710d00500f430300d1ac8f8ce1050e05</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-02-20 04:14:20</sys_updated_on>
+        <sys_updated_on>2018-02-26 02:32:26</sys_updated_on>
     </sys_script_include>
 </record_update>

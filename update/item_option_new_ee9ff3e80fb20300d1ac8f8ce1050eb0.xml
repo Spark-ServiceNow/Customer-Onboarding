@@ -3,7 +3,7 @@
     <item_option_new action="INSERT_OR_UPDATE">
         <active>true</active>
         <attributes/>
-        <cat_item display_value="Edit a Support Group">e69fffa80fb20300d1ac8f8ce1050e97</cat_item>
+        <cat_item display_value="Edit a Group">e69fffa80fb20300d1ac8f8ce1050e97</cat_item>
         <category/>
         <choice_direction>down</choice_direction>
         <choice_field/>

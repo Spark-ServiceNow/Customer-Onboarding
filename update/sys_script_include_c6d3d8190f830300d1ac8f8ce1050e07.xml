@@ -474,7 +474,10 @@ User.prototype = {
 
 			if (gr.isValidRecord() == true) {
 				// Valid, remove
-				var bool = gr.deleteRecord();
+				//var bool = gr.deleteRecord();
+				// We need to use the Utility class to bypass cross scope priviledges as most tables disallow deleting from other scopes.
+				var tools = new global.ScopedTools();
+				var bool = tools.DeleteRecord("sys_user_grmember",gr.sys_id,"DELETE");
 				
 				if (bool == "true") { 
 					gs.info('[Customer Onboarding][SI][User.RemoveUserFromGroup] User (' + user + ') removed from Group (' + group + ')');
@@ -500,13 +503,13 @@ User.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-12-14 04:22:54</sys_created_on>
         <sys_id>c6d3d8190f830300d1ac8f8ce1050e07</sys_id>
-        <sys_mod_count>46</sys_mod_count>
+        <sys_mod_count>51</sys_mod_count>
         <sys_name>User</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sys_script_include_c6d3d8190f830300d1ac8f8ce1050e07</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-02-22 04:12:13</sys_updated_on>
+        <sys_updated_on>2018-02-23 00:45:25</sys_updated_on>
     </sys_script_include>
 </record_update>
