@@ -9,16 +9,16 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-11-30 03:21:06</sys_created_on>
         <sys_id>3954087c0fb20300d1ac8f8ce1050e6b</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>Group Email</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy/>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>question_choice_3954087c0fb20300d1ac8f8ce1050e6b</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-30 03:21:06</sys_updated_on>
+        <sys_updated_on>2018-02-26 04:09:51</sys_updated_on>
         <text>Group Email</text>
-        <value>Group_Email</value>
+        <value>email</value>
     </question_choice>
     <fx_price action="delete_multiple" query="id=3954087c0fb20300d1ac8f8ce1050e6b"/>
     <fx_price action="INSERT_OR_UPDATE">

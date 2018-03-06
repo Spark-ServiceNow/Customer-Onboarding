@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_133853_customer.AJAX2</api_name>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>AJAX2</name>
+        <script><![CDATA[// =============================================================
+// Author: 		    Ronald Lob
+// Script Type:     [Script Include] Customer Onboarding - AJAX
+// Script Name:	    Customer Onboarding - AJAX
+// Script Version:	1.0
+// Script Desc:	    A generic script containing client callable functions. 
+//                  Used for Advanced Reference Qualifiers.
+// ==========
+// Revisions:
+// ==========				
+// 05/03/2018 - [Version 1.0][Ronald Lob]  	Development.
+// =============================================================
+
+var AJAX2 = Class.create();
+
+AJAX2.prototype = {
+    initialize: function() {},
+	
+	// .. 
+	// Accepts the sys_id of a Group record and returns a concatenated query list for filtering a User reference field
+	// ..
+	Get_Group_Members: function(group){
+
+		gs.info('[Customer Onboarding][SI][Group.Get_Group_Members] Get members of Group: ' + group);
+
+		var users = '';
+		var concat = 'sys_idIN';
+
+		gr = new GlideRecord('sys_user_group');
+		gr.addQuery('sys_id',group);
+		gr.query();
+		gr.next();
+
+		if (gr.isValidRecord() == "true") {
+			var gr_u = new GlideRecord('sys_user_grmember');
+			var i = 0;
+			var array = [];
+			gr_u.addQuery('group',group);
+			gr_u.query();
+
+			while (gr_u.next()) {
+				array[i] = gr_u.user;
+				users += (',' + gr_u.user);
+				i++;
+			}
+			
+			gs.info('[Customer Onboarding][SI][Group.Get_Group_Members] Returning the following query string: ' + 'sys_idIN' + users);
+			concat += users;
+			
+
+		} else {
+			gs.info('[Customer Onboarding][SI][Group.Get_Group_Members] The provided Group sys_id: ' + group + ' could not be found. Abort.');
+		}
+		
+		return concat;
+
+	},
+	
+	Test: function (){
+		return 'first_nameSTARTSWITHab';
+	},
+
+    type: 'AJAX2'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-03-05 21:44:19</sys_created_on>
+        <sys_id>e1ad85a3db20130043055740cf961975</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>AJAX2</sys_name>
+        <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
+        <sys_update_name>sys_script_include_e1ad85a3db20130043055740cf961975</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-03-05 21:44:19</sys_updated_on>
+    </sys_script_include>
+</record_update>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update table="sc_cat_item_catalog">
     <sc_cat_item_catalog action="INSERT_OR_UPDATE">
-        <sc_cat_item display_value="Bulk Support Group Import">d2bd41b50f220300d1ac8f8ce1050ea6</sc_cat_item>
+        <sc_cat_item display_value="Bulk Group Import">d2bd41b50f220300d1ac8f8ce1050ea6</sc_cat_item>
         <sc_catalog display_value="ServiceNow Administration">51e4d0e10f620300d1ac8f8ce1050e33</sc_catalog>
         <sys_class_name>sc_cat_item_catalog</sys_class_name>
         <sys_created_by>admin</sys_created_by>

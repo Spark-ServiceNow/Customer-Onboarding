@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update table="sc_cat_item_category">
     <sc_cat_item_category action="INSERT_OR_UPDATE">
-        <sc_cat_item display_value="Remove an existing Support Group">749e77a80fb20300d1ac8f8ce1050ee0</sc_cat_item>
+        <sc_cat_item display_value="Deactivate an existing Group">749e77a80fb20300d1ac8f8ce1050ee0</sc_cat_item>
         <sc_category display_value="Groups">0026d0e10f620300d1ac8f8ce1050e64</sc_category>
         <sys_class_name>sc_cat_item_category</sys_class_name>
         <sys_created_by>admin</sys_created_by>

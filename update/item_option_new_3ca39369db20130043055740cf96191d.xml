@@ -3,7 +3,7 @@
     <item_option_new action="INSERT_OR_UPDATE">
         <active>true</active>
         <attributes/>
-        <cat_item display_value="Edit a Group">e69fffa80fb20300d1ac8f8ce1050e97</cat_item>
+        <cat_item display_value="Add a User to a Group">bd83d729db20130043055740cf9619c5</cat_item>
         <category/>
         <choice_direction>down</choice_direction>
         <choice_field/>
@@ -26,7 +26,7 @@
         <include_none>false</include_none>
         <instructions/>
         <layout>normal</layout>
-        <list_table>sys_user</list_table>
+        <list_table/>
         <lookup_label/>
         <lookup_price/>
         <lookup_table/>
@@ -37,19 +37,21 @@
         <map_to_field>false</map_to_field>
         <mask_use_confirmation>false</mask_use_confirmation>
         <mask_use_encryption>false</mask_use_encryption>
-        <name>Members</name>
-        <order>400</order>
+        <name>User</name>
+        <order>100</order>
         <price_if_checked>0</price_if_checked>
         <pricing_implications>false</pricing_implications>
-        <question_text>Members:</question_text>
+        <question_text>User:</question_text>
         <read_roles/>
         <rec_lookup_price/>
         <rec_price_if_checked>0</rec_price_if_checked>
         <record/>
         <record_producer_table/>
-        <reference/>
-        <reference_qual>javascript:new Group().Get_Members(current.variables.Group);</reference_qual>
-        <reference_qual_condition/>
+        <reference>sys_user</reference>
+        <reference_qual>active=true^EQ</reference_qual>
+        <reference_qual_condition table="sys_user">active=true^EQ<item endquery="false" field="active" goto="false" newquery="false" operator="=" or="false" value="true"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </reference_qual_condition>
         <scale_max>5</scale_max>
         <scale_min>0</scale_min>
         <show_help>false</show_help>
@@ -58,22 +60,22 @@
         <summary_macro/>
         <sys_class_name>item_option_new</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2018-02-26 02:52:45</sys_created_on>
-        <sys_id>91a9c5cddb20130043055740cf9619da</sys_id>
-        <sys_mod_count>2</sys_mod_count>
-        <sys_name>Members:</sys_name>
+        <sys_created_on>2018-02-28 02:12:40</sys_created_on>
+        <sys_id>3ca39369db20130043055740cf96191d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>User:</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy/>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
-        <sys_update_name>item_option_new_91a9c5cddb20130043055740cf9619da</sys_update_name>
+        <sys_update_name>item_option_new_3ca39369db20130043055740cf96191d</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-02-27 03:03:45</sys_updated_on>
+        <sys_updated_on>2018-02-28 02:12:40</sys_updated_on>
         <table/>
         <tooltip/>
-        <type>21</type>
+        <type>8</type>
         <ui_page/>
         <use_dynamic_default>false</use_dynamic_default>
-        <use_reference_qualifier>advanced</use_reference_qualifier>
+        <use_reference_qualifier>simple</use_reference_qualifier>
         <variable_name/>
         <variable_set/>
         <variable_width/>
@@ -84,22 +86,22 @@
         <visible_summary>true</visible_summary>
         <write_roles/>
     </item_option_new>
-    <sys_translated_text action="delete_multiple" query="documentkey=91a9c5cddb20130043055740cf9619da"/>
-    <fx_price action="delete_multiple" query="id=91a9c5cddb20130043055740cf9619da"/>
+    <sys_translated_text action="delete_multiple" query="documentkey=3ca39369db20130043055740cf96191d"/>
+    <fx_price action="delete_multiple" query="id=3ca39369db20130043055740cf96191d"/>
     <fx_price action="INSERT_OR_UPDATE">
         <amount>0</amount>
         <currency display_value="GBP">GBP</currency>
         <field>price_if_checked</field>
-        <id>91a9c5cddb20130043055740cf9619da</id>
+        <id>3ca39369db20130043055740cf96191d</id>
         <parent/>
         <reference_amount>0</reference_amount>
         <reference_currency display_value="USD">USD</reference_currency>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2018-02-26 02:52:45</sys_created_on>
-        <sys_id>93c981cddb20130043055740cf961998</sys_id>
+        <sys_created_on>2018-02-28 02:12:41</sys_created_on>
+        <sys_id>23c3d369db20130043055740cf961983</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-02-26 02:52:45</sys_updated_on>
+        <sys_updated_on>2018-02-28 02:12:41</sys_updated_on>
         <table>item_option_new</table>
         <type>calculated</type>
     </fx_price>
@@ -107,16 +109,16 @@
         <amount>0</amount>
         <currency display_value="GBP">GBP</currency>
         <field>rec_price_if_checked</field>
-        <id>91a9c5cddb20130043055740cf9619da</id>
+        <id>3ca39369db20130043055740cf96191d</id>
         <parent/>
         <reference_amount>0</reference_amount>
         <reference_currency display_value="USD">USD</reference_currency>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2018-02-26 02:52:45</sys_created_on>
-        <sys_id>5bc981cddb20130043055740cf961997</sys_id>
+        <sys_created_on>2018-02-28 02:12:41</sys_created_on>
+        <sys_id>e7c3d369db20130043055740cf961982</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-02-26 02:52:45</sys_updated_on>
+        <sys_updated_on>2018-02-28 02:12:41</sys_updated_on>
         <table>item_option_new</table>
         <type>calculated</type>
     </fx_price>

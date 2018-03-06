@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update table="sc_cat_item_catalog">
     <sc_cat_item_catalog action="INSERT_OR_UPDATE">
-        <sc_cat_item display_value="Deactivate an existing Group">749e77a80fb20300d1ac8f8ce1050ee0</sc_cat_item>
+        <sc_cat_item display_value="Add a User to a Group">bd83d729db20130043055740cf9619c5</sc_cat_item>
         <sc_catalog display_value="ServiceNow Administration">51e4d0e10f620300d1ac8f8ce1050e33</sc_catalog>
         <sys_class_name>sc_cat_item_catalog</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2018-02-21 02:17:26</sys_created_on>
-        <sys_id>c9c11fdbdb10130043055740cf9619ad</sys_id>
+        <sys_created_on>2018-02-28 02:11:28</sys_created_on>
+        <sys_id>c683d729db20130043055740cf9619ca</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name>ServiceNow Administration.Remove an existing Support Group</sys_name>
+        <sys_name>ServiceNow Administration.Add a User to a Group</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy/>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
-        <sys_update_name>sc_cat_item_catalog_c9c11fdbdb10130043055740cf9619ad</sys_update_name>
+        <sys_update_name>sc_cat_item_catalog_c683d729db20130043055740cf9619ca</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-02-21 02:17:26</sys_updated_on>
+        <sys_updated_on>2018-02-28 02:11:28</sys_updated_on>
     </sc_cat_item_catalog>
 </record_update>

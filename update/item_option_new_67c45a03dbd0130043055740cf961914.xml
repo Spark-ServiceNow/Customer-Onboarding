@@ -48,7 +48,7 @@
         <record/>
         <record_producer_table/>
         <reference>sys_user_group</reference>
-        <reference_qual>javascript:new User().Get_Groups("0ee5ce0bdb90130043055740cf9619d0");</reference_qual>
+        <reference_qual/>
         <reference_qual_condition/>
         <scale_max>5</scale_max>
         <scale_min>0</scale_min>
@@ -60,14 +60,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-02-20 03:34:01</sys_created_on>
         <sys_id>67c45a03dbd0130043055740cf961914</sys_id>
-        <sys_mod_count>21</sys_mod_count>
+        <sys_mod_count>22</sys_mod_count>
         <sys_name>Group:</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy/>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>item_option_new_67c45a03dbd0130043055740cf961914</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-02-22 04:26:30</sys_updated_on>
+        <sys_updated_on>2018-03-04 22:42:52</sys_updated_on>
         <table/>
         <tooltip/>
         <type>8</type>
