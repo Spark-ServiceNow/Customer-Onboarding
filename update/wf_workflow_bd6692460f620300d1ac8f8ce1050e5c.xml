@@ -32,12 +32,12 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-02-23 01:57:45</sys_created_on>
         <sys_id>10702904dba0130043055740cf961964</sys_id>
-        <sys_mod_count>41</sys_mod_count>
+        <sys_mod_count>42</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-03-01 03:46:32</sys_updated_on>
+        <sys_updated_on>2018-03-28 03:52:34</sys_updated_on>
         <table>sc_req_item</table>
         <timezone/>
-        <validated>false</validated>
+        <validated>true</validated>
         <workflow display_value="Customer Onboarding - Foundation">bd6692460f620300d1ac8f8ce1050e5c</workflow>
     </wf_workflow_version>
     <wf_workflow action="INSERT_OR_UPDATE">
