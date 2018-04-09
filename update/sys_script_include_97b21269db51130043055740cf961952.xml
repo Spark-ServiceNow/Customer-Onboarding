@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_133853_customer.Role</api_name>
+        <client_callable>false</client_callable>
+        <description>API Class for managing Role records.</description>
+        <name>Role</name>
+        <script><![CDATA[// =============================================================
+// Author: 		    Ronald Lob
+// Script Type:     [Script Include] Customer Onboarding - Role API
+// Script Name:	    Customer Onboarding - Role API
+// Script Version:	1.0
+// Script Desc:	    API for CRUD functionality on Role table. 
+//                  Differs from standard Table / REST API as it's specific to this application.
+//                  Cascading of Creates / Updates / Deletes.
+// ==========
+// Revisions:
+// ==========				
+// 06/04/2018 - [Version 1.0][Ronald Lob]  	Development. 
+// =============================================================
+
+var Role = Class.create();
+
+Role.prototype = {
+    initialize: function() {},
+		
+	// .. 
+	// Returns a record from provided Role sys_id
+	// .. 
+	Get_SysID: function(sys_id){
+		
+		gs.info('[Customer Onboarding][SI][Role.Get_SysID] Get Role with sys_id = ' + sys_id);
+	
+		gr = new GlideRecord('sys_user_role');
+		gr.addQuery('sys_id',sys_id);
+		gr.query();
+		gr.next();
+		
+		return gr;
+	},
+	
+	// .. 
+	// Returns a Role record from provided Role Name
+	// .. 
+	Get_Role: function(role_name){
+		
+		gs.info('[Customer Onboarding][SI][Role.Get_Name] Get Role with name = ' + role_name);
+	
+		gr = new GlideRecord('sys_user_role');
+		gr.addQuery('name',role_name);
+		gr.query();
+		gr.next();
+
+		return gr;	
+	},
+
+    type: 'Role'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-04-06 04:22:13</sys_created_on>
+        <sys_id>97b21269db51130043055740cf961952</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Role</sys_name>
+        <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
+        <sys_update_name>sys_script_include_97b21269db51130043055740cf961952</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-04-06 05:12:49</sys_updated_on>
+    </sys_script_include>
+</record_update>

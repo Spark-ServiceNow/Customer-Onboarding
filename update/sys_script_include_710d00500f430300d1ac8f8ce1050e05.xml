@@ -11,7 +11,7 @@
 // Author: 		    Ronald Lob
 // Script Type:     [Script Include] Customer Onboarding - Group API
 // Script Name:	    Customer Onboarding - Group API
-// Script Version:	1.5
+// Script Version:	1.6
 // Script Desc:	    API for CRUD functionality on Group table. 
 //                  Differs from standard Table / REST API as it's specific to this application.
 //                  Cascading of Creates / Updates / Deletes.
@@ -23,6 +23,7 @@
 // 08/02/2018 - [Version 1.3][Ronald Lob]  	Added the AddUserToGroup function to add a user to a group.
 // 20/02/2018 - [Version 1.4][Ronald Lob]  	Added the Get_Members function to return a list of Users thats members of a given Group.
 // 27/02/2018 - [Version 1.5][Ronald Lob]  	Added a Deactivate function instead of a Delete.
+// 09/04/2018 - [Version 1.6][Ronald Lob]  	Added the AddRoleToGroup function. 
 // =============================================================
 
 var Group = Class.create();
@@ -382,6 +383,39 @@ Group.prototype = {
 			return false;
 		}
 	},
+	
+	// .. 
+	// Adds a provided Role name or sys_id to provided Group name or Sys_ID
+	// .. 
+	AddRoleToGroup: function(role, group){
+		
+		gs.info('[Customer Onboarding][SI][Group.AddRoleToGroup] Add Role (' + role + ') to Group (' + group + ')');
+		
+		// Validate provided Users and Group 
+		var role_api = new Role();
+		var gr_g = this.Get_SysID(group);
+		var gr_r = role_api.Get_SysID(role);
+
+		if (gr_g.isValidRecord() == false) { gr_g = this.Get_Name(group); }
+		if (gr_r.isValidRecord() == false) { gr_r = role_api.Get_Role(role); }
+
+		if (gr_g.isValidRecord() == true && gr_r.isValidRecord() == true) { 
+			// Role and Group is valid. Relate using Scoped Tools to cross scope permissions
+			gs.info('[Customer Onboarding][SI][Group.AddRoleToGroup] Role (' + role + ') valid. Group (' + group + ') valid. Inserting.');
+			
+			var st = new global.ScopedTools();
+			var sys_id = st.AddRoleToGroup(gr_r.sys_id,gr_g.sys_id);
+
+			if (sys_id) { gs.info('[Customer Onboarding][SI][Group.AddRoleToGroup] Role (' + role + ') added to Group (' + group + '):' + sys_id); } else {
+				gs.info('[Customer Onboarding][SI][Group.AddRoleToGroup] Role (' + role + ') not added to Group (' + group + '). Insert Failed.');
+			}
+
+			return sys_id;
+
+		} else {
+			gs.info('[Customer Onboarding][SI][Group.AddRoleToGroup] Cannot find valid Role or Group records based on provided data. Aborted.');	
+		}
+	},
 
     type: 'Group'
 };]]></script>
@@ -389,13 +423,13 @@ Group.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-12-11 01:18:43</sys_created_on>
         <sys_id>710d00500f430300d1ac8f8ce1050e05</sys_id>
-        <sys_mod_count>16</sys_mod_count>
+        <sys_mod_count>25</sys_mod_count>
         <sys_name>Group</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sys_script_include_710d00500f430300d1ac8f8ce1050e05</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-02-27 03:21:24</sys_updated_on>
+        <sys_updated_on>2018-04-09 02:43:41</sys_updated_on>
     </sys_script_include>
 </record_update>
