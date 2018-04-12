@@ -51,14 +51,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-02-28 02:11:28</sys_created_on>
         <sys_id>bd83d729db20130043055740cf9619c5</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>Add a User to a Group</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy/>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sc_cat_item_bd83d729db20130043055740cf9619c5</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-02-28 02:13:54</sys_updated_on>
+        <sys_updated_on>2018-04-12 01:37:41</sys_updated_on>
         <template/>
         <type>item</type>
         <use_sc_layout>true</use_sc_layout>
