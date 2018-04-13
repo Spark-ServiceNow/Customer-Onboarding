@@ -15,22 +15,22 @@
         <mobile_subcategory_render_type>card</mobile_subcategory_render_type>
         <module/>
         <order>0</order>
-        <parent/>
+        <parent display_value="ServiceNow Administration">4830b1b7db91130043055740cf961969</parent>
         <roles/>
-        <sc_catalog display_value="ServiceNow Administration">51e4d0e10f620300d1ac8f8ce1050e33</sc_catalog>
+        <sc_catalog display_value="Service Catalog">e0d08b13c3330100c8b837659bba8fb4</sc_catalog>
         <show_in_cms>false</show_in_cms>
         <sys_class_name>sc_category</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-11-20 02:15:46</sys_created_on>
         <sys_id>796558e10f620300d1ac8f8ce1050e47</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_name>Foundation</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy/>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sc_category_796558e10f620300d1ac8f8ce1050e47</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-04-06 03:56:51</sys_updated_on>
+        <sys_updated_on>2018-04-13 01:52:59</sys_updated_on>
         <title>Foundation</title>
     </sc_category>
     <sys_translated_text action="delete_multiple" query="documentkey=796558e10f620300d1ac8f8ce1050e47"/>
