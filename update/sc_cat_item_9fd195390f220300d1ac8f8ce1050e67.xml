@@ -2,7 +2,7 @@
 <record_update table="sc_cat_item">
     <sc_cat_item action="INSERT_OR_UPDATE">
         <active>true</active>
-        <availability>on_desktop</availability>
+        <availability>on_both</availability>
         <billable>false</billable>
         <category display_value="Groups">0026d0e10f620300d1ac8f8ce1050e64</category>
         <cost>0</cost>
@@ -10,12 +10,11 @@
         <delivery_plan/>
         <delivery_plan_script/>
         <delivery_time>1970-01-03 00:00:00</delivery_time>
-        <description><![CDATA[<p>Request a New Group to be added to ServiceNow. Groups can represent a Support Group, Approval Group, or Permissions Group depending on your requirements. Permissions Groups are associated to Roles and can only be requested directly from your Service Management Support team.</p>
-<p>You may need the following details in addition to the standard group information. If these details are not present in the selection lists, please request them separately before requesting this item:</p>
-<ul style="list-style-position: inside;"><li>Manager</li><li>Default Assignee</li><li>Group Email Address</li><li>Cost Center</li></ul>]]></description>
+        <description><![CDATA[<p>Request a New Support Group to be added to ServiceNow. This form is for standard Support Groups. Permissions Groups are associated to Roles and can only be requested directly from your Service Management Support team.</p>
+<p>You may need the following optional details in addition to the standard group information.</p>
+<ul style="list-style-position: inside;"><li>Group Manager</li><li>Default Assignee</li><li>Group Email Address</li><li>Cost Center</li></ul>]]></description>
         <entitlement_script/>
         <group/>
-        <hide_sp>false</hide_sp>
         <icon/>
         <ignore_price>true</ignore_price>
         <image/>
@@ -52,14 +51,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-11-21 01:18:25</sys_created_on>
         <sys_id>9fd195390f220300d1ac8f8ce1050e67</sys_id>
-        <sys_mod_count>12</sys_mod_count>
+        <sys_mod_count>15</sys_mod_count>
         <sys_name>Request a new Group</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy/>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sc_cat_item_9fd195390f220300d1ac8f8ce1050e67</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-04-12 01:49:46</sys_updated_on>
+        <sys_updated_by>T824513@spark.co.nz</sys_updated_by>
+        <sys_updated_on>2018-04-17 03:18:44</sys_updated_on>
         <template/>
         <type>item</type>
         <use_sc_layout>true</use_sc_layout>
@@ -107,9 +106,9 @@
     </fx_price>
     <sys_attachment action="INSERT_OR_UPDATE">
         <average_image_color>#ffffff</average_image_color>
-        <chunk_size_bytes>734003</chunk_size_bytes>
         <compressed>true</compressed>
         <content_type>image/png</content_type>
+        <encryption_context/>
         <file_name>icon</file_name>
         <image_height>64</image_height>
         <image_width>64</image_width>
@@ -117,6 +116,8 @@
         <size_compressed>6330</size_compressed>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-01-15 04:32:29</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
         <sys_id>faddcda3dbe3030043055740cf96190b</sys_id>
         <sys_mod_count>2</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
@@ -144,9 +145,9 @@
     </sys_attachment_doc>
     <sys_attachment action="INSERT_OR_UPDATE">
         <average_image_color>#94c4e9</average_image_color>
-        <chunk_size_bytes>734003</chunk_size_bytes>
         <compressed>true</compressed>
         <content_type>image/png</content_type>
+        <encryption_context/>
         <file_name>picture</file_name>
         <image_height>128</image_height>
         <image_width>128</image_width>
@@ -154,6 +155,8 @@
         <size_compressed>10362</size_compressed>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-04-06 03:09:34</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
         <sys_id>f1a34eaddb11130043055740cf961914</sys_id>
         <sys_mod_count>2</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>

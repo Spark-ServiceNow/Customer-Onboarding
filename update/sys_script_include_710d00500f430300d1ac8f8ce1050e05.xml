@@ -23,7 +23,7 @@
 // 08/02/2018 - [Version 1.3][Ronald Lob]  	Added the AddUserToGroup function to add a user to a group.
 // 20/02/2018 - [Version 1.4][Ronald Lob]  	Added the Get_Members function to return a list of Users thats members of a given Group.
 // 27/02/2018 - [Version 1.5][Ronald Lob]  	Added a Deactivate function instead of a Delete.
-// 09/04/2018 - [Version 1.6][Ronald Lob]  	Added the AddRoleToGroup function. 
+// 09/04/2018 - [Version 1.6][Ronald Lob]  	Added the AddRoleToGroup function. Changed the Create to use ScopedTools utility. 
 // =============================================================
 
 var Group = Class.create();
@@ -93,25 +93,30 @@ Group.prototype = {
 		}
 	
 		// Create record
-		gr = new GlideRecord('sys_user_group');
-		gr.initialize();
-		gr.active = group_active;
-		if (gr_cc.isValidRecord() == true) { gr.cost_center = gr_cc.sys_id; }
-		if (gr_da.isValidRecord() == true) { gr.default_assignee = gr_da.sys_id; }
-		gr.description = group_description;
-		gr.email = group_email;
-		if (gr_m.isValidRecord() == true) { gr.manager = gr_m.sys_id; }
-		gr.name = group_name;
-		if (gr_p.isValidRecord() == true) { gr.parent = gr_p.sys_id; }
-		gr.type = group_type;
+		var st = new global.ScopedTools();
+		var cost_center_sys_id;
+		var default_assignee_sys_id;
+		var manager_sys_id;
+		var parent_sys_id;
 		
-		gr.insert();
+		if (gr_cc.isValidRecord() == true) { cost_center_sys_id = gr_cc.sys_id; }
+		if (gr_da.isValidRecord() == true) { default_assignee_sys_id = gr_da.sys_id; }
+		if (gr_m.isValidRecord() == true) { manager_sys_id = gr_m.sys_id; }
+		if (gr_p.isValidRecord() == true) { parent_sys_id = gr_p.sys_id; }
+		
+		var sys_id = st.AddGroup(group_active, cost_center_sys_id, default_assignee_sys_id, group_description, group_email, manager_sys_id, group_name, parent_sys_id, group_type);
 
-		if (gr.isValidRecord()) {
-			gs.info('[Customer Onboarding][SI][Group.Create] New Group record created successfully: ' + gr.sys_id);
+		if (sys_id) {
+			gs.info('[Customer Onboarding][SI][Group.Create] New Group record created successfully: ' + sys_id);
 		} else {
-			gs.info('[Customer Onboarding][SI][Group.Create] New Group record not created successfully: ' + gr.sys_id);
+			gs.info('[Customer Onboarding][SI][Group.Create] New Group record not created successfully.');
+			return false;
 		}
+		
+		gr = new GlideRecord('sys_user_group');
+		gr.addQuery('sys_id',sys_id);
+		gr.query();
+		gr.next();
 		
 		return gr;
 	},
@@ -423,13 +428,13 @@ Group.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-12-11 01:18:43</sys_created_on>
         <sys_id>710d00500f430300d1ac8f8ce1050e05</sys_id>
-        <sys_mod_count>25</sys_mod_count>
+        <sys_mod_count>28</sys_mod_count>
         <sys_name>Group</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sys_script_include_710d00500f430300d1ac8f8ce1050e05</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-04-09 02:43:41</sys_updated_on>
+        <sys_updated_by>T824513@spark.co.nz</sys_updated_by>
+        <sys_updated_on>2018-04-17 04:35:29</sys_updated_on>
     </sys_script_include>
 </record_update>

@@ -2,7 +2,7 @@
 <record_update table="sc_cat_item">
     <sc_cat_item action="INSERT_OR_UPDATE">
         <active>true</active>
-        <availability>on_desktop</availability>
+        <availability>on_both</availability>
         <billable>false</billable>
         <category display_value="Departments">e91775800f3e0300d1ac8f8ce1050e85</category>
         <cost>0</cost>
@@ -14,7 +14,6 @@
 <ul style="list-style-position: inside;"><li>Select a Department from the drop down.</li><li>Select the field you wish to update.</li><li>Enter the new value (please ensure spelling is accurate or this will be rejected)</li><li>To update multiple fields, submit multiple request items.</li></ul>]]></description>
         <entitlement_script/>
         <group/>
-        <hide_sp>false</hide_sp>
         <icon/>
         <ignore_price>true</ignore_price>
         <image/>
@@ -51,14 +50,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-11-28 04:04:57</sys_created_on>
         <sys_id>168a31040f3e0300d1ac8f8ce1050ea5</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_name>Edit a Department</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy/>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sc_cat_item_168a31040f3e0300d1ac8f8ce1050ea5</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-04-12 01:40:36</sys_updated_on>
+        <sys_updated_by>T824513@spark.co.nz</sys_updated_by>
+        <sys_updated_on>2018-04-17 02:28:22</sys_updated_on>
         <template/>
         <type>item</type>
         <use_sc_layout>true</use_sc_layout>
@@ -106,9 +105,9 @@
     </fx_price>
     <sys_attachment action="INSERT_OR_UPDATE">
         <average_image_color>#ffd200</average_image_color>
-        <chunk_size_bytes>734003</chunk_size_bytes>
         <compressed>true</compressed>
         <content_type>image/png</content_type>
+        <encryption_context/>
         <file_name>icon</file_name>
         <image_height>64</image_height>
         <image_width>64</image_width>
@@ -116,6 +115,8 @@
         <size_compressed>7445</size_compressed>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-01-15 04:38:06</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
         <sys_id>092f4de3dbe3030043055740cf96192c</sys_id>
         <sys_mod_count>2</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
@@ -143,9 +144,9 @@
     </sys_attachment_doc>
     <sys_attachment action="INSERT_OR_UPDATE">
         <average_image_color>#f7aa00</average_image_color>
-        <chunk_size_bytes/>
         <compressed>true</compressed>
         <content_type>image/png</content_type>
+        <encryption_context/>
         <file_name>picture</file_name>
         <image_height>128</image_height>
         <image_width>128</image_width>
@@ -153,6 +154,8 @@
         <size_compressed>6745</size_compressed>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-11-28 04:05:20</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
         <sys_id>705b71040f3e0300d1ac8f8ce1050ee4</sys_id>
         <sys_mod_count>2</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>

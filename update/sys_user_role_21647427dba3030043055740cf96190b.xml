@@ -5,10 +5,10 @@
         <can_delegate>true</can_delegate>
         <description>Access to all Foundation catalog items. Same permissions as requester with additional bulk loading access</description>
         <elevated_privilege>true</elevated_privilege>
+        <encryption_context/>
         <grantable>true</grantable>
         <includes_roles/>
         <name>x_133853_customer.co_foundation_admin</name>
-        <scoped_admin>false</scoped_admin>
         <suffix>co_foundation_admin</suffix>
         <sys_class_name>sys_user_role</sys_class_name>
         <sys_created_by>admin</sys_created_by>
