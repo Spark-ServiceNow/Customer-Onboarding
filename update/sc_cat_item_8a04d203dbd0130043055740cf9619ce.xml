@@ -2,7 +2,7 @@
 <record_update table="sc_cat_item">
     <sc_cat_item action="INSERT_OR_UPDATE">
         <active>true</active>
-        <availability>on_desktop</availability>
+        <availability>on_both</availability>
         <billable>false</billable>
         <category display_value="Users">71b518e10f620300d1ac8f8ce1050e6e</category>
         <cost>0</cost>
@@ -13,7 +13,6 @@
         <description><![CDATA[<p>Remove a User from a Group.</p>]]></description>
         <entitlement_script/>
         <group/>
-        <hide_sp>false</hide_sp>
         <icon/>
         <ignore_price>true</ignore_price>
         <image/>
@@ -50,14 +49,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-02-20 03:09:13</sys_created_on>
         <sys_id>8a04d203dbd0130043055740cf9619ce</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_name>Remove a User from a Group</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy/>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sc_cat_item_8a04d203dbd0130043055740cf9619ce</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-04-12 01:49:17</sys_updated_on>
+        <sys_updated_by>T824513@spark.co.nz</sys_updated_by>
+        <sys_updated_on>2018-04-17 02:30:18</sys_updated_on>
         <template/>
         <type>item</type>
         <use_sc_layout>true</use_sc_layout>
@@ -105,9 +104,9 @@
     </fx_price>
     <sys_attachment action="INSERT_OR_UPDATE">
         <average_image_color>#ffc905</average_image_color>
-        <chunk_size_bytes>734003</chunk_size_bytes>
         <compressed>true</compressed>
         <content_type>image/png</content_type>
+        <encryption_context/>
         <file_name>icon</file_name>
         <image_height>64</image_height>
         <image_width>64</image_width>
@@ -115,6 +114,8 @@
         <size_compressed>1852</size_compressed>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-02-21 01:36:00</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
         <sys_id>d248c717db10130043055740cf9619c3</sys_id>
         <sys_mod_count>2</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
@@ -142,9 +143,9 @@
     </sys_attachment_doc>
     <sys_attachment action="INSERT_OR_UPDATE">
         <average_image_color>#895428</average_image_color>
-        <chunk_size_bytes>734003</chunk_size_bytes>
         <compressed>true</compressed>
         <content_type>image/jpeg</content_type>
+        <encryption_context/>
         <file_name>picture</file_name>
         <image_height>200</image_height>
         <image_width>200</image_width>
@@ -152,6 +153,8 @@
         <size_compressed>11060</size_compressed>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-02-20 03:10:19</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
         <sys_id>4e441603dbd0130043055740cf9619bf</sys_id>
         <sys_mod_count>2</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>

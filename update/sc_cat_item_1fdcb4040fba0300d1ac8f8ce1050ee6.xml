@@ -2,7 +2,7 @@
 <record_update table="sc_cat_item">
     <sc_cat_item action="INSERT_OR_UPDATE">
         <active>true</active>
-        <availability>on_desktop</availability>
+        <availability>on_both</availability>
         <billable>false</billable>
         <category display_value="Companies">200fd9fd0f220300d1ac8f8ce1050e9e</category>
         <cost>0</cost>
@@ -13,7 +13,6 @@
         <description><![CDATA[<p>Edit an existing Company. The below list of fields can be updated. Select a Company from the drop down to populate the required fields with their current values. Make your changes and select Order to submit for approval.</p>]]></description>
         <entitlement_script/>
         <group/>
-        <hide_sp>false</hide_sp>
         <icon/>
         <ignore_price>true</ignore_price>
         <image/>
@@ -50,14 +49,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-11-27 23:34:58</sys_created_on>
         <sys_id>1fdcb4040fba0300d1ac8f8ce1050ee6</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>5</sys_mod_count>
         <sys_name>Edit a Company</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy/>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sc_cat_item_1fdcb4040fba0300d1ac8f8ce1050ee6</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-04-12 01:41:01</sys_updated_on>
+        <sys_updated_by>T824513@spark.co.nz</sys_updated_by>
+        <sys_updated_on>2018-04-17 02:27:56</sys_updated_on>
         <template/>
         <type>item</type>
         <use_sc_layout>true</use_sc_layout>
@@ -105,9 +104,9 @@
     </fx_price>
     <sys_attachment action="INSERT_OR_UPDATE">
         <average_image_color>#ffd200</average_image_color>
-        <chunk_size_bytes>734003</chunk_size_bytes>
         <compressed>true</compressed>
         <content_type>image/png</content_type>
+        <encryption_context/>
         <file_name>icon</file_name>
         <image_height>64</image_height>
         <image_width>64</image_width>
@@ -115,6 +114,8 @@
         <size_compressed>7445</size_compressed>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-01-15 04:37:18</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
         <sys_id>51fe8de3dbe3030043055740cf96193b</sys_id>
         <sys_mod_count>2</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
@@ -142,9 +143,9 @@
     </sys_attachment_doc>
     <sys_attachment action="INSERT_OR_UPDATE">
         <average_image_color>#ffefaf</average_image_color>
-        <chunk_size_bytes/>
         <compressed>true</compressed>
         <content_type>image/png</content_type>
+        <encryption_context/>
         <file_name>picture</file_name>
         <image_height>128</image_height>
         <image_width>128</image_width>
@@ -152,6 +153,8 @@
         <size_compressed>7961</size_compressed>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-11-27 23:35:24</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
         <sys_id>878dfc040fba0300d1ac8f8ce1050e9f</sys_id>
         <sys_mod_count>2</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>

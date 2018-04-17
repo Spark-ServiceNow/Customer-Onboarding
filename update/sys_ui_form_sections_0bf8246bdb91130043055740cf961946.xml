@@ -11,7 +11,7 @@
             <sys_mod_count>0</sys_mod_count>
             <sys_overrides/>
             <sys_ui_form display_value="sc_cat_item_producer" name="sc_cat_item_producer" sys_domain="global" view="7966be310a0a0b8c00bd504090503227">0bf8246bdb91130043055740cf961946</sys_ui_form>
-            <sys_ui_section caption="NULL" display_value="" name="sc_cat_item_producer" sys_domain="global" view="7966be310a0a0b8c00bd504090503227">cff8246bdb91130043055740cf961948</sys_ui_section>
+            <sys_ui_section display_value="">cff8246bdb91130043055740cf961948</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
             <sys_updated_on>2018-04-12 01:41:17</sys_updated_on>
         </sys_ui_form_section>
@@ -25,7 +25,7 @@
             <sys_mod_count>0</sys_mod_count>
             <sys_overrides/>
             <sys_ui_form display_value="sc_cat_item_producer" name="sc_cat_item_producer" sys_domain="global" view="7966be310a0a0b8c00bd504090503227">0bf8246bdb91130043055740cf961946</sys_ui_form>
-            <sys_ui_section caption="Mobile" display_value="Mobile" name="sc_cat_item_producer" sys_domain="global" view="7966be310a0a0b8c00bd504090503227">03f8e46bdb91130043055740cf961913</sys_ui_section>
+            <sys_ui_section display_value="">03f8e46bdb91130043055740cf961913</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
             <sys_updated_on>2018-04-12 01:41:17</sys_updated_on>
         </sys_ui_form_section>

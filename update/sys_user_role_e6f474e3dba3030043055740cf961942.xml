@@ -5,10 +5,10 @@
         <can_delegate>true</can_delegate>
         <description>Access to CRUD catalog items excluding bulk loading. </description>
         <elevated_privilege>false</elevated_privilege>
+        <encryption_context/>
         <grantable>true</grantable>
         <includes_roles/>
         <name>x_133853_customer.co_foundation_requester</name>
-        <scoped_admin>false</scoped_admin>
         <suffix>co_foundation_requester</suffix>
         <sys_class_name>sys_user_role</sys_class_name>
         <sys_created_by>admin</sys_created_by>

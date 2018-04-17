@@ -11,7 +11,7 @@
             <sys_mod_count>0</sys_mod_count>
             <sys_overrides/>
             <sys_ui_form display_value="sc_cat_item_producer" name="sc_cat_item_producer" sys_domain="global" view="f5a795fceb3211003623666cd206fe19">47f8e46bdb91130043055740cf961914</sys_ui_form>
-            <sys_ui_section caption="NULL" display_value="" name="sc_cat_item_producer" sys_domain="global" view="f5a795fceb3211003623666cd206fe19">8ff8e46bdb91130043055740cf961915</sys_ui_section>
+            <sys_ui_section display_value="">8ff8e46bdb91130043055740cf961915</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
             <sys_updated_on>2018-04-12 01:41:17</sys_updated_on>
         </sys_ui_form_section>
@@ -25,7 +25,7 @@
             <sys_mod_count>0</sys_mod_count>
             <sys_overrides/>
             <sys_ui_form display_value="sc_cat_item_producer" name="sc_cat_item_producer" sys_domain="global" view="f5a795fceb3211003623666cd206fe19">47f8e46bdb91130043055740cf961914</sys_ui_form>
-            <sys_ui_section caption="Details" display_value="Details" name="sc_cat_item_producer" sys_domain="global" view="f5a795fceb3211003623666cd206fe19">87f8e46bdb91130043055740cf961917</sys_ui_section>
+            <sys_ui_section display_value="">87f8e46bdb91130043055740cf961917</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
             <sys_updated_on>2018-04-12 01:41:17</sys_updated_on>
         </sys_ui_form_section>
@@ -39,7 +39,7 @@
             <sys_mod_count>0</sys_mod_count>
             <sys_overrides/>
             <sys_ui_form display_value="sc_cat_item_producer" name="sc_cat_item_producer" sys_domain="global" view="f5a795fceb3211003623666cd206fe19">47f8e46bdb91130043055740cf961914</sys_ui_form>
-            <sys_ui_section caption="Costs" display_value="Costs" name="sc_cat_item_producer" sys_domain="global" view="f5a795fceb3211003623666cd206fe19">07f8e46bdb91130043055740cf961919</sys_ui_section>
+            <sys_ui_section display_value="">07f8e46bdb91130043055740cf961919</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
             <sys_updated_on>2018-04-12 01:41:17</sys_updated_on>
         </sys_ui_form_section>

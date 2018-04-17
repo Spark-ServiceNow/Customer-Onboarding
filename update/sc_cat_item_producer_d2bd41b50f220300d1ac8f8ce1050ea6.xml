@@ -8,14 +8,13 @@
         <category display_value="Groups">0026d0e10f620300d1ac8f8ce1050e64</category>
         <cost>0</cost>
         <custom_cart/>
-        <delivery_plan display_value="DEFAULT">523da512c611228900811a37c97c2014</delivery_plan>
+        <delivery_plan display_value="">523da512c611228900811a37c97c2014</delivery_plan>
         <delivery_plan_script/>
         <delivery_time>1970-01-03 00:00:00</delivery_time>
         <description><![CDATA[<p>Use this Template to bulk load Groups into ServiceNow</p>
 <ol style="list-style-position: inside;"><li>Please download the template by clicking <a title="here" href="https://dev34826.service-now.com/sys_attachment.do?sys_id&#61;0051e9eedb11130043055740cf9619d8" rel="nofollow">here</a>.</li><li>Fill out the template with the Group data and then save the file locally on your computer.</li><li>Attach the completed import template to this request by dragging and dropping the file into the browser. Or you can use the paper clip icon to browse to the file on your computer.</li><li>Click Submit to process the attached file.</li></ol>]]></description>
         <entitlement_script/>
         <group/>
-        <hide_sp>false</hide_sp>
         <icon/>
         <ignore_price>true</ignore_price>
         <image/>
@@ -175,9 +174,9 @@ current.setAbortAction(true); ]]></script>
     </fx_price>
     <sys_attachment action="INSERT_OR_UPDATE">
         <average_image_color>#767676</average_image_color>
-        <chunk_size_bytes>734003</chunk_size_bytes>
         <compressed>true</compressed>
         <content_type>image/png</content_type>
+        <encryption_context/>
         <file_name>icon</file_name>
         <image_height>68</image_height>
         <image_width>68</image_width>
@@ -185,6 +184,8 @@ current.setAbortAction(true); ]]></script>
         <size_compressed>2190</size_compressed>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-02-08 01:49:36</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
         <sys_id>22be045bdb00130043055740cf96194b</sys_id>
         <sys_mod_count>2</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
@@ -212,9 +213,9 @@ current.setAbortAction(true); ]]></script>
     </sys_attachment_doc>
     <sys_attachment action="INSERT_OR_UPDATE">
         <average_image_color>#7ac334</average_image_color>
-        <chunk_size_bytes/>
         <compressed>true</compressed>
         <content_type>image/png</content_type>
+        <encryption_context/>
         <file_name>picture</file_name>
         <image_height>128</image_height>
         <image_width>128</image_width>
@@ -222,6 +223,8 @@ current.setAbortAction(true); ]]></script>
         <size_compressed>14472</size_compressed>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-11-30 01:45:17</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
         <sys_id>f87eaf600fb20300d1ac8f8ce1050e80</sys_id>
         <sys_mod_count>2</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
@@ -294,9 +297,9 @@ current.setAbortAction(true); ]]></script>
     </sys_attachment_doc>
     <sys_attachment action="INSERT_OR_UPDATE">
         <average_image_color/>
-        <chunk_size_bytes>734003</chunk_size_bytes>
         <compressed>true</compressed>
         <content_type>application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</content_type>
+        <encryption_context/>
         <file_name>ServiceNow Group Import Template.xlsx</file_name>
         <image_height/>
         <image_width/>
@@ -304,6 +307,8 @@ current.setAbortAction(true); ]]></script>
         <size_compressed>88939</size_compressed>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-04-09 03:13:27</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
         <sys_id>0051e9eedb11130043055740cf9619d8</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>

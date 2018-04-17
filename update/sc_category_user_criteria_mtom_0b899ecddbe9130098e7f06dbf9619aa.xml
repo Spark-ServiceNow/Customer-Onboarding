@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sc_category_user_criteria_mtom">
+    <sc_category_user_criteria_mtom action="INSERT_OR_UPDATE">
+        <sc_category display_value="ServiceNow Administration">4830b1b7db91130043055740cf961969</sc_category>
+        <sys_class_name>sc_category_user_criteria_mtom</sys_class_name>
+        <sys_created_by>T824513@spark.co.nz</sys_created_by>
+        <sys_created_on>2018-04-17 01:43:58</sys_created_on>
+        <sys_id>0b899ecddbe9130098e7f06dbf9619aa</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ServiceNow Administration.Users with the "co_foundation_requester" role</sys_name>
+        <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
+        <sys_update_name>sc_category_user_criteria_mtom_0b899ecddbe9130098e7f06dbf9619aa</sys_update_name>
+        <sys_updated_by>T824513@spark.co.nz</sys_updated_by>
+        <sys_updated_on>2018-04-17 01:43:58</sys_updated_on>
+        <user_criteria display_value="Users with the &quot;co_foundation_requester&quot; role">dc87e867db91130043055740cf961959</user_criteria>
+    </sc_category_user_criteria_mtom>
+</record_update>

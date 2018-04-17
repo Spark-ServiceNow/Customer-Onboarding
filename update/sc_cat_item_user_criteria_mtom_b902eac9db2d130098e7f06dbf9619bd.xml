@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sc_cat_item_user_criteria_mtom">
+    <sc_cat_item_user_criteria_mtom action="INSERT_OR_UPDATE">
+        <sc_cat_item display_value="Request a new Location">82bfe7a00fb20300d1ac8f8ce1050ee2</sc_cat_item>
+        <sys_class_name>sc_cat_item_user_criteria_mtom</sys_class_name>
+        <sys_created_by>T824513@spark.co.nz</sys_created_by>
+        <sys_created_on>2018-04-17 02:21:01</sys_created_on>
+        <sys_id>b902eac9db2d130098e7f06dbf9619bd</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Request a new Location.Users with the "co_foundation_admin" role</sys_name>
+        <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
+        <sys_update_name>sc_cat_item_user_criteria_mtom_b902eac9db2d130098e7f06dbf9619bd</sys_update_name>
+        <sys_updated_by>T824513@spark.co.nz</sys_updated_by>
+        <sys_updated_on>2018-04-17 02:21:01</sys_updated_on>
+        <user_criteria display_value="Users with the &quot;co_foundation_admin&quot; role">91a6ece7db91130043055740cf9619b3</user_criteria>
+    </sc_cat_item_user_criteria_mtom>
+</record_update>
