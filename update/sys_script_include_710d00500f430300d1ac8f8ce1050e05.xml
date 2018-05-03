@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update table="sys_script_include">
     <sys_script_include action="INSERT_OR_UPDATE">
-        <access>package_private</access>
+        <access>public</access>
         <active>true</active>
         <api_name>x_133853_customer.Group</api_name>
         <client_callable>false</client_callable>
@@ -11,7 +11,7 @@
 // Author: 		    Ronald Lob
 // Script Type:     [Script Include] Customer Onboarding - Group API
 // Script Name:	    Customer Onboarding - Group API
-// Script Version:	1.6
+// Script Version:	1.8
 // Script Desc:	    API for CRUD functionality on Group table. 
 //                  Differs from standard Table / REST API as it's specific to this application.
 //                  Cascading of Creates / Updates / Deletes.
@@ -24,6 +24,8 @@
 // 20/02/2018 - [Version 1.4][Ronald Lob]  	Added the Get_Members function to return a list of Users thats members of a given Group.
 // 27/02/2018 - [Version 1.5][Ronald Lob]  	Added a Deactivate function instead of a Delete.
 // 09/04/2018 - [Version 1.6][Ronald Lob]  	Added the AddRoleToGroup function. Changed the Create to use ScopedTools utility. 
+// 18/04/2018 - [Version 1.7][Ronald Lob]  	Added Company to the Create function as a parameter. Built in Domain Seperation.
+// 18/04/2018 - [Version 1.8][Ronald Lob]  	Neatened the Create function to return a valid gr to the workflow. 
 // =============================================================
 
 var Group = Class.create();
@@ -34,16 +36,17 @@ Group.prototype = {
 	// .. 
 	// Creates a new record in Group
 	// .. 
-	Create: function(group_active, group_cost_center, group_default_assignee, group_description, group_email, group_manager, group_name, group_parent, group_type){
+	Create: function(group_active, group_cost_center, group_default_assignee, group_description, group_email, group_manager, group_name, group_parent, group_type, group_company){
 		
 		gs.info('[Customer Onboarding][SI][Group.Create] Create a new Group in ServiceNow with the name: ' + group_name);
 		
 		// Check if the Group exists already or not. If it does we exit and let the source decide if we update or not. 
-		var gr = this.Get_Name(group_name);
+		var gr = this.Get_Name(group_name, group_company);
 		gr_cc = new GlideRecord('cmn_cost_center');
 		gr_da = new GlideRecord('sys_user');
 		gr_m = new GlideRecord('sys_user');
 		gr_p = new GlideRecord('sys_user_group');
+		gr_c = new GlideRecord('core_company');
 
 		if (gr.isValidRecord() == true) {
 			gs.info('[Customer Onboarding][SI][Group.Create] Group with the name ' + group_name + ' already exists. Exit');
@@ -91,20 +94,36 @@ Group.prototype = {
 			
 			gs.info('[Customer Onboarding][SI][Group.Create] Parent verified: ' + gr_p.sys_id);
 		}
+		
+		// We need to cater for the Company name passed as parameter and not the sys_id. 
+		if (group_company) {
+			var gr_c_1 = gr_c.addQuery('sys_id',group_company);
+			gr_c_1.addOrCondition('name',group_company);
+			gr_c.query();
+			gr_c.next();
+			
+			gs.info('[Customer Onboarding][SI][Group.Create] Company verified: ' + gr_c.sys_id);
+		}
 	
-		// Create record
+		// Create record using ScopedTools utility (to bridge cross scope policies)
 		var st = new global.ScopedTools();
 		var cost_center_sys_id;
 		var default_assignee_sys_id;
 		var manager_sys_id;
 		var parent_sys_id;
+		var company_sys_id;
 		
 		if (gr_cc.isValidRecord() == true) { cost_center_sys_id = gr_cc.sys_id; }
 		if (gr_da.isValidRecord() == true) { default_assignee_sys_id = gr_da.sys_id; }
 		if (gr_m.isValidRecord() == true) { manager_sys_id = gr_m.sys_id; }
 		if (gr_p.isValidRecord() == true) { parent_sys_id = gr_p.sys_id; }
+		if (gr_c.isValidRecord() == true) { company_sys_id = gr_c.sys_id; } else {
+			// Exit because we dont want to create the Group without a valid Company record as this is a domain seperated environment.
+			gs.info('[Customer Onboarding][SI][Group.Create] Group not created because Company not verified successfully. Value passed: ' + group_company);
+			return false; 
+		}
 		
-		var sys_id = st.AddGroup(group_active, cost_center_sys_id, default_assignee_sys_id, group_description, group_email, manager_sys_id, group_name, parent_sys_id, group_type);
+		var sys_id = st.AddGroup(group_active, cost_center_sys_id, default_assignee_sys_id, group_description, group_email, manager_sys_id, group_name, parent_sys_id, group_type, company_sys_id);
 
 		if (sys_id) {
 			gs.info('[Customer Onboarding][SI][Group.Create] New Group record created successfully: ' + sys_id);
@@ -113,12 +132,7 @@ Group.prototype = {
 			return false;
 		}
 		
-		gr = new GlideRecord('sys_user_group');
-		gr.addQuery('sys_id',sys_id);
-		gr.query();
-		gr.next();
-		
-		return gr;
+		return this.Get_SysID(sys_id);
 	},
 	
 	// .. 
@@ -137,14 +151,15 @@ Group.prototype = {
 	},
 	
 	// .. 
-	// Returns a Group record from provided Name
+	// Returns a Group record from provided Name / Company
 	// .. 
-	Get_Name: function(group_name){
+	Get_Name: function(group_name, group_company){
 		
-		gs.info('[Customer Onboarding][SI][Group.Get_Name] Get Group with name = ' + group_name);
+		gs.info('[Customer Onboarding][SI][Group.Get_Name] Get Group with name = ' + group_name + ' and Company = ' + group_company);
 	
 		gr = new GlideRecord('sys_user_group');
 		gr.addQuery('name',group_name);
+		gr.addQuery('company',group_company);
 		gr.query();
 		gr.next();
 
@@ -301,7 +316,7 @@ Group.prototype = {
 		var gr_g = this.Get_SysID(group);
 		var gr_u = user_api.Get_SysID(user);
 
-		if (gr_g.isValidRecord() == false) { gr_g = this.Get_Name(group); }
+		if (gr_g.isValidRecord() == false) { gr_g = this.Get_Name(group,''); }
 		if (gr_u.isValidRecord() == false) { gr_u = user.Get_UserID(user); }
 
 		if (gr_g.isValidRecord() == true && gr_u.isValidRecord() == true) { 
@@ -320,6 +335,7 @@ Group.prototype = {
 				gr.initialize();
 				gr.user = gr_u.sys_id;
 				gr.group = gr_g.sys_id;
+				gr.sys_domain = gr_g.sys_domain;
 				
 				var sys_id = gr.insert();
 				
@@ -351,7 +367,7 @@ Group.prototype = {
 		var gr_g = this.Get_SysID(group);
 		var gr_u = user_api.Get_SysID(user);
 
-		if (gr_g.isValidRecord() == false) { gr_g = this.Get_Name(group); }
+		if (gr_g.isValidRecord() == false) { gr_g = this.Get_Name(group,''); }
 		if (gr_u.isValidRecord() == false) { gr_u = user.Get_UserID(user); }
 
 		if (gr_g.isValidRecord() == true && gr_u.isValidRecord() == true) { 
@@ -401,7 +417,7 @@ Group.prototype = {
 		var gr_g = this.Get_SysID(group);
 		var gr_r = role_api.Get_SysID(role);
 
-		if (gr_g.isValidRecord() == false) { gr_g = this.Get_Name(group); }
+		if (gr_g.isValidRecord() == false) { gr_g = this.Get_Name(group,''); }
 		if (gr_r.isValidRecord() == false) { gr_r = role_api.Get_Role(role); }
 
 		if (gr_g.isValidRecord() == true && gr_r.isValidRecord() == true) { 
@@ -428,13 +444,13 @@ Group.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-12-11 01:18:43</sys_created_on>
         <sys_id>710d00500f430300d1ac8f8ce1050e05</sys_id>
-        <sys_mod_count>28</sys_mod_count>
+        <sys_mod_count>36</sys_mod_count>
         <sys_name>Group</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sys_script_include_710d00500f430300d1ac8f8ce1050e05</sys_update_name>
         <sys_updated_by>T824513@spark.co.nz</sys_updated_by>
-        <sys_updated_on>2018-04-17 04:35:29</sys_updated_on>
+        <sys_updated_on>2018-05-03 05:01:24</sys_updated_on>
     </sys_script_include>
 </record_update>

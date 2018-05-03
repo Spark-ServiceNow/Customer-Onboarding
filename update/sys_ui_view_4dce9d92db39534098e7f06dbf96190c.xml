@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_view">
+    <sys_ui_view action="INSERT_OR_UPDATE">
+        <group/>
+        <hidden>false</hidden>
+        <name>rpt-temp8e3f86dfeb802200f6f44d3df106fee6T810776@spark.co.nz</name>
+        <roles/>
+        <sys_class_name>sys_ui_view</sys_class_name>
+        <sys_created_by>T810776@spark.co.nz</sys_created_by>
+        <sys_created_on>2018-05-03 04:55:16</sys_created_on>
+        <sys_id>4dce9d92db39534098e7f06dbf96190c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>T810776@spark.co.nz</sys_updated_by>
+        <sys_updated_on>2018-05-03 04:55:16</sys_updated_on>
+        <title>Rpt-temp8e3f86dfeb802200f6f44d3df106fee6t810776@spark.co.nz</title>
+        <user/>
+    </sys_ui_view>
+</record_update>
