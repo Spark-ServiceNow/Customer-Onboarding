@@ -10,9 +10,9 @@
         <delivery_plan/>
         <delivery_plan_script/>
         <delivery_time>1970-01-03 00:00:00</delivery_time>
-        <description><![CDATA[<p>Remove a User from a Group.</p>
-<p>Select the Group, the User selector will automatically populate with the Members of that Group.</p>
-<p>Select a User that needs to be removed from that Group.</p>]]></description>
+        <description><![CDATA[<p>Select the Group, the User selector will automatically populate with the Members of that Group.</p>
+<p>Select a User that needs to be removed from that Group.</p>
+<p>Submit the Request. Approval will go to the Group Manager.</p>]]></description>
         <entitlement_script/>
         <group/>
         <icon/>
@@ -26,13 +26,13 @@
         <mobile_picture_type>use_desktop_picture</mobile_picture_type>
         <model/>
         <name>Remove a User from a Group</name>
-        <no_cart>false</no_cart>
+        <no_cart>true</no_cart>
         <no_order>false</no_order>
         <no_order_now>false</no_order_now>
         <no_proceed_checkout>false</no_proceed_checkout>
-        <no_quantity>false</no_quantity>
+        <no_quantity>true</no_quantity>
         <no_search>false</no_search>
-        <omit_price>false</omit_price>
+        <omit_price>true</omit_price>
         <order>150</order>
         <ordered_item_link/>
         <picture/>
@@ -44,24 +44,24 @@
         <sc_catalogs>e0d08b13c3330100c8b837659bba8fb4</sc_catalogs>
         <sc_ic_item_staging/>
         <sc_ic_version/>
-        <short_description/>
+        <short_description>Request the removal of an existing member from a Group</short_description>
         <show_variable_help_on_load>false</show_variable_help_on_load>
         <start_closed>false</start_closed>
         <sys_class_name>sc_cat_item</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-02-28 02:24:40</sys_created_on>
         <sys_id>5f865ba9db20130043055740cf9619b6</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>11</sys_mod_count>
         <sys_name>Remove a User from a Group</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy/>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sc_cat_item_5f865ba9db20130043055740cf9619b6</sys_update_name>
         <sys_updated_by>T824513@spark.co.nz</sys_updated_by>
-        <sys_updated_on>2018-04-17 02:30:36</sys_updated_on>
+        <sys_updated_on>2018-05-03 03:24:37</sys_updated_on>
         <template/>
         <type>item</type>
-        <use_sc_layout>true</use_sc_layout>
+        <use_sc_layout>false</use_sc_layout>
         <vendor/>
         <visible_bundle>true</visible_bundle>
         <visible_guide>true</visible_guide>
