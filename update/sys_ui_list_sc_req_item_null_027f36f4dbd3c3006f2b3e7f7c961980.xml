@@ -4,122 +4,152 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>number</element>
-            <list_id display_value="sc_req_item" element="NULL" name="sc_req_item" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">8e7b37bbd7111100f2d224837e6103a7</list_id>
+            <list_id display_value="sc_req_item" element="NULL" name="sc_req_item" parent="NULL" relationship="NULL" sys_domain="027f36f4dbd3c3006f2b3e7f7c961980" view="Default view">106d967cdb0e1f08bbc3384f7c961975</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>0</position>
             <sum>false</sum>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2013-12-04 18:10:09</sys_created_on>
-            <sys_id>467b37bbd7111100f2d224837e6103a8</sys_id>
+            <sys_created_by>T824513@spark.co.nz</sys_created_by>
+            <sys_created_on>2018-05-11 03:53:37</sys_created_on>
+            <sys_id>dc6d967cdb0e1f08bbc3384f7c961975</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2013-12-04 18:10:09</sys_updated_on>
+            <sys_updated_by>T824513@spark.co.nz</sys_updated_by>
+            <sys_updated_on>2018-05-11 03:53:37</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>cat_item</element>
-            <list_id display_value="sc_req_item" element="NULL" name="sc_req_item" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">8e7b37bbd7111100f2d224837e6103a7</list_id>
+            <element>active</element>
+            <list_id display_value="sc_req_item" element="NULL" name="sc_req_item" parent="NULL" relationship="NULL" sys_domain="027f36f4dbd3c3006f2b3e7f7c961980" view="Default view">106d967cdb0e1f08bbc3384f7c961975</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>1</position>
             <sum>false</sum>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2013-12-04 18:10:09</sys_created_on>
-            <sys_id>867b37bbd7111100f2d224837e6103a8</sys_id>
+            <sys_created_by>T824513@spark.co.nz</sys_created_by>
+            <sys_created_on>2018-05-11 03:53:37</sys_created_on>
+            <sys_id>586d967cdb0e1f08bbc3384f7c961976</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2013-12-04 18:10:09</sys_updated_on>
+            <sys_updated_by>T824513@spark.co.nz</sys_updated_by>
+            <sys_updated_on>2018-05-11 03:53:37</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>stage</element>
-            <list_id display_value="sc_req_item" element="NULL" name="sc_req_item" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">8e7b37bbd7111100f2d224837e6103a7</list_id>
+            <element>activity_due</element>
+            <list_id display_value="sc_req_item" element="NULL" name="sc_req_item" parent="NULL" relationship="NULL" sys_domain="027f36f4dbd3c3006f2b3e7f7c961980" view="Default view">106d967cdb0e1f08bbc3384f7c961975</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>2</position>
             <sum>false</sum>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2013-12-04 18:10:09</sys_created_on>
-            <sys_id>c67b37bbd7111100f2d224837e6103a8</sys_id>
+            <sys_created_by>T824513@spark.co.nz</sys_created_by>
+            <sys_created_on>2018-05-11 03:53:37</sys_created_on>
+            <sys_id>d86d967cdb0e1f08bbc3384f7c961976</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2013-12-04 18:10:09</sys_updated_on>
+            <sys_updated_by>T824513@spark.co.nz</sys_updated_by>
+            <sys_updated_on>2018-05-11 03:53:37</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>request</element>
-            <list_id display_value="sc_req_item" element="NULL" name="sc_req_item" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">8e7b37bbd7111100f2d224837e6103a7</list_id>
+            <element>additional_assignee_list</element>
+            <list_id display_value="sc_req_item" element="NULL" name="sc_req_item" parent="NULL" relationship="NULL" sys_domain="027f36f4dbd3c3006f2b3e7f7c961980" view="Default view">106d967cdb0e1f08bbc3384f7c961975</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>3</position>
             <sum>false</sum>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2013-12-04 18:10:09</sys_created_on>
-            <sys_id>0a7b37bbd7111100f2d224837e6103a8</sys_id>
+            <sys_created_by>T824513@spark.co.nz</sys_created_by>
+            <sys_created_on>2018-05-11 03:53:37</sys_created_on>
+            <sys_id>5c6d967cdb0e1f08bbc3384f7c961976</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2013-12-04 18:10:09</sys_updated_on>
+            <sys_updated_by>T824513@spark.co.nz</sys_updated_by>
+            <sys_updated_on>2018-05-11 03:53:37</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>request.requested_for</element>
-            <list_id display_value="sc_req_item" element="NULL" name="sc_req_item" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">8e7b37bbd7111100f2d224837e6103a7</list_id>
+            <element>approval</element>
+            <list_id display_value="sc_req_item" element="NULL" name="sc_req_item" parent="NULL" relationship="NULL" sys_domain="027f36f4dbd3c3006f2b3e7f7c961980" view="Default view">106d967cdb0e1f08bbc3384f7c961975</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>4</position>
             <sum>false</sum>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2013-12-04 18:10:09</sys_created_on>
-            <sys_id>4a7b37bbd7111100f2d224837e6103a8</sys_id>
+            <sys_created_by>T824513@spark.co.nz</sys_created_by>
+            <sys_created_on>2018-05-11 03:53:37</sys_created_on>
+            <sys_id>dc6d967cdb0e1f08bbc3384f7c961976</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2013-12-04 18:10:09</sys_updated_on>
+            <sys_updated_by>T824513@spark.co.nz</sys_updated_by>
+            <sys_updated_on>2018-05-11 03:53:37</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>request.opened_by</element>
-            <list_id display_value="sc_req_item" element="NULL" name="sc_req_item" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">8e7b37bbd7111100f2d224837e6103a7</list_id>
+            <element>approval_history</element>
+            <list_id display_value="sc_req_item" element="NULL" name="sc_req_item" parent="NULL" relationship="NULL" sys_domain="027f36f4dbd3c3006f2b3e7f7c961980" view="Default view">106d967cdb0e1f08bbc3384f7c961975</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>5</position>
             <sum>false</sum>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2013-12-04 18:10:09</sys_created_on>
-            <sys_id>8a7b37bbd7111100f2d224837e6103a8</sys_id>
+            <sys_created_by>T824513@spark.co.nz</sys_created_by>
+            <sys_created_on>2018-05-11 03:53:37</sys_created_on>
+            <sys_id>506d967cdb0e1f08bbc3384f7c961977</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2013-12-04 18:10:09</sys_updated_on>
+            <sys_updated_by>T824513@spark.co.nz</sys_updated_by>
+            <sys_updated_on>2018-05-11 03:53:37</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>due_date</element>
-            <list_id display_value="sc_req_item" element="NULL" name="sc_req_item" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">8e7b37bbd7111100f2d224837e6103a7</list_id>
+            <element>approval_set</element>
+            <list_id display_value="sc_req_item" element="NULL" name="sc_req_item" parent="NULL" relationship="NULL" sys_domain="027f36f4dbd3c3006f2b3e7f7c961980" view="Default view">106d967cdb0e1f08bbc3384f7c961975</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>6</position>
             <sum>false</sum>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2013-12-04 18:10:09</sys_created_on>
-            <sys_id>ca7b37bbd7111100f2d224837e6103a8</sys_id>
+            <sys_created_by>T824513@spark.co.nz</sys_created_by>
+            <sys_created_on>2018-05-11 03:53:37</sys_created_on>
+            <sys_id>d06d967cdb0e1f08bbc3384f7c961977</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2013-12-04 18:10:09</sys_updated_on>
+            <sys_updated_by>T824513@spark.co.nz</sys_updated_by>
+            <sys_updated_on>2018-05-11 03:53:37</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>quantity</element>
-            <list_id display_value="sc_req_item" element="NULL" name="sc_req_item" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">8e7b37bbd7111100f2d224837e6103a7</list_id>
+            <element>assigned_to</element>
+            <list_id display_value="sc_req_item" element="NULL" name="sc_req_item" parent="NULL" relationship="NULL" sys_domain="027f36f4dbd3c3006f2b3e7f7c961980" view="Default view">106d967cdb0e1f08bbc3384f7c961975</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>7</position>
             <sum>false</sum>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2013-12-04 18:10:09</sys_created_on>
-            <sys_id>0e7b37bbd7111100f2d224837e6103a8</sys_id>
+            <sys_created_by>T824513@spark.co.nz</sys_created_by>
+            <sys_created_on>2018-05-11 03:53:37</sys_created_on>
+            <sys_id>546d967cdb0e1f08bbc3384f7c961977</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2013-12-04 18:10:09</sys_updated_on>
+            <sys_updated_by>T824513@spark.co.nz</sys_updated_by>
+            <sys_updated_on>2018-05-11 03:53:37</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>assignment_group</element>
+            <list_id display_value="sc_req_item" element="NULL" name="sc_req_item" parent="NULL" relationship="NULL" sys_domain="027f36f4dbd3c3006f2b3e7f7c961980" view="Default view">106d967cdb0e1f08bbc3384f7c961975</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>8</position>
+            <sum>false</sum>
+            <sys_created_by>T824513@spark.co.nz</sys_created_by>
+            <sys_created_on>2018-05-11 03:53:37</sys_created_on>
+            <sys_id>d46d967cdb0e1f08bbc3384f7c961977</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>T824513@spark.co.nz</sys_updated_by>
+            <sys_updated_on>2018-05-11 03:53:37</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>backordered</element>
+            <list_id display_value="sc_req_item" element="NULL" name="sc_req_item" parent="NULL" relationship="NULL" sys_domain="027f36f4dbd3c3006f2b3e7f7c961980" view="Default view">106d967cdb0e1f08bbc3384f7c961975</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>9</position>
+            <sum>false</sum>
+            <sys_created_by>T824513@spark.co.nz</sys_created_by>
+            <sys_created_on>2018-05-11 03:53:37</sys_created_on>
+            <sys_id>586d967cdb0e1f08bbc3384f7c961977</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>T824513@spark.co.nz</sys_updated_by>
+            <sys_updated_on>2018-05-11 03:53:37</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
@@ -138,11 +168,11 @@
             <sys_domain_path>!!!/!!)/!!#/!!$/</sys_domain_path>
             <sys_id>7be87e1ddbad530027e77ee9bf9619ff</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_name/>
-            <sys_package/>
+            <sys_name>sc_req_item</sys_name>
+            <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
             <sys_policy/>
             <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
-            <sys_update_name/>
+            <sys_update_name>sys_ui_list_sc_req_item_null_027f36f4dbd3c3006f2b3e7f7c961980</sys_update_name>
             <sys_updated_by>T824513@spark.co.nz</sys_updated_by>
             <sys_updated_on>2018-04-17 22:39:34</sys_updated_on>
             <sys_user display_value="Ronald Lob">213f0d21db181b00a56336db7c9619d7</sys_user>
