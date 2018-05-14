@@ -47,7 +47,7 @@
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-01-31 02:12:25</sys_created_on>
-        <sys_id>4e649ef0db4a1f08bbc3384f7c9619b5</sys_id>
+        <sys_id>9e7ac175db4e5f0027e77ee9bf9619f5</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_133853_customer_record_producer_importsettable_user</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
@@ -55,7 +55,7 @@
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sys_dictionary_x_133853_customer_record_producer_importsettable_user_NULL</sys_update_name>
         <sys_updated_by>system</sys_updated_by>
-        <sys_updated_on>2018-05-11 03:14:41</sys_updated_on>
+        <sys_updated_on>2018-05-14 00:25:30</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

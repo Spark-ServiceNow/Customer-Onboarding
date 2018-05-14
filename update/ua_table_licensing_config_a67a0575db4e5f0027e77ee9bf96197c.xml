@@ -13,13 +13,13 @@
         <sys_class_name>ua_table_licensing_config</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-01-29 03:37:55</sys_created_on>
-        <sys_id>9a64def0db4a1f08bbc3384f7c961934</sys_id>
+        <sys_id>a67a0575db4e5f0027e77ee9bf96197c</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_133853_customer_record_producer_importsettable_location</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy/>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
-        <sys_update_name>ua_table_licensing_config_9a64def0db4a1f08bbc3384f7c961934</sys_update_name>
+        <sys_update_name>ua_table_licensing_config_a67a0575db4e5f0027e77ee9bf96197c</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2018-01-29 03:37:55</sys_updated_on>
     </ua_table_licensing_config>
