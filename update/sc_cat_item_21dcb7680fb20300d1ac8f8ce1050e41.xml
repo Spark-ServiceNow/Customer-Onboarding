@@ -60,6 +60,9 @@
         <sys_updated_on>2018-05-14 00:54:34</sys_updated_on>
         <template/>
         <type>item</type>
+        <u_business_service/>
+        <u_configuration_item/>
+        <u_omit_portal_price>false</u_omit_portal_price>
         <use_sc_layout>false</use_sc_layout>
         <vendor/>
         <visible_bundle>true</visible_bundle>

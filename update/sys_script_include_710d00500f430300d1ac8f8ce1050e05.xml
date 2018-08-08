@@ -11,7 +11,7 @@
 // Author: 		    Ronald Lob
 // Script Type:     [Script Include] Customer Onboarding - Group API
 // Script Name:	    Customer Onboarding - Group API
-// Script Version:	1.8
+// Script Version:	1.9
 // Script Desc:	    API for CRUD functionality on Group table. 
 //                  Differs from standard Table / REST API as it's specific to this application.
 //                  Cascading of Creates / Updates / Deletes.
@@ -26,6 +26,7 @@
 // 09/04/2018 - [Version 1.6][Ronald Lob]  	Added the AddRoleToGroup function. Changed the Create to use ScopedTools utility. 
 // 18/04/2018 - [Version 1.7][Ronald Lob]  	Added Company to the Create function as a parameter. Built in Domain Seperation.
 // 18/04/2018 - [Version 1.8][Ronald Lob]  	Neatened the Create function to return a valid gr to the workflow. 
+// 08/08/2018 - [Version 1.9][Ronald Lob]  	Fixed issues with approvals via email running this code in strict-mode.
 // =============================================================
 
 var Group = Class.create();
@@ -42,11 +43,11 @@ Group.prototype = {
 		
 		// Check if the Group exists already or not. If it does we exit and let the source decide if we update or not. 
 		var gr = this.Get_Name(group_name, group_company);
-		gr_cc = new GlideRecord('cmn_cost_center');
-		gr_da = new GlideRecord('sys_user');
-		gr_m = new GlideRecord('sys_user');
-		gr_p = new GlideRecord('sys_user_group');
-		gr_c = new GlideRecord('core_company');
+		var gr_cc = new GlideRecord('cmn_cost_center');
+		var gr_da = new GlideRecord('sys_user');
+		var gr_m = new GlideRecord('sys_user');
+		var gr_p = new GlideRecord('sys_user_group');
+		var gr_c = new GlideRecord('core_company');
 
 		if (gr.isValidRecord() == true) {
 			gs.info('[Customer Onboarding][SI][Group.Create] Group with the name ' + group_name + ' already exists. Exit');
@@ -142,7 +143,7 @@ Group.prototype = {
 		
 		gs.info('[Customer Onboarding][SI][Group.Get_SysID] Get Group with sys_id = ' + sys_id);
 	
-		gr = new GlideRecord('sys_user_group');
+		var gr = new GlideRecord('sys_user_group');
 		gr.addQuery('sys_id',sys_id);
 		gr.query();
 		gr.next();
@@ -157,7 +158,7 @@ Group.prototype = {
 		
 		gs.info('[Customer Onboarding][SI][Group.Get_Name] Get Group with name = ' + group_name + ' and Company = ' + group_company);
 	
-		gr = new GlideRecord('sys_user_group');
+		var gr = new GlideRecord('sys_user_group');
 		gr.addQuery('name',group_name);
 		gr.addQuery('company',group_company);
 		gr.query();
@@ -173,7 +174,7 @@ Group.prototype = {
 		
 		gs.info('[Customer Onboarding][SI][Group.Get_Members] Get members of Group: ' + group);
 	
-		gr = new GlideRecord('sys_user_group');
+		var gr = new GlideRecord('sys_user_group');
 		gr.addQuery('sys_id',group);
 		gr.query();
 		gr.next();
@@ -224,10 +225,10 @@ Group.prototype = {
 	Update: function(sys_id, column, value){
 		
 		var gr = this.Get_SysID(sys_id);
-		gr_cc = new GlideRecord('cmn_cost_center');
-		gr_da = new GlideRecord('sys_user');
-		gr_m = new GlideRecord('sys_user');
-		gr_p = new GlideRecord('sys_user_group');
+		var gr_cc = new GlideRecord('cmn_cost_center');
+		var gr_da = new GlideRecord('sys_user');
+		var gr_m = new GlideRecord('sys_user');
+		var gr_p = new GlideRecord('sys_user_group');
 		
 		// Lets first check if the value passed is a keyword or null and exit or replace accordingly
 		if (value == undefined || value == "") { return false;}
@@ -323,7 +324,7 @@ Group.prototype = {
 			// User and Group is valid. Relate but first check if we aren't duplicating this.
 			gs.info('[Customer Onboarding][SI][Group.AddUserToGroup] User (' + user + ') valid. Group (' + group + ') valid. Inserting.');
 			
-			gr = new GlideRecord('sys_user_grmember');
+			var gr = new GlideRecord('sys_user_grmember');
 			gr.addQuery('user',gr_u.sys_id);
 			gr.addQuery('group',gr_g.sys_id);
 			gr.query();
@@ -444,13 +445,13 @@ Group.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-12-11 01:18:43</sys_created_on>
         <sys_id>710d00500f430300d1ac8f8ce1050e05</sys_id>
-        <sys_mod_count>36</sys_mod_count>
+        <sys_mod_count>37</sys_mod_count>
         <sys_name>Group</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sys_script_include_710d00500f430300d1ac8f8ce1050e05</sys_update_name>
         <sys_updated_by>T824513@spark.co.nz</sys_updated_by>
-        <sys_updated_on>2018-05-03 05:01:24</sys_updated_on>
+        <sys_updated_on>2018-08-08 04:33:24</sys_updated_on>
     </sys_script_include>
 </record_update>

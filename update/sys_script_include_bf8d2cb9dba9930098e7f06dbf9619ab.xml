@@ -11,13 +11,14 @@
 // Author: 		    Ronald Lob
 // Script Type:     [Script Include] Customer Onboarding - Backfill_Group_Members
 // Script Name:	    Customer Onboarding - Backfill_Group_Members
-// Script Version:	1.0
+// Script Version:	1.1
 // Script Desc:	    Generic Include with a bunch of functions to backfill reference fields dynamically. 
 //                  Used for Advanced Reference Qualifiers.
 // ==========
 // Revisions:
 // ==========				
 // 19/04/2018 - [Version 1.0][Ronald Lob]  	Development.
+// 08/08/2018 - [Version 1.1][Ronald Lob]  	Fixed issues around approval emails running this code in strict mode.
 // =============================================================
 
 var Backfill_Group_Members = Class.create();
@@ -34,7 +35,7 @@ Backfill_Group_Members.prototype = {
 		if (!grp) {return;}
 		
 		// Find the Group, loop the members into an array
-		gr = new GlideRecord('sys_user_group');
+		var gr = new GlideRecord('sys_user_group');
 		gr.addQuery('sys_id',grp);
 		gr.query();
 		gr.next();
@@ -59,13 +60,13 @@ Backfill_Group_Members.prototype = {
         <sys_created_by>T824513@spark.co.nz</sys_created_by>
         <sys_created_on>2018-04-19 03:26:28</sys_created_on>
         <sys_id>bf8d2cb9dba9930098e7f06dbf9619ab</sys_id>
-        <sys_mod_count>10</sys_mod_count>
+        <sys_mod_count>11</sys_mod_count>
         <sys_name>Backfill_Group_Members</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sys_script_include_bf8d2cb9dba9930098e7f06dbf9619ab</sys_update_name>
         <sys_updated_by>T824513@spark.co.nz</sys_updated_by>
-        <sys_updated_on>2018-04-19 04:31:09</sys_updated_on>
+        <sys_updated_on>2018-08-08 04:34:34</sys_updated_on>
     </sys_script_include>
 </record_update>

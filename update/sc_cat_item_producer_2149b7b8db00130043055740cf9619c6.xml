@@ -335,6 +335,9 @@ current.setAbortAction(true); ]]></script>
         <table_name>sys_data_source</table_name>
         <template/>
         <type>item</type>
+        <u_business_service/>
+        <u_configuration_item/>
+        <u_omit_portal_price>false</u_omit_portal_price>
         <use_sc_layout>true</use_sc_layout>
         <vendor/>
         <view/>

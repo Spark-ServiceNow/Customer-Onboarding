@@ -11,7 +11,7 @@
 // Author: 		    Ronald Lob
 // Script Type:     [Script Include] Customer Onboarding - Role API
 // Script Name:	    Customer Onboarding - Role API
-// Script Version:	1.0
+// Script Version:	1.1
 // Script Desc:	    API for CRUD functionality on Role table. 
 //                  Differs from standard Table / REST API as it's specific to this application.
 //                  Cascading of Creates / Updates / Deletes.
@@ -19,6 +19,7 @@
 // Revisions:
 // ==========				
 // 06/04/2018 - [Version 1.0][Ronald Lob]  	Development. 
+// 08/08/2018 - [Version 1.1][Ronald Lob]  	Fixed issues around email approvals running this code in strict mode. 
 // =============================================================
 
 var Role = Class.create();
@@ -33,7 +34,7 @@ Role.prototype = {
 		
 		gs.info('[Customer Onboarding][SI][Role.Get_SysID] Get Role with sys_id = ' + sys_id);
 	
-		gr = new GlideRecord('sys_user_role');
+		var gr = new GlideRecord('sys_user_role');
 		gr.addQuery('sys_id',sys_id);
 		gr.query();
 		gr.next();
@@ -48,7 +49,7 @@ Role.prototype = {
 		
 		gs.info('[Customer Onboarding][SI][Role.Get_Name] Get Role with name = ' + role_name);
 	
-		gr = new GlideRecord('sys_user_role');
+		var gr = new GlideRecord('sys_user_role');
 		gr.addQuery('name',role_name);
 		gr.query();
 		gr.next();
@@ -62,13 +63,13 @@ Role.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-04-06 04:22:13</sys_created_on>
         <sys_id>97b21269db51130043055740cf961952</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>Role</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sys_script_include_97b21269db51130043055740cf961952</sys_update_name>
         <sys_updated_by>T824513@spark.co.nz</sys_updated_by>
-        <sys_updated_on>2018-04-19 02:58:52</sys_updated_on>
+        <sys_updated_on>2018-08-08 04:34:21</sys_updated_on>
     </sys_script_include>
 </record_update>
