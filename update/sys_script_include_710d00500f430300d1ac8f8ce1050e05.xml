@@ -11,7 +11,7 @@
 // Author: 		    Ronald Lob
 // Script Type:     [Script Include] Customer Onboarding - Group API
 // Script Name:	    Customer Onboarding - Group API
-// Script Version:	1.9
+// Script Version:	1.10
 // Script Desc:	    API for CRUD functionality on Group table. 
 //                  Differs from standard Table / REST API as it's specific to this application.
 //                  Cascading of Creates / Updates / Deletes.
@@ -27,6 +27,8 @@
 // 18/04/2018 - [Version 1.7][Ronald Lob]  	Added Company to the Create function as a parameter. Built in Domain Seperation.
 // 18/04/2018 - [Version 1.8][Ronald Lob]  	Neatened the Create function to return a valid gr to the workflow. 
 // 08/08/2018 - [Version 1.9][Ronald Lob]  	Fixed issues with approvals via email running this code in strict-mode.
+// 09/10/2018 - [Version 1.10][Ronald Lob]  New function called AddVisibilityToGroup to add domain visibility to the Group.
+//                                          New variable to flag Labour capture or not. 
 // =============================================================
 
 var Group = Class.create();
@@ -37,7 +39,7 @@ Group.prototype = {
 	// .. 
 	// Creates a new record in Group
 	// .. 
-	Create: function(group_active, group_cost_center, group_default_assignee, group_description, group_email, group_manager, group_name, group_parent, group_type, group_company){
+	Create: function(group_active, group_cost_center, group_default_assignee, group_description, group_email, group_manager, group_name, group_parent, group_type, group_company, group_labour){
 		
 		gs.info('[Customer Onboarding][SI][Group.Create] Create a new Group in ServiceNow with the name: ' + group_name);
 		
@@ -124,7 +126,7 @@ Group.prototype = {
 			return false; 
 		}
 		
-		var sys_id = st.AddGroup(group_active, cost_center_sys_id, default_assignee_sys_id, group_description, group_email, manager_sys_id, group_name, parent_sys_id, group_type, company_sys_id);
+		var sys_id = st.AddGroup(group_active, cost_center_sys_id, default_assignee_sys_id, group_description, group_email, manager_sys_id, group_name, parent_sys_id, group_type, company_sys_id, group_labour);
 
 		if (sys_id) {
 			gs.info('[Customer Onboarding][SI][Group.Create] New Group record created successfully: ' + sys_id);
@@ -238,20 +240,14 @@ Group.prototype = {
 		
 		gs.info('[Customer Onboarding][SI][Group.Update] Updating Group with sys_id = ' + sys_id + ". Setting " + column + " to " + value);
 		
-		if (gr.isValidRecord() == true && column != "cost_center" && column != "default_assignee" && column != "parent" && column != "manager" && column != "members") {	
-			gr[column] = value;
-			return gr.update();
-
-		} else if (gr.isValidRecord() == true && column == "cost_center") {
+		if (gr.isValidRecord() == true && column == "cost_center") {
 			// If we are updating cost center, we need to cater for the possibility of a sys_id or cost center name being sent
 			var gr_cc_1 = gr_cc.addQuery('sys_id',value);
 			gr_cc_1.addOrCondition('name',value);
 			gr_cc.query();
 			gr_cc.next();
 			
-			gr.cost_center = gr_cc.sys_id;
-			
-			return gr.update();
+			value = gr_cc.sys_id;
 					
 		} else if (gr.isValidRecord() == true && column == "default_assignee") {
 			// If we are updating default assignee, we need to cater for the possibility of a sys_id or default assignee name being sent
@@ -260,9 +256,7 @@ Group.prototype = {
 			gr_da.query();
 			gr_da.next();
 			
-			gr.default_assignee = gr_da.sys_id;
-			
-			return gr.update();
+			value = gr_da.sys_id;
 			
 		} else if (gr.isValidRecord() == true && column == "parent") {
 			// If we are updating parent, we need to cater for the possibility of a sys_id or group name being sent
@@ -271,9 +265,7 @@ Group.prototype = {
 			gr_p.query();
 			gr_p.next();
 			
-			gr.parent = gr_p.sys_id;
-			
-			return gr.update();
+			value = gr_p.sys_id;
 			
 		} else if (gr.isValidRecord() == true && column == "manager") {
 			// If we are updating manager, we need to cater for the possibility of a sys_id or manager name being sent
@@ -282,9 +274,7 @@ Group.prototype = {
 			gr_m.query();
 			gr_m.next();
 			
-			gr.manager = gr_m.sys_id;
-			
-			return gr.update();
+			value = gr_m.sys_id;
 		
 		} else if (gr.isValidRecord() == true && column == "members") {
 			// If column = "members" we need to handle this differently because we use list collectors.
@@ -301,6 +291,11 @@ Group.prototype = {
 		} else {
 			gs.info('[Customer Onboarding][SI][Group.Update] Couldnt find valid record from provided Sys_ID: ' + sys_id);
 			return false;
+		}
+		
+		if (gr.isValidRecord() == true) {
+			var st = new global.ScopedTools();
+			return st.UpdateRecord('sys_user_group',gr.sys_id,column,value,"UPDATE");
 		}
 		
 	},
@@ -438,6 +433,27 @@ Group.prototype = {
 			gs.info('[Customer Onboarding][SI][Group.AddRoleToGroup] Cannot find valid Role or Group records based on provided data. Aborted.');	
 		}
 	},
+	
+	// .. 
+	// Adds a provided Domain name to provided Group name or Sys_ID as a Domain Visbility relationship
+	// .. 
+	AddVisibilityToGroup: function(domain, group){
+		
+		// Validate provided Group
+		var gr_g = this.Get_SysID(group);
+		if (gr_g.isValidRecord() == false) { gr_g = this.Get_Name(group,''); }
+
+		if (gr_g.isValidRecord() == true) {
+			
+			gs.info('[Customer Onboarding][SI][Group.AddVisibilityToGroup] Domain (' + domain + ') valid. Group (' + group + ') valid. Inserting.');
+			
+			var st = new global.ScopedTools();
+			var sys_id = st.AddDomainVisibilityToGroup(domain,gr_g.sys_id);
+			
+		} else {
+			gs.info('[Customer Onboarding][SI][Group.AddVisibilityToGroup] Cannot find valid Domain or Group records based on provided data. Aborted.');	
+		}	
+	},
 
     type: 'Group'
 };]]></script>
@@ -445,13 +461,13 @@ Group.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-12-11 01:18:43</sys_created_on>
         <sys_id>710d00500f430300d1ac8f8ce1050e05</sys_id>
-        <sys_mod_count>37</sys_mod_count>
+        <sys_mod_count>41</sys_mod_count>
         <sys_name>Group</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sys_script_include_710d00500f430300d1ac8f8ce1050e05</sys_update_name>
         <sys_updated_by>T824513@spark.co.nz</sys_updated_by>
-        <sys_updated_on>2018-08-08 04:33:24</sys_updated_on>
+        <sys_updated_on>2018-10-15 01:24:43</sys_updated_on>
     </sys_script_include>
 </record_update>

@@ -24,14 +24,14 @@ Including enhanced permissions, new support groups, or other Foundation or CMDB 
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-04-13 01:32:56</sys_created_on>
         <sys_id>4830b1b7db91130043055740cf961969</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_name>ServiceNow Administration</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy/>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sc_category_4830b1b7db91130043055740cf961969</sys_update_name>
         <sys_updated_by>T824513@spark.co.nz</sys_updated_by>
-        <sys_updated_on>2018-04-17 01:44:28</sys_updated_on>
+        <sys_updated_on>2018-10-15 02:12:52</sys_updated_on>
         <title>ServiceNow Administration</title>
     </sc_category>
     <sys_translated_text action="delete_multiple" query="documentkey=4830b1b7db91130043055740cf961969"/>

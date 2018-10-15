@@ -14,6 +14,6 @@
         <sys_update_name>sc_category_user_criteria_mtom_5bda9241db2d130098e7f06dbf961979</sys_update_name>
         <sys_updated_by>T824513@spark.co.nz</sys_updated_by>
         <sys_updated_on>2018-04-17 01:49:43</sys_updated_on>
-        <user_criteria display_value="Users with the &quot;co_foundation_requester&quot; role">dc87e867db91130043055740cf961959</user_criteria>
+        <user_criteria display_value="Spark Users with the &quot;co_foundation_requester&quot; role">dc87e867db91130043055740cf961959</user_criteria>
     </sc_category_user_criteria_mtom>
 </record_update>

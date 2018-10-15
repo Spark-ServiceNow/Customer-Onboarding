@@ -48,7 +48,7 @@
         <record/>
         <record_producer_table/>
         <reference/>
-        <reference_qual>active=true</reference_qual>
+        <reference_qual>active!=false^sys_class_name=sys_user</reference_qual>
         <reference_qual_condition/>
         <scale_max>5</scale_max>
         <scale_min>0</scale_min>
@@ -60,14 +60,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-02-23 03:37:14</sys_created_on>
         <sys_id>fe967540dbe0130043055740cf961956</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>Members:</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy/>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>item_option_new_fe967540dbe0130043055740cf961956</sys_update_name>
-        <sys_updated_by>T970163@spark.co.nz</sys_updated_by>
-        <sys_updated_on>2018-04-18 04:36:56</sys_updated_on>
+        <sys_updated_by>T824513@spark.co.nz</sys_updated_by>
+        <sys_updated_on>2018-10-15 01:55:09</sys_updated_on>
         <table/>
         <tooltip/>
         <type>21</type>

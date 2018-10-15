@@ -10,9 +10,9 @@
         <delivery_plan/>
         <delivery_plan_script/>
         <delivery_time>1970-01-03 00:00:00</delivery_time>
-        <description><![CDATA[<p>Request a New Support Group to be added to ServiceNow. The new group will automatically get the default permissions associated, and all members will inherit those default permissions granting them the system capability required.</p>
-<p>You may need the following optional details in addition to the standard group information.</p>
-<ul style="list-style-position: inside;"><li>Group Manager</li><li>Default Assignee</li><li>Group Email Address</li><li>Cost Center</li></ul>]]></description>
+        <description><![CDATA[<p>Request a New Support Group to be added to ServiceNow. The new group will automatically get the default permissions associated, and all members will inherit those default permissions granting them the system capability required. There is no need to request additional ServiceNow permissions for these Group members. </p>
+<p>Please select a valid Group Manager. This person will be responsible for managing the Group members. Any new requests for people to be added or removed from this group will require approval from the Group Manager. </p>
+<p>Approval to create this Group will be requested from ITSM Tech Support. Once they approve, the Request will be automatically fulfilled and resolved. When you receive an email that the Request has been fulfilled everything has been set up.  </p>]]></description>
         <entitlement_script/>
         <group/>
         <icon/>
@@ -51,14 +51,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-11-21 01:18:25</sys_created_on>
         <sys_id>9fd195390f220300d1ac8f8ce1050e67</sys_id>
-        <sys_mod_count>22</sys_mod_count>
+        <sys_mod_count>24</sys_mod_count>
         <sys_name>Request a new Group</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy/>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
         <sys_update_name>sc_cat_item_9fd195390f220300d1ac8f8ce1050e67</sys_update_name>
         <sys_updated_by>T824513@spark.co.nz</sys_updated_by>
-        <sys_updated_on>2018-05-14 00:49:33</sys_updated_on>
+        <sys_updated_on>2018-10-15 02:24:57</sys_updated_on>
         <template/>
         <type>item</type>
         <u_business_service/>

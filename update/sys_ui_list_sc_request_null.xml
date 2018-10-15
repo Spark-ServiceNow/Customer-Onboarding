@@ -4,152 +4,47 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>number</element>
-            <list_id display_value="task" element="NULL" name="task" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">014c2cabdb781300bbc3384f7c961918</list_id>
+            <list_id display_value="sc_request" element="NULL" name="sc_request" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">9b21e714dbc0a3009f19e5644a96198e</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>0</position>
             <sum>false</sum>
-            <sys_created_by>T969525</sys_created_by>
-            <sys_created_on>2018-03-18 05:24:13</sys_created_on>
-            <sys_id>014c2cabdb781300bbc3384f7c961919</sys_id>
+            <sys_created_by>T969326@spark.co.nz</sys_created_by>
+            <sys_created_on>2018-08-17 05:38:50</sys_created_on>
+            <sys_id>f531ab14dbc0a3009f19e5644a9619ae</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>T969525</sys_updated_by>
-            <sys_updated_on>2018-03-18 05:24:13</sys_updated_on>
+            <sys_updated_by>T969326@spark.co.nz</sys_updated_by>
+            <sys_updated_on>2018-08-17 05:38:50</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>active</element>
-            <list_id display_value="task" element="NULL" name="task" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">014c2cabdb781300bbc3384f7c961918</list_id>
+            <element>short_description</element>
+            <list_id display_value="sc_request" element="NULL" name="sc_request" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">9b21e714dbc0a3009f19e5644a96198e</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>1</position>
             <sum>false</sum>
-            <sys_created_by>T969525</sys_created_by>
-            <sys_created_on>2018-03-18 05:24:13</sys_created_on>
-            <sys_id>0d4c2cabdb781300bbc3384f7c961919</sys_id>
+            <sys_created_by>T969326@spark.co.nz</sys_created_by>
+            <sys_created_on>2018-08-17 05:39:24</sys_created_on>
+            <sys_id>2d41a314dbc0a3009f19e5644a9619d1</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>T969525</sys_updated_by>
-            <sys_updated_on>2018-03-18 05:24:13</sys_updated_on>
+            <sys_updated_by>T969326@spark.co.nz</sys_updated_by>
+            <sys_updated_on>2018-08-17 05:39:24</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>activity_due</element>
-            <list_id display_value="task" element="NULL" name="task" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">014c2cabdb781300bbc3384f7c961918</list_id>
+            <element>company</element>
+            <list_id display_value="sc_request" element="NULL" name="sc_request" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">9b21e714dbc0a3009f19e5644a96198e</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>2</position>
             <sum>false</sum>
-            <sys_created_by>T969525</sys_created_by>
-            <sys_created_on>2018-03-18 05:24:13</sys_created_on>
-            <sys_id>8d4c2cabdb781300bbc3384f7c961919</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>T969525</sys_updated_by>
-            <sys_updated_on>2018-03-18 05:24:13</sys_updated_on>
-        </sys_ui_list_element>
-        <sys_ui_list_element action="INSERT_OR_UPDATE">
-            <average_value>false</average_value>
-            <element>additional_assignee_list</element>
-            <list_id display_value="task" element="NULL" name="task" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">014c2cabdb781300bbc3384f7c961918</list_id>
-            <max_value>false</max_value>
-            <min_value>false</min_value>
-            <position>3</position>
-            <sum>false</sum>
-            <sys_created_by>T969525</sys_created_by>
-            <sys_created_on>2018-03-18 05:24:13</sys_created_on>
-            <sys_id>014c2cabdb781300bbc3384f7c96191a</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>T969525</sys_updated_by>
-            <sys_updated_on>2018-03-18 05:24:13</sys_updated_on>
-        </sys_ui_list_element>
-        <sys_ui_list_element action="INSERT_OR_UPDATE">
-            <average_value>false</average_value>
-            <element>approval</element>
-            <list_id display_value="task" element="NULL" name="task" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">014c2cabdb781300bbc3384f7c961918</list_id>
-            <max_value>false</max_value>
-            <min_value>false</min_value>
-            <position>4</position>
-            <sum>false</sum>
-            <sys_created_by>T969525</sys_created_by>
-            <sys_created_on>2018-03-18 05:24:13</sys_created_on>
-            <sys_id>814c2cabdb781300bbc3384f7c96191a</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>T969525</sys_updated_by>
-            <sys_updated_on>2018-03-18 05:24:13</sys_updated_on>
-        </sys_ui_list_element>
-        <sys_ui_list_element action="INSERT_OR_UPDATE">
-            <average_value>false</average_value>
-            <element>approval_history</element>
-            <list_id display_value="task" element="NULL" name="task" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">014c2cabdb781300bbc3384f7c961918</list_id>
-            <max_value>false</max_value>
-            <min_value>false</min_value>
-            <position>5</position>
-            <sum>false</sum>
-            <sys_created_by>T969525</sys_created_by>
-            <sys_created_on>2018-03-18 05:24:13</sys_created_on>
-            <sys_id>054c2cabdb781300bbc3384f7c96191a</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>T969525</sys_updated_by>
-            <sys_updated_on>2018-03-18 05:24:13</sys_updated_on>
-        </sys_ui_list_element>
-        <sys_ui_list_element action="INSERT_OR_UPDATE">
-            <average_value>false</average_value>
-            <element>approval_set</element>
-            <list_id display_value="task" element="NULL" name="task" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">014c2cabdb781300bbc3384f7c961918</list_id>
-            <max_value>false</max_value>
-            <min_value>false</min_value>
-            <position>6</position>
-            <sum>false</sum>
-            <sys_created_by>T969525</sys_created_by>
-            <sys_created_on>2018-03-18 05:24:13</sys_created_on>
-            <sys_id>854c2cabdb781300bbc3384f7c96191a</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>T969525</sys_updated_by>
-            <sys_updated_on>2018-03-18 05:24:13</sys_updated_on>
-        </sys_ui_list_element>
-        <sys_ui_list_element action="INSERT_OR_UPDATE">
-            <average_value>false</average_value>
-            <element>assigned_to</element>
-            <list_id display_value="task" element="NULL" name="task" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">014c2cabdb781300bbc3384f7c961918</list_id>
-            <max_value>false</max_value>
-            <min_value>false</min_value>
-            <position>7</position>
-            <sum>false</sum>
-            <sys_created_by>T969525</sys_created_by>
-            <sys_created_on>2018-03-18 05:24:13</sys_created_on>
-            <sys_id>094c2cabdb781300bbc3384f7c96191a</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>T969525</sys_updated_by>
-            <sys_updated_on>2018-03-18 05:24:13</sys_updated_on>
-        </sys_ui_list_element>
-        <sys_ui_list_element action="INSERT_OR_UPDATE">
-            <average_value>false</average_value>
-            <element>assignment_group</element>
-            <list_id display_value="task" element="NULL" name="task" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">014c2cabdb781300bbc3384f7c961918</list_id>
-            <max_value>false</max_value>
-            <min_value>false</min_value>
-            <position>8</position>
-            <sum>false</sum>
-            <sys_created_by>T969525</sys_created_by>
-            <sys_created_on>2018-03-18 05:24:13</sys_created_on>
-            <sys_id>894c2cabdb781300bbc3384f7c96191a</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>T969525</sys_updated_by>
-            <sys_updated_on>2018-03-18 05:24:13</sys_updated_on>
-        </sys_ui_list_element>
-        <sys_ui_list_element action="INSERT_OR_UPDATE">
-            <average_value>false</average_value>
-            <element>business_duration</element>
-            <list_id display_value="task" element="NULL" name="task" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">014c2cabdb781300bbc3384f7c961918</list_id>
-            <max_value>false</max_value>
-            <min_value>false</min_value>
-            <position>9</position>
-            <sum>false</sum>
-            <sys_created_by>T969525</sys_created_by>
-            <sys_created_on>2018-03-18 05:24:13</sys_created_on>
-            <sys_id>0d4c2cabdb781300bbc3384f7c96191a</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>T969525</sys_updated_by>
-            <sys_updated_on>2018-03-18 05:24:13</sys_updated_on>
+            <sys_created_by>T969326@spark.co.nz</sys_created_by>
+            <sys_created_on>2018-08-17 05:39:41</sys_created_on>
+            <sys_id>ef61e754dbc0a3009f19e5644a96196e</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>T969326@spark.co.nz</sys_updated_by>
+            <sys_updated_on>2018-08-17 05:47:48</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
@@ -166,7 +61,7 @@
             <sys_created_on>2018-04-18 02:10:37</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_id>1739ef51db61930027e77ee9bf961909</sys_id>
+            <sys_id>92e33e150a000704064fa069be4a011c</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>sc_request</sys_name>
             <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
