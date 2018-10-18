@@ -3,7 +3,7 @@
     <item_option_new action="INSERT_OR_UPDATE">
         <active>true</active>
         <attributes/>
-        <cat_item display_value="Request a new Group">9fd195390f220300d1ac8f8ce1050e67</cat_item>
+        <cat_item display_value="Remove a User from a Group">5f865ba9db20130043055740cf9619b6</cat_item>
         <category/>
         <choice_direction>down</choice_direction>
         <choice_field/>
@@ -20,7 +20,7 @@
         <dynamic_ref_qual/>
         <example_text/>
         <field/>
-        <global>false</global>
+        <global>true</global>
         <help_tag>More information</help_tag>
         <help_text/>
         <include_none>false</include_none>
@@ -38,7 +38,7 @@
         <mask_use_confirmation>false</mask_use_confirmation>
         <mask_use_encryption>false</mask_use_encryption>
         <name>company</name>
-        <order>50</order>
+        <order>30</order>
         <price_if_checked>0</price_if_checked>
         <pricing_implications>false</pricing_implications>
         <question_text>Company:</question_text>
@@ -61,16 +61,16 @@
         <summary_macro/>
         <sys_class_name>item_option_new</sys_class_name>
         <sys_created_by>T824513@spark.co.nz</sys_created_by>
-        <sys_created_on>2018-04-17 05:09:18</sys_created_on>
-        <sys_id>e7380b05dbed130098e7f06dbf961962</sys_id>
-        <sys_mod_count>5</sys_mod_count>
-        <sys_name>company</sys_name>
+        <sys_created_on>2018-10-18 02:16:08</sys_created_on>
+        <sys_id>3c45c6dcdb59630c30a9481505961984</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Company:</sys_name>
         <sys_package display_value="Customer Onboarding" source="x_133853_customer">fe08bfd10f020300d1ac8f8ce1050ee1</sys_package>
         <sys_policy/>
         <sys_scope display_value="Customer Onboarding">fe08bfd10f020300d1ac8f8ce1050ee1</sys_scope>
-        <sys_update_name>item_option_new_e7380b05dbed130098e7f06dbf961962</sys_update_name>
+        <sys_update_name>item_option_new_3c45c6dcdb59630c30a9481505961984</sys_update_name>
         <sys_updated_by>T824513@spark.co.nz</sys_updated_by>
-        <sys_updated_on>2018-10-18 02:11:29</sys_updated_on>
+        <sys_updated_on>2018-10-18 02:16:08</sys_updated_on>
         <table/>
         <tooltip/>
         <type>8</type>
@@ -87,22 +87,22 @@
         <visible_summary>true</visible_summary>
         <write_roles/>
     </item_option_new>
-    <sys_translated_text action="delete_multiple" query="documentkey=e7380b05dbed130098e7f06dbf961962"/>
-    <fx_price action="delete_multiple" query="id=e7380b05dbed130098e7f06dbf961962"/>
+    <sys_translated_text action="delete_multiple" query="documentkey=3c45c6dcdb59630c30a9481505961984"/>
+    <fx_price action="delete_multiple" query="id=3c45c6dcdb59630c30a9481505961984"/>
     <fx_price action="INSERT_OR_UPDATE">
         <amount>0</amount>
         <currency display_value="GBP">GBP</currency>
         <field>price_if_checked</field>
-        <id>e7380b05dbed130098e7f06dbf961962</id>
+        <id>3c45c6dcdb59630c30a9481505961984</id>
         <parent/>
         <reference_amount>0</reference_amount>
         <reference_currency display_value="USD">USD</reference_currency>
         <sys_created_by>T824513@spark.co.nz</sys_created_by>
-        <sys_created_on>2018-04-17 05:09:18</sys_created_on>
-        <sys_id>72888305dbed130098e7f06dbf961909</sys_id>
+        <sys_created_on>2018-10-18 02:16:08</sys_created_on>
+        <sys_id>44758298db99630c30a948150596193b</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>T824513@spark.co.nz</sys_updated_by>
-        <sys_updated_on>2018-04-17 05:09:18</sys_updated_on>
+        <sys_updated_on>2018-10-18 02:16:08</sys_updated_on>
         <table>item_option_new</table>
         <type>calculated</type>
     </fx_price>
@@ -110,16 +110,16 @@
         <amount>0</amount>
         <currency display_value="GBP">GBP</currency>
         <field>rec_price_if_checked</field>
-        <id>e7380b05dbed130098e7f06dbf961962</id>
+        <id>3c45c6dcdb59630c30a9481505961984</id>
         <parent/>
         <reference_amount>0</reference_amount>
         <reference_currency display_value="USD">USD</reference_currency>
         <sys_created_by>T824513@spark.co.nz</sys_created_by>
-        <sys_created_on>2018-04-17 05:09:18</sys_created_on>
-        <sys_id>3e888305dbed130098e7f06dbf961907</sys_id>
+        <sys_created_on>2018-10-18 02:16:08</sys_created_on>
+        <sys_id>0c758298db99630c30a948150596193a</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>T824513@spark.co.nz</sys_updated_by>
-        <sys_updated_on>2018-04-17 05:09:18</sys_updated_on>
+        <sys_updated_on>2018-10-18 02:16:08</sys_updated_on>
         <table>item_option_new</table>
         <type>calculated</type>
     </fx_price>
